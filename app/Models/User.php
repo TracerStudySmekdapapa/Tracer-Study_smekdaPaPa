@@ -25,6 +25,11 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function alumni()
+    {
+        return $this->hasMany(Alumni::class, 'id_user');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
