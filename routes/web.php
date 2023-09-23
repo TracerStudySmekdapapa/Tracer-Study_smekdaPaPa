@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AlumniController;
 use App\Http\Controllers\AuthenticateController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -32,8 +33,13 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    Route::get('/admin/dataalumni', [AdminController::class, 'dataAlumni'])->name('dataAlumni');
     Route::get('/admin/verifalumni', [AdminController::class, 'verifAlumni'])->name('verifalumni');
     Route::post('/admin/verifalumni/{id_user}', [AdminController::class, 'verifAlumniAksi'])->name('verifalumniStore');
+
+    // Route::get('/alumni', [AlumniController::class, 'index'])->name('alumni');
+    Route::get('/alumni/tambahdatapribadi', [AlumniController::class, 'tambahDataPribadi'])->name('tambahDataPribadi');
+    Route::post('/alumni/tambahdatapribadi/{id}', [AlumniController::class, 'simpanDataPribadi'])->name('simpanDataPribadi');
 });
 
 require __DIR__ . '/auth.php';
