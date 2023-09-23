@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alumni;
+use App\Models\Pekerjaan;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -12,6 +13,12 @@ class AdminController extends Controller
     {
         $alumni = Alumni::get();
         return view('admin.alumni.index', compact('alumni'))->with('i');
+    }
+
+    public function dataPekerjaan()
+    {
+        $pekerjaan = Pekerjaan::get();
+        return view('admin.pekerjaan.index', compact('pekerjaan'))->with('i');
     }
 
     public function verifAlumni()

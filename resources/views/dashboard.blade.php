@@ -14,7 +14,15 @@
                     @endif
 
                     @if (Auth::user()->hasRole('Alumni'))
-                        <a href="{{ route('tambahDataPribadi') }}">Tambah Data Pribadi</a>
+                        <a href="{{ route('tambahDataPribadi') }}"
+                            class="px-2 py-1 rounded-full bg-red-700 text-white">Tambah Data
+                            Pribadi Alumni</a>
+                        <a href="{{ route('tambahDataPekerjaan') }}"
+                            class="px-2 py-1 rounded-full bg-red-700 text-white">Tambah Data
+                            Pekerjaan Alumni</a>
+                        <a href="{{ route('tambahDataPribadi') }}"
+                            class="px-2 py-1 rounded-full bg-red-700 text-white">Tambah Data
+                            Pendidikan Alumni</a>
                     @endif
                 </div>
             </div>

@@ -9,6 +9,7 @@ class Alumni extends Model
 {
     use HasFactory;
     protected $table = "alumni";
+    protected $primaryKey = "id_alumni";
 
     protected $fillable = [
         'nisn',
@@ -24,4 +25,10 @@ class Alumni extends Model
     {
         return $this->belongsTo(User::class, 'id_user')->orderBy('name', 'ASC');
     }
+
+    public function pekerjaan()
+    {
+        return $this->hasMany(Pekerjaan::class, 'id_alumni');
+    }
+
 }

@@ -34,12 +34,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/admin/dataalumni', [AdminController::class, 'dataAlumni'])->name('dataAlumni');
+    Route::get('/admin/datapekerjaan', [AdminController::class, 'dataPekerjaan'])->name('dataPekerjaan');
     Route::get('/admin/verifalumni', [AdminController::class, 'verifAlumni'])->name('verifalumni');
     Route::post('/admin/verifalumni/{id_user}', [AdminController::class, 'verifAlumniAksi'])->name('verifalumniStore');
 
     // Route::get('/alumni', [AlumniController::class, 'index'])->name('alumni');
     Route::get('/alumni/tambahdatapribadi', [AlumniController::class, 'tambahDataPribadi'])->name('tambahDataPribadi');
     Route::post('/alumni/tambahdatapribadi/{id}', [AlumniController::class, 'simpanDataPribadi'])->name('simpanDataPribadi');
+
+    Route::get('/alumni/tambahdatapekerjaan', [AlumniController::class, 'tambahDataPekerjaan'])->name('tambahDataPekerjaan');
+    Route::post('/alumni/tambahdatapekerjaan/{id}', [AlumniController::class, 'simpanDataPekerjaan'])->name('simpanDataPekerjaan');
 });
 
 require __DIR__ . '/auth.php';
