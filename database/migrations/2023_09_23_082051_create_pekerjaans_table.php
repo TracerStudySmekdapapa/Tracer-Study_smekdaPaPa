@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('pekerjaan', function (Blueprint $table) {
             $table->id('id_pekerjaan');
-            $table->string('nama_pekerjaan');
-            $table->string('nama_instansi');
-            $table->string('alamat_instansi');
-            $table->string('jabatan');
+            $table->string('nama_pekerjaan')->nullable();
+            $table->string('nama_instansi')->nullable();
+            $table->string('alamat_instansi')->nullable();
+            $table->string('jabatan')->nullable();
             $table->foreignId('id_alumni')->constrained('alumni', 'id_alumni')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });

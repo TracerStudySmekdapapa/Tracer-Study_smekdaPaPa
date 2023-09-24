@@ -21,20 +21,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($users as $user)
-                                @foreach ($user->alumni as $data)
-                                    <tr>
-                                        <td>{{ ++$i }}</td>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>{{ $data->nisn ?? '-' }}</td>
-                                        <td>{{ $data->jurusan ?? '-' }}</td>
-                                        <td>
-                                            <a href="{{ route('detailAlumni', $data->id_alumni) }}">edit</a>
-                                            <button type="submit">delete</button>
-                                        </td>
-                                    </tr>
-                                @endforeach
+
+                            @foreach ($alumni as $data)
+                                <tr>
+                                    <td>{{ ++$i }}</td>
+                                    <td>{{ $data->user->name }}</td>
+                                    <td>{{ $data->user->email }}</td>
+                                    <td>{{ $data->nisn ?? '-' }}</td>
+                                    <td>{{ $data->jurusan ?? '-' }}</td>
+                                    <td>
+                                        <a href="{{ route('detailAlumni', $data->id_alumni) }}">detail</a>
+                                        <button type="submit">delete</button>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>

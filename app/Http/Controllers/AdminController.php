@@ -12,8 +12,8 @@ class AdminController extends Controller
     public function dataAlumni()
     {
         // $alumni = Alumni::get();
-        $users = User::role('Alumni')->get();
-        return view('admin.alumni.index', compact('users'))->with('i');
+        $alumni = Alumni::get();
+        return view('admin.alumni.index', compact('alumni'))->with('i');
     }
 
     public function detailAlumni($id)

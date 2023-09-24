@@ -10,6 +10,10 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div class="">
+                        <label for="">Nama</label>
+                        <input type="text" name="nisn" value="{{ Auth::user()->name }}">
+                    </div>
+                    <div class="">
                         <label for="">Nisn</label>
                         <input type="text" name="nisn" value="{{ $dataPribadi->nisn }}">
                     </div>
@@ -35,7 +39,7 @@
                     </div>
                     <div class="">
                         <label for="">Nama Pekerjaan</label>
-                        <input type="text" name="jrsn" value="{{ $dataPekerjaan->nama_pekerjaan }}">
+                        <input type="text" value="{{ $dataPekerjaan->nama_pekerjaan ?? '-' }}">
                     </div>
                     <div class="">
                         <label for="">Foto Profil</label>
