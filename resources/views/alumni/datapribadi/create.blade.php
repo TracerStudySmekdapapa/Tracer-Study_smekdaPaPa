@@ -1,5 +1,3 @@
-</html>
-
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -15,7 +13,7 @@
                         @csrf
                         <div class="">
                             <label for="">Nisn</label>
-                            <input type="text" name="nisn">
+                            <input type="text" name="nisn" value="{{ $alumni->nisn }}">
                         </div>
                         <div class="">
                             <label for="">No Telp</label>

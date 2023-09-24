@@ -11,8 +11,17 @@ class AdminController extends Controller
 {
     public function dataAlumni()
     {
-        $alumni = Alumni::get();
-        return view('admin.alumni.index', compact('alumni'))->with('i');
+        // $alumni = Alumni::get();
+        $users = User::role('Alumni')->get();
+        return view('admin.alumni.index', compact('users'))->with('i');
+    }
+
+    public function detailAlumni($id)
+    {
+        $dataPribadi = Alumni::where('id_alumni', $id)->first();
+
+        $dataPekerjaan = Pekerjaan::where('id_alumni', $dataPribadi->id_alumni)->first();
+        return view('admin.alumni.detail', compact('dataPribadi', 'dataPekerjaan'));
     }
 
     public function dataPekerjaan()
@@ -33,6 +42,10 @@ class AdminController extends Controller
     {
         $user = User::where('id_user', $request->id_user)->first();
         $user->assignRole('Alumni');
+
+        Alumni::create([
+            'id_user' => $user->id_user
+        ]);
 
         if ($user->hasRole('Alumni')) {
             return redirect()->to('/dashboard')->with(['message' => 'Selamat datang Alumni']);

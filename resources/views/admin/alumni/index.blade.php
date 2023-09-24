@@ -21,22 +21,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($alumni as $data)
-                                <tr>
-                                    <td>{{ ++$i }}</td>
-                                    <td>{{ $data->user->name }}</td>
-                                    <td>{{ $data->user->email }}</td>
-                                    <td>{{ $data->nisn }}</td>
-                                    <td>{{ $data->jurusan }}</td>
-                                    <td>
-                                        <form action="{{ route('verifalumniStore', $data->id_user) }}" method="POST">
-                                            @csrf
-
-                                            <a href="{{ $data->id_user }}">edit</a>
+                            @foreach ($users as $user)
+                                @foreach ($user->alumni as $data)
+                                    <tr>
+                                        <td>{{ ++$i }}</td>
+                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td>{{ $data->nisn ?? '-' }}</td>
+                                        <td>{{ $data->jurusan ?? '-' }}</td>
+                                        <td>
+                                            <a href="{{ route('detailAlumni', $data->id_alumni) }}">edit</a>
                                             <button type="submit">delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             @endforeach
                         </tbody>
                     </table>

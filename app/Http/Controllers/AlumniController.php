@@ -11,17 +11,21 @@ use Illuminate\Support\Facades\Auth;
 
 class AlumniController extends Controller
 {
-    public function index(){
-        
+    public function index()
+    {
     }
 
-    public function tambahDataPribadi(){
-        return view('alumni.datapribadi.create');
+    public function tambahDataPribadi($id)
+    {
+        $alumni = Alumni::where('id_user', $id)->first();
+        return view('alumni.datapribadi.create', compact('alumni'));
     }
 
-    public function simpanDataPribadi(Request $request,$id){
+    public function simpanDataPribadi(Request $request, $id)
+    {
+        $alumni = Alumni::where('id_user', $id);
         $user = User::where('id_user', $id);
-        Alumni::create([
+        $alumni->update([
             'nisn' => $request->nisn,
             'no_telp' => $request->no_telp,
             'tempat_lahir' => $request->tmp_lahir,
@@ -38,11 +42,13 @@ class AlumniController extends Controller
         return redirect()->route('dashboard')->with(['message' => 'Data berhasil disimpan']);
     }
 
-    public function tambahDataPekerjaan(){
+    public function tambahDataPekerjaan()
+    {
         return view('alumni.datapekerjaan.create');
     }
 
-    public function simpanDataPekerjaan(Request $request,$id){
+    public function simpanDataPekerjaan(Request $request, $id)
+    {
         $id_alumni = Alumni::where('id_user', $id)->first();
         Pekerjaan::create([
             'nama_pekerjaan' => $request->nama_pekerjaan,
