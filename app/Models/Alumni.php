@@ -30,5 +30,4 @@ class Alumni extends Model
     {
         return $this->hasMany(Pekerjaan::class, 'id_alumni');
     }
-
 }
