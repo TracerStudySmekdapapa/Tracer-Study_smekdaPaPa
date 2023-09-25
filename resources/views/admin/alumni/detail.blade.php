@@ -19,23 +19,25 @@
                     </div>
                     <div class="">
                         <label for="">No Telp</label>
-                        <input type="text" name="no_telp">
+                        <input type="text" name="no_telp" value="{{ $dataPribadi->no_telp }}">
                     </div>
                     <div class="">
                         <label for="">Tempat/tgllahir</label>
-                        <input type="text" name="tmp_lahir">
+                        <input type="text" name="tmp_lahir" value="{{ $dataPribadi->tempat_lahir }}">
                     </div>
                     <div class="">
                         <label for="">Agama</label>
-                        <input type="text" name="agm">
+                        <input type="text" name="agm" value="{{ $dataPribadi->agama }}">
                     </div>
                     <div class="">
                         <label for="">Laki-Laki</label>
-                        <input type="radio" value="Laki-Laki" name="kelamin">
+                        <input type="radio" value="Laki-Laki" name="kelamin" {{ $dataPribadi->jenis_kelamin == 'Laki-Laki' ? 'checked' : '' }}>
+                        <label for="">Perempuan</label>
+                        <input type="radio" value="Perempuan" name="kelamin" {{ $dataPribadi->jenis_kelamin == 'Perempuan' ? 'checked' : '' }}>
                     </div>
                     <div class="">
                         <label for="">Jurusan</label>
-                        <input type="text" name="jrsn">
+                        <input type="text" name="jrsn" value="{{ $dataPribadi->jurusan }}">
                     </div>
                     <div class="">
                         <label for="">Nama Pekerjaan</label>
