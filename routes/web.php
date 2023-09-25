@@ -24,6 +24,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     $alumni = Alumni::get();
+    // $alumni = Alumni::get();
     return view('dashboard', compact('alumni'))->with('i');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -42,8 +43,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/admin/verifalumni/{id_user}', [AdminController::class, 'verifAlumniAksi'])->name('verifalumniStore');
 
     // Route::get('/alumni', [AlumniController::class, 'index'])->name('alumni');
-    Route::get('/alumni/{id}/tambahdatapribadi', [AlumniController::class, 'tambahDataPribadi'])->name('tambahDataPribadi');
-    Route::post('/alumni/tambahdatapribadi/{id}', [AlumniController::class, 'simpanDataPribadi'])->name('simpanDataPribadi');
+    Route::get('/alumni/datapribadi/{id}/tambah', [AlumniController::class, 'tambahDataPribadi'])->name('tambahDataPribadi');
+    Route::post('/alumni/datapribadi/{id}/tambah', [AlumniController::class, 'simpanDataPribadi'])->name('simpanDataPribadi');
 
     Route::get('/alumni/tambahdatapekerjaan', [AlumniController::class, 'tambahDataPekerjaan'])->name('tambahDataPekerjaan');
     Route::post('/alumni/tambahdatapekerjaan/{id}', [AlumniController::class, 'simpanDataPekerjaan'])->name('simpanDataPekerjaan');

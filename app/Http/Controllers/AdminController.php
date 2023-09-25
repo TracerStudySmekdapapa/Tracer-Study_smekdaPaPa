@@ -19,8 +19,7 @@ class AdminController extends Controller
     public function detailAlumni($id)
     {
         $dataPribadi = Alumni::where('id_alumni', $id)->first();
-
-        $dataPekerjaan = Pekerjaan::where('id_alumni', $dataPribadi->id_alumni)->first();
+        $dataPekerjaan = Pekerjaan::where('id_alumni', $dataPribadi->id_alumni)->get();
         return view('admin.alumni.detail', compact('dataPribadi', 'dataPekerjaan'));
     }
 

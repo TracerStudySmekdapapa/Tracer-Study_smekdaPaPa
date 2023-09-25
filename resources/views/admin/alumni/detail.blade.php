@@ -39,7 +39,10 @@
                     </div>
                     <div class="">
                         <label for="">Nama Pekerjaan</label>
-                        <input type="text" value="{{ $dataPekerjaan->nama_pekerjaan ?? '-' }}">
+                        {{-- <input type="text" value="{{ $dataPekerjaan->nama_pekerjaan ?? '-' }}"> --}}
+                        @foreach ($dataPekerjaan as $item)
+                            <p>{{ $item->nama_pekerjaan }}</p>
+                        @endforeach
                     </div>
                     <div class="">
                         <label for="">Foto Profil</label>

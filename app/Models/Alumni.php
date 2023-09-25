@@ -18,6 +18,7 @@ class Alumni extends Model
         'agama',
         'jenis_kelamin',
         'jurusan',
+        'angkatan',
         'id_user'
     ];
 

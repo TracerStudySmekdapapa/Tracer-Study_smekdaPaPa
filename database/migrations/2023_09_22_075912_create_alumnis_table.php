@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('agama')->nullable();
             $table->string('jenis_kelamin')->nullable();
             $table->string('jurusan')->nullable();
+            $table->string('angkatan')->nullable();
             $table->foreignId('id_user')->constrained('users', 'id_user')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });

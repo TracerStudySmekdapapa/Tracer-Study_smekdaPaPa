@@ -32,6 +32,7 @@ class AlumniController extends Controller
             'agama' => $request->agm,
             'jenis_kelamin' => $request->kelamin,
             'jurusan' => $request->jrsn,
+            'angkatan' => $request->angkatan,
             'id_user' => $id
         ]);
 
