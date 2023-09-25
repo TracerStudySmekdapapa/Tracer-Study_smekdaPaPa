@@ -22,7 +22,7 @@
                         <a href="{{ route('tambahDataPekerjaan') }}"
                             class="px-2 py-1 rounded-full bg-red-700 text-white">Tambah Data
                             Pekerjaan Alumni</a>
-                        <a href="{{ route('tambahDataPekerjaan') }}"
+                        <a href="{{ route('tambahDataPendidikan') }}"
                             class="px-2 py-1 rounded-full bg-red-700 text-white">Tambah Data
                             Pendidikan Alumni</a>
                     @endif
@@ -33,20 +33,26 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Nama</th>
-                                    <th>Email</th>
                                     <th>NISN</th>
                                     <th>Jurusan</th>
+                                    <th>Angkatan</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($alumni as $data)
-                                    <tr>
+                                    {{-- @dd(
+                                        ) --}}
+                                    @php
+                                        $user = Auth::user();
+                                        $user->alumni->first();
+                                    @endphp
+                                    <tr class="{{ $user->id_user == $data->id_user ? 'bg-gray-200' : '' }}">
                                         <td>{{ ++$i }}</td>
                                         <td>{{ $data->user->name }}</td>
-                                        <td>{{ $data->user->email }}</td>
                                         <td>{{ $data->nisn ?? '-' }}</td>
                                         <td>{{ $data->jurusan ?? '-' }}</td>
+                                        <td>{{ $data->angkatan ?? '-' }}</td>
                                         <td>
                                             <a href="{{ route('detailAlumni', $data->id_alumni) }}">detail</a>
                                             <button type="submit">delete</button>

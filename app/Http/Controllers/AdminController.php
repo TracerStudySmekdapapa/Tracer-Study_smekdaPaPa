@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Alumni;
 use App\Models\Pekerjaan;
+use App\Models\Pendidikan;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,8 @@ class AdminController extends Controller
     public function detailAlumni($id)
     {
         $dataPribadi = Alumni::where('id_alumni', $id)->first();
-        $dataPekerjaan = Pekerjaan::where('id_alumni', $dataPribadi->id_alumni)->get();
+        $dataPekerjaan = Pekerjaan::where('id_alumni', $dataPribadi->id_alumni);
+        $dataPendidikan = Pendidikan::where('id_alumni', $dataPribadi->id_alumni);
         return view('admin.alumni.detail', compact('dataPribadi', 'dataPekerjaan'));
     }
 

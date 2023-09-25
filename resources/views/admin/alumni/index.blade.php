@@ -14,10 +14,10 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama</th>
-                                <th>Email</th>
                                 <th>NISN</th>
                                 <th>Jurusan</th>
                                 <th>Aksi</th>
+                                <th>Angkatan</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -26,9 +26,9 @@
                                 <tr>
                                     <td>{{ ++$i }}</td>
                                     <td>{{ $data->user->name }}</td>
-                                    <td>{{ $data->user->email }}</td>
                                     <td>{{ $data->nisn ?? '-' }}</td>
                                     <td>{{ $data->jurusan ?? '-' }}</td>
+                                    <td>{{ $data->angkatan ?? '-' }}</td>
                                     <td>
                                         <a href="{{ route('detailAlumni', $data->id_alumni) }}">detail</a>
                                         <button type="submit">delete</button>

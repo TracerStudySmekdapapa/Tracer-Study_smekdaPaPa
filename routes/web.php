@@ -24,7 +24,6 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     $alumni = Alumni::get();
-    // $alumni = Alumni::get();
     return view('dashboard', compact('alumni'))->with('i');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -46,8 +45,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/alumni/datapribadi/{id}/tambah', [AlumniController::class, 'tambahDataPribadi'])->name('tambahDataPribadi');
     Route::post('/alumni/datapribadi/{id}/tambah', [AlumniController::class, 'simpanDataPribadi'])->name('simpanDataPribadi');
 
-    Route::get('/alumni/tambahdatapekerjaan', [AlumniController::class, 'tambahDataPekerjaan'])->name('tambahDataPekerjaan');
-    Route::post('/alumni/tambahdatapekerjaan/{id}', [AlumniController::class, 'simpanDataPekerjaan'])->name('simpanDataPekerjaan');
+    Route::get('/alumni/datapekerjaan/tambah', [AlumniController::class, 'tambahDataPekerjaan'])->name('tambahDataPekerjaan');
+    Route::post('/alumni/datapekerjaan/tambah/{id}', [AlumniController::class, 'simpanDataPekerjaan'])->name('simpanDataPekerjaan');
+
+    Route::get('/alumni/datapendidikan/tambah', [AlumniController::class, 'tambahDataPendidikan'])->name('tambahDataPendidikan');
+    Route::post('/alumni/datapendidikan/tambah/{id}', [AlumniController::class, 'simpanDataPendidikan'])->name('simpanDataPendidikan');
 });
 
 require __DIR__ . '/auth.php';
