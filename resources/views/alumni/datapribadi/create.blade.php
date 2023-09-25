@@ -48,7 +48,7 @@
                             </select>
                         </div>
                         <div class="">
-                            <label for="">Foto Profil</label>
+                            <label for="">Foto Profi</label>
                             <input type="file" name="profil">
                         </div>
 
