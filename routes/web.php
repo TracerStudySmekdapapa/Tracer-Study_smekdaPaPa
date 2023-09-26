@@ -5,6 +5,7 @@ use App\Http\Controllers\AlumniController;
 use App\Http\Controllers\AuthenticateController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Alumni;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,9 +23,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    $alumni = Alumni::get();
-    return view('dashboard', compact('alumni'))->with('i');
+Route::get('/dashboard', function (Request $request) {
+    $name = $request->name;
+    // dd($name);
+    if ($name) {
+        $results = Alumni::join('users', 'alumni.id_user', '=', 'users.id_user')
+        ->where('users.name', 'like', "%$name")->paginate(5);
+        return view('dashboard', compact('results', 'name'))->with('i');
+    }
+    $alumni = Alumni::join('users', 'alumni.id_user', '=', 'users.id_user')
+    ->orderBy('users.name', 'ASC')->get();
+    return view('dashboard', compact('alumni', 'name'))->with('i');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 

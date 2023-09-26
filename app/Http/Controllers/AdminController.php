@@ -10,15 +10,19 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function dataAlumni()
+    public function dataAlumni(Request $request)
     {
-        // $alumni = Alumni::get();
-        $alumni = Alumni::get();
-        return view('admin.alumni.index', compact('alumni'))->with('i');
+        $name = $request->name;
+        $angkatan = $request->angkatan;
+        $alumni = Alumni::join('users', 'alumni.id_user', '=', 'users.id_user')
+        ->orderBy('users.name', 'ASC')->filter(request(['name', 'angkatan']))->get();
+        // dd($alumni);
+        return view('admin.alumni.index', compact('alumni', 'name', 'angkatan'))->with('i');
     }
 
     public function detailAlumni($id)
     {
+        // $where = 'nisn' ?? 'id_alumni';
         $dataPribadi = Alumni::where('id_alumni', $id)->first();
         $dataPekerjaan = Pekerjaan::where('id_alumni', $dataPribadi->id_alumni);
         $dataPendidikan = Pendidikan::where('id_alumni', $dataPribadi->id_alumni);

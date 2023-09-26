@@ -49,46 +49,45 @@
                 <!-- start Data pekerjaan -->
                 <div class="p-6 bg-white  mt-4 text-gray-900">
                     <p>Data Pekerjaan</p>
-                    <div class="">
+                    <div class="flex space-x-2">
                         <label for="">Nama Pekerjaan :</label>
                         @if ($dataPekerjaan->get()->count() > 1)
                             {{-- Looping data pekerjaan alumni yang ada dua --}}
-                            @for ($i = 0; $i < $dataPekerjaan->get()->count(); $i++)
-                                <p>{{ $dataPekerjaan->get()[$i]->nama_pekerjaan }}</p>
-                                {{-- <p>{{ $dataPekerjaan->get()[$i]->jabatan }}</p> --}}
-                            @endfor
+                            @foreach ($dataPekerjaan->get() as $pekerjaan)
+                                <p>{{ $pekerjaan->nama_pekerjaan }}</p>
+                            @endforeach
                         @else
                             {{ $dataPekerjaan->first()->nama_pekerjaan ?? '-' }}
                         @endif
                     </div>
-                    <div class="">
+                    <div class="flex space-x-2">
                         <label for="">Nama Instansi :</label>
                         @if ($dataPekerjaan->get()->count() > 1)
-                          
+
                             @foreach ($dataPekerjaan->get() as $pekerjaan)
-                                <p>{{  $pekerjaan->nama_instansi }}</p>
+                                <p>{{ $pekerjaan->nama_instansi }}</p>
                             @endforeach
                         @else
                             {{ $dataPekerjaan->first()->nama_instansi ?? '-' }}
                         @endif
                     </div>
-                    <div class="">
+                    <div class="flex space-x-2">
                         <label for="">Alamat Instansi :</label>
                         @if ($dataPekerjaan->get()->count() > 1)
-                          
+
                             @foreach ($dataPekerjaan->get() as $pekerjaan)
-                                <p>{{  $pekerjaan->alamat_instansi }}</p>
+                                <p>{{ $pekerjaan->alamat_instansi }}</p>
                             @endforeach
                         @else
                             {{ $dataPekerjaan->first()->alamat_instansi ?? '-' }}
                         @endif
                     </div>
-                    <div class="">
-                        <label for="">jabatan :</label>
+                    <div class="flex space-x-2">
+                        <label for="">Jabatan :</label>
                         @if ($dataPekerjaan->get()->count() > 1)
-                          
+
                             @foreach ($dataPekerjaan->get() as $pekerjaan)
-                                <p>{{  $pekerjaan->jabatan }}</p>
+                                <p>{{ $pekerjaan->jabatan }}</p>
                             @endforeach
                         @else
                             {{ $dataPekerjaan->first()->jabatan ?? '-' }}
@@ -100,7 +99,7 @@
                 <!-- start Data Pendidikan -->
                 <div class="p-6 bg-white  mt-4 text-gray-900">
                     <p>Data Pendidikan</p>
-                    <div class="">
+                    <div class="flex space-x-2">
                         <label for="">Nama Universitas :</label>
                         @if ($dataPendidikan->get()->count() > 1)
                             {{-- Looping data pekerjaan alumni yang ada dua --}}
@@ -112,34 +111,34 @@
                             {{ $dataPendidikan->first()->nama_univ ?? '-' }}
                         @endif
                     </div>
-                    <div class="">
+                    <div class="flex space-x-2">
                         <label for="">Fakultas :</label>
                         @if ($dataPendidikan->get()->count() > 1)
-                          
+
                             @foreach ($dataPendidikan->get() as $pendidikan)
-                                <p>{{  $pendidikan->fakultas }}</p>
+                                <p>{{ $pendidikan->fakultas }}</p>
                             @endforeach
                         @else
                             {{ $dataPendidikan->first()->fakultas ?? '-' }}
                         @endif
                     </div>
-                    <div class="">
+                    <div class="flex space-x-2">
                         <label for="">Prodi :</label>
                         @if ($dataPendidikan->get()->count() > 1)
-                          
+
                             @foreach ($dataPendidikan->get() as $pendidikan)
-                                <p>{{  $pendidikan->prodi }}</p>
+                                <p>{{ $pendidikan->prodi }}</p>
                             @endforeach
                         @else
                             {{ $dataPendidikan->first()->prodi ?? '-' }}
                         @endif
                     </div>
-                    <div class="">
+                    <div class="flex space-x-2">
                         <label for="">Alamat Universitas :</label>
                         @if ($dataPendidikan->get()->count() > 1)
-                          
+
                             @foreach ($dataPendidikan->get() as $pendidikan)
-                                <p>{{  $pendidikan->alamat_univ }}</p>
+                                <p>{{ $pendidikan->alamat_univ }}</p>
                             @endforeach
                         @else
                             {{ $dataPendidikan->first()->alamat_univ ?? '-' }}
@@ -148,7 +147,7 @@
 
                 </div>
                 <!-- endData Pendidikan -->
-               
+
             </div>
         </div>
     </div>

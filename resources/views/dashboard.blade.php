@@ -28,6 +28,12 @@
                     @endif
                     <div class="">
                         <h1>Data Alumni</h1>
+                        <div class="">
+                            <form action="{{ route('dashboard') }}" method="get">
+                                <label for="">Search</label>
+                                <input type="text" name="name" value="{{ $name }}">
+                            </form>
+                        </div>
                         <table class="table-fixed w-full text-center">
                             <thead>
                                 <tr>
@@ -40,7 +46,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($alumni as $data)
+                                @forelse ($results ?? $alumni as $data)
                                     {{-- @dd(
                                         ) --}}
                                     @php
@@ -49,7 +55,7 @@
                                     @endphp
                                     <tr class="{{ $user->id_user == $data->id_user ? 'bg-gray-200' : '' }}">
                                         <td>{{ ++$i }}</td>
-                                        <td>{{ $data->user->name }}</td>
+                                        <td>{{ $data->name }}</td>
                                         <td>{{ $data->nisn ?? '-' }}</td>
                                         <td>{{ $data->jurusan ?? '-' }}</td>
                                         <td>{{ $data->angkatan ?? '-' }}</td>
@@ -58,7 +64,11 @@
                                             <button type="submit">delete</button>
                                         </td>
                                     </tr>
-                                @endforeach
+                                @empty
+                                    @if ($name)
+                                        <p class="text-danger small text-center">DATA TIDAK DITEMUKAN!</p>
+                                    @endif
+                                @endforelse
                             </tbody>
                         </table>
                     </div>
