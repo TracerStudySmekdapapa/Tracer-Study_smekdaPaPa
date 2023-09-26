@@ -47,6 +47,7 @@
                     </div>
                 </div>
                 <div class="p-6 bg-white  mt-4 text-gray-900">
+                    <p>Data Pekerjaan</p>
                     <div class="">
                         <label for="">Nama Pekerjaan :</label>
                         @if ($dataPekerjaan->get()->count() > 1)
@@ -58,9 +59,43 @@
                         @else
                             {{ $dataPekerjaan->first()->nama_pekerjaan ?? '-' }}
                         @endif
-
                     </div>
+                    <div class="">
+                        <label for="">Nama Instansi :</label>
+                        @if ($dataPekerjaan->get()->count() > 1)
+                          
+                            @foreach ($dataPekerjaan->get() as $pekerjaan)
+                                <p>{{  $pekerjaan->nama_instansi }}</p>
+                            @endforeach
+                        @else
+                            {{ $dataPekerjaan->first()->nama_instansi ?? '-' }}
+                        @endif
+                    </div>
+                    <div class="">
+                        <label for="">Alamat Instansi :</label>
+                        @if ($dataPekerjaan->get()->count() > 1)
+                          
+                            @foreach ($dataPekerjaan->get() as $pekerjaan)
+                                <p>{{  $pekerjaan->alamat_instansi }}</p>
+                            @endforeach
+                        @else
+                            {{ $dataPekerjaan->first()->alamat_instansi ?? '-' }}
+                        @endif
+                    </div>
+                    <div class="">
+                        <label for="">jabatan :</label>
+                        @if ($dataPekerjaan->get()->count() > 1)
+                          
+                            @foreach ($dataPekerjaan->get() as $pekerjaan)
+                                <p>{{  $pekerjaan->jabatan }}</p>
+                            @endforeach
+                        @else
+                            {{ $dataPekerjaan->first()->jabatan ?? '-' }}
+                        @endif
+                    </div>
+
                 </div>
+               
             </div>
         </div>
     </div>
