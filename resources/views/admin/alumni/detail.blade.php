@@ -46,6 +46,7 @@
                         <input type="text" name="jrsn" value="{{ $dataPribadi->jurusan }}">
                     </div>
                 </div>
+                <!-- start Data pekerjaan -->
                 <div class="p-6 bg-white  mt-4 text-gray-900">
                     <p>Data Pekerjaan</p>
                     <div class="">
@@ -95,6 +96,8 @@
                     </div>
 
                 </div>
+                <!-- endData pekerjaan -->
+                <!-- start Data Pendidikan -->
                 <div class="p-6 bg-white  mt-4 text-gray-900">
                     <p>Data Pendidikan</p>
                     <div class="">
@@ -144,6 +147,7 @@
                     </div>
 
                 </div>
+                <!-- endData Pendidikan -->
                
             </div>
         </div>
