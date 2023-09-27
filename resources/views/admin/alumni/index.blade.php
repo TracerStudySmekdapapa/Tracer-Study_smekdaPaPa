@@ -13,7 +13,7 @@
                     <div class="">
                         <form id="searchForm" action="{{ route('dataAlumni') }}" method="get">
                             <label for="">Search</label>
-                            <input type="text" name="name" value="{{ $name }}">
+                            <input type="text" name="search" value="{{ $name }}">
 
                             <label for="">Angkatan</label>
                             <select name="angkatan" id="">
@@ -45,7 +45,7 @@
                                     $user = Auth::user();
                                     $user->alumni->first();
                                 @endphp
-                                <tr class="{{ $user->id_user == $data->id_user ? 'bg-gray-200' : '' }}">
+                                <tr>
                                     <td>{{ ++$i }}</td>
                                     <td>{{ $data->name }}</td>
                                     <td>{{ $data->nisn ?? '-' }}</td>

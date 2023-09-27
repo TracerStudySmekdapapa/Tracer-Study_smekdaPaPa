@@ -56,9 +56,9 @@
                     <p>Data Pekerjaan</p>
                     <div class="flex space-x-2">
                         <label for="">Nama Pekerjaan :</label>
-                        @if ($dataPekerjaan->get()->count() > 1)
+                        @if ($dataPekerjaan->count() > 1)
                             {{-- Looping data pekerjaan alumni yang ada dua --}}
-                            @foreach ($dataPekerjaan->get() as $pekerjaan)
+                            @foreach ($dataPekerjaan as $pekerjaan)
                                 <p>{{ $pekerjaan->nama_pekerjaan }}</p>
                             @endforeach
                         @else
@@ -67,9 +67,9 @@
                     </div>
                     <div class="flex space-x-2">
                         <label for="">Nama Instansi :</label>
-                        @if ($dataPekerjaan->get()->count() > 1)
+                        @if ($dataPekerjaan->count() > 1)
 
-                            @foreach ($dataPekerjaan->get() as $pekerjaan)
+                            @foreach ($dataPekerjaan as $pekerjaan)
                                 <p>{{ $pekerjaan->nama_instansi }}</p>
                             @endforeach
                         @else
@@ -78,9 +78,9 @@
                     </div>
                     <div class="flex space-x-2">
                         <label for="">Alamat Instansi :</label>
-                        @if ($dataPekerjaan->get()->count() > 1)
+                        @if ($dataPekerjaan->count() > 1)
 
-                            @foreach ($dataPekerjaan->get() as $pekerjaan)
+                            @foreach ($dataPekerjaan as $pekerjaan)
                                 <p>{{ $pekerjaan->alamat_instansi }}</p>
                             @endforeach
                         @else
@@ -89,9 +89,9 @@
                     </div>
                     <div class="flex space-x-2">
                         <label for="">Jabatan :</label>
-                        @if ($dataPekerjaan->get()->count() > 1)
+                        @if ($dataPekerjaan->count() > 1)
 
-                            @foreach ($dataPekerjaan->get() as $pekerjaan)
+                            @foreach ($dataPekerjaan as $pekerjaan)
                                 <p>{{ $pekerjaan->jabatan }}</p>
                             @endforeach
                         @else

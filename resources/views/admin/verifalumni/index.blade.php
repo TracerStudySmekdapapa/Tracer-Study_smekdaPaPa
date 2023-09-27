@@ -14,7 +14,8 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama</th>
-                                <th>Email</th>
+                                <th>NISN</th>
+                                <th>Angkatan</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -23,7 +24,8 @@
                                 <tr>
                                     <td>{{ ++$i }}</td>
                                     <td>{{ $data->name }}</td>
-                                    <td>{{ $data->email }}</td>
+                                    <td>{{ $data->nisn }}</td>
+                                    <td>{{ $data->angkatan }}</td>
                                     <td>
                                         <form action="{{ route('verifalumniStore', $data->id_user) }}" method="POST">
                                             @csrf

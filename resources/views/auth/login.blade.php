@@ -1,47 +1,139 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+@extends('template.master')
+@section('content')
+    <div class="flex items-center min-h-screen p-6 bg-gray-50 dark:bg-gray-900">
+        <div class="flex-1 h-full max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl dark:bg-gray-800">
+            <div class="flex flex-col overflow-y-auto md:flex-row">
+                <div class="h-32 md:h-auto md:w-1/2">
+                    <img aria-hidden="true" class="object-cover w-full h-full dark:hidden"
+                        src="{{ asset('assets/login-office.jpeg') }}" alt="Office" />
+                </div>
+                <div class="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
+                    <div class="w-full">
+                        <h1 class="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200">
+                            Login
+                        </h1>
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+                        <form action="{{ route('login') }}" method="post">
+                            @csrf
+                            <!-- email -->
+                            <label class="block text-sm">
+                                <span class="text-gray-700 dark:text-gray-400">Email</span>
+                                <input name="email" type="email"
+                                    class="block w-full mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                    placeholder="example@gmail.com" value="{{ old('email') }}" />
+                                <!-- error -->
+                                @error('email')
+                                    <p class="text-rose-500 mt-1">{{ $message }}</p>
+                                @enderror
+                                <!-- error -->
+                            </label>
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                            <!--  password  -->
+                            <label class="block mt-4 text-sm">
+                                <span class="text-gray-700 dark:text-gray-400">Password</span>
+                                <input name="password"
+                                    class="block w-full mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                    placeholder="***************" type="password" />
+
+                                <!-- error -->
+                                @error('password')
+                                    <p class="text-rose-500 mt-1">{{ $message }}</p>
+                                @enderror
+                                <!-- error -->
+                            </label>
+
+                            <!-- submit  -->
+                            <button type="submit"
+                                class="submit active:bg-purple-600 hover:bg-gray-950 focus:outline-none focus:shadow-outline-purple">
+                                Log in
+                            </button>
+                        </form>
+
+                        <!--  -->
+
+                        <!-- forgot password -->
+                        <p class="mt-4">
+                            <a class="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline"
+                                href="./forgot-password.html">
+                                Lupa password ?
+                            </a>
+                        </p>
+
+                        <!-- create new account -->
+                        <p class="mt-1">
+                            <a class="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline"
+                                href="{{ route('register') }}">
+                                Buat akun baru
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+    <script>
+        function data() {
+            function getThemeFromLocalStorage() {
+                // if user already changed the theme, use it
+                if (window.localStorage.getItem("dark")) {
+                    return JSON.parse(window.localStorage.getItem("dark"));
+                }
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
+                // else return their preferences
+                return (
+                    !!window.matchMedia &&
+                    window.matchMedia("(prefers-color-scheme: dark)").matches
+                );
+            }
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+            function setThemeToLocalStorage(value) {
+                window.localStorage.setItem("dark", value);
+            }
 
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ml-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+            return {
+                dark: getThemeFromLocalStorage(),
+                toggleTheme() {
+                    this.dark = !this.dark;
+                    setThemeToLocalStorage(this.dark);
+                },
+                isSideMenuOpen: false,
+                toggleSideMenu() {
+                    this.isSideMenuOpen = !this.isSideMenuOpen;
+                },
+                closeSideMenu() {
+                    this.isSideMenuOpen = false;
+                },
+                isNotificationsMenuOpen: false,
+                toggleNotificationsMenu() {
+                    this.isNotificationsMenuOpen = !this.isNotificationsMenuOpen;
+                },
+                closeNotificationsMenu() {
+                    this.isNotificationsMenuOpen = false;
+                },
+                isProfileMenuOpen: false,
+                toggleProfileMenu() {
+                    this.isProfileMenuOpen = !this.isProfileMenuOpen;
+                },
+                closeProfileMenu() {
+                    this.isProfileMenuOpen = false;
+                },
+                isPagesMenuOpen: false,
+                togglePagesMenu() {
+                    this.isPagesMenuOpen = !this.isPagesMenuOpen;
+                },
+                // Modal
+                isModalOpen: false,
+                trapCleanup: null,
+                openModal() {
+                    this.isModalOpen = true;
+                    this.trapCleanup = focusTrap(document.querySelector("#modal"));
+                },
+                closeModal() {
+                    this.isModalOpen = false;
+                    this.trapCleanup();
+                },
+            };
+        }
+    </script>
+@endsection

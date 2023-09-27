@@ -25,6 +25,20 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? false, function ($query, $search) {
+            return $query->where(function ($query) use ($search) {
+                $query->where('name', 'like', "%$search%")
+                    ->orWhere('nisn', 'like', "%$search%");
+            });
+        });
+
+        $query->when($filters['angkatan'] ?? false, function ($query, $angkatan) {
+            return $query->where('angkatan', 'like', "%$angkatan%");
+        });
+    }
+
     public function alumni()
     {
         return $this->hasMany(Alumni::class, 'id_user');

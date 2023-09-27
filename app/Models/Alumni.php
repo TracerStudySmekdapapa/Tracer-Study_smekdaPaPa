@@ -23,7 +23,7 @@ class Alumni extends Model
         'id_user'
     ];
 
-    public function scopeFilter($query, array $filters)
+   /*  public function scopeFilter($query, array $filters)
     {
         // dd($query);
         $query->when($filters['name'] ?? false, function ($query, $name){
@@ -33,7 +33,7 @@ class Alumni extends Model
         $query->when($filters['angkatan'] ?? false, function ($query, $angkatan){
             return $query->where('angkatan', 'like', "%$angkatan%");
         });
-    }
+    } */
 
     public function user()
     {

@@ -12,17 +12,24 @@ class AdminController extends Controller
 {
     public function dataAlumni(Request $request)
     {
-        $name = $request->name;
+        $name = $request->search;
         $angkatan = $request->angkatan;
-        $alumni = Alumni::join('users', 'alumni.id_user', '=', 'users.id_user')
-        ->orderBy('users.name', 'ASC')->filter(request(['name', 'angkatan']))->get();
+        /* $alumni = Alumni::join('users', 'alumni.id_user', '=', 'users.id_user')
+            ->orderBy('users.name', 'ASC')->filter(request(['name', 'angkatan']))->get(); */
+        $alumni = User::whereHas('roles', function ($query) {
+            $query->where('name', 'Alumni');
+        })->join('alumni', 'users.id_user', '=', 'alumni.id_user')
+        ->orderBy('users.name', 'ASC')
+        ->filter(request(['search', 'angkatan']))
+        ->get();
+
         return view('admin.alumni.index', compact('alumni', 'name', 'angkatan'))->with('i');
     }
 
     public function detailAlumni($id)
     {
         $dataPribadi = Alumni::where('id_alumni', $id)->first();
-        $dataPekerjaan = Pekerjaan::where('id_alumni', $dataPribadi->id_alumni);
+        $dataPekerjaan = Pekerjaan::where('id_alumni', $dataPribadi->id_alumni)->get();
         $dataPendidikan = Pendidikan::where('id_alumni', $dataPribadi->id_alumni);
         return view('admin.alumni.detail', compact('dataPribadi', 'dataPekerjaan','dataPendidikan'));
     }
@@ -37,7 +44,9 @@ class AdminController extends Controller
     {
         $user = User::whereDoesntHave('roles', function ($query) {
             $query->whereIn('name', ['Alumni', 'Admin']);
-        })->get();
+        })->join('alumni', 'users.id_user', '=', 'alumni.id_user')
+        ->orderBy('users.name', 'ASC')
+        ->get();
         return view('admin.verifalumni.index', compact('user'))->with('i');
     }
 
@@ -45,10 +54,6 @@ class AdminController extends Controller
     {
         $user = User::where('id_user', $request->id_user)->first();
         $user->assignRole('Alumni');
-
-        Alumni::create([
-            'id_user' => $user->id_user
-        ]);
 
         if ($user->hasRole('Alumni')) {
             return redirect()->to('/dashboard')->with(['message' => 'Selamat datang Alumni']);
