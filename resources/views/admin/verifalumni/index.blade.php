@@ -9,6 +9,9 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
+                    @if ($message = Session::get('message'))
+                        <h1>{{ $message }}</h1>
+                    @endif
                     <table class="table-fixed w-full text-center">
                         <thead>
                             <tr>
@@ -19,9 +22,10 @@
                                 <th>Aksi</th>
                             </tr>
                         </thead>
-                        <tbody>    
-                            @foreach ($user as $data)
-                            <tr>
+                        <tbody>
+
+                            @forelse ($user as $data)
+                                <tr>
                                     <td>{{ ++$i }}</td>
                                     <td>{{ $data->name }}</td>
                                     <td>{{ $data->nisn }}</td>
@@ -30,13 +34,19 @@
                                         <form action="{{ route('verifalumniStore', $data->id_user) }}" method="POST">
                                             @csrf
 
-                                            <a href="">tolak</a>
+                                            <button
+                                                formaction="{{ route('tolakVerifAlumni', $data->id_user) }}">tolak</button>
                                             <button type="submit">veriaf</button>
                                         </form>
                                     </td>
                                 </tr>
-                            @endforeach  
+                            @empty
+                                <tr>
+                                    <th colspan="5">Tidak ada data</th>
+                                </tr>
+                            @endforelse
                         </tbody>
+
                     </table>
                 </div>
             </div>

@@ -16,15 +16,25 @@ class AlumniController extends Controller
     {
     }
 
-    public function tambahDataPribadi($id)
+    /* Start Create Data Pribadi */
+    public function tambahDataPribadi()
     {
-        $alumni = Alumni::where('id_user', $id)->first();
-        return view('alumni.datapribadi.create', compact('alumni'));
+        return view('alumni.datapribadi.create');
     }
 
     public function simpanDataPribadi(Request $request, $id)
     {
-        // $alumni = Alumni::where('id_user', $id);
+        /* Start Validasi */
+        /*  $messages = [
+            'nisn.unique' => 'NISN sudah digunakan sebelumnya',
+            'nisn.min' => 'NISN harus memiliki setidaknya 10 karakter.'
+        ];
+
+        $request->validate([
+            'nisn' => 'min:10|unique:alumni'
+        ], $messages); */
+        /* End Validasi */
+
         $user = User::where('id_user', $id);
         Alumni::create([
             'nisn' => $request->nisn,
@@ -44,7 +54,50 @@ class AlumniController extends Controller
 
         return redirect()->route('dashboard')->with(['message' => 'Data berhasil disimpan']);
     }
+    /* End Create Data Pribadi */
 
+    /* Start Edit Data Pekerjaan */
+    public function editDataPribadi($id)
+    {
+        $data = Alumni::where('id_user', $id)->first();
+        return view('alumni.datapribadi.edit', compact('data'));
+    }
+
+    public function updateDataPribadi(Request $request, $id)
+    {
+        $alumni = Alumni::where('id_user', $id)->first();
+        /* Start Validasi */
+        /*  $messages = [
+            'nisn.unique' => 'NISN sudah digunakan sebelumnya',
+            'nisn.min' => 'NISN harus memiliki setidaknya 10 karakter.'
+        ];
+        $request->validate([
+            'nisn' => 'min:10' . ($alumni->nisn == $request->nisn ? '' : '|unique:alumni,nisn')
+        ], $messages); */
+        /* End Validasi */
+
+        $user = User::where('id_user', $id);
+        $alumni->update([
+            'nisn' => $request->nisn,
+            'no_telp' => $request->no_telp,
+            'tempat_lahir' => $request->tmp_lahir,
+            'tanggal_lahir' => $request->tgl_lahir,
+            'agama' => $request->agm,
+            'jenis_kelamin' => $request->kelamin,
+            'jurusan' => $request->jrsn,
+            'angkatan' => $request->angkatan,
+            'id_user' => $id
+        ]);
+
+        $user->update([
+            'profil_picture' => $request->profil
+        ]);
+
+        return redirect()->route('dashboard')->with(['message' => 'Data berhasil diubah']);
+    }
+    /* End Edit Data Pekerjaan */
+
+    /* Start Create Data Pekerjaan */
     public function tambahDataPekerjaan()
     {
         return view('alumni.datapekerjaan.create');
@@ -63,7 +116,9 @@ class AlumniController extends Controller
 
         return redirect()->route('dashboard')->with(['message' => 'Data berhasil disimpan']);
     }
+    /* End Create Data Pekerjaan */
 
+    /* Start Create Data Pendidikan */
     public function tambahDataPendidikan()
     {
 
@@ -82,4 +137,5 @@ class AlumniController extends Controller
 
         return redirect()->route('dashboard')->with(['message' => 'Data berhasil disimpan']);
     }
+    /* End Create Data Pekerjaan */
 }

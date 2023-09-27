@@ -1,5 +1,3 @@
-{{-- @dd($alumni[1]->pekerjaan) --}}
-
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -15,10 +13,24 @@
                         <h1>{{ $message }}</h1>
                     @endif
 
-                    <a href="{{ route('tambahDataPribadi', Auth::user()->id_user) }}"
-                        class="px-2 py-1 rounded-full bg-red-700 text-white">Tambah Data
-                        Pribadi Alumni</a>
+                    @if (!Auth::user()->hasRole('Admin') && !Auth::user()->hasRole('Alumni'))
+                        @if (!$cekAlumni)
+                            <h1>Silahkan tambahkan data alumni</h1>
+                            <p>Harap tunggu proses untuk memverifikasi data pribadi Anda</p>
+                            <a href="{{ route('tambahDataPribadi') }}"
+                                class="px-2 py-1 rounded-full bg-red-700 text-white">Tambah Data
+                                Pribadi</a>
+                        @else
+                            <p>Harap tunggu proses untuk memverifikasi data pribadi Anda</p>
+                            <a href="{{ route('editDataPribadi', Auth::user()->id_user) }}"
+                                class="px-2 py-1 rounded-full bg-red-700 text-white">Edit Data
+                                Pribadi</a>
+                        @endif
+                    @endif
                     @if (Auth::user()->hasRole('Alumni'))
+                        <a href="{{ route('editDataPribadi', Auth::user()->id_user) }}"
+                            class="px-2 py-1 rounded-full bg-red-700 text-white">Edit Data
+                            Pribadi</a>
                         <a href="{{ route('tambahDataPekerjaan') }}"
                             class="px-2 py-1 rounded-full bg-red-700 text-white">Tambah Data
                             Pekerjaan Alumni</a>
@@ -59,7 +71,6 @@
                                         <td>{{ $data->angkatan ?? '-' }}</td>
                                         <td>
                                             <a href="{{ route('detailAlumni', $data->id_alumni) }}">detail</a>
-                                            <button type="submit">delete</button>
                                         </td>
                                     </tr>
                                 @empty
