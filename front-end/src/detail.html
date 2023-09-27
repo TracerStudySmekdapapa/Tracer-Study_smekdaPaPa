@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <!-- font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+  ></script>
+
+  <!--link font -->
+
+  <link rel="stylesheet" href="../style.css" />
+
+  <body class="overflow-x-hidden relative">
+    <div
+      class="w-[130px] h-[130px] bg-primary blur-[100px] absolute top-20 -left-32 z-0"
+    ></div>
+    <div
+      class="w-[130px] h-[130px] bg-primary blur-[100px] absolute top-80 -right-52 z-0"
+    ></div>
+    <main>
+      <!--?  navigasi ==========-->
+      <nav class="relative z-50 h-24 select-none" x-data="{ showMenu: false }">
+        <div class="navigation__main">
+          <div class="navigation__main__title">
+            <a href="#_" class="navigation__title__link"> Tracer Study </a>
+          </div>
+
+          <div
+            class="top-0 left-0 items-start hidden w-full h-full p-4 text-sm bg-gray-900 bg-opacity-50 md:items-center md:w-3/4 md:absolute lg:text-base md:bg-transparent md:p-0 md:relative md:flex"
+            :class="{'flex fixed': showMenu, 'hidden': !showMenu }"
+          >
+            <div class="container__mobile__menu">
+              <a href="#_" class="header__nav__mobile">
+                <h1 class="navigation__title__link">Tracer Study</h1>
+              </a>
+
+              <!-- ?navigasi menu ===========================-->
+              <div class="navigation__content">
+                <a
+                  href="#_"
+                  class="ml-6 text-black navigation__content__link md:ml-0 lg:mx-3"
+                  >Beranda</a
+                >
+                <a
+                  href="#_"
+                  class="ml-6 text-gray-700 navigation__content__link hover:text-black lg:mx-3"
+                  >Tentang
+                </a>
+                <a
+                  href="#_"
+                  class="ml-6 text-gray-700 navigation__content__link md:w-auto md:px-0 md:mx-2 hover:text-black lg:mx-3"
+                  >Tutorial</a
+                >
+                <a
+                  href="#_"
+                  class="ml-6 text-gray-700 navigation__content__link md:w-auto md:px-0 md:mx-2 hover:text-black lg:mx-3"
+                  >Kontak</a
+                >
+                <a href="./src/halaman_cari.html" class="navigation___search">
+                  <!-- search -->
+                  <svg
+                    class="inline w-6 h-6"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    ></path>
+                  </svg>
+                </a>
+              </div>
+              <!-- !navigasi menu ===========================-->
+
+              <!-- ?navigasi menu login ===========================-->
+              <div class="navigation__menu__accout">
+                <a href="./src/login.html" class="btn___signin">Sign In</a>
+                <a href="./src/registrasi.html" class="btn___signup">Sign Up</a>
+              </div>
+              <!-- !navigasi menu login ===========================-->
+            </div>
+          </div>
+
+          <!-- menu  mobile-->
+          <div @click="showMenu = !showMenu" class="navigation___mobile">
+            <!-- hamburger menu -->
+            <svg
+              class="w-6 h-6 text-gray-800 -translate-x-2"
+              x-show="!showMenu"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+            <!-- close menu -->
+            <svg
+              class="w-6 h-6 text-gray-700"
+              x-show="showMenu"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              style="display: none"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          </div>
+        </div>
+      </nav>
+      <!--!  navigasi ==========-->
+
+      <section class="grid grid-cols-2">
+        <div class="w-full min-h-[80vh] justify-center items-start pt-5 flex">
+          <div class="flex flex-col space-y-5 justify-center items-center">
+            <div class="bg-red-500 rounded-full w-[200px] h-[200px]"></div>
+            <div>
+              <h1 class="text-[35px] font-semibold pb-4">Syaid Alfarishi</h1>
+              <p class="text-[15px] -mt-4 mb-5 text-black/50 font-light">
+                no bio yet
+              </p>
+              <table class="w-full">
+                <tr class="divide-y">
+                  <td>nisn</td>
+                  <td class="py-2 px-6">:</td>
+                  <td>234455</td>
+                </tr>
+                <!-- jenis_kelamin -->
+                <tr class="divide-y">
+                  <td>jenis kelamin</td>
+                  <td class="py-2 px-6">:</td>
+                  <td>laki-kaki</td>
+                </tr>
+                <!-- agama -->
+                <tr class="divide-y">
+                  <td>agama</td>
+                  <td class="py-2 px-6">:</td>
+                  <td>islam</td>
+                </tr>
+                <!-- tgl lair -->
+                <tr class="divide-y">
+                  <td>tempat lahir</td>
+                  <td class="py-2 px-6">:</td>
+                  <td>sabu</td>
+                </tr>
+                <tr class="divide-y">
+                  <td>tangal lahir</td>
+                  <td class="py-2 px-6">:</td>
+                  <td>05-11-2005</td>
+                </tr>
+
+                <tr class="divide-y">
+                  <td>jurusan</td>
+                  <td class="py-2 px-6">:</td>
+                  <td>rekayasa perangkat lunak</td>
+                </tr>
+
+                <tr class="divide-y">
+                  <td>tamatan</td>
+                  <td class="py-2 px-6">:</td>
+                  <td>2024</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="w-full min-h-[80vh] bg-teal-500">
+          <div class="w-full min-h-[40vh] bg-violet-500"></div>
+          <div class="w-full min-h-[40vh] bg-orange-500"></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ?footer -->
+    <footer>
+      <div class="main__footer">
+        <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+          <div>
+            <div class="flex justify-center sm:justify-start">
+              <h1 class="footer__title">Tracer study sMKN 2 padang panjang</h1>
+            </div>
+
+            <p
+              class="mt-6 max-w-md text-center leading-relaxed text-gray-500 sm:max-w-xs sm:text-left"
+            >
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt
+              consequuntur amet culpa cum itaque neque.
+            </p>
+          </div>
+
+          <div
+            class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:col-span-2"
+          >
+            <!-- about us -->
+            <div class="text-center sm:text-left">
+              <p class="text-lg font-medium text-gray-900">About Us</p>
+
+              <ul class="mt-8 space-y-4 text-sm">
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="/"
+                  >
+                    Company History
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="/"
+                  >
+                    Meet the Team
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="/"
+                  >
+                    Employee Handbook
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="/"
+                  >
+                    Careers
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- our service -->
+            <div class="text-center sm:text-left">
+              <p class="text-lg font-medium text-gray-900">Our Services</p>
+
+              <ul class="mt-8 space-y-4 text-sm">
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="/"
+                  >
+                    Web Development
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="/"
+                  >
+                    Web Design
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="/"
+                  >
+                    Marketing
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="/"
+                  >
+                    Google Ads
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- helpfull link -->
+            <div class="text-center sm:text-left">
+              <p class="text-lg font-medium text-gray-900">Helpful Links</p>
+
+              <ul class="mt-8 space-y-4 text-sm">
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="/"
+                  >
+                    FAQs
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="/"
+                  >
+                    Support
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="group flex justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
+                    href="/"
+                  >
+                    <span
+                      class="text-gray-700 transition group-hover:text-gray-700/75"
+                    >
+                      Live Chat
+                    </span>
+
+                    <span class="relative flex h-2 w-2">
+                      <span
+                        class="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-400 opacity-75"
+                      ></span>
+                      <span
+                        class="relative inline-flex h-2 w-2 rounded-full bg-teal-500"
+                      ></span>
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- contact us -->
+            <div class="text-center sm:text-left">
+              <p class="text-lg font-medium text-gray-900">Contact Us</p>
+
+              <ul class="mt-8 space-y-4 text-sm">
+                <li>
+                  <a
+                    class="flex items-center justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
+                    href="/"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5 shrink-0 text-gray-900"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                      />
+                    </svg>
+
+                    <span class="flex-1 text-gray-700">john@doe.com</span>
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="flex items-center justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
+                    href="/"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5 shrink-0 text-gray-900"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                      />
+                    </svg>
+
+                    <span class="flex-1 text-gray-700">0123456789</span>
+                  </a>
+                </li>
+
+                <li
+                  class="flex items-start justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 shrink-0 text-gray-900"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                    />
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                  </svg>
+
+                  <address class="-mt-0.5 flex-1 not-italic text-gray-700">
+                    213 Lane, London, United Kingdom
+                  </address>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- copyright -->
+        <div class="mt-12 border-t border-gray-100 pt-6">
+          <div class="text-center sm:flex sm:justify-between sm:text-left">
+            <p class="text-sm text-gray-500">
+              <span class="block sm:inline">All rights reserved.</span>
+
+              <a
+                class="inline-block text-teal-600 underline transition hover:text-teal-600/75"
+                href="/"
+              >
+                Terms & Conditions
+              </a>
+
+              <span>&middot;</span>
+
+              <a
+                class="inline-block text-teal-600 underline transition hover:text-teal-600/75"
+                href="/"
+              >
+                Privacy Policy
+              </a>
+            </p>
+
+            <p class="mt-4 text-sm text-gray-500 sm:order-first sm:mt-0">
+              &copy; 2023 SMKN 2 Padang Panjang
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- !footer -->
+  </body>
+</html>
