@@ -45,6 +45,10 @@
                         <label for="">Jurusan</label>
                         <input type="text" name="jrsn" value="{{ $dataPribadi->jurusan }}">
                     </div>
+                    <div class="">
+                        <label for="">Angkatan</label>
+                        <input type="text" name="angkatan" value="{{ $dataPribadi->angkatan }}">
+                    </div>
                 </div>
                 <!-- start Data pekerjaan -->
                 <div class="p-6 bg-white  mt-4 text-gray-900">
