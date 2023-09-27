@@ -35,10 +35,10 @@
                     </div>
                     <div class="">
                         <label for="">Laki-Laki</label>
-                        <input type="radio" value="Laki-Laki" name="kelamin"
+                        <input disabled type="radio" value="Laki-Laki" name="kelamin"
                             {{ $dataPribadi->jenis_kelamin == 'Laki-Laki' ? 'checked' : '' }}>
                         <label for="">Perempuan</label>
-                        <input type="radio" value="Perempuan" name="kelamin"
+                        <input disabled type="radio" value="Perempuan" name="kelamin"
                             {{ $dataPribadi->jenis_kelamin == 'Perempuan' ? 'checked' : '' }}>
                     </div>
                     <div class="">
