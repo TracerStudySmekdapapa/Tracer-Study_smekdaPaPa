@@ -24,9 +24,9 @@ class AlumniController extends Controller
 
     public function simpanDataPribadi(Request $request, $id)
     {
-        $alumni = Alumni::where('id_user', $id);
+        // $alumni = Alumni::where('id_user', $id);
         $user = User::where('id_user', $id);
-        $alumni->update([
+        Alumni::create([
             'nisn' => $request->nisn,
             'no_telp' => $request->no_telp,
             'tempat_lahir' => $request->tmp_lahir,

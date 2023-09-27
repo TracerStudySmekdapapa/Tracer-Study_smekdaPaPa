@@ -19,9 +19,9 @@
                                 <th>Aksi</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody>    
                             @foreach ($user as $data)
-                                <tr>
+                            <tr>
                                     <td>{{ ++$i }}</td>
                                     <td>{{ $data->name }}</td>
                                     <td>{{ $data->nisn }}</td>
@@ -35,7 +35,7 @@
                                         </form>
                                     </td>
                                 </tr>
-                            @endforeach
+                            @endforeach  
                         </tbody>
                     </table>
                 </div>

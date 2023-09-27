@@ -13,7 +13,7 @@
                         @csrf
                         <div class="">
                             <label for="">Nisn</label>
-                            <input type="text" name="nisn" value="{{ $alumni->nisn }}">
+                            <input type="text" name="nisn">
                         </div>
                         <div class="">
                             <label for="">No Telp</label>
@@ -33,11 +33,9 @@
                         </div>
                         <div class="">
                             <label for="">Laki-Laki</label>
-                            <input type="radio" value="Laki-Laki" name="kelamin"
-                                {{ $alumni->jenis_kelamin == 'Laki-Laki' ? 'checked' : '' }}>
+                            <input type="radio" value="Laki-Laki" name="kelamin">
                             <label for="">Perempuan</label>
-                            <input type="radio" value="Perempuan" name="kelamin"
-                                {{ $alumni->jenis_kelamin == 'Perempuan' ? 'checked' : '' }}>
+                            <input type="radio" value="Perempuan" name="kelamin">
                         </div>
                         <div class="">
                             <label for="">Jurusan</label>

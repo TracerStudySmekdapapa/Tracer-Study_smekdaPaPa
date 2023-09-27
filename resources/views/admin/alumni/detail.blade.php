@@ -15,7 +15,7 @@
                     </div>
                     <div class="">
                         <label for="">Nama</label>
-                        <input type="text" name="nisn" value="{{ Auth::user()->name }}">
+                        <input type="text" name="nisn" value="{{ $dataPribadi->user->name }}">
                     </div>
                     <div class="">
                         <label for="">Nisn</label>
@@ -106,11 +106,11 @@
                     <p>Data Pendidikan</p>
                     <div class="flex space-x-2">
                         <label for="">Nama Universitas :</label>
-                        @if ($dataPendidikan->get()->count() > 1)
+                        @if ($dataPendidikan->count() > 1)
                             {{-- Looping data pekerjaan alumni yang ada dua --}}
-                            @for ($i = 0; $i < $dataPendidikan->get()->count(); $i++)
-                                <p>{{ $dataPendidikan->get()[$i]->nama_univ }}</p>
-                                {{-- <p>{{ $dataPekerjaan->get()[$i]->jabatan }}</p> --}}
+                            @for ($i = 0; $i < $dataPendidikan->count(); $i++)
+                                <p>{{ $dataPendidikan[$i]->nama_univ }}</p>
+                                {{-- <p>{{ $dataPekerjaan[$i]->jabatan }}</p> --}}
                             @endfor
                         @else
                             {{ $dataPendidikan->first()->nama_univ ?? '-' }}
@@ -118,9 +118,9 @@
                     </div>
                     <div class="flex space-x-2">
                         <label for="">Fakultas :</label>
-                        @if ($dataPendidikan->get()->count() > 1)
+                        @if ($dataPendidikan->count() > 1)
 
-                            @foreach ($dataPendidikan->get() as $pendidikan)
+                            @foreach ($dataPendidikan as $pendidikan)
                                 <p>{{ $pendidikan->fakultas }}</p>
                             @endforeach
                         @else
@@ -129,9 +129,9 @@
                     </div>
                     <div class="flex space-x-2">
                         <label for="">Prodi :</label>
-                        @if ($dataPendidikan->get()->count() > 1)
+                        @if ($dataPendidikan->count() > 1)
 
-                            @foreach ($dataPendidikan->get() as $pendidikan)
+                            @foreach ($dataPendidikan as $pendidikan)
                                 <p>{{ $pendidikan->prodi }}</p>
                             @endforeach
                         @else
@@ -140,9 +140,9 @@
                     </div>
                     <div class="flex space-x-2">
                         <label for="">Alamat Universitas :</label>
-                        @if ($dataPendidikan->get()->count() > 1)
+                        @if ($dataPendidikan->count() > 1)
 
-                            @foreach ($dataPendidikan->get() as $pendidikan)
+                            @foreach ($dataPendidikan as $pendidikan)
                                 <p>{{ $pendidikan->alamat_univ }}</p>
                             @endforeach
                         @else

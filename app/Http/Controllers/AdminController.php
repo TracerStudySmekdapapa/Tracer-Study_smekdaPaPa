@@ -30,7 +30,7 @@ class AdminController extends Controller
     {
         $dataPribadi = Alumni::where('id_alumni', $id)->first();
         $dataPekerjaan = Pekerjaan::where('id_alumni', $dataPribadi->id_alumni)->get();
-        $dataPendidikan = Pendidikan::where('id_alumni', $dataPribadi->id_alumni);
+        $dataPendidikan = Pendidikan::where('id_alumni', $dataPribadi->id_alumni)->get();
         return view('admin.alumni.detail', compact('dataPribadi', 'dataPekerjaan','dataPendidikan'));
     }
 
@@ -44,21 +44,23 @@ class AdminController extends Controller
     {
         $user = User::whereDoesntHave('roles', function ($query) {
             $query->whereIn('name', ['Alumni', 'Admin']);
-        })->join('alumni', 'users.id_user', '=', 'alumni.id_user')
+        })
+        ->join('alumni', 'users.id_user', '=', 'alumni.id_user')
         ->orderBy('users.name', 'ASC')
         ->get();
+        // dd($user);
         return view('admin.verifalumni.index', compact('user'))->with('i');
     }
 
-    public function verifAlumniAksi(Request $request)
-    {
-        $user = User::where('id_user', $request->id_user)->first();
-        $user->assignRole('Alumni');
-
-        if ($user->hasRole('Alumni')) {
-            return redirect()->to('/dashboard')->with(['message' => 'Selamat datang Alumni']);
-        } else {
-            return redirect()->to('/dashboard');
-        }
+    public function verifAlumniAksi(Request $request, $a)
+    { 
+            $user = User::where('id_user', $request->id_user)->first();
+            $user->assignRole('Alumni');
+            
+            if ($user->hasRole('Alumni')) {
+                return redirect()->to('/dashboard')->with(['message' => 'Selamat datang Alumni']);
+            } else {
+                return redirect()->to('/dashboard');
+            }
     }
 }
