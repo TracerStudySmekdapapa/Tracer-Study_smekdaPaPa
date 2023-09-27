@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <!-- font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!--link font -->
+
+  <link rel="stylesheet" href="style.css" />
+
+  <body id="home" class="overflow-x-hidden">
+    <main>
+      <!--?  navigasi ==========-->
+      <nav class="relative z-50 h-24 select-none" x-data="{ showMenu: false }">
+        <div class="navigation__main">
+          <div class="navigation__main__title">
+            <a href="#home" class="navigation__title__link"> Tracer Study </a>
+          </div>
+
+          <div
+            class="top-0 left-0 items-start hidden w-full h-full p-4 text-sm bg-gray-900 bg-opacity-50 md:items-center md:w-3/4 md:absolute lg:text-base md:bg-transparent md:p-0 md:relative md:flex"
+            :class="{'flex fixed': showMenu, 'hidden': !showMenu }"
+          >
+            <div class="container__mobile__menu relative">
+              <a href="#_" class="header__nav__mobile relative">
+                <h1 class="navigation__title__link">Tracer Study</h1>
+              </a>
+
+              <!-- ?navigasi menu ===========================-->
+              <div class="navigation__content">
+                <a
+                  @click="showMenu = !showMenu"
+                  href="#home"
+                  class="ml-6 text-black navigation__content__link md:ml-0 lg:mx-3"
+                  >Beranda</a
+                >
+                <a
+                  @click="showMenu = !showMenu"
+                  href="#about"
+                  class="ml-6 text-gray-700 navigation__content__link hover:text-black lg:mx-3"
+                  >Tentang
+                </a>
+                <a
+                  @click="showMenu = !showMenu"
+                  href="#tutorial"
+                  class="ml-6 text-gray-700 navigation__content__link md:w-auto md:px-0 md:mx-2 hover:text-black lg:mx-3"
+                  >Tutorial</a
+                >
+                <a
+                  @click="showMenu = !showMenu"
+                  href="#kontak"
+                  class="ml-6 text-gray-700 navigation__content__link md:w-auto md:px-0 md:mx-2 hover:text-black lg:mx-3"
+                  >Kontak</a
+                >
+                <a
+                  @click="showMenu = !showMenu"
+                  href="./src/halaman_cari.html"
+                  class="navigation___search"
+                >
+                  <!-- search -->
+                  <svg
+                    class="inline w-6 h-6"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    ></path>
+                  </svg>
+                </a>
+              </div>
+              <!-- !navigasi menu ===========================-->
+
+              <!-- ?navigasi menu login ===========================-->
+              <div class="navigation__menu__accout">
+                <a href="./src/login.html" class="btn___signin">Sign In</a>
+                <a href="./src/registrasi.html" class="btn___signup">Sign Up</a>
+              </div>
+              <!-- !navigasi menu login ===========================-->
+            </div>
+          </div>
+
+          <!-- menu  mobile-->
+          <div @click="showMenu = !showMenu" class="navigation___mobile">
+            <!-- hamburger menu -->
+            <svg
+              class="w-6 h-6 text-gray-800 -translate-x-2"
+              x-show="!showMenu"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+            <!-- close menu -->
+            <svg
+              class="w-6 h-6 text-red-700 -translate-x-5"
+              x-show="showMenu"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              style="display: none"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          </div>
+        </div>
+      </nav>
+      <!--!  navigasi ==========-->
+
+      <!-- ? section-hero ======== -->
+      <section class="w-full mt-[30px] mb-[50px]">
+        <div class="main__hero">
+          <!-- left -->
+          <div class="left__item">
+            <h1 class="title">Penelusuran Alumni</h1>
+            <h2 class="subTitle">SMK NEGERI 2 PADANG PANJANG</h2>
+            <p class="deskripsi">
+              Bantu kami meningkatkan kualitas pendidikan. Tracer study,
+              kontribusimu untuk pendidikan dan jendela untuk masa depanmu.
+            </p>
+
+            <div class="flex space-x-10 mt-[17px]">
+              <button class="inset-0">
+                <a
+                  href=""
+                  class="px-6 py-2 text-white rounded-full bg-primary hover:bg-gray-800"
+                  >cari alumni
+                </a>
+              </button>
+              <button>
+                <a href="" class="hero___register">mendaftar </a>
+              </button>
+            </div>
+
+            <div
+              class="flex mt-[70px] lg:mt-[122px] space-x-10 md:space-x-[25px] justify-center md:justify-start items-center"
+            >
+              <a href="instagram"
+                ><img src="public/assets/instagram.svg" alt="instagram"
+              /></a>
+              <a href="facebook"
+                ><img src="public/assets/facebook.svg" alt="facebook"
+              /></a>
+              <a href="youtube"
+                ><img src="public/assets/youtube.svg" alt="youtube"
+              /></a>
+            </div>
+          </div>
+
+          <!-- right -->
+          <div class="right__item">
+            <img src="public/assets/hero.png" alt="hero" class="hero__image" />
+          </div>
+        </div>
+      </section>
+      <!-- ! section-hero ======== -->
+
+      <!-- ?counter  -->
+      <section
+        class="lg:px-10 max-w-full xl:max-w-[70%] grid place-items-center mx-auto mt-[100px]"
+      >
+        <div class="grid grid-cols-3 w-full gap-x-5 place-items-center">
+          <div class="counter_contain">
+            <h1 class="counter_title">1000+</h1>
+            <p class="counter_desk">Terdaftar mendaftar</p>
+          </div>
+
+          <div class="counter_contain">
+            <h1 class="counter_title">320</h1>
+            <p class="counter_desk">telah bekerja</p>
+          </div>
+
+          <div class="counter_contain">
+            <h1 class="counter_title">550</h1>
+            <p class="counter_desk">Melanjutkan Pendidikan</p>
+          </div>
+        </div>
+      </section>
+      <!-- !counter  -->
+
+      <!-- ? about ================== -->
+      <section id="about" class="w-full pt-[120px] md:px-5 lg:px-0">
+        <div class="main__about">
+          <!--  ?eft -->
+          <div class="left__item">
+            <img src="public/assets/about.jpg" alt="about" />
+          </div>
+
+          <!--  right -->
+          <div class="right__item">
+            <h1 class="text-[35px] font-semibold">Tracer Study</h1>
+            <p class="leading-[27px] text-black/80 relative -z-50">
+              Tracer study adalah studi pelacakan jejak lulusan perguruan tinggi
+              yang dilakukan untuk mengetahui hasil pendidikan yang telah
+              diterima oleh lulusan. Studi ini dilakukan dengan mengumpulkan
+              data dan informasi dari lulusan, baik secara langsung maupun tidak
+              langsung ...
+            </p>
+
+            <div
+              x-data="{ modalOpen: false }"
+              @keydown.escape.window="modalOpen = false"
+              class="relative z-50 w-auto h-auto"
+            >
+              <button
+                @click="modalOpen=true"
+                class="px-5 py-2 font-semibold text-white rounded-lg bg-primary btn___signup"
+              >
+                Baca Selengkapnya
+              </button>
+
+              <!-- todo modal___content -->
+              <template x-teleport="body">
+                <div
+                  x-show="modalOpen"
+                  class="fixed top-0 left-0 z-[99] flex items-center justify-center w-screen h-screen"
+                  x-cloak
+                >
+                  <div
+                    x-show="modalOpen"
+                    x-transition:enter="ease-out duration-300"
+                    x-transition:enter-start="opacity-0"
+                    x-transition:enter-end="opacity-100"
+                    x-transition:leave="ease-in duration-300"
+                    x-transition:leave-start="opacity-100"
+                    x-transition:leave-end="opacity-0"
+                    @click="modalOpen=false"
+                    class="absolute inset-0 w-full h-full bg-black bg-opacity-40"
+                  ></div>
+                  <div
+                    x-show="modalOpen"
+                    x-trap.inert.noscroll="modalOpen"
+                    x-transition:enter="ease-out duration-300"
+                    x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                    x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                    x-transition:leave="ease-in duration-200"
+                    x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+                    x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                    class="relative w-full px-10 py-6 bg-white sm:max-w-2xl sm:rounded-lg"
+                  >
+                    <div class="flex items-center justify-between pb-2">
+                      <h3 class="text-lg font-semibold">Tujuannya ?</h3>
+                      <button
+                        @click="modalOpen=false"
+                        class="absolute top-0 right-0 flex items-center justify-center w-8 h-8 mt-5 mr-5 text-gray-600 rounded-full hover:text-gray-800 hover:bg-gray-50"
+                      >
+                        <svg
+                          class="w-5 h-5"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M6 18L18 6M6 6l12 12"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                    <div class="relative w-auto font-normal text-black/80">
+                      <p>Tujuan tracer study adalah untuk:</p>
+                      <ul class="list-disc text-black/60 text-[15px]">
+                        <li>
+                          Mengetahui keberhasilan lulusan dalam memasuki dunia
+                          kerja
+                        </li>
+                        <li>
+                          Mengetahui kesesuaian antara kompetensi lulusan dengan
+                          kebutuhan dunia kerja
+                        </li>
+                        <li>
+                          Mengetahui kepuasan lulusan terhadap pendidikan yang
+                          telah diterima
+                        </li>
+                        <li>
+                          Mengevaluasi efektivitas kurikulum dan proses
+                          pembelajaran
+                        </li>
+                      </ul>
+                      <p>
+                        Tracer study dapat dilakukan dengan berbagai metode,
+                        antara lain:
+                      </p>
+                      <ul class="list-disc text-black/60 text-[15px]">
+                        <li>Survei alumni</li>
+                        <li>Wawancara alumni</li>
+                        <li>Studi kasus</li>
+                        <li>Analisis data statistik</li>
+                      </ul>
+                      <p>sdsd</p>
+                      <ul class="list-disc text-black/60 text-[15px]">
+                        <li>Apakah Anda telah bekerja setelah lulus?</li>
+                        <li>Apa bidang pekerjaan Anda saat ini?</li>
+                        <li>
+                          Apakah Anda merasa kompetensi yang Anda peroleh di
+                          perguruan tinggi sesuai dengan pekerjaan Anda?
+                        </li>
+                        <li>
+                          Apakah Anda puas dengan pendidikan yang Anda peroleh
+                          di perguruan tinggi?
+                        </li>
+                        <li>
+                          Apakah ada saran untuk perbaikan pendidikan di
+                          perguruan tinggi?
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </template>
+              <!--todo modal___content -->
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ! about ================== -->
+
+      <!-- ? tutorial ================== -->
+      <section id="tutorial" class="pt-[50px] lg:pt-[100px] md:px-10 lg:px-16">
+        <div class="main__tutorial">
+          <!-- todo  card-1 -->
+          <div class="card">
+            <div class="card__header">
+              <div class="card___icon">
+                <img src="public/assets/register.svg" alt="register" />
+              </div>
+              <h1 class="card__title">Registrasi</h1>
+            </div>
+            <div class="card__body">
+              alumni perlu melakukan registrasi terlebih dahulu untuk membuat
+              akun sebeum menambahkan datanya sendiri
+            </div>
+          </div>
+          <!-- todo card-1 -->
+          <!-- todo  card-2 -->
+          <div class="card">
+            <div class="card__header">
+              <div class="card___icon">
+                <img src="public/assets/validasi.svg" alt="validasi" />
+              </div>
+              <h1 class="card__title">Validasi</h1>
+            </div>
+            <div class="card__body">
+              setelah melakukan registrasi , akun yang dibuat perlu di setujui
+              oleh admin agar bisa melanjutkan ke proses selanjutnya
+            </div>
+          </div>
+          <!-- todo card-2 -->
+          <!-- todo  card-3-->
+          <div class="card">
+            <div class="card__header">
+              <div class="card___icon">
+                <img src="public/assets/login.svg" alt="login" />
+              </div>
+              <h1 class="card__title">Login</h1>
+            </div>
+            <div class="card__body">
+              setelah akun anda diverivikasi, anda perlu login untuk masuk dan
+              menambahkan data anda juga untuk melanjutkan
+            </div>
+          </div>
+          <!-- todo card-3-->
+          <!-- todo  card-4-->
+          <div class="card">
+            <div class="card__header">
+              <div class="card___icon">
+                <img src="public/assets/add.svg" alt="add" />
+              </div>
+              <h1 class="card__title">Tambah Data</h1>
+            </div>
+            <div class="card__body">
+              alumni perlu menambahkan data pribadi (wajib) ,
+              pekerjaan/pendidikan (optional) agar data tersebut dapat dicari
+            </div>
+          </div>
+          <!-- todo card-4-->
+          <!-- todo  card-5-->
+          <div class="card">
+            <div class="card__header">
+              <div class="card___icon">
+                <img src="public/assets/cari.svg" alt="cari" />
+              </div>
+              <h1 class="card__title">Mencari data</h1>
+            </div>
+            <div class="card__body">
+              alumni maupun user dapat melakuan pencarian data berdasarkan nama
+              dan nisn
+            </div>
+          </div>
+          <!-- todo card-5-->
+        </div>
+        <!-- ! tutorial ================== -->
+      </section>
+      <!-- ! tutorial ================== -->
+
+      <!-- ?faq -->
+      <div
+        id="faq"
+        x-data="{ 
+        activeAccordion: '', 
+        setActiveAccordion(id) { 
+            this.activeAccordion = (this.activeAccordion == id) ? '' : id 
+        } 
+    }"
+        class="relative w-full max-w-3xl mt-12 mx-auto text-base"
+      >
+        <div
+          x-data="{ id: $id('accordion') }"
+          :class="{ 'border-neutral-200/60 text-neutral-800' : activeAccordion==id, 'border-transparent text-neutral-600 hover:text-neutral-800' : activeAccordion!=id }"
+          class="duration-200 ease-out bg-white border rounded-md cursor-pointer group"
+          x-cloak
+        >
+          <button
+            @click="setActiveAccordion(id)"
+            class="flex items-center justify-between w-full px-5 py-4 font-semibold text-left select-none"
+          >
+            <span>What is Pines?</span>
+            <div
+              :class="{ 'rotate-90': activeAccordion==id }"
+              class="relative flex items-center justify-center w-2.5 h-2.5 duration-300 ease-out"
+            >
+              <div
+                class="absolute w-0.5 h-full bg-neutral-500 group-hover:bg-neutral-800 rounded-full"
+              ></div>
+              <div
+                :class="{ 'rotate-90': activeAccordion==id }"
+                class="absolute w-full h-0.5 ease duration-500 bg-neutral-500 group-hover:bg-neutral-800 rounded-full"
+              ></div>
+            </div>
+          </button>
+          <div x-show="activeAccordion==id" x-collapse x-cloak>
+            <div class="p-5 pt-0 opacity-70">
+              Pines is a UI library built for AlpineJS and TailwindCSS.
+            </div>
+          </div>
+        </div>
+        <div
+          x-data="{ id: $id('accordion') }"
+          :class="{ 'border-neutral-200/60 text-neutral-800' : activeAccordion==id, 'border-transparent text-neutral-600 hover:text-neutral-800' : activeAccordion!=id }"
+          class="duration-200 ease-out bg-white border rounded-md cursor-pointer group"
+          x-cloak
+        >
+          <button
+            @click="setActiveAccordion(id)"
+            class="flex items-center justify-between w-full px-5 py-4 font-semibold text-left select-none"
+          >
+            <span>How do I install Pines?</span>
+            <div
+              :class="{ 'rotate-90': activeAccordion==id }"
+              class="relative flex items-center justify-center w-2.5 h-2.5 duration-300 ease-out"
+            >
+              <div
+                class="absolute w-0.5 h-full bg-neutral-500 group-hover:bg-neutral-800 rounded-full"
+              ></div>
+              <div
+                :class="{ 'rotate-90': activeAccordion==id }"
+                class="absolute w-full h-0.5 ease duration-500 bg-neutral-500 group-hover:bg-neutral-800 rounded-full"
+              ></div>
+            </div>
+          </button>
+          <div x-show="activeAccordion==id" x-collapse x-cloak>
+            <div class="p-5 pt-0 opacity-70">
+              Add AlpineJS and TailwindCSS to your page and then copy and paste
+              any of these elements into your project.
+            </div>
+          </div>
+        </div>
+        <div
+          x-data="{ id: $id('accordion') }"
+          :class="{ 'border-neutral-200/60 text-neutral-800' : activeAccordion==id, 'border-transparent text-neutral-600 hover:text-neutral-800' : activeAccordion!=id }"
+          class="duration-200 ease-out bg-white border rounded-md cursor-pointer group"
+          x-cloak
+        >
+          <button
+            @click="setActiveAccordion(id)"
+            class="flex items-center justify-between w-full px-5 py-4 font-semibold text-left select-none"
+          >
+            <span>Can I use Pines with other libraries or frameworks?</span>
+            <div
+              :class="{ 'rotate-90': activeAccordion==id }"
+              class="relative flex items-center justify-center w-2.5 h-2.5 duration-300 ease-out"
+            >
+              <div
+                class="absolute w-0.5 h-full bg-neutral-500 group-hover:bg-neutral-800 rounded-full"
+              ></div>
+              <div
+                :class="{ 'rotate-90': activeAccordion==id }"
+                class="absolute w-full h-0.5 ease duration-500 bg-neutral-500 group-hover:bg-neutral-800 rounded-full"
+              ></div>
+            </div>
+          </button>
+          <div x-show="activeAccordion==id" x-collapse x-cloak>
+            <div class="p-5 pt-0 opacity-70">
+              Absolutely! Pines works with any other library or framework. Pines
+              works especially well with the TALL stack.
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- !faq -->
+
+      <!-- ?CTA -->
+      <section class="mt-[50px] lg:mt-[100px] md:px-5 lg:px-16">
+        <div class="main__CTA">
+          <div>
+            <h1>Ayo mulai melakukan pencarian data !!</h1>
+            <p>cari data alumni berdasarkan nama ataun nisn</p>
+          </div>
+
+          <div>
+            <a href="">
+              <button>cari disii</button>
+            </a>
+          </div>
+        </div>
+      </section>
+      <!-- !CTA -->
+
+      <!-- ? contact -->
+      <section
+        id="kontak"
+        class="pt-[50px] lg:pt-[100px] md:px-5 lg:px-16 md:w-[80%] md:mx-auto"
+      >
+        <div class="grid grid-col-1 md:grid-cols-2 items-start w-full">
+          <div class="gap-y-4 grid grid-cols-1 md:grid-cols-1">
+            <!-- ============ -->
+            <div class="card__contact mx-auto">
+              <div class="card_header">
+                <img
+                  src="public/assets/email.svg"
+                  alt="email"
+                  class="card__icon"
+                />
+                <h1 class="card__title">email</h1>
+              </div>
+              <p class="card__desk break-words">smkn2padapa@gmail.com</p>
+            </div>
+
+            <!-- ====================== -->
+            <div class="card__contact mx-auto">
+              <div class="card_header">
+                <img
+                  src="public/assets/talp.svg"
+                  alt="email"
+                  class="card__icon"
+                />
+                <h1 class="card__title">Phone</h1>
+              </div>
+              <p class="card__desk">(275)668754</p>
+            </div>
+            <!-- ============= -->
+            <div class="card__contact mx-auto">
+              <div class="card_header">
+                <img
+                  src="public/assets/lokasi.svg"
+                  alt="email"
+                  class="card__icon"
+                />
+                <h1 class="card__title">Lokasi</h1>
+              </div>
+              <p class="card__desk">
+                jl syeh ibrahim musa , ganting , padang panajng timur
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-5 md:mt-0">
+            <form action="" method=" post">
+              <label class="block text-sm">
+                <span
+                  class="label__input focus:shadow-outline-purple form-input"
+                  >Nama</span
+                >
+                <input
+                  name="nama"
+                  class="input__contact"
+                  placeholder="masukan nama anda"
+                />
+              </label>
+              <div class="flex space-x-5 mt-10">
+                <label class="block text-sm w-full">
+                  <span
+                    class="label__input focus:shadow-outline-purple form-input"
+                    >Email</span
+                  >
+                  <input
+                    name="email"
+                    type="email"
+                    class="input__contact"
+                    placeholder="masukan email anda"
+                  />
+                </label>
+                <label class="block text-sm w-full">
+                  <span
+                    class="label__input focus:shadow-outline-purple form-input"
+                    >subjek</span
+                  >
+                  <input
+                    name="subjek"
+                    class="input__contact"
+                    placeholder="masukan subjek"
+                  />
+                </label>
+              </div>
+              <label class="block mt-10 text-sm">
+                <span class="text-gray-700 dark:text-gray-400">Pesan</span>
+                <textarea
+                  name="pesan"
+                  class="block border border-gray-600 px-3 py-2 rounded-md w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                  rows="3"
+                  placeholder="masukan pesan anda."
+                ></textarea>
+              </label>
+
+              <button
+                type="submit"
+                class="hover:bg-gray-950 bg-primary px-5 py-2 rounded-md text-white font-semibold mt-10"
+              >
+                kirim
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+      <!-- !contact -->
+    </main>
+
+    <!-- ?footer -->
+    <footer>
+      <div class="main__footer">
+        <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+          <div>
+            <div class="flex justify-center sm:justify-start">
+              <h1 class="footer__title">Tracer study sMKN 2 padang panjang</h1>
+            </div>
+
+            <p
+              class="mt-6 max-w-md text-center leading-relaxed text-gray-500 sm:max-w-xs sm:text-left"
+            >
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt
+              consequuntur amet culpa cum itaque neque.
+            </p>
+          </div>
+
+          <div
+            class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:col-span-2"
+          >
+            <!-- about us -->
+            <div class="text-center sm:text-left">
+              <p class="text-lg font-medium text-gray-900">About Us</p>
+
+              <ul class="mt-8 space-y-4 text-sm">
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="/"
+                  >
+                    Company History
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="/"
+                  >
+                    Meet the Team
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="/"
+                  >
+                    Employee Handbook
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="/"
+                  >
+                    Careers
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- our service -->
+            <div class="text-center sm:text-left">
+              <p class="text-lg font-medium text-gray-900">Our Services</p>
+
+              <ul class="mt-8 space-y-4 text-sm">
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="/"
+                  >
+                    Web Development
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="/"
+                  >
+                    Web Design
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="/"
+                  >
+                    Marketing
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="/"
+                  >
+                    Google Ads
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- helpfull link -->
+            <div class="text-center sm:text-left">
+              <p class="text-lg font-medium text-gray-900">Helpful Links</p>
+
+              <ul class="mt-8 space-y-4 text-sm">
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="/"
+                  >
+                    FAQs
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="/"
+                  >
+                    Support
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="group flex justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
+                    href="/"
+                  >
+                    <span
+                      class="text-gray-700 transition group-hover:text-gray-700/75"
+                    >
+                      Live Chat
+                    </span>
+
+                    <span class="relative flex h-2 w-2">
+                      <span
+                        class="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-400 opacity-75"
+                      ></span>
+                      <span
+                        class="relative inline-flex h-2 w-2 rounded-full bg-teal-500"
+                      ></span>
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- contact us -->
+            <div class="text-center sm:text-left">
+              <p class="text-lg font-medium text-gray-900">Contact Us</p>
+
+              <ul class="mt-8 space-y-4 text-sm">
+                <li>
+                  <a
+                    class="flex items-center justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
+                    href="/"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5 shrink-0 text-gray-900"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                      />
+                    </svg>
+
+                    <span class="flex-1 text-gray-700">john@doe.com</span>
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="flex items-center justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
+                    href="/"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5 shrink-0 text-gray-900"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                      />
+                    </svg>
+
+                    <span class="flex-1 text-gray-700">0123456789</span>
+                  </a>
+                </li>
+
+                <li
+                  class="flex items-start justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 shrink-0 text-gray-900"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                    />
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                  </svg>
+
+                  <address class="-mt-0.5 flex-1 not-italic text-gray-700">
+                    213 Lane, London, United Kingdom
+                  </address>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- copyright -->
+        <div class="mt-12 border-t border-gray-100 pt-6">
+          <div class="text-center sm:flex sm:justify-between sm:text-left">
+            <p class="text-sm text-gray-500">
+              <span class="block sm:inline">All rights reserved.</span>
+
+              <a
+                class="inline-block text-teal-600 underline transition hover:text-teal-600/75"
+                href="/"
+              >
+                Terms & Conditions
+              </a>
+
+              <span>&middot;</span>
+
+              <a
+                class="inline-block text-teal-600 underline transition hover:text-teal-600/75"
+                href="/"
+              >
+                Privacy Policy
+              </a>
+            </p>
+
+            <p class="mt-4 text-sm text-gray-500 sm:order-first sm:mt-0">
+              &copy; 2023 SMKN 2 Padang Panjang
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- !footer -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.0/dist/cdn.min.js"
+    ></script>
+  </body>
+</html>

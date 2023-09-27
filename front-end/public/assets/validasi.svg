@@ -1,0 +1,13 @@
+<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="streamline:interface-validation-check-circle-checkmark-addition-circle-success-check-validation-add-form" clip-path="url(#clip0_29_28)">
+<g id="Group">
+<path id="Vector" d="M7.14282 14.2857L10.8035 17.2143C10.9019 17.2952 11.017 17.3533 11.1405 17.3842C11.2641 17.4151 11.393 17.418 11.5178 17.3929C11.6439 17.3692 11.7633 17.3187 11.8681 17.2447C11.9729 17.1708 12.0605 17.0751 12.125 16.9643L17.8571 7.14285" stroke="#565656" stroke-width="1.78571" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M12.5 24.1071C18.9104 24.1071 24.1071 18.9104 24.1071 12.5C24.1071 6.08955 18.9104 0.892853 12.5 0.892853C6.08952 0.892853 0.892822 6.08955 0.892822 12.5C0.892822 18.9104 6.08952 24.1071 12.5 24.1071Z" stroke="#565656" stroke-width="1.78571" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_29_28">
+<rect width="25" height="25" fill="white"/>
+</clipPath>
+</defs>
+</svg>

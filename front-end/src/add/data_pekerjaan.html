@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <!-- font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!--link font -->
+
+  <link rel="stylesheet" href="../../style.css" />
+
+  <body class="overflow-x-hidden">
+    <main>
+      <!--?  navigasi ==========-->
+      <nav
+        class="relative z-50 h-24 select-none grid md:grid-cols-2 items-start"
+      >
+        <div class="navigation__main__title">
+          <a href="#_" class="navigation__title__link"> Tracer Study </a>
+        </div>
+
+        <!-- ?navigasi menu ===========================-->
+        <div class="grid grid-cols-3 gap-x-8 mt-5 md:mt-2">
+          <a href="#" class="flex items-center space-x-3">
+            <div
+              class="min-w-[24px] min-h-[24px] bg-gray-400 rounded-full grid place-items-center text-white font-semibold"
+            >
+              1
+            </div>
+            <h1>Data Pribadi</h1>
+          </a>
+
+          <a href="#" class="flex items-center space-x-3">
+            <div
+              class="min-w-[24px] min-h-[24px] bg-primary rounded-full grid place-items-center text-white font-semibold"
+            >
+              2
+            </div>
+            <h1 class="link_active">Data Pekerjaan</h1>
+          </a>
+
+          <a href="#" class="flex items-center space-x-3">
+            <div
+              class="min-w-[24px] min-h-[24px] bg-gray-400 rounded-full grid place-items-center text-white font-semibold"
+            >
+              3
+            </div>
+            <h1>Data Pendidikan</h1>
+          </a>
+        </div>
+        <!-- !navigasi menu ===========================-->
+      </nav>
+      <!--!  navigasi ==========-->
+    </main>
+
+    <div class="relative mt-16 md:-mt-3">
+      <hr />
+      <hr
+        class="text-primary w-[33%] bg-primary h-[3px] absolute top-0 left-0"
+      />
+    </div>
+
+    <section class="mt-10 mx-10 lg:min-h-[55vh]">
+      <div class="flex justify-between items-start flex-col md:flex-row">
+        <div class="my-5 md:my-0">
+          <h1 class="text-[40px] lg:text-[45px] font-bold">Profesianal Info</h1>
+          <p class="md:max-w-[60%]">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor
+            quaerat nulla debitis nisi ullam laudantium ipsam rem eveniet facere
+            incidunt?
+          </p>
+
+          <a
+            href="#"
+            class="text-blue-500 underline-offset-8 underline mt-3 hidden md:block"
+            >kembali ke Dashboard</a
+          >
+        </div>
+
+        <form action="" method="post" class="w-full">
+          <div class="flex flex-col space-y-5 w-full">
+            <!-- nama_pekerjaan -->
+            <label class="block text-sm">
+              <span class="text-gray-700 dark:text-gray-400"
+                >Nama Pekerjaan</span
+              >
+              <input
+                type="number"
+                name="nama_pekerjaan"
+                class="block w-full md:w-[70%] mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                placeholder="012345"
+              />
+            </label>
+
+            <!-- nama_pekerjaan -->
+            <label class="block text-sm">
+              <span class="text-gray-700 dark:text-gray-400"
+                >nama Instansi</span
+              >
+              <input
+                type="text"
+                name="nama_pekerjaan"
+                class="block w-full md:w-[70%] mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                placeholder="Nama instansi"
+              />
+            </label>
+
+            <!-- jabatan -->
+            <label class="block text-sm">
+              <span class="text-gray-700 dark:text-gray-400">Jabatan</span>
+              <input
+                type="text"
+                name="jabatan"
+                class="block w-full md:w-[70%] mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                placeholder="jabatan anda"
+              />
+            </label>
+
+            <!-- alamat instansi -->
+            <label class="block mt-10 text-sm">
+              <span class="text-gray-700 dark:text-gray-400">alamat</span>
+              <textarea
+                name="alamat"
+                class="block border border-gray-600 px-3 py-2 rounded-md w-full md:w-[70%] mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                rows="3"
+                placeholder="masukan alamat instansi."
+              ></textarea>
+            </label>
+
+            <!-- submit  -->
+            <button
+              type="submit"
+              class="submit active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
+            >
+              kirim
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ?footer -->
+    <footer class="mt-[50px]">
+      <div class="main__footer">
+        <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+          <div>
+            <div class="flex justify-center sm:justify-start">
+              <h1 class="footer__title">Tracer study sMKN 2 padang panjang</h1>
+            </div>
+
+            <p
+              class="mt-6 max-w-md text-center leading-relaxed text-gray-500 sm:max-w-xs sm:text-left"
+            >
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt
+              consequuntur amet culpa cum itaque neque.
+            </p>
+          </div>
+
+          <div
+            class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:col-span-2"
+          >
+            <!-- about us -->
+            <div class="text-center sm:text-left">
+              <p class="text-lg font-medium text-gray-900">About Us</p>
+
+              <ul class="mt-8 space-y-4 text-sm">
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="/"
+                  >
+                    Company History
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="/"
+                  >
+                    Meet the Team
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="/"
+                  >
+                    Employee Handbook
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="/"
+                  >
+                    Careers
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- our service -->
+            <div class="text-center sm:text-left">
+              <p class="text-lg font-medium text-gray-900">Our Services</p>
+
+              <ul class="mt-8 space-y-4 text-sm">
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="/"
+                  >
+                    Web Development
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="/"
+                  >
+                    Web Design
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="/"
+                  >
+                    Marketing
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="/"
+                  >
+                    Google Ads
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- helpfull link -->
+            <div class="text-center sm:text-left">
+              <p class="text-lg font-medium text-gray-900">Helpful Links</p>
+
+              <ul class="mt-8 space-y-4 text-sm">
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="/"
+                  >
+                    FAQs
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="/"
+                  >
+                    Support
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="group flex justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
+                    href="/"
+                  >
+                    <span
+                      class="text-gray-700 transition group-hover:text-gray-700/75"
+                    >
+                      Live Chat
+                    </span>
+
+                    <span class="relative flex h-2 w-2">
+                      <span
+                        class="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-400 opacity-75"
+                      ></span>
+                      <span
+                        class="relative inline-flex h-2 w-2 rounded-full bg-teal-500"
+                      ></span>
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- contact us -->
+            <div class="text-center sm:text-left">
+              <p class="text-lg font-medium text-gray-900">Contact Us</p>
+
+              <ul class="mt-8 space-y-4 text-sm">
+                <li>
+                  <a
+                    class="flex items-center justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
+                    href="/"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5 shrink-0 text-gray-900"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                      />
+                    </svg>
+
+                    <span class="flex-1 text-gray-700">john@doe.com</span>
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="flex items-center justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
+                    href="/"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5 shrink-0 text-gray-900"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                      />
+                    </svg>
+
+                    <span class="flex-1 text-gray-700">0123456789</span>
+                  </a>
+                </li>
+
+                <li
+                  class="flex items-start justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 shrink-0 text-gray-900"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                    />
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                  </svg>
+
+                  <address class="-mt-0.5 flex-1 not-italic text-gray-700">
+                    213 Lane, London, United Kingdom
+                  </address>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- copyright -->
+        <div class="mt-12 border-t border-gray-100 pt-6">
+          <div class="text-center sm:flex sm:justify-between sm:text-left">
+            <p class="text-sm text-gray-500">
+              <span class="block sm:inline">All rights reserved.</span>
+
+              <a
+                class="inline-block text-teal-600 underline transition hover:text-teal-600/75"
+                href="/"
+              >
+                Terms & Conditions
+              </a>
+
+              <span>&middot;</span>
+
+              <a
+                class="inline-block text-teal-600 underline transition hover:text-teal-600/75"
+                href="/"
+              >
+                Privacy Policy
+              </a>
+            </p>
+
+            <p class="mt-4 text-sm text-gray-500 sm:order-first sm:mt-0">
+              &copy; 2023 SMKN 2 Padang Panjang
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- !footer -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.0/dist/cdn.min.js"
+    ></script>
+  </body>
+</html>
