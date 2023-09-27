@@ -47,8 +47,6 @@
                             </thead>
                             <tbody>
                                 @forelse ($results ?? $alumni as $data)
-                                    {{-- @dd(
-                                        ) --}}
                                     @php
                                         $user = Auth::user();
                                         $user->alumni->first();

@@ -19,8 +19,8 @@
                             <select name="angkatan" id="">
                                 <option value="">Semuanya</option>
                                 @for ($tahun = 2021; $tahun <= 2024; $tahun++)
-                                    <option name="angkatan" value="{{ $tahun }}"
-                                        {{ $angkatan == $tahun ? 'selected' : '' }}>{{ $tahun }}</option>
+                                    <option value="{{ $tahun }}" {{ $angkatan == $tahun ? 'selected' : '' }}>
+                                        {{ $tahun }}</option>
                                 @endfor
                             </select>
                             <button type="submit">Cari</button>

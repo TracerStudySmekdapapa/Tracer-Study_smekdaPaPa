@@ -16,13 +16,11 @@ class AdminController extends Controller
         $angkatan = $request->angkatan;
         $alumni = Alumni::join('users', 'alumni.id_user', '=', 'users.id_user')
         ->orderBy('users.name', 'ASC')->filter(request(['name', 'angkatan']))->get();
-        // dd($alumni);
         return view('admin.alumni.index', compact('alumni', 'name', 'angkatan'))->with('i');
     }
 
     public function detailAlumni($id)
     {
-        // $where = 'nisn' ?? 'id_alumni';
         $dataPribadi = Alumni::where('id_alumni', $id)->first();
         $dataPekerjaan = Pekerjaan::where('id_alumni', $dataPribadi->id_alumni);
         $dataPendidikan = Pendidikan::where('id_alumni', $dataPribadi->id_alumni);
@@ -31,7 +29,7 @@ class AdminController extends Controller
 
     public function dataPekerjaan()
     {
-        $pekerjaan = Pekerjaan::get();
+        $pekerjaan = Pekerjaan::with('alumni')->get();
         return view('admin.pekerjaan.index', compact('pekerjaan'))->with('i');
     }
 

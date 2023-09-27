@@ -20,8 +20,12 @@
                             <input type="text" name="no_telp">
                         </div>
                         <div class="">
-                            <label for="">Tempat/tgllahir</label>
+                            <label for="">Tempat Lahir</label>
                             <input type="text" name="tmp_lahir">
+                        </div>
+                        <div class="">
+                            <label for="">Tanggal Lahir</label>
+                            <input type="date" name="tgl_lahir">
                         </div>
                         <div class="">
                             <label for="">Agama</label>

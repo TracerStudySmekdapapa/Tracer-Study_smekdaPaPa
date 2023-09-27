@@ -15,6 +15,7 @@ class Alumni extends Model
         'nisn',
         'no_telp',
         'tempat_lahir',
+        'tanggal_lahir',
         'agama',
         'jenis_kelamin',
         'jurusan',

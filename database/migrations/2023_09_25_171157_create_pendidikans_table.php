@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('pendidikan', function (Blueprint $table) {
             $table->id('id_pendidikan');
-            $table->string('nama_univ')->nullable();
-            $table->string('fakultas')->nullable();
-            $table->string('prodi')->nullable();
-            $table->string('alamat_univ')->nullable();
+            $table->string('nama_univ', 25)->nullable();
+            $table->string('fakultas', 25)->nullable();
+            $table->string('prodi', 25)->nullable();
+            $table->text('alamat_univ')->nullable();
             $table->foreignId('id_alumni')->constrained('alumni', 'id_alumni')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });

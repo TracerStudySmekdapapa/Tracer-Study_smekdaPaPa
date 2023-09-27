@@ -30,6 +30,7 @@ class AlumniController extends Controller
             'nisn' => $request->nisn,
             'no_telp' => $request->no_telp,
             'tempat_lahir' => $request->tmp_lahir,
+            'tanggal_lahir' => $request->tgl_lahir,
             'agama' => $request->agm,
             'jenis_kelamin' => $request->kelamin,
             'jurusan' => $request->jrsn,
