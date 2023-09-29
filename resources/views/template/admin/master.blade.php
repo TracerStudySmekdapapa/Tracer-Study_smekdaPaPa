@@ -19,13 +19,13 @@
 
 
     {{-- ! =========== statick file  ========= --}}
-    <link rel="stylesheet" href="{{ asset('assets/css/tailwind.output.css') }}" />
+    @vite('resources/css/app.css')
     <script src="{{ asset('assets/js/init-alpine.js') }}"></script>
     <script src="{{ asset('assets/js/charts-lines.js') }}" defer></script>
     <script src="{{ asset('assets/js/charts-pie.js ') }}" defer></script>
 </head>
 
-<body>
+<body style="padding: 0; margin: 0; box-sizing: border-box;">
     @yield('konten')
 </body>
 
