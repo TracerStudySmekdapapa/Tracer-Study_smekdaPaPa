@@ -80,16 +80,16 @@ main {
 
   /* left */
   .main__hero .left__item {
-    @apply flex flex-col -mt-10  lg:mt-[50px];
+    @apply flex flex-col -mt-32 md:mt-3  lg:mt-[50px];
   }
   .main__hero .title {
-    @apply text-[45px] md:text-[30px] lg:text-[47px] relative font-bold;
+    @apply text-[40px] md:text-[30px] lg:text-[47px] relative font-bold;
   }
   .main__hero .subTitle {
     @apply text-[25px] md:text-[20px] lg:text-[30px] text-primary font-bold mt-[5px];
   }
   .main__hero .deskripsi {
-    @apply max-w-[395px] leading-[27px] text-black/70 my-[17px];
+    @apply max-w-[395px] md:pr-10 lg:pr-0 leading-[27px] text-black/70 my-[17px];
   }
   .main__hero .hero___register {
     @apply before:content-[''] before:w-[50%] before:h-[2.5px] before:bg-primary before:absolute relative before:-bottom-2 before:rounded-full before:left-0 inline-block;
@@ -98,10 +98,10 @@ main {
   /* right */
 
   .main__hero .right__item {
-    @apply -mt-5 md:-mt-0 lg:w-[50%] relative md:max-w-[300px] lg:max-w-[570px];
+    @apply -mt-8 md:-mt-0 lg:w-[50%] relative md:max-w-[300px] lg:max-w-[570px];
   }
   .main__hero .hero__image {
-    @apply relative -top-10 lg:absolute lg:right-0 lg:-top-24 w-[700px] lg:w-[570px] scale-150 md:scale-150 lg:scale-[1.35];
+    @apply relative -top-10 right-20 lg:absolute lg:right-0 lg:top-16  w-[700px] lg:w-[570px] scale-125 md:scale-[2] md:top-1 md:right-5 lg:scale-[1.5];
   }
 }
 
@@ -205,7 +205,7 @@ main {
 
 @layer components {
   .submit {
-    @apply block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg;
+    @apply w-full md:w-2/3  px-4 py-2 mt-4 text-sm font-medium  text-center text-white transition-colors duration-150 bg-primary  rounded-lg;
   }
 }
 /*!!! end login page login  */

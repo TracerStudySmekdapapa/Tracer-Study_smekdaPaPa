@@ -23,14 +23,14 @@
 
   <link rel="stylesheet" href="../style.css" />
 
-  <body class="overflow-x-hidden relative">
+  <body class="relative overflow-x-hidden">
     <div
       class="w-[130px] h-[130px] bg-primary blur-[100px] absolute top-20 -left-32 z-0"
     ></div>
     <div
       class="w-[130px] h-[130px] bg-primary blur-[100px] absolute top-80 -right-52 z-0"
     ></div>
-    <main>
+    <main class="overflow-x-hidden">
       <!--?  navigasi ==========-->
       <nav class="relative z-50 h-24 select-none" x-data="{ showMenu: false }">
         <div class="navigation__main">
@@ -134,15 +134,15 @@
       </nav>
       <!--!  navigasi ==========-->
 
-      <div class="w-[90%] mx-auto flex justify-between">
-        <h1>data</h1>
+      <div class="w-[90%] mx-auto flex justify-center md:justify-between">
+        <h1 class="hidden md:block">data</h1>
 
         <div class="relative">
           <form action="./halaman_cari.html" method="get" id="form_search">
             <input
               id="input_search"
-              class="block w-[100%] mt-1 text-sm border border-gray-500 pl-5 pr-12 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-              placeholder="cari berdasarkan nama"
+              class="block w-[300px] mt-1 text-sm border border-gray-500 pl-5 pr-12 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+              placeholder="cari berdasarkan nama / nisn"
               type="text"
               required
               name="pencarian"
@@ -158,217 +158,244 @@
         </div>
       </div>
 
-      <table
-        class="relative z-50 rounded-lg w-[90%] mx-auto table-auto mt-6 overflow-visible"
-      >
-        <thead class="bg-primary/5 rounded-lg">
-          <tr class="relative h-[50px] px-[50px]">
-            <th
-              class="before:content-[url('../public/assets/icon.svg')] before:absolute before:left-3 before:w-8 pl-10"
-            >
-              profile
-            </th>
-            <th>nisn</th>
-            <th>jurusan</th>
-            <th>jenis_kelamin</th>
-            <th>angkatan</th>
-            <th>lainnya</th>
-          </tr>
-        </thead>
+      <div class="w-full overflow-x-scrol lg:overflow-x-hiddenl">
+        <h1 class="block md:hidden">scroll ke kiri pada tabel</h1>
+        <table
+          class="relative z-50 rounded-lg min-w-[800px] lg:w-[90%] mx-auto table-auto mt-6 overflow-x-auto lg:overflow-x-hidden"
+        >
+          <thead class="bg-primary/5 rounded-lg">
+            <tr class="relative h-[50px] px-[50px] capitalize">
+              <th
+                class="before:content-[url('../public/assets/icon.svg')] before:absolute before:left-3 before:w-8 pl-10"
+              >
+                profile
+              </th>
+              <th class="">nisn</th>
+              <th>jurusan</th>
+              <th>jenis_kelamin</th>
+              <th>tamatan</th>
+              <th>lainnya</th>
+            </tr>
+          </thead>
 
-        <tbody class="text-center divide-x">
-          <!-- looping here -->
-          <tr class="divide-x bg-gray-50">
-            <td class="flex items-center space-x-4 justify-center mx-auto py-5">
-              <div
-                class="rounded-full w-[30px] h-[30px] bg-rose-600 ml-5"
-              ></div>
-              <h1 class="max-w-[40%]">syaid alfarishi</h1>
-            </td>
-            <td>nis orang</td>
-            <td>jurusan orang</td>
-            <td>Jenis_kelamin</td>
-            <td>2024</td>
-            <td>
-              <div
-                x-data="{
+          <tbody class="text-center divide-x">
+            <!-- looping here -->
+            <tr class="divide-x bg-gray-50">
+              <td
+                class="flex items-center space-x-4 justify-center mx-auto py-5"
+              >
+                <table class="">
+                  <tr>
+                    <!-- gambar -->
+                    <td>
+                      <div
+                        class="rounded-full w-[30px] h-[30px] bg-rose-600 ml-5"
+                      ></div>
+                    </td>
+                    <!-- nama -->
+                    <td>
+                      <h1 class="max-w-[120px] ]">syaid alfarishi</h1>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <td class="">nis orang</td>
+              <td>jurusan orang</td>
+              <td>Jenis_kelamin</td>
+              <td>2024</td>
+              <td>
+                <div
+                  x-data="{
               tooltipVisible: false,
               tooltipText: 'syaid alfarishi',
               tooltipArrow: true,
               tooltipPosition: 'right',
           }"
-                x-init="$refs.content.addEventListener('mouseenter', () => { tooltipVisible = true; }); $refs.content.addEventListener('mouseleave', () => { tooltipVisible = false; });"
-                class="relative"
-              >
-                <div
-                  x-ref="tooltip"
-                  x-show="tooltipVisible"
-                  :class="{ 'top-0 left-1/2 -translate-x-1/2 -mt-0.5 -translate-y-full' : tooltipPosition == 'top', 'top-1/2 -translate-y-1/2 -ml-0.5 left-0 -translate-x-full' : tooltipPosition == 'left', 'bottom-0 left-1/2 -translate-x-1/2 -mb-0.5 translate-y-full' : tooltipPosition == 'bottom', 'top-1/2 -translate-y-1/2 -mr-0.5 right-0 translate-x-full' : tooltipPosition == 'right' }"
-                  class="absolute w-auto text-sm"
-                  x-cloak
+                  x-init="$refs.content.addEventListener('mouseenter', () => { tooltipVisible = true; }); $refs.content.addEventListener('mouseleave', () => { tooltipVisible = false; });"
+                  class="relative"
                 >
                   <div
+                    x-ref="tooltip"
                     x-show="tooltipVisible"
-                    x-transition
-                    class="relative px-2 py-1 text-white bg-black rounded bg-opacity-90"
+                    :class="{ 'top-0 left-1/2 -translate-x-1/2 -mt-0.5 -translate-y-full' : tooltipPosition == 'top', 'top-1/2 -translate-y-1/2 -ml-0.5 left-0 -translate-x-full' : tooltipPosition == 'left', 'bottom-0 left-1/2 -translate-x-1/2 -mb-0.5 translate-y-full' : tooltipPosition == 'bottom', 'top-1/2 -translate-y-1/2 -mr-0.5 right-0 translate-x-full' : tooltipPosition == 'right' }"
+                    class="absolute w-auto text-sm"
+                    x-cloak
                   >
-                    <p
-                      x-text="tooltipText"
-                      class="flex-shrink-0 block text-xs whitespace-nowrap"
-                    ></p>
                     <div
-                      x-ref="tooltipArrow"
-                      x-show="tooltipArrow"
-                      :class="{ 'bottom-0 -translate-x-1/2 left-1/2 w-2.5 translate-y-full' : tooltipPosition == 'top', 'right-0 -translate-y-1/2 top-1/2 h-2.5 -mt-px translate-x-full' : tooltipPosition == 'left', 'top-0 -translate-x-1/2 left-1/2 w-2.5 -translate-y-full' : tooltipPosition == 'bottom', 'left-0 -translate-y-1/2 top-1/2 h-2.5 -mt-px -translate-x-full' : tooltipPosition == 'right' }"
-                      class="absolute inline-flex items-center justify-center overflow-hidden"
+                      x-show="tooltipVisible"
+                      x-transition
+                      class="relative px-2 py-1 text-white bg-black rounded bg-opacity-90"
                     >
+                      <p
+                        x-text="tooltipText"
+                        class="flex-shrink-0 block text-xs whitespace-nowrap"
+                      ></p>
                       <div
-                        :class="{ 'origin-top-left -rotate-45' : tooltipPosition == 'top', 'origin-top-left rotate-45' : tooltipPosition == 'left', 'origin-bottom-left rotate-45' : tooltipPosition == 'bottom', 'origin-top-right -rotate-45' : tooltipPosition == 'right' }"
-                        class="w-1.5 h-1.5 transform bg-black bg-opacity-90"
-                      ></div>
+                        x-ref="tooltipArrow"
+                        x-show="tooltipArrow"
+                        :class="{ 'bottom-0 -translate-x-1/2 left-1/2 w-2.5 translate-y-full' : tooltipPosition == 'top', 'right-0 -translate-y-1/2 top-1/2 h-2.5 -mt-px translate-x-full' : tooltipPosition == 'left', 'top-0 -translate-x-1/2 left-1/2 w-2.5 -translate-y-full' : tooltipPosition == 'bottom', 'left-0 -translate-y-1/2 top-1/2 h-2.5 -mt-px -translate-x-full' : tooltipPosition == 'right' }"
+                        class="absolute inline-flex items-center justify-center overflow-hidden"
+                      >
+                        <div
+                          :class="{ 'origin-top-left -rotate-45' : tooltipPosition == 'top', 'origin-top-left rotate-45' : tooltipPosition == 'left', 'origin-bottom-left rotate-45' : tooltipPosition == 'bottom', 'origin-top-right -rotate-45' : tooltipPosition == 'right' }"
+                          class="w-1.5 h-1.5 transform bg-black bg-opacity-90"
+                        ></div>
+                      </div>
                     </div>
                   </div>
+
+                  <a x-ref="content" class="block w-full" href="./detail.html"
+                    ><img
+                      class="mx-auto"
+                      src="../public/assets/dot.svg"
+                      alt="dot"
+                  /></a>
                 </div>
+              </td>
+            </tr>
 
-                <a x-ref="content" class="block w-full" href="./detail.html"
-                  ><img
-                    class="mx-auto"
-                    src="../public/assets/dot.svg"
-                    alt="dot"
-                /></a>
-              </div>
-            </td>
-          </tr>
-
-          <!-- looping here -->
-          <tr class="divide-x bg-gray-50">
-            <td class="flex items-center space-x-4 justify-center mx-auto py-5">
-              <div
-                class="rounded-full w-[30px] h-[30px] bg-rose-600 ml-5"
-              ></div>
-              <h1 class="max-w-[40%]">habibie bayezid wildan</h1>
-            </td>
-            <td>nis orang</td>
-            <td>jurusan orang</td>
-            <td>Jenis_kelamin</td>
-            <td>2023</td>
-            <td>
-              <div
-                x-data="{
+            <!-- looping here -->
+            <tr class="divide-x bg-gray-50">
+              <td
+                class="flex items-center space-x-4 justify-center mx-auto py-5"
+              >
+                <table border="1" class="">
+                  <tr>
+                    <!-- gambar -->
+                    <td>
+                      <div
+                        class="rounded-full w-[30px] h-[30px] bg-rose-600 ml-5"
+                      ></div>
+                    </td>
+                    <!-- nama -->
+                    <td>
+                      <h1 class="max-w-[120px] ]">raihan ramadahn</h1>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <td class="">nis orang</td>
+              <td>jurusan orang</td>
+              <td>Jenis_kelamin</td>
+              <td>2023</td>
+              <td>
+                <div
+                  x-data="{
                   tooltipVisible: false,
                   tooltipText: 'habibie bayezid wildan',
                   tooltipArrow: true,
                   tooltipPosition: 'right',
               }"
-                x-init="$refs.content.addEventListener('mouseenter', () => { tooltipVisible = true; }); $refs.content.addEventListener('mouseleave', () => { tooltipVisible = false; });"
-                class="relative"
-              >
-                <div
-                  x-ref="tooltip"
-                  x-show="tooltipVisible"
-                  :class="{ 'top-0 left-1/2 -translate-x-1/2 -mt-0.5 -translate-y-full' : tooltipPosition == 'top', 'top-1/2 -translate-y-1/2 -ml-0.5 left-0 -translate-x-full' : tooltipPosition == 'left', 'bottom-0 left-1/2 -translate-x-1/2 -mb-0.5 translate-y-full' : tooltipPosition == 'bottom', 'top-1/2 -translate-y-1/2 -mr-0.5 right-0 translate-x-full' : tooltipPosition == 'right' }"
-                  class="absolute w-auto text-sm"
-                  x-cloak
+                  x-init="$refs.content.addEventListener('mouseenter', () => { tooltipVisible = true; }); $refs.content.addEventListener('mouseleave', () => { tooltipVisible = false; });"
+                  class="relative"
                 >
                   <div
+                    x-ref="tooltip"
                     x-show="tooltipVisible"
-                    x-transition
-                    class="relative px-2 py-1 text-white bg-black rounded bg-opacity-90"
+                    :class="{ 'top-0 left-1/2 -translate-x-1/2 -mt-0.5 -translate-y-full' : tooltipPosition == 'top', 'top-1/2 -translate-y-1/2 -ml-0.5 left-0 -translate-x-full' : tooltipPosition == 'left', 'bottom-0 left-1/2 -translate-x-1/2 -mb-0.5 translate-y-full' : tooltipPosition == 'bottom', 'top-1/2 -translate-y-1/2 -mr-0.5 right-0 translate-x-full' : tooltipPosition == 'right' }"
+                    class="absolute w-auto text-sm"
+                    x-cloak
                   >
-                    <p
-                      x-text="tooltipText"
-                      class="flex-shrink-0 block text-xs whitespace-nowrap"
-                    ></p>
                     <div
-                      x-ref="tooltipArrow"
-                      x-show="tooltipArrow"
-                      :class="{ 'bottom-0 -translate-x-1/2 left-1/2 w-2.5 translate-y-full' : tooltipPosition == 'top', 'right-0 -translate-y-1/2 top-1/2 h-2.5 -mt-px translate-x-full' : tooltipPosition == 'left', 'top-0 -translate-x-1/2 left-1/2 w-2.5 -translate-y-full' : tooltipPosition == 'bottom', 'left-0 -translate-y-1/2 top-1/2 h-2.5 -mt-px -translate-x-full' : tooltipPosition == 'right' }"
-                      class="absolute inline-flex items-center justify-center overflow-hidden"
+                      x-show="tooltipVisible"
+                      x-transition
+                      class="relative px-2 py-1 text-white bg-black rounded bg-opacity-90"
                     >
+                      <p
+                        x-text="tooltipText"
+                        class="flex-shrink-0 block text-xs whitespace-nowrap"
+                      ></p>
                       <div
-                        :class="{ 'origin-top-left -rotate-45' : tooltipPosition == 'top', 'origin-top-left rotate-45' : tooltipPosition == 'left', 'origin-bottom-left rotate-45' : tooltipPosition == 'bottom', 'origin-top-right -rotate-45' : tooltipPosition == 'right' }"
-                        class="w-1.5 h-1.5 transform bg-black bg-opacity-90"
-                      ></div>
+                        x-ref="tooltipArrow"
+                        x-show="tooltipArrow"
+                        :class="{ 'bottom-0 -translate-x-1/2 left-1/2 w-2.5 translate-y-full' : tooltipPosition == 'top', 'right-0 -translate-y-1/2 top-1/2 h-2.5 -mt-px translate-x-full' : tooltipPosition == 'left', 'top-0 -translate-x-1/2 left-1/2 w-2.5 -translate-y-full' : tooltipPosition == 'bottom', 'left-0 -translate-y-1/2 top-1/2 h-2.5 -mt-px -translate-x-full' : tooltipPosition == 'right' }"
+                        class="absolute inline-flex items-center justify-center overflow-hidden"
+                      >
+                        <div
+                          :class="{ 'origin-top-left -rotate-45' : tooltipPosition == 'top', 'origin-top-left rotate-45' : tooltipPosition == 'left', 'origin-bottom-left rotate-45' : tooltipPosition == 'bottom', 'origin-top-right -rotate-45' : tooltipPosition == 'right' }"
+                          class="w-1.5 h-1.5 transform bg-black bg-opacity-90"
+                        ></div>
+                      </div>
                     </div>
                   </div>
+
+                  <a x-ref="content" class="block w-full" href="./detail.html"
+                    ><img
+                      class="mx-auto"
+                      src="../public/assets/dot.svg"
+                      alt="dot"
+                  /></a>
                 </div>
+              </td>
+            </tr>
 
-                <a x-ref="content" class="block w-full" href="./detail.html"
-                  ><img
-                    class="mx-auto"
-                    src="../public/assets/dot.svg"
-                    alt="dot"
-                /></a>
-              </div>
-            </td>
-          </tr>
+            <!-- end looping here -->
 
-          <!-- end looping here -->
+            <tr class="bg-gray-50">
+              <td colspan="6">TIDAK ADA DATA YANG DITEMUKAN</td>
+            </tr>
 
-          <tr class="bg-gray-50">
-            <td colspan="6">TIDAK ADA DATA YANG DITEMUKAN</td>
-          </tr>
+            <!-- end delete aja -->
+          </tbody>
 
-          <!-- end delete aja -->
-        </tbody>
-
-        <tfoot class="bg-primary/5">
-          <tr>
-            <td colspan="3" class="px-16">
-              <p class="my-3 text-xs">show 3 of 100 data</p>
-            </td>
-            <td colspan="3" class="text-end px-10">
-              <div class="flex space-x-5 px-2 divide-x justify-end">
-                <div class="inline-flex items-center justify-center gap-3">
-                  <a
-                    href="#"
-                    class="inline-flex h-8 w-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180"
-                  >
-                    <span class="sr-only">Next Page</span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="h-3 w-3"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
+          <tfoot class="bg-primary/5">
+            <tr>
+              <td colspan="3" class="px-16">
+                <p class="my-3 text-xs">show 3 of 100 data</p>
+              </td>
+              <td colspan="3" class="text-end px-10">
+                <div class="flex space-x-5 px-2 divide-x justify-end">
+                  <div class="inline-flex items-center justify-center gap-3">
+                    <a
+                      href="#"
+                      class="inline-flex h-8 w-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180"
                     >
-                      <path
-                        fill-rule="evenodd"
-                        d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </a>
+                      <span class="sr-only">Next Page</span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-3 w-3"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                    </a>
 
-                  <p class="text-xs text-gray-900">
-                    3
-                    <span class="mx-0.25">/</span>
-                    12
-                  </p>
+                    <p class="text-xs text-gray-900">
+                      3
+                      <span class="mx-0.25">/</span>
+                      12
+                    </p>
 
-                  <a
-                    href="#"
-                    class="inline-flex h-8 w-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180"
-                  >
-                    <span class="sr-only">Next Page</span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="h-3 w-3"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
+                    <a
+                      href="#"
+                      class="inline-flex h-8 w-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180"
                     >
-                      <path
-                        fill-rule="evenodd"
-                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </a>
+                      <span class="sr-only">Next Page</span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-3 w-3"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                    </a>
+                  </div>
                 </div>
-              </div>
-            </td>
-          </tr>
-        </tfoot>
-      </table>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
     </main>
 
     <!-- ?footer -->
@@ -383,8 +410,8 @@
             <p
               class="mt-6 max-w-md text-center leading-relaxed text-gray-500 sm:max-w-xs sm:text-left"
             >
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt
-              consequuntur amet culpa cum itaque neque.
+              Bantu kami meningkatkan kualitas pendidikan. Tracer study,
+              kontribusimu untuk pendidikan dan jendela untuk masa depanmu.
             </p>
           </div>
 
@@ -399,79 +426,61 @@
                 <li>
                   <a
                     class="text-gray-700 transition hover:text-gray-700/75"
-                    href="/"
+                    href="https://smkn2-padangpanjang.sch.id/profil"
                   >
-                    Company History
+                    Profil
                   </a>
                 </li>
 
                 <li>
                   <a
                     class="text-gray-700 transition hover:text-gray-700/75"
-                    href="/"
+                    href="https://smkn2-padangpanjang.sch.id/berita/1"
                   >
-                    Meet the Team
-                  </a>
-                </li>
-
-                <li>
-                  <a
-                    class="text-gray-700 transition hover:text-gray-700/75"
-                    href="/"
-                  >
-                    Employee Handbook
-                  </a>
-                </li>
-
-                <li>
-                  <a
-                    class="text-gray-700 transition hover:text-gray-700/75"
-                    href="/"
-                  >
-                    Careers
+                    Berita
                   </a>
                 </li>
               </ul>
             </div>
 
-            <!-- our service -->
+            <!-- Keji=ruruan -->
             <div class="text-center sm:text-left">
-              <p class="text-lg font-medium text-gray-900">Our Services</p>
+              <p class="text-lg font-medium text-gray-900">Jurusan</p>
 
               <ul class="mt-8 space-y-4 text-sm">
                 <li>
                   <a
                     class="text-gray-700 transition hover:text-gray-700/75"
-                    href="/"
+                    href="https://smkn2-padangpanjang.sch.id/berita/detail/teknik-komputer-dan-jaringan-tkj"
                   >
-                    Web Development
+                    TKJ
                   </a>
                 </li>
 
                 <li>
                   <a
                     class="text-gray-700 transition hover:text-gray-700/75"
-                    href="/"
+                    href="https://smkn2-padangpanjang.sch.id/berita/detail/pengembangan-perangkat-lunak-dan-gim-pplg"
                   >
-                    Web Design
+                    RPL
                   </a>
                 </li>
 
                 <li>
                   <a
                     class="text-gray-700 transition hover:text-gray-700/75"
-                    href="/"
+                    href="https://smkn2-padangpanjang.sch.id/berita/detail/disian-komunikasi-visual-dkv"
                   >
-                    Marketing
+                    MM
                   </a>
                 </li>
 
                 <li>
                   <a
                     class="text-gray-700 transition hover:text-gray-700/75"
-                    href="/"
+                    href="https://smkn2-padangpanjang.sch.id/berita/detail/produksi-siaran-program-televisi-pspt"
                   >
-                    Google Ads
+                    PSPT
                   </a>
                 </li>
               </ul>
@@ -485,7 +494,7 @@
                 <li>
                   <a
                     class="text-gray-700 transition hover:text-gray-700/75"
-                    href="/"
+                    href="#faq"
                   >
                     FAQs
                   </a>
@@ -494,115 +503,53 @@
                 <li>
                   <a
                     class="text-gray-700 transition hover:text-gray-700/75"
-                    href="/"
+                    href="#kontak"
                   >
-                    Support
-                  </a>
-                </li>
-
-                <li>
-                  <a
-                    class="group flex justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
-                    href="/"
-                  >
-                    <span
-                      class="text-gray-700 transition group-hover:text-gray-700/75"
-                    >
-                      Live Chat
-                    </span>
-
-                    <span class="relative flex h-2 w-2">
-                      <span
-                        class="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-400 opacity-75"
-                      ></span>
-                      <span
-                        class="relative inline-flex h-2 w-2 rounded-full bg-teal-500"
-                      ></span>
-                    </span>
+                    Kontak
                   </a>
                 </li>
               </ul>
             </div>
 
-            <!-- contact us -->
+            <!-- lembaga -->
             <div class="text-center sm:text-left">
-              <p class="text-lg font-medium text-gray-900">Contact Us</p>
+              <p class="text-lg font-medium text-gray-900">Lembaga</p>
 
               <ul class="mt-8 space-y-4 text-sm">
                 <li>
                   <a
-                    class="flex items-center justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
-                    href="/"
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="https://smkn2-padangpanjang.sch.id/berita/detail/bursa-kerja-khusus-bkk"
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="h-5 w-5 shrink-0 text-gray-900"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                      />
-                    </svg>
-
-                    <span class="flex-1 text-gray-700">john@doe.com</span>
+                    BKK
                   </a>
                 </li>
 
                 <li>
                   <a
-                    class="flex items-center justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
-                    href="/"
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="https://smkn2-padangpanjang.sch.id/berita/detail/teaching-factory-tefa"
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="h-5 w-5 shrink-0 text-gray-900"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                      />
-                    </svg>
-
-                    <span class="flex-1 text-gray-700">0123456789</span>
+                    TEFA
                   </a>
                 </li>
 
-                <li
-                  class="flex items-start justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5 shrink-0 text-gray-900"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="https://smkn2-padangpanjang.sch.id/berita/detail/smekdatv"
                   >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                    />
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                  </svg>
+                    SMEKDA.TV
+                  </a>
+                </li>
 
-                  <address class="-mt-0.5 flex-1 not-italic text-gray-700">
-                    213 Lane, London, United Kingdom
-                  </address>
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="https://smkn2-padangpanjang.sch.id/berita/detail/pusat-pengelolaan-informasi-dokumentasi-i-ppid"
+                  >
+                    PPID
+                  </a>
                 </li>
               </ul>
             </div>
