@@ -136,7 +136,7 @@
                                     @if ($message = Session::get('message'))
                                         <h1>{{ $message }}</h1>
                                     @endif
-                
+
                                     @if (!Auth::user()->hasRole('Admin') && !Auth::user()->hasRole('Alumni'))
                                         @if (!$cekAlumni)
                                             <h1>Silahkan tambahkan data alumni</h1>
@@ -165,7 +165,7 @@
                                     <div class="">
                                         <h1>Data Alumni</h1>
                                         <div class="">
-                                            <form action="{{ route('dashboard') }}" method="get">
+                                            <form action="{{ route('adminDashboard') }}" method="get">
                                                 <label for="">Search</label>
                                                 <input type="text" name="name" value="{{ $name }}">
                                             </form>
@@ -195,9 +195,11 @@
                                                         <td>{{ $data->angkatan ?? '-' }}</td>
                                                         <td>
                                                             @if (Auth::user()->hasRole('Admin'))
-                                                                <a href="{{ route('adminDetailAlumni', $data->id_alumni) }}">detail</a>
+                                                                <a
+                                                                    href="{{ route('adminDetailAlumni', $data->id_alumni) }}">detail</a>
                                                             @else
-                                                                <a href="{{ route('detailAlumni', $data->id_alumni) }}">detail</a>
+                                                                <a
+                                                                    href="{{ route('detailAlumni', $data->id_alumni) }}">detail</a>
                                                             @endif
                                                         </td>
                                                     </tr>

@@ -5,6 +5,6 @@
     <main>
 
         @include('template.utils.navbar')
-        @include('template.utils.footer')
     </main>
+    @include('template.utils.footer')
 @endsection

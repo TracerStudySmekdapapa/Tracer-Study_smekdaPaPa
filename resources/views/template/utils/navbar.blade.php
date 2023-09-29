@@ -21,7 +21,7 @@
                         class="ml-6 text-gray-700 navigation__content__link md:w-auto md:px-0 md:mx-2 hover:text-black lg:mx-3">Tutorial</a>
                     <a href="#_"
                         class="ml-6 text-gray-700 navigation__content__link md:w-auto md:px-0 md:mx-2 hover:text-black lg:mx-3">Kontak</a>
-                    <a href="./src/halaman_cari.html" class="navigation___search">
+                    <a href="{{ route('search') }}" class="navigation___search">
                         <!-- search -->
                         <svg class="inline w-6 h-6" fill="none" stroke-linecap="round" stroke-linejoin="round"
                             stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">

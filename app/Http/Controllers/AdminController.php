@@ -7,9 +7,23 @@ use App\Models\Pekerjaan;
 use App\Models\Pendidikan;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
+
+    public function index(Request $request){
+        $name = $request->name;
+        $alumni = User::whereHas('roles', function ($query) {
+            $query->where('name', 'Alumni');
+        })->join('alumni', 'users.id_user', '=', 'alumni.id_user')
+            ->orderBy('users.name', 'ASC')
+            ->filter(request(['search']))
+            ->get();
+        $cekAlumni = Alumni::where('id_user', Auth::user()->id_user)->exists();
+        return view('admin.dashboard', compact('alumni', 'name', 'cekAlumni'))->with('i');
+    }
+
     public function dataAlumni(Request $request)
     {
         $name = $request->search;

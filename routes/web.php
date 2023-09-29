@@ -28,18 +28,10 @@ Route::get('/test', function () {
     $title = 'Detail Alumni';
     return view('test.detail', compact('title'));
 });
-
+/* 
 Route::get('/dashboard', function (Request $request) {
-    $name = $request->name;
-    $alumni = User::whereHas('roles', function ($query) {
-        $query->where('name', 'Alumni');
-    })->join('alumni', 'users.id_user', '=', 'alumni.id_user')
-        ->orderBy('users.name', 'ASC')
-        ->filter(request(['search', 'angkatan']))
-        ->get();
-    $cekAlumni = Alumni::where('id_user', Auth::user()->id_user)->exists();
-    return view('admin.dashboard', compact('alumni', 'name', 'cekAlumni'))->with('i');
-})->middleware(['auth', 'verified'])->name('dashboard');
+   
+})->middleware(['auth', 'verified'])->name('dashboard'); */
 
 
 Route::get('/authenticate', [AuthenticateController::class, 'index'])->middleware(['auth', 'verified'])->middleware(['auth', 'verified']);
@@ -53,10 +45,11 @@ Route::middleware('auth')->group(function () {
 
 
     // admin
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('adminDashboard');
     Route::get('/admin/alumni', [AdminController::class, 'dataAlumni'])->name('dataAlumni');
     Route::get('/admin/alumni/{id}/detail', [AdminController::class, 'detailAlumni'])->name('adminDetailAlumni');
     Route::get('/admin/alumni/data-pekerjaan', [AdminController::class, 'dataPekerjaan'])->name('dataPekerjaan');
-    Route::get('/admin/alumni/verify', [AdminController::class, 'verifAlumni'])->name('verifalumni');
+    Route::get('/admin/alumni/verify', [AdminController::class, 'verifAlumni'])->name('verifyDataAlumni');
     Route::post('/admin/alumni/{id_user}/verify', [AdminController::class, 'verifAlumniAksi'])->name('verifalumniStore');
     Route::post('/admin/alumni/{id_user}/tolakverify', [AdminController::class, 'tolakVerifAlumniAksi'])->name('tolakVerifAlumni');
     
@@ -81,6 +74,8 @@ Route::middleware('auth')->group(function () {
 
 
 // semua otrang
+Route::get('/search', [HomeController::class, 'search'])->name('search');
+// Route::get('/alumni/{id}/detail', [HomeController::class, 'detail'])->name('detail');
 Route::get('/alumni/{id}/detail', [AlumniController::class, 'detail'])->name('detailAlumni');
 
 
