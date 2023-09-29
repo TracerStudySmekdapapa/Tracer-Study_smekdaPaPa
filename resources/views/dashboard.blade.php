@@ -70,7 +70,11 @@
                                         <td>{{ $data->jurusan ?? '-' }}</td>
                                         <td>{{ $data->angkatan ?? '-' }}</td>
                                         <td>
-                                            <a href="{{ route('detailAlumni', $data->id_alumni) }}">detail</a>
+                                            @if (Auth::user()->hasRole('Admin'))
+                                                <a href="{{ route('adminDetailAlumni', $data->id_alumni) }}">detail</a>
+                                            @else
+                                                <a href="{{ route('detailAlumni', $data->id_alumni) }}">detail</a>
+                                            @endif
                                         </td>
                                     </tr>
                                 @empty

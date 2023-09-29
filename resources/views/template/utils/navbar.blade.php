@@ -36,8 +36,8 @@
                     @if (Auth::check())
                         <a href="./src/login.html" class="btn___signup">{{ Auth::user()->name }}</a>
                     @else
-                        <a href="./src/login.html" class="btn___signin">Sign In</a>
-                        <a href="./src/registrasi.html" class="btn___signup">Sign Up</a>
+                        <a href="{{ route('login') }}" class="btn___signin">Sign In</a>
+                        <a href="{{ route('register') }}" class="btn___signup">Sign Up</a>
                     @endif
                 </div>
                 <!-- !navigasi menu login ===========================-->

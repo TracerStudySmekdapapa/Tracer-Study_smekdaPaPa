@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AlumniController;
 use App\Http\Controllers\AuthenticateController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Alumni;
 use App\Models\User;
@@ -21,9 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/test', function () {
     $title = 'Detail Alumni';
@@ -50,24 +49,25 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/admin/dataalumni', [AdminController::class, 'dataAlumni'])->name('dataAlumni');
-    Route::get('/admin/dataalumni/{id}/detail', [AdminController::class, 'detailAlumni'])->name('detailAlumni');
-    Route::get('/admin/datapekerjaan', [AdminController::class, 'dataPekerjaan'])->name('dataPekerjaan');
-    Route::get('/admin/verifalumni', [AdminController::class, 'verifAlumni'])->name('verifalumni');
-    Route::post('/admin/verifalumni/{id_user}', [AdminController::class, 'verifAlumniAksi'])->name('verifalumniStore');
-    Route::post('/admin/tolakverifalumni/{id_user}', [AdminController::class, 'tolakVerifAlumniAksi'])->name('tolakVerifAlumni');
+    Route::get('/admin/alumni', [AdminController::class, 'dataAlumni'])->name('dataAlumni');
+    Route::get('/admin/alumni/{id}/detail', [AdminController::class, 'detailAlumni'])->name('adminDetailAlumni');
+    Route::get('/admin/alumni/data-pekerjaan', [AdminController::class, 'dataPekerjaan'])->name('dataPekerjaan');
+    Route::get('/admin/alumni/verify', [AdminController::class, 'verifAlumni'])->name('verifalumni');
+    Route::post('/admin/alumni/{id_user}/verify', [AdminController::class, 'verifAlumniAksi'])->name('verifalumniStore');
+    Route::post('/admin/alumni/{id_user}/tolakverify', [AdminController::class, 'tolakVerifAlumniAksi'])->name('tolakVerifAlumni');
 
-    // Route::get('/alumni', [AlumniController::class, 'index'])->name('alumni');
-    Route::get('/alumni/datapribadi/tambah', [AlumniController::class, 'tambahDataPribadi'])->name('tambahDataPribadi');
-    Route::post('/alumni/datapribadi/{id}/tambah', [AlumniController::class, 'simpanDataPribadi'])->name('simpanDataPribadi');
-    Route::get('/alumni/datapribadi/{id}/edit', [AlumniController::class, 'editDataPribadi'])->name('editDataPribadi');
-    Route::patch('/alumni/datapribadi/{id}/edit', [AlumniController::class, 'updateDataPribadi'])->name('updateDataPribadi');
+    Route::get('/alumni/{id}/detail', [AlumniController::class, 'detail'])->name('detailAlumni');
 
-    Route::get('/alumni/datapekerjaan/tambah', [AlumniController::class, 'tambahDataPekerjaan'])->name('tambahDataPekerjaan');
-    Route::post('/alumni/datapekerjaan/tambah/{id}', [AlumniController::class, 'simpanDataPekerjaan'])->name('simpanDataPekerjaan');
+    Route::get('/alumni/data-pribadi/tambah', [AlumniController::class, 'tambahDataPribadi'])->name('tambahDataPribadi');
+    Route::post('/alumni/{id}/data-pribadi/tambah', [AlumniController::class, 'simpanDataPribadi'])->name('simpanDataPribadi');
+    Route::get('/alumni/{id}/data-pribadi/edit', [AlumniController::class, 'editDataPribadi'])->name('editDataPribadi');
+    Route::patch('/alumni/{id}/data-pribadi/edit', [AlumniController::class, 'updateDataPribadi'])->name('updateDataPribadi');
 
-    Route::get('/alumni/datapendidikan/tambah', [AlumniController::class, 'tambahDataPendidikan'])->name('tambahDataPendidikan');
-    Route::post('/alumni/datapendidikan/tambah/{id}', [AlumniController::class, 'simpanDataPendidikan'])->name('simpanDataPendidikan');
+    Route::get('/alumni/data-pekerjaan/tambah', [AlumniController::class, 'tambahDataPekerjaan'])->name('tambahDataPekerjaan');
+    Route::post('/alumni/{id}/data-pekerjaan/tambah', [AlumniController::class, 'simpanDataPekerjaan'])->name('simpanDataPekerjaan');
+
+    Route::get('/alumni/data-pendidikan/tambah', [AlumniController::class, 'tambahDataPendidikan'])->name('tambahDataPendidikan');
+    Route::post('/alumni/{id}/data-pendidikan/tambah', [AlumniController::class, 'simpanDataPendidikan'])->name('simpanDataPendidikan');
 });
 
 require __DIR__ . '/auth.php';

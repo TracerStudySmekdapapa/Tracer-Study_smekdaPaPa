@@ -16,6 +16,16 @@ class AlumniController extends Controller
     {
     }
 
+    /* Start Detail Alumi */
+    public function detail($id){
+        $title = 'Detail Alumni';
+        $dataPribadi = Alumni::where('id_alumni', $id)->first();
+        $dataPekerjaan = Pekerjaan::where('id_alumni', $dataPribadi->id_alumni)->get();
+        $dataPendidikan = Pendidikan::where('id_alumni', $dataPribadi->id_alumni)->get();
+        return view('alumni.detail', compact('dataPribadi', 'dataPekerjaan', 'dataPendidikan', 'title'));
+    }
+    /* End Detail Alumi */
+
     /* Start Create Data Pribadi */
     public function tambahDataPribadi()
     {

@@ -1,74 +1,159 @@
-@extends('template.master')
-@section('content')
-    <div class="w-[130px] h-[130px] bg-primary blur-[100px] absolute top-20 -left-32 z-0"></div>
-    <div class="w-[130px] h-[130px] bg-primary blur-[100px] absolute top-80 -right-52 z-0"></div>
-    <main>
-        <!--?  navigasi ==========-->
-        @include('template.components.navbar')
-        <!--!  navigasi ==========-->
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Dashboard') }}
+        </h2>
+    </x-slot>
 
-        <section class="grid grid-cols-2">
-            <div class="w-full min-h-[80vh] justify-center items-start pt-5 flex">
-                <div class="flex flex-col space-y-5 justify-center items-center">
-                    <div class="bg-red-500 rounded-full w-[200px] h-[200px]"></div>
-                    <div>
-                        <h1 class="text-[35px] font-semibold pb-4">{{ $dataPribadi->user->name }}</h1>
-                        <p class="text-[15px] -mt-4 mb-5 text-black/50 font-light">
-                            {{ $dataPribadi->bio ?? 'Belum memiliki bio' }}
-                        </p>
-                        <table class="w-full">
-                            <tr class="divide-y">
-                                <td>NISN</td>
-                                <td class="py-2 px-6">:</td>
-                                <td>{{ $dataPribadi->nisn }}</td>
-                            </tr>
-                            <!-- jenis_kelamin -->
-                            <tr class="divide-y">
-                                <td>Jenis Kelamin</td>
-                                <td class="py-2 px-6">:</td>
-                                <td>{{ $dataPribadi->jenis_kelamin }}</td>
-                            </tr>
-                            <!-- agama -->
-                            <tr class="divide-y">
-                                <td>Agama</td>
-                                <td class="py-2 px-6">:</td>
-                                <td>{{ $dataPribadi->agama }}</td>
-                            </tr>
-                            <!-- tgl lair -->
-                            <tr class="divide-y">
-                                <td>Tempat Lahir</td>
-                                <td class="py-2 px-6">:</td>
-                                <td>{{ $dataPribadi->tempat_lahir }}</td>
-                            </tr>
-                            <tr class="divide-y">
-                                <td>Tangal Lahir</td>
-                                <td class="py-2 px-6">:</td>
-                                <td>{{ $dataPribadi->tanggal_lahir ?? '-' }}</td>
-                            </tr>
-
-                            <tr class="divide-y">
-                                <td>Jurusan</td>
-                                <td class="py-2 px-6">:</td>
-                                <td>{{ $dataPribadi->jurusan }}</td>
-                            </tr>
-
-                            <tr class="divide-y">
-                                <td>Tamatan</td>
-                                <td class="py-2 px-6">:</td>
-                                <td>{{ $dataPribadi->angkatan }}</td>
-                            </tr>
-                        </table>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white  text-gray-900">
+                    <div class="">
+                        <label for="">Foto Profil</label>
+                        <img src="" alt="harusnya PP">
+                    </div>
+                    <div class="">
+                        <label for="">Nama</label>
+                        <input type="text" name="nisn" value="{{ $dataPribadi->user->name }}">
+                    </div>
+                    <div class="">
+                        <label for="">Nisn</label>
+                        <input type="text" name="nisn" value="{{ $dataPribadi->nisn }}">
+                    </div>
+                    <div class="">
+                        <label for="">No Telp</label>
+                        <input type="text" name="no_telp" value="{{ $dataPribadi->no_telp }}">
+                    </div>
+                    <div class="">
+                        <label for="">Tempat/tgllahir</label>
+                        <input type="text" name="tmp_lahir" value="{{ $dataPribadi->tempat_lahir }}">
+                    </div>
+                    <div class="">
+                        <label for="">Agama</label>
+                        <input type="text" name="agm" value="{{ $dataPribadi->agama }}">
+                    </div>
+                    <div class="">
+                        <label for="">Laki-Laki</label>
+                        <input disabled type="radio" value="Laki-Laki" name="kelamin"
+                            {{ $dataPribadi->jenis_kelamin == 'Laki-Laki' ? 'checked' : '' }}>
+                        <label for="">Perempuan</label>
+                        <input disabled type="radio" value="Perempuan" name="kelamin"
+                            {{ $dataPribadi->jenis_kelamin == 'Perempuan' ? 'checked' : '' }}>
+                    </div>
+                    <div class="">
+                        <label for="">Jurusan</label>
+                        <input type="text" name="jrsn" value="{{ $dataPribadi->jurusan }}">
+                    </div>
+                    <!--variabel angkatan sebenarnya tamatan-->
+                    <div class="">
+                        <label for="">Tamatan</label>
+                        <input type="text" name="angkatan" value="{{ $dataPribadi->angkatan }}">
                     </div>
                 </div>
-            </div>
-            <div class="w-full min-h-[80vh] bg-teal-500">
-                <div class="w-full min-h-[40vh] bg-violet-500"></div>
-                <div class="w-full min-h-[40vh] bg-orange-500"></div>
-            </div>
-        </section>
-    </main>
+                <!-- start Data pekerjaan -->
+                <div class="p-6 bg-white  mt-4 text-gray-900">
+                    <p>Data Pekerjaan</p>
+                    <div class="flex space-x-2">
+                        <label for="">Nama Pekerjaan :</label>
+                        @if ($dataPekerjaan->count() > 1)
+                            {{-- Looping data pekerjaan alumni yang ada dua --}}
+                            @foreach ($dataPekerjaan as $pekerjaan)
+                                <p>{{ $pekerjaan->nama_pekerjaan }}</p>
+                            @endforeach
+                        @else
+                            {{ $dataPekerjaan->first()->nama_pekerjaan ?? '-' }}
+                        @endif
+                    </div>
+                    <div class="flex space-x-2">
+                        <label for="">Nama Instansi :</label>
+                        @if ($dataPekerjaan->count() > 1)
 
-    <!-- ?footer -->
-    @include('template.components.footer')
-    <!-- !footer -->
-@endsection
+                            @foreach ($dataPekerjaan as $pekerjaan)
+                                <p>{{ $pekerjaan->nama_instansi }}</p>
+                            @endforeach
+                        @else
+                            {{ $dataPekerjaan->first()->nama_instansi ?? '-' }}
+                        @endif
+                    </div>
+                    <div class="flex space-x-2">
+                        <label for="">Alamat Instansi :</label>
+                        @if ($dataPekerjaan->count() > 1)
+
+                            @foreach ($dataPekerjaan as $pekerjaan)
+                                <p>{{ $pekerjaan->alamat_instansi }}</p>
+                            @endforeach
+                        @else
+                            {{ $dataPekerjaan->first()->alamat_instansi ?? '-' }}
+                        @endif
+                    </div>
+                    <div class="flex space-x-2">
+                        <label for="">Jabatan :</label>
+                        @if ($dataPekerjaan->count() > 1)
+
+                            @foreach ($dataPekerjaan as $pekerjaan)
+                                <p>{{ $pekerjaan->jabatan }}</p>
+                            @endforeach
+                        @else
+                            {{ $dataPekerjaan->first()->jabatan ?? '-' }}
+                        @endif
+                    </div>
+
+                </div>
+                <!-- endData pekerjaan -->
+                <!-- start Data Pendidikan -->
+                <div class="p-6 bg-white  mt-4 text-gray-900">
+                    <p>Data Pendidikan</p>
+                    <div class="flex space-x-2">
+                        <label for="">Nama Universitas :</label>
+                        @if ($dataPendidikan->count() > 1)
+                            {{-- Looping data pekerjaan alumni yang ada dua --}}
+                            @for ($i = 0; $i < $dataPendidikan->count(); $i++)
+                                <p>{{ $dataPendidikan[$i]->nama_univ }}</p>
+                                {{-- <p>{{ $dataPekerjaan[$i]->jabatan }}</p> --}}
+                            @endfor
+                        @else
+                            {{ $dataPendidikan->first()->nama_univ ?? '-' }}
+                        @endif
+                    </div>
+                    <div class="flex space-x-2">
+                        <label for="">Fakultas :</label>
+                        @if ($dataPendidikan->count() > 1)
+
+                            @foreach ($dataPendidikan as $pendidikan)
+                                <p>{{ $pendidikan->fakultas }}</p>
+                            @endforeach
+                        @else
+                            {{ $dataPendidikan->first()->fakultas ?? '-' }}
+                        @endif
+                    </div>
+                    <div class="flex space-x-2">
+                        <label for="">Prodi :</label>
+                        @if ($dataPendidikan->count() > 1)
+
+                            @foreach ($dataPendidikan as $pendidikan)
+                                <p>{{ $pendidikan->prodi }}</p>
+                            @endforeach
+                        @else
+                            {{ $dataPendidikan->first()->prodi ?? '-' }}
+                        @endif
+                    </div>
+                    <div class="flex space-x-2">
+                        <label for="">Alamat Universitas :</label>
+                        @if ($dataPendidikan->count() > 1)
+
+                            @foreach ($dataPendidikan as $pendidikan)
+                                <p>{{ $pendidikan->alamat_univ }}</p>
+                            @endforeach
+                        @else
+                            {{ $dataPendidikan->first()->alamat_univ ?? '-' }}
+                        @endif
+                    </div>
+
+                </div>
+                <!-- endData Pendidikan -->
+
+            </div>
+        </div>
+    </div>
+</x-app-layout>
