@@ -75,8 +75,8 @@ Route::middleware('auth')->group(function () {
 
 // semua otrang
 Route::get('/search', [HomeController::class, 'search'])->name('search');
-// Route::get('/alumni/{id}/detail', [HomeController::class, 'detail'])->name('detail');
-Route::get('/alumni/{id}/detail', [AlumniController::class, 'detail'])->name('detailAlumni');
+Route::get('/alumni/{id}/detail', [HomeController::class, 'detail'])->name('detailAlumni');
+// Route::get('/alumni/{id}/detail', [AlumniController::class, 'detail'])->name('detailAlumni');
 
 
 require __DIR__ . '/auth.php';
