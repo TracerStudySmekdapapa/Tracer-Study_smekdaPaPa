@@ -62,7 +62,7 @@ class AlumniController extends Controller
             'profil_picture' => $request->profil
         ]);
 
-        return redirect()->route('dashboard')->with(['message' => 'Data berhasil disimpan']);
+        return redirect()->route('adminDashboard')->with(['message' => 'Data berhasil disimpan']);
     }
     /* End Create Data Pribadi */
 
@@ -103,7 +103,7 @@ class AlumniController extends Controller
             'profil_picture' => $request->profil
         ]);
 
-        return redirect()->route('dashboard')->with(['message' => 'Data berhasil diubah']);
+        return redirect()->route('adminDashboard')->with(['message' => 'Data berhasil diubah']);
     }
     /* End Edit Data Pekerjaan */
 
@@ -124,7 +124,7 @@ class AlumniController extends Controller
             'id_alumni' => $id_alumni->id_alumni
         ]);
 
-        return redirect()->route('dashboard')->with(['message' => 'Data berhasil disimpan']);
+        return redirect()->route('adminDashboard')->with(['message' => 'Data berhasil disimpan']);
     }
     /* End Create Data Pekerjaan */
 
@@ -145,7 +145,7 @@ class AlumniController extends Controller
             'id_alumni' => $id_alumni->id_alumni
         ]);
 
-        return redirect()->route('dashboard')->with(['message' => 'Data berhasil disimpan']);
+        return redirect()->route('adminDashboard')->with(['message' => 'Data berhasil disimpan']);
     }
     /* End Create Data Pekerjaan */
 }
