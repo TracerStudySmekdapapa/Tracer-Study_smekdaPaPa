@@ -49,7 +49,8 @@
                             <tr class="divide-y">
                                 <td>Jurusan</td>
                                 <td class="py-2 px-6">:</td>
-                                <td>{{ $dataPribadi->jurusan }}</td>
+                                <td>{{ $dataPribadi->jurusan === 'RPL' ? 'Rekayasa Perangkat Lunak' : '' }}
+                                </td>
                             </tr>
 
                             <tr class="divide-y">

@@ -34,7 +34,6 @@ class AdminController extends Controller
             ->orderBy('users.name', 'ASC')
             ->filter(request(['search', 'angkatan']))
             ->get();
-
         return view('admin.alumni.index', compact('alumni', 'name', 'angkatan'))->with('i');
     }
 
