@@ -81,8 +81,15 @@
                             </table>
 
                             <div class="w-full bg-red justify-end flex ">
-                                <button class="px-5 py-2 rounded-md bg-yellow-600 text-white font-semibold">Edit</button>
-                                <button class="px-5 py-2 rounded-md bg-green-600 text-white font-semibold">Tambah</button>
+                                <a href="">
+
+                                    <button
+                                        class="px-5 py-2 rounded-md bg-yellow-600 text-white font-semibold">Edit</button>
+                                </a>
+                                <a href="">
+                                    <button
+                                        class="px-5 py-2 rounded-md bg-green-600 text-white font-semibold">Tambah</button>
+                                </a>
                             </div>
                         </div>
                     </div>
