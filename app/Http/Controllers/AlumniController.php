@@ -14,10 +14,16 @@ class AlumniController extends Controller
 {
     public function index()
     {
+        $title = 'Alumni Dashboard';
+        $alumni = Alumni::where('id_user', Auth::user()->id_user)->first();
+        // dd($alumni);
+        $pekerjaan = Pekerjaan::where('id_alumni', $alumni->id_alumni);
+        return view('alumni.dashboard', compact('title', 'pekerjaan', 'alumni'));
     }
 
     /* Start Detail Alumi */
-    public function detail($id){
+    public function detail($id)
+    {
         $title = 'Detail Alumni';
         $dataPribadi = Alumni::where('id_alumni', $id)->first();
         $dataPekerjaan = Pekerjaan::where('id_alumni', $dataPribadi->id_alumni)->get();

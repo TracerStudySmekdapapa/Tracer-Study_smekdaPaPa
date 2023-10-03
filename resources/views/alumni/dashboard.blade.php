@@ -1,90 +1,241 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-
 @extends('template.master')
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+<link href="https://cdn.jsdelivr.net/npm/daisyui@3.8.2/dist/full.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.tailwindcss.com"></script>
 @section('content')
-    <div class="w-[130px] h-[130px] bg-primary blur-[100px] absolute top-20 -left-32 z-0"></div>
-    <div class="w-[130px] h-[130px] bg-primary blur-[100px] absolute top-80 -right-52 z-0"></div>
-    <main>
-        <!--?  navigasi ==========-->
-        @include('template.utils.navbar')
-        <!--!  navigasi ==========-->
+    <!--link font -->
 
-        <section class="grid grid-cols-2">
-            <div class="w-full min-h-[80vh] justify-center items-start pt-5 flex">
-                <div class="flex flex-col space-y-5 justify-center items-center">
-                    <div class="bg-red-500 rounded-full w-[200px] h-[200px]"></div>
-                    <div>
-                        <h1 class="text-[35px] font-semibold pb-4">{{ $dataPribadi->user->name }}</h1>
-                        <p class="text-[15px] -mt-4 mb-5 text-black/50 font-light">
-                            {{ $dataPribadi->bio ?? 'Belum memiliki bio' }}
-                        </p>
-                        <table class="w-full">
-                            <tr class="divide-y">
-                                <td>NISN</td>
-                                <td class="py-2 px-6">:</td>
-                                <td>{{ $dataPribadi->nisn }}</td>
-                            </tr>
-                            <!-- jenis_kelamin -->
-                            <tr class="divide-y">
-                                <td>Jenis Kelamin</td>
-                                <td class="py-2 px-6">:</td>
-                                <td>{{ $dataPribadi->jenis_kelamin }}</td>
-                            </tr>
-                            <!-- agama -->
-                            <tr class="divide-y">
-                                <td>Agama</td>
-                                <td class="py-2 px-6">:</td>
-                                <td>{{ $dataPribadi->agama }}</td>
-                            </tr>
-                            <!-- tgl lair -->
-                            <tr class="divide-y">
-                                <td>Tempat Lahir</td>
-                                <td class="py-2 px-6">:</td>
-                                <td>{{ $dataPribadi->tempat_lahir }}</td>
-                            </tr>
-                            <tr class="divide-y">
-                                <td>Tangal Lahir</td>
-                                <td class="py-2 px-6">:</td>
-                                <td>{{ $dataPribadi->tanggal_lahir ?? '-' }}</td>
-                            </tr>
+    <link rel="stylesheet" href="../style.css" />
 
-                            <tr class="divide-y">
-                                <td>Jurusan</td>
-                                <td class="py-2 px-6">:</td>
-                                <td>{{ $dataPribadi->jurusan }}</td>
-                            </tr>
+    <body class="overflow-x-hidden relative capitalize">
+        <div class="w-[130px] h-[130px] bg-primary blur-[100px] absolute top-20 -left-32 z-0"></div>
+        <div class="w-[130px] h-[130px] bg-primary blur-[100px] absolute top-80 -right-52 z-0"></div>
+        <main>
 
-                            <tr class="divide-y">
-                                <td>Tamatan</td>
-                                <td class="py-2 px-6">:</td>
-                                <td>{{ $dataPribadi->angkatan }}</td>
-                            </tr>
-                        </table>
+
+            @include('template.utils.navbar')
+
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="w-full min-h-[80vh] justify-center items-start pt-5 flex">
+                    <div class="flex flex-col space-y-5 justify-start items-center">
+
+
+                        <!-- data pribadi -->
+                        <div class="rounded-full w-[200px] h-[200px] overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+                                alt="gambar" class="w-full h-full object-cover" />
+                        </div>
+                        <div class="text-[#252525]">
+                            <h1 class="text-[35px] font-semibold pb-4">Syaid Alfarishi</h1>
+                            <p class="text-[13px] -mt-4 mb-5 text-black/50 font-light pr-10 max-w-[350px] min-w-[350px]">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel,
+                                officiis?
+                            </p>
+                            <table class="w-full">
+                                <tr class="divide-y">
+                                    <td>nisn</td>
+                                    <td class="py-2 px-6">:</td>
+                                    <td>234455</td>
+                                </tr>
+                                <!-- jenis_kelamin -->
+                                <tr class="divide-y">
+                                    <td>jenis kelamin</td>
+                                    <td class="py-2 px-6">:</td>
+                                    <td>laki-kaki</td>
+                                </tr>
+                                <!-- agama -->
+                                <tr class="divide-y">
+                                    <td>agama</td>
+                                    <td class="py-2 px-6">:</td>
+                                    <td>islam</td>
+                                </tr>
+                                <!-- tgl lair -->
+                                <tr class="divide-y">
+                                    <td>tempat lahir</td>
+                                    <td class="py-2 px-6">:</td>
+                                    <td>Padang Panjang</td>
+                                </tr>
+                                <tr class="divide-y">
+                                    <td>tangal lahir</td>
+                                    <td class="py-2 px-6">:</td>
+                                    <td>05-11-2005</td>
+                                </tr>
+
+                                <tr class="divide-y">
+                                    <td>jurusan</td>
+                                    <td class="py-2 px-6">:</td>
+                                    <td>rekayasa perangkat lunak</td>
+                                </tr>
+
+                                <tr class="divide-y">
+                                    <td>tamatan</td>
+                                    <td class="py-2 px-6">:</td>
+                                    <td>2024</td>
+                                </tr>
+                            </table>
+
+                            <div class="w-full bg-red justify-end flex ">
+                                <button class="px-5 py-2 rounded-md bg-yellow-600 text-white font-semibold">Edit</button>
+                                <button class="px-5 py-2 rounded-md bg-green-600 text-white font-semibold">Tambah</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="w-full min-h-[80vh] bg-teal-500">
-                <div class="w-full min-h-[40vh] bg-violet-500"></div>
-                <div class="w-full min-h-[40vh] bg-orange-500"></div>
-            </div>
-        </section>
-    </main>
 
-    <!-- ?footer -->
-    @include('template.utils.footer')
-    <!-- !footer -->
+
+
+                <!-- belum di verif dan isi data pribadi -->
+                <div class="w-full min-h-[80vh] pt-20  ">
+
+
+
+                    @if ($pekerjaan->exists())
+                        {{-- jika data pekerjaan != 0 --}}
+
+
+
+                        <!-- data lain -->
+                        <div class="w-full min-h-[80vh] ">
+                            <!-- data pekerjaan -->
+                            <div class="w-full min-h-[45vh] flex justify-stretch px-20">
+                                <ul class="steps steps-vertical">
+                                    <li class="step step-primary">
+                                        <div class="flex justify-start items-start flex-col">
+                                            <h1 class="text-black/90 capitalize text-[20px]">
+                                                programmer
+                                            </h1>
+                                            <p>PT ARG solusi teknologi</p>
+                                        </div>
+                                    </li>
+
+                                    <li class="step step-primary">
+                                        <div class="flex justify-start items-start flex-col">
+                                            <h1 class="text-black/90 capitalize text-[20px]">
+                                                programmer
+                                            </h1>
+                                            <p>CV Mediatama indonesia</p>
+                                        </div>
+                                    </li>
+                                    <li class="step step-primary">
+                                        <div class="flex justify-start items-start flex-col">
+                                            <h1 class="text-black/90 capitalize text-[20px]">
+                                                programmer
+                                            </h1>
+                                            <p>Barac techno indonesia</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <a href="" class="block text-end text-blue-600 underline underline-offset-8">lihat
+                                selengkapnya</a>
+
+                            <!-- data pendidikan-->
+                            <div class="w-full min-h-[50vh] flex justify-stretch px-20">
+                                <ul class="steps steps-vertical">
+                                    <li class="step step-secondary">
+                                        <div class="flex justify-start items-start flex-col">
+                                            <h1 class="text-black/90 capitalize text-[20px]">kuliah</h1>
+                                            <p>Univ padang</p>
+                                        </div>
+                                    </li>
+                                    <!-- end looping herre -->
+
+                                    <li class="step step-secondary">
+                                        <div class="flex justify-start items-start flex-col">
+                                            <h1 class="text-black/90 capitalize text-[20px]">kuliah</h1>
+                                            <p>Univ pekanbaru</p>
+                                        </div>
+                                    </li>
+                                    <li class="step step-secondary">
+                                        <div class="flex justify-start items-start flex-col">
+                                            <h1 class="text-black/90 capitalize text-[20px]">kuliah</h1>
+                                            <p>Univ jawa</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <a href="" class="block text-end text-blue-600 underline underline-offset-8">lihat
+                                selengkapnya</a>
+                        </div>
+                    @else
+                        {{-- jika data pekerjaan == 0 --}}
+                        <ul class="steps steps-vertical px-28">
+                            <li data-content="✓" class="step step-primary">Register</li>
+                            <li data-content="✓" class="step step-primary">login</li>
+
+
+
+
+
+
+                            {{-- jika data pribadi ada --}}
+                            @if ($alumni->exists())
+                                <li data-content="✓" class="step step-primary">
+                                    mengisi data pribadi
+                                </li>
+                            @else
+                                <li data-content="?" class="step step-neutral">
+                                    mengisi data pribadi
+                                </li>
+                            @endif
+
+
+
+
+
+
+
+                            {{-- if user ini tidak punya role has role --}}
+                            @if (Auth::user()->hasRole('Alumni'))
+                                <li data-content="✓" class="step step-primary">
+                                    menunggu verivikasi admin untuk melanjutkan
+                                </li>
+                            @else
+                                <li data-content="?" class="step step-neutral">
+                                    menunggu verivikasi admin untuk melanjutkan
+                                </li>
+                            @endif
+                            {{-- else --}}
+
+
+
+
+
+                            {{--  tidak diubah --}}
+                            <li data-content="?" class="step step-neutral">
+                                mengisi data pekerjaan
+                            </li>
+                            <li data-content="?" class="step step-neutral">
+                                mengisi data pendidikan
+                            </li>
+                            <li data-content="★" class="step step-info">
+                                <p>
+                                    melihat data anda apakah sudah bisa di
+                                    <a href="#" class="text-blue-600 underline underline-offset-4">ditemukan</a>
+                                </p>
+                            </li>
+                        </ul>
+                    @endif
+                </div>
+
+
+
+
+
+
+
+            </section>
+        </main>
+
+        @include('template.utils.footer')
+
+    </body>
+
+    </html>
 @endsection
-
-
-<body>
-</body>
-
-</html>

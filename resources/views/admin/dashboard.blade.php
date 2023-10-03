@@ -1,225 +1,226 @@
-@extends('template.master')
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+@extends('template.admin.master')
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-<link href="https://cdn.jsdelivr.net/npm/daisyui@3.8.2/dist/full.css" rel="stylesheet" type="text/css" />
-<script src="https://cdn.tailwindcss.com"></script>
-@section('content')
-    <!--link font -->
-
-    <link rel="stylesheet" href="../style.css" />
-
-    <body class="overflow-x-hidden relative capitalize">
-        <div class="w-[130px] h-[130px] bg-primary blur-[100px] absolute top-20 -left-32 z-0"></div>
-        <div class="w-[130px] h-[130px] bg-primary blur-[100px] absolute top-80 -right-52 z-0"></div>
-        <main>
+@section('konten')
+    <div class="flex h-screen bg-gray-0 dark:bg-gray-900 " :class="{ 'overflow-hidden': isSideMenuOpen }">
 
 
-            @include('template.utils.navbar')
 
-            <section class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="w-full min-h-[80vh] justify-center items-start pt-5 flex">
-                    <div class="flex flex-col space-y-5 justify-start items-center">
+        {{-- ? sidebar --}}
+        @include('template.admin.sidebar')
+        {{-- end sidebar --}}
 
 
-                        <!-- data pribadi -->
-                        <div class="rounded-full w-[200px] h-[200px] overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
-                                alt="gambar" class="w-full h-full object-cover" />
+        <div class="flex flex-col flex-1 w-full">
+
+            {{-- ? ===================header --}}
+            @include('template.admin.header')
+            {{-- ! =================== end header --}}
+
+
+
+
+            <main class="h-full  " style="padding: 0 0;">
+                <div class="container px-6 mx-auto grid">
+
+                    {{-- ? title page --}}
+                    <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+                        Dashboarddddd
+                    </h2>
+                    {{-- ! end title --}}
+
+
+                    {{-- ? ========== =CTA  --}}
+                    <a class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
+                        href="https://github.com/estevanmaito/windmill-dashboard">
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                </path>
+                            </svg>
+                            <span>Star this project on GitHub</span>
                         </div>
-                        <div class="text-[#252525]">
-                            <h1 class="text-[35px] font-semibold pb-4">Syaid Alfarishi</h1>
-                            <p class="text-[13px] -mt-4 mb-5 text-black/50 font-light pr-10 max-w-[350px] min-w-[350px]">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel,
-                                officiis?
-                            </p>
-                            <table class="w-full">
-                                <tr class="divide-y">
-                                    <td>nisn</td>
-                                    <td class="py-2 px-6">:</td>
-                                    <td>234455</td>
-                                </tr>
-                                <!-- jenis_kelamin -->
-                                <tr class="divide-y">
-                                    <td>jenis kelamin</td>
-                                    <td class="py-2 px-6">:</td>
-                                    <td>laki-kaki</td>
-                                </tr>
-                                <!-- agama -->
-                                <tr class="divide-y">
-                                    <td>agama</td>
-                                    <td class="py-2 px-6">:</td>
-                                    <td>islam</td>
-                                </tr>
-                                <!-- tgl lair -->
-                                <tr class="divide-y">
-                                    <td>tempat lahir</td>
-                                    <td class="py-2 px-6">:</td>
-                                    <td>Padang Panjang</td>
-                                </tr>
-                                <tr class="divide-y">
-                                    <td>tangal lahir</td>
-                                    <td class="py-2 px-6">:</td>
-                                    <td>05-11-2005</td>
-                                </tr>
+                        <span>View more &RightArrow;</span>
+                    </a>
+                    {{-- !end CTA --}}
 
-                                <tr class="divide-y">
-                                    <td>jurusan</td>
-                                    <td class="py-2 px-6">:</td>
-                                    <td>rekayasa perangkat lunak</td>
-                                </tr>
 
-                                <tr class="divide-y">
-                                    <td>tamatan</td>
-                                    <td class="py-2 px-6">:</td>
-                                    <td>2024</td>
-                                </tr>
-                            </table>
+                    {{-- ? ==========Cards total --}}
+                    <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+                        <!-- Card -->
+                        <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                            <div
+                                class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                                    Total clients
+                                </p>
+                                <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                                    6389
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Card -->
+                        <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                            <div
+                                class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                                    Account balance
+                                </p>
+                                <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                                    $ 46,760.89
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Card -->
+                        <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                            <div
+                                class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                                    New sales
+                                </p>
+                                <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                                    376
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Card -->
+                        <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                            <div
+                                class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full dark:text-teal-100 dark:bg-teal-500">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                                    Pending contacts
+                                </p>
+                                <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                                    35
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    {{-- ! ==========end Cards total --}}
 
 
 
-                <!-- belum di verif dan isi data pribadi -->
-                <div class="w-full min-h-[80vh] pt-20  ">
+                    {{-- ? ==========table  --}}
+                    <div class="">
+                        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                                <div class="p-6 text-gray-900">
+                                    @if ($message = Session::get('message'))
+                                        <h1>{{ $message }}</h1>
+                                    @endif
 
-                    {{-- jika data pekerjaan == 0 --}}
-
-
-                    <ul class="steps steps-vertical px-28">
-                        <li data-content="✓" class="step step-primary">Register</li>
-                        <li data-content="✓" class="step step-primary">login</li>
-
-
-
-
-
-
-                        {{-- if = nis == 0 --}}
-                        <li data-content="?" class="step step-neutral">
-                            mengisi data pribadi
-                        </li>
-                        {{-- else --}}
-                        <li data-content="✓" class="step step-primary">
-                            mengisi data pribadi
-                        </li>
-
-
-
-
-
-
-                        {{-- if user ini tidak punya role has role --}}
-                        <li data-content="?" class="step step-neutral">
-                            menunggu verivikasi admin untuk melanjutkan
-                        </li>
-                        {{-- else --}}
-                        <li data-content="✓" class="step step-primary">
-                            menunggu verivikasi admin untuk melanjutkan
-                        </li>
-
-
-
-
-                        {{--  tidak diubah --}}
-                        <li data-content="?" class="step step-neutral">
-                            mengisi data pekerjaan
-                        </li>
-                        <li data-content="?" class="step step-neutral">
-                            mengisi data pendidikan
-                        </li>
-                        <li data-content="★" class="step step-info">
-                            <p>
-                                melihat data anda apakah sudah bisa di
-                                <a href="#" class="text-blue-600 underline underline-offset-4">ditemukan</a>
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-
-
-
-
-
-                {{-- jika data pekerjaan != 0 --}}
-
-
-
-                <!-- data lain -->
-                <div class="w-full min-h-[80vh] ">
-                    <!-- data pekerjaan -->
-                    <div class="w-full min-h-[45vh] flex justify-stretch px-20">
-                        <ul class="steps steps-vertical">
-                            <li class="step step-primary">
-                                <div class="flex justify-start items-start flex-col">
-                                    <h1 class="text-black/90 capitalize text-[20px]">
-                                        programmer
-                                    </h1>
-                                    <p>PT ARG solusi teknologi</p>
+                                    @if (!Auth::user()->hasRole('Admin') && !Auth::user()->hasRole('Alumni'))
+                                        @if (!$cekAlumni)
+                                            <h1>Silahkan tambahkan data alumni</h1>
+                                            <p>Harap tunggu proses untuk memverifikasi data pribadi Anda</p>
+                                            <a href="{{ route('tambahDataPribadi') }}"
+                                                class="px-2 py-1 rounded-full bg-red-700 text-white">Tambah Data
+                                                Pribadi</a>
+                                        @else
+                                            <p>Harap tunggu proses untuk memverifikasi data pribadi Anda</p>
+                                            <a href="{{ route('editDataPribadi', Auth::user()->id_user) }}"
+                                                class="px-2 py-1 rounded-full bg-red-700 text-white">Edit Data
+                                                Pribadi</a>
+                                        @endif
+                                    @endif
+                                    @if (Auth::user()->hasRole('Alumni'))
+                                        <a href="{{ route('editDataPribadi', Auth::user()->id_user) }}"
+                                            class="px-2 py-1 rounded-full bg-red-700 text-white">Edit Data
+                                            Pribadi</a>
+                                        <a href="{{ route('tambahDataPekerjaan') }}"
+                                            class="px-2 py-1 rounded-full bg-red-700 text-white">Tambah Data
+                                            Pekerjaan Alumni</a>
+                                        <a href="{{ route('tambahDataPendidikan') }}"
+                                            class="px-2 py-1 rounded-full bg-red-700 text-white">Tambah Data
+                                            Pendidikan Alumni</a>
+                                    @endif
+                                    <div class="">
+                                        <h1>Data Alumni</h1>
+                                        <div class="">
+                                            <form action="{{ route('adminDashboard') }}" method="get">
+                                                <label for="">Search</label>
+                                                <input type="text" name="name" value="{{ $name }}">
+                                            </form>
+                                        </div>
+                                        <table class="table-fixed w-full text-center">
+                                            <thead>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Nama</th>
+                                                    <th>NISN</th>
+                                                    <th>Jurusan</th>
+                                                    <th>Angkatan</th>
+                                                    <th>Aksi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @forelse ($results ?? $alumni as $data)
+                                                    @php
+                                                        $user = Auth::user();
+                                                        $user->alumni->first();
+                                                    @endphp
+                                                    <tr class="{{ $user->id_user == $data->id_user ? 'bg-gray-200' : '' }}">
+                                                        <td>{{ ++$i }}</td>
+                                                        <td>{{ $data->name }}</td>
+                                                        <td>{{ $data->nisn ?? '-' }}</td>
+                                                        <td>{{ $data->jurusan ?? '-' }}</td>
+                                                        <td>{{ $data->angkatan ?? '-' }}</td>
+                                                        <td>
+                                                            @if (Auth::user()->hasRole('Admin'))
+                                                                <a
+                                                                    href="{{ route('adminDetailAlumni', $data->id_alumni) }}">detail</a>
+                                                            @else
+                                                                <a
+                                                                    href="{{ route('detailAlumni', $data->id_alumni) }}">detail</a>
+                                                            @endif
+                                                        </td>
+                                                    </tr>
+                                                @empty
+                                                    @if ($name)
+                                                        <p class="text-danger small text-center">DATA TIDAK DITEMUKAN!</p>
+                                                    @endif
+                                                @endforelse
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
-                            </li>
-
-                            <li class="step step-primary">
-                                <div class="flex justify-start items-start flex-col">
-                                    <h1 class="text-black/90 capitalize text-[20px]">
-                                        programmer
-                                    </h1>
-                                    <p>CV Mediatama indonesia</p>
-                                </div>
-                            </li>
-                            <li class="step step-primary">
-                                <div class="flex justify-start items-start flex-col">
-                                    <h1 class="text-black/90 capitalize text-[20px]">
-                                        programmer
-                                    </h1>
-                                    <p>Barac techno indonesia</p>
-                                </div>
-                            </li>
-                        </ul>
+                            </div>
+                        </div>
                     </div>
-                    <a href="" class="block text-end text-blue-600 underline underline-offset-8">lihat
-                        selengkapnya</a>
+                    {{-- ! ==========Cards total --}}
 
-                    <!-- data pendidikan-->
-                    <div class="w-full min-h-[50vh] flex justify-stretch px-20">
-                        <ul class="steps steps-vertical">
-                            <li class="step step-secondary">
-                                <div class="flex justify-start items-start flex-col">
-                                    <h1 class="text-black/90 capitalize text-[20px]">kuliah</h1>
-                                    <p>Univ padang</p>
-                                </div>
-                            </li>
-                            <!-- end looping herre -->
 
-                            <li class="step step-secondary">
-                                <div class="flex justify-start items-start flex-col">
-                                    <h1 class="text-black/90 capitalize text-[20px]">kuliah</h1>
-                                    <p>Univ pekanbaru</p>
-                                </div>
-                            </li>
-                            <li class="step step-secondary">
-                                <div class="flex justify-start items-start flex-col">
-                                    <h1 class="text-black/90 capitalize text-[20px]">kuliah</h1>
-                                    <p>Univ jawa</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <a href="" class="block text-end text-blue-600 underline underline-offset-8">lihat
-                        selengkapnya</a>
+
                 </div>
-
-            </section>
-        </main>
-
-        @include('template.utils.footer')
-
-    </body>
-
-    </html>
+            </main>
+        </div>
+    </div>
 @endsection

@@ -45,7 +45,7 @@ Route::middleware('auth')->group(function () {
 
 
     // admin
-    Route::get('/dashboard', [AdminController::class, 'index'])->name('adminDashboard');
+    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('adminDashboard');
     Route::get('/admin/alumni', [AdminController::class, 'dataAlumni'])->name('dataAlumni');
     Route::get('/admin/alumni/{id}/detail', [AdminController::class, 'detailAlumni'])->name('adminDetailAlumni');
     Route::get('/admin/alumni/data-pekerjaan', [AdminController::class, 'dataPekerjaan'])->name('dataPekerjaan');
@@ -56,6 +56,7 @@ Route::middleware('auth')->group(function () {
 
 
     // alumi 
+    Route::get('/alumni/dashboard', [AlumniController::class, 'index'])->name('alumniDashboard');
 
     // data pribadi
     Route::get('/alumni/data-pribadi/tambah', [AlumniController::class, 'tambahDataPribadi'])->name('tambahDataPribadi');
