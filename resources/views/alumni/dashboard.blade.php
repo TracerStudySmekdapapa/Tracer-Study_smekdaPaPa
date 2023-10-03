@@ -32,65 +32,78 @@
                                 alt="gambar" class="w-full h-full object-cover" />
                         </div>
                         <div class="text-[#252525]">
-                            <h1 class="text-[35px] font-semibold pb-4">Syaid Alfarishi</h1>
+                            <h1 class="text-[35px] font-semibold pb-4">{{ $alumni->user->name ?? Auth::user()->name }}</h1>
                             <p class="text-[13px] -mt-4 mb-5 text-black/50 font-light pr-10 max-w-[350px] min-w-[350px]">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel,
                                 officiis?
                             </p>
-                            <table class="w-full">
-                                <tr class="divide-y">
-                                    <td>nisn</td>
-                                    <td class="py-2 px-6">:</td>
-                                    <td>234455</td>
-                                </tr>
-                                <!-- jenis_kelamin -->
-                                <tr class="divide-y">
-                                    <td>jenis kelamin</td>
-                                    <td class="py-2 px-6">:</td>
-                                    <td>laki-kaki</td>
-                                </tr>
-                                <!-- agama -->
-                                <tr class="divide-y">
-                                    <td>agama</td>
-                                    <td class="py-2 px-6">:</td>
-                                    <td>islam</td>
-                                </tr>
-                                <!-- tgl lair -->
-                                <tr class="divide-y">
-                                    <td>tempat lahir</td>
-                                    <td class="py-2 px-6">:</td>
-                                    <td>Padang Panjang</td>
-                                </tr>
-                                <tr class="divide-y">
-                                    <td>tangal lahir</td>
-                                    <td class="py-2 px-6">:</td>
-                                    <td>05-11-2005</td>
-                                </tr>
+                            @if ($alumni)
+                                <table class="w-full">
+                                    <tr class="divide-y">
+                                        <td>nisn</td>
+                                        <td class="py-2 px-6">:</td>
+                                        <td>{{ $alumni->nisn ?? '-' }}</td>
+                                    </tr>
+                                    <!-- jenis_kelamin -->
+                                    <tr class="divide-y">
+                                        <td>jenis kelamin</td>
+                                        <td class="py-2 px-6">:</td>
+                                        <td>{{ $alumni->jenis_kelamin ?? '-' }}</td>
+                                    </tr>
+                                    <!-- agama -->
+                                    <tr class="divide-y">
+                                        <td>agama</td>
+                                        <td class="py-2 px-6">:</td>
+                                        <td>{{ $alumni->agama ?? '-' }}</td>
+                                    </tr>
+                                    <!-- tgl lair -->
+                                    <tr class="divide-y">
+                                        <td>tempat lahir</td>
+                                        <td class="py-2 px-6">:</td>
+                                        <td>{{ $alumni->tempat_lahir ?? '-' }}</td>
+                                    </tr>
+                                    <tr class="divide-y">
+                                        <td>tangal lahir</td>
+                                        <td class="py-2 px-6">:</td>
+                                        <td>{{ $alumni->tanggal_lahir ?? '-' }}</td>
+                                    </tr>
 
-                                <tr class="divide-y">
-                                    <td>jurusan</td>
-                                    <td class="py-2 px-6">:</td>
-                                    <td>rekayasa perangkat lunak</td>
-                                </tr>
+                                    <tr class="divide-y">
+                                        <td>jurusan</td>
+                                        <td class="py-2 px-6">:</td>
+                                        <td>{{ $alumni->jurusan ?? '-' }}</td>
+                                    </tr>
 
-                                <tr class="divide-y">
-                                    <td>tamatan</td>
-                                    <td class="py-2 px-6">:</td>
-                                    <td>2024</td>
-                                </tr>
-                            </table>
+                                    <tr class="divide-y">
+                                        <td>tamatan</td>
+                                        <td class="py-2 px-6">:</td>
+                                        <td>{{ $alumni->angkatan ?? '-' }}</td>
+                                    </tr>
+                                </table>
+                                <div class="w-full bg-red justify-end flex ">
+                                    <a href="">
+                                        <button
+                                            class="px-5 py-2 rounded-md bg-yellow-600 text-white font-semibold">Edit</button>
+                                    </a>
 
-                            <div class="w-full bg-red justify-end flex ">
-                                <a href="">
+                                </div>
+                            @else
+                                <table class="w-full">
+                                    <tr class="divide-y">
+                                        <td>email</td>
+                                        <td class="py-2 px-6">:</td>
+                                        <td>{{ Auth::user()->email }}</td>
+                                    </tr>
 
-                                    <button
-                                        class="px-5 py-2 rounded-md bg-yellow-600 text-white font-semibold">Edit</button>
-                                </a>
-                                <a href="">
-                                    <button
-                                        class="px-5 py-2 rounded-md bg-green-600 text-white font-semibold">Tambah</button>
-                                </a>
-                            </div>
+                                </table>
+                                <div class="w-full bg-red justify-end flex ">
+                                    <a href="">
+                                        <button
+                                            class="px-5 py-2 rounded-md bg-green-600 text-white font-semibold">Tambah</button>
+                                    </a>
+                                </div>
+                            @endif
+
                         </div>
                     </div>
                 </div>
@@ -102,74 +115,75 @@
 
 
 
-                    @if ($pekerjaan->exists())
+                    @if ($alumni)
                         {{-- jika data pekerjaan != 0 --}}
 
 
+                        @if ($pekerjaan->exists())
+                            <!-- data lain -->
+                            <div class="w-full min-h-[80vh] ">
+                                <!-- data pekerjaan -->
+                                <div class="w-full min-h-[45vh] flex justify-stretch px-20">
+                                    <ul class="steps steps-vertical">
+                                        <li class="step step-primary">
+                                            <div class="flex justify-start items-start flex-col">
+                                                <h1 class="text-black/90 capitalize text-[20px]">
+                                                    programmer
+                                                </h1>
+                                                <p>PT ARG solusi teknologi</p>
+                                            </div>
+                                        </li>
 
-                        <!-- data lain -->
-                        <div class="w-full min-h-[80vh] ">
-                            <!-- data pekerjaan -->
-                            <div class="w-full min-h-[45vh] flex justify-stretch px-20">
-                                <ul class="steps steps-vertical">
-                                    <li class="step step-primary">
-                                        <div class="flex justify-start items-start flex-col">
-                                            <h1 class="text-black/90 capitalize text-[20px]">
-                                                programmer
-                                            </h1>
-                                            <p>PT ARG solusi teknologi</p>
-                                        </div>
-                                    </li>
+                                        <li class="step step-primary">
+                                            <div class="flex justify-start items-start flex-col">
+                                                <h1 class="text-black/90 capitalize text-[20px]">
+                                                    programmer
+                                                </h1>
+                                                <p>CV Mediatama indonesia</p>
+                                            </div>
+                                        </li>
+                                        <li class="step step-primary">
+                                            <div class="flex justify-start items-start flex-col">
+                                                <h1 class="text-black/90 capitalize text-[20px]">
+                                                    programmer
+                                                </h1>
+                                                <p>Barac techno indonesia</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <a href="" class="block text-end text-blue-600 underline underline-offset-8">lihat
+                                    selengkapnya</a>
 
-                                    <li class="step step-primary">
-                                        <div class="flex justify-start items-start flex-col">
-                                            <h1 class="text-black/90 capitalize text-[20px]">
-                                                programmer
-                                            </h1>
-                                            <p>CV Mediatama indonesia</p>
-                                        </div>
-                                    </li>
-                                    <li class="step step-primary">
-                                        <div class="flex justify-start items-start flex-col">
-                                            <h1 class="text-black/90 capitalize text-[20px]">
-                                                programmer
-                                            </h1>
-                                            <p>Barac techno indonesia</p>
-                                        </div>
-                                    </li>
-                                </ul>
+                                <!-- data pendidikan-->
+                                <div class="w-full min-h-[50vh] flex justify-stretch px-20">
+                                    <ul class="steps steps-vertical">
+                                        <li class="step step-secondary">
+                                            <div class="flex justify-start items-start flex-col">
+                                                <h1 class="text-black/90 capitalize text-[20px]">kuliah</h1>
+                                                <p>Univ padang</p>
+                                            </div>
+                                        </li>
+                                        <!-- end looping herre -->
+
+                                        <li class="step step-secondary">
+                                            <div class="flex justify-start items-start flex-col">
+                                                <h1 class="text-black/90 capitalize text-[20px]">kuliah</h1>
+                                                <p>Univ pekanbaru</p>
+                                            </div>
+                                        </li>
+                                        <li class="step step-secondary">
+                                            <div class="flex justify-start items-start flex-col">
+                                                <h1 class="text-black/90 capitalize text-[20px]">kuliah</h1>
+                                                <p>Univ jawa</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <a href="" class="block text-end text-blue-600 underline underline-offset-8">lihat
+                                    selengkapnya</a>
                             </div>
-                            <a href="" class="block text-end text-blue-600 underline underline-offset-8">lihat
-                                selengkapnya</a>
-
-                            <!-- data pendidikan-->
-                            <div class="w-full min-h-[50vh] flex justify-stretch px-20">
-                                <ul class="steps steps-vertical">
-                                    <li class="step step-secondary">
-                                        <div class="flex justify-start items-start flex-col">
-                                            <h1 class="text-black/90 capitalize text-[20px]">kuliah</h1>
-                                            <p>Univ padang</p>
-                                        </div>
-                                    </li>
-                                    <!-- end looping herre -->
-
-                                    <li class="step step-secondary">
-                                        <div class="flex justify-start items-start flex-col">
-                                            <h1 class="text-black/90 capitalize text-[20px]">kuliah</h1>
-                                            <p>Univ pekanbaru</p>
-                                        </div>
-                                    </li>
-                                    <li class="step step-secondary">
-                                        <div class="flex justify-start items-start flex-col">
-                                            <h1 class="text-black/90 capitalize text-[20px]">kuliah</h1>
-                                            <p>Univ jawa</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <a href="" class="block text-end text-blue-600 underline underline-offset-8">lihat
-                                selengkapnya</a>
-                        </div>
+                        @endif
                     @else
                         {{-- jika data pekerjaan == 0 --}}
                         <ul class="steps steps-vertical px-28">
@@ -182,7 +196,7 @@
 
 
                             {{-- jika data pribadi ada --}}
-                            @if ($alumni->exists())
+                            @if ($alumni)
                                 <li data-content="✓" class="step step-primary">
                                     mengisi data pribadi
                                 </li>
@@ -210,10 +224,6 @@
                             @endif
                             {{-- else --}}
 
-
-
-
-
                             {{--  tidak diubah --}}
                             <li data-content="?" class="step step-neutral">
                                 mengisi data pekerjaan
@@ -229,14 +239,8 @@
                             </li>
                         </ul>
                     @endif
+
                 </div>
-
-
-
-
-
-
-
             </section>
         </main>
 

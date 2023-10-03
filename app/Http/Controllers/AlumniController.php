@@ -16,9 +16,12 @@ class AlumniController extends Controller
     {
         $title = 'Alumni Dashboard';
         $alumni = Alumni::where('id_user', Auth::user()->id_user)->first();
-        // dd($alumni);
-        $pekerjaan = Pekerjaan::where('id_alumni', $alumni->id_alumni);
-        return view('alumni.dashboard', compact('title', 'pekerjaan', 'alumni'));
+        if ($alumni) {
+            $pekerjaan = Pekerjaan::where('id_alumni', $alumni->id_alumni);
+            return view('alumni.dashboard', compact('title', 'pekerjaan', 'alumni'));
+        } else {
+            return view('alumni.dashboard', compact('title', 'alumni'));
+        }       
     }
 
     /* Start Detail Alumi */

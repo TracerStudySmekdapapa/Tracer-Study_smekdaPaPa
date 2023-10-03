@@ -10,13 +10,13 @@ class AuthenticateController extends Controller
     public function index()
     {
         if (Auth::user()->hasRole('Admin')) {
-            return redirect()->to('/dashboard');
+            return redirect()->to('/adminDashboard');
         }
 
         if (Auth::user()->hasRole('Alumni')) {
-            return redirect()->to('/dashboard')->with(['message' => 'Selamat datang alumni']);
+            return redirect()->to('/alumni/dashboard')->with(['message' => 'Selamat datang alumni']);
         }
 
-        return redirect()->to('/dashboard')->with(['message' => 'Mohon Tunggu Persetujuan admin']);
+        return redirect()->to('/alumni/dashboard')->with(['message' => 'Mohon Tunggu Persetujuan admin']);
     }
 }
