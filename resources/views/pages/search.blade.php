@@ -14,10 +14,10 @@
                 <form action="{{ route('search') }}" method="get" id="form_search">
                     <input id="input_search"
                         class="block w-[100%] mt-1 text-sm border border-gray-500 pl-5 pr-12 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                        placeholder="cari berdasarkan nama" type="text" required name="search" />
+                        placeholder="cari berdasarkan nama" type="text" required name="search"
+                        value="{{ $search }}" />
                     <button type="submit" class="#submit_btn">
                         <img src="{{ asset('assets/cari.svg') }}" alt="cari" class="absolute top-0 right-0 p-2" />
-                        {{-- <img src="../public/assets/cari.svg" alt="cari" class="absolute top-0 right-0 p-2" /> --}}
                     </button>
                 </form>
             </div>
@@ -27,20 +27,20 @@
             <thead class="bg-primary/5 rounded-lg">
                 <tr class="relative h-[50px] px-[50px]">
                     <th
-                        class="before:content-[url('../public/assets/icon.svg')] before:absolute before:left-3 before:w-8 pl-10">
-                        profile
+                        class="before:content-[url('{{ asset('assets/icon.svg') }}')] before:absolute before:left-3 before:w-8 pl-10">
+                        Profile
                     </th>
-                    <th>nisn</th>
-                    <th>jurusan</th>
-                    <th>jenis_kelamin</th>
-                    <th>angkatan</th>
-                    <th>lainnya</th>
+                    <th>NISN</th>
+                    <th>Jurusan</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Angkatan</th>
+                    <th>Lainnya</th>
                 </tr>
             </thead>
 
             <tbody class="text-center divide-x">
                 @if ($search)
-                    @foreach ($alumni as $item)
+                    @forelse ($alumni as $item)
                         <!-- looping here -->
                         <tr class="divide-x bg-gray-50">
                             <td class="flex items-center space-x-4 justify-center mx-auto py-5">
@@ -107,10 +107,15 @@
                                 </div>
                             </td>
                         </tr>
-                    @endforeach
+                    @empty
+
+                        <tr class="bg-gray-50">
+                            <td colspan="6">TIDAK ADA DATA YANG DITEMUKAN</td>
+                        </tr>
+                    @endforelse
                 @else
                     <tr class="bg-gray-50">
-                        <td colspan="6">TIDAK ADA DATA YANG DITEMUKAN</td>
+                        <td colspan="6">SILAHKAN CARI NAMA ATAU NISN ALUMNI</td>
                     </tr>
                 @endif
 

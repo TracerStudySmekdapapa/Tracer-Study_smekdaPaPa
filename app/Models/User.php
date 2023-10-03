@@ -25,6 +25,15 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function getFirstNameAttribute()
+    {
+        $fullName = $this->attributes['name'];
+        $nameParts = explode(' ', $fullName);
+
+        return $nameParts[0];
+    }
+
+
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? false, function ($query, $search) {
