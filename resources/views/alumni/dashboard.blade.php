@@ -16,13 +16,13 @@
     <body class="overflow-x-hidden relative capitalize">
         <div class="w-[130px] h-[130px] bg-primary blur-[100px] absolute top-20 -left-32 z-0"></div>
         <div class="w-[130px] h-[130px] bg-primary blur-[100px] absolute top-80 -right-52 z-0"></div>
-        <main>
+        <main class="pb-[70px] md:pb-[120px] lg:pb-[0px]">
 
 
             @include('template.utils.navbar')
 
             <section class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="w-full min-h-[80vh] justify-center items-start pt-5 flex">
+                <div class="w-full min-h-[500px]  justify-center items-start pt-5 flex">
                     <div class="flex flex-col space-y-5 justify-start items-center">
 
 
@@ -32,7 +32,8 @@
                                 alt="gambar" class="w-full h-full object-cover" />
                         </div>
                         <div class="text-[#252525]">
-                            <h1 class="text-[35px] font-semibold pb-4">{{ $alumni->user->name ?? Auth::user()->name }}</h1>
+                            <h1 class="text-[35px] font-semibold pb-4">Syaid Alfarishi</h1>
+                            {{-- <h1 class="text-[35px] font-semibold pb-4">{{ $alumni->user->name ?? Auth::user()->name }}</h1> --}}
                             <p class="text-[13px] -mt-4 mb-5 text-black/50 font-light pr-10 max-w-[350px] min-w-[350px]">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel,
                                 officiis?
@@ -111,19 +112,17 @@
 
 
                 <!-- belum di verif dan isi data pribadi -->
-                <div class="w-full min-h-[80vh] pt-20  ">
+                <div class="w-full min-h-[400px] max-h-[500px]">
 
 
 
+                    {{-- jika alumni ada data pribadi --}}
                     @if ($alumni)
-                        {{-- jika data pekerjaan != 0 --}}
-
-
                         @if ($pekerjaan->exists())
                             <!-- data lain -->
-                            <div class="w-full min-h-[80vh] ">
+                            <div class="w-full min-h-[600px] ">
                                 <!-- data pekerjaan -->
-                                <div class="w-full min-h-[45vh] flex justify-stretch px-20">
+                                <div class="w-full min-h-[300px] flex justify-stretch px-20">
                                     <ul class="steps steps-vertical">
                                         <li class="step step-primary">
                                             <div class="flex justify-start items-start flex-col">
@@ -155,8 +154,9 @@
                                 <a href="" class="block text-end text-blue-600 underline underline-offset-8">lihat
                                     selengkapnya</a>
 
+                                    
                                 <!-- data pendidikan-->
-                                <div class="w-full min-h-[50vh] flex justify-stretch px-20">
+                                <div class="w-full min-h-[300px] flex justify-stretch px-20">
                                     <ul class="steps steps-vertical">
                                         <li class="step step-secondary">
                                             <div class="flex justify-start items-start flex-col">
@@ -183,10 +183,58 @@
                                 <a href="" class="block text-end text-blue-600 underline underline-offset-8">lihat
                                     selengkapnya</a>
                             </div>
+                        @else
+                            <ul class="steps steps-vertical px-28 ">
+                                <li data-content="✓" class="step step-primary">Register</li>
+                                <li data-content="✓" class="step step-primary">login</li>
+
+
+
+
+
+
+                                {{-- jika data pribadi ada --}}
+                                <li data-content="✓" class="step step-primary">
+                                    mengisi data pribadi
+                                </li>
+
+
+
+
+
+
+
+
+                                {{-- if user ini tidak punya role has role --}}
+                                @if (Auth::user()->hasRole('Alumni'))
+                                    <li data-content="✓" class="step step-primary">
+                                        menunggu verivikasi admin untuk melanjutkan
+                                    </li>
+                                @else
+                                    <li data-content="?" class="step step-neutral">
+                                        menunggu verivikasi admin untuk melanjutkan
+                                    </li>
+                                @endif
+                                {{-- else --}}
+
+                                {{--  tidak diubah --}}
+                                <li data-content="?" class="step step-neutral">
+                                    mengisi data pekerjaan
+                                </li>
+                                <li data-content="?" class="step step-neutral">
+                                    mengisi data pendidikan
+                                </li>
+                                <li data-content="★" class="step step-info">
+                                    <p>
+                                        melihat data anda apakah sudah bisa di
+                                        <a href="#" class="text-blue-600 underline underline-offset-4">ditemukan</a>
+                                    </p>
+                                </li>
+                            </ul>
                         @endif
                     @else
                         {{-- jika data pekerjaan == 0 --}}
-                        <ul class="steps steps-vertical px-28">
+                        <ul class="steps steps-vertical px-28 ">
                             <li data-content="✓" class="step step-primary">Register</li>
                             <li data-content="✓" class="step step-primary">login</li>
 
@@ -196,15 +244,9 @@
 
 
                             {{-- jika data pribadi ada --}}
-                            @if ($alumni)
-                                <li data-content="✓" class="step step-primary">
-                                    mengisi data pribadi
-                                </li>
-                            @else
-                                <li data-content="?" class="step step-neutral">
-                                    mengisi data pribadi
-                                </li>
-                            @endif
+                            <li data-content="?" class="step step-neutral">
+                                mengisi data pribadi
+                            </li>
 
 
 
@@ -213,15 +255,10 @@
 
 
                             {{-- if user ini tidak punya role has role --}}
-                            @if (Auth::user()->hasRole('Alumni'))
-                                <li data-content="✓" class="step step-primary">
-                                    menunggu verivikasi admin untuk melanjutkan
-                                </li>
-                            @else
-                                <li data-content="?" class="step step-neutral">
-                                    menunggu verivikasi admin untuk melanjutkan
-                                </li>
-                            @endif
+
+                            <li data-content="?" class="step step-neutral">
+                                menunggu verivikasi admin untuk melanjutkan
+                            </li>
                             {{-- else --}}
 
                             {{--  tidak diubah --}}

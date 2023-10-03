@@ -10,7 +10,7 @@ class AuthenticateController extends Controller
     public function index()
     {
         if (Auth::user()->hasRole('Admin')) {
-            return redirect()->to('/adminDashboard');
+            return redirect()->to('/admin/dashboard');
         }
 
         if (Auth::user()->hasRole('Alumni')) {
