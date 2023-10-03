@@ -13,4 +13,7 @@ export default {
     },
   },
   plugins: [],
+  daisyui: {
+    themes: [],
+  },
 };
