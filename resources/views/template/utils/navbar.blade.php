@@ -1,25 +1,26 @@
 <nav class="relative z-50 h-24 select-none" x-data="{ showMenu: false }">
     <div class="navigation__main">
         <div class="navigation__main__title">
-            <a href="#_" class="navigation__title__link"> Tracer Study </a>
+            <a href="{{ route('/') }}" class="navigation__title__link"> Tracer Study </a>
         </div>
 
         <div class="top-0 left-0 items-start hidden w-full h-full p-4 text-sm bg-gray-900 bg-opacity-50 md:items-center md:w-3/4 md:absolute lg:text-base md:bg-transparent md:p-0 md:relative md:flex"
             :class="{ 'flex fixed': showMenu, 'hidden': !showMenu }">
             <div class="container__mobile__menu">
-                <a href="#_" class="header__nav__mobile">
+                <a href="{{ route('/') }}" class="header__nav__mobile">
                     <h1 class="navigation__title__link">Tracer Study</h1>
                 </a>
 
                 <!-- ?navigasi menu ===========================-->
                 <div class="navigation__content">
-                    <a href="#_" class="ml-6 text-black navigation__content__link md:ml-0 lg:mx-3">Beranda</a>
-                    <a href="#_"
+                    <a href="{{ route('/') }}#home"
+                        class="ml-6 text-black navigation__content__link md:ml-0 lg:mx-3">Beranda</a>
+                    <a href="{{ route('/') }}#about"
                         class="ml-6 text-gray-700 navigation__content__link hover:text-black lg:mx-3">Tentang
                     </a>
-                    <a href="#_"
+                    <a href="{{ route('/') }}#tutorial"
                         class="ml-6 text-gray-700 navigation__content__link md:w-auto md:px-0 md:mx-2 hover:text-black lg:mx-3">Tutorial</a>
-                    <a href="#_"
+                    <a href="{{ route('/') }}#kontak"
                         class="ml-6 text-gray-700 navigation__content__link md:w-auto md:px-0 md:mx-2 hover:text-black lg:mx-3">Kontak</a>
                     <a href="{{ route('search') }}" class="navigation___search">
                         <!-- search -->

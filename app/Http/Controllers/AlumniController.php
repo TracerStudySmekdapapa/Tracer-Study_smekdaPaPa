@@ -21,7 +21,7 @@ class AlumniController extends Controller
             return view('alumni.dashboard', compact('title', 'pekerjaan', 'alumni'));
         } else {
             return view('alumni.dashboard', compact('title', 'alumni'));
-        }       
+        }
     }
 
     /* Start Detail Alumi */
@@ -38,7 +38,8 @@ class AlumniController extends Controller
     /* Start Create Data Pribadi */
     public function tambahDataPribadi()
     {
-        return view('alumni.datapribadi.create');
+        $title = 'Tambah Data Pribadi';
+        return view('alumni.datapribadi.create', compact('title'));
     }
 
     public function simpanDataPribadi(Request $request, $id)
@@ -60,10 +61,10 @@ class AlumniController extends Controller
             'no_telp' => $request->no_telp,
             'tempat_lahir' => $request->tmp_lahir,
             'tanggal_lahir' => $request->tgl_lahir,
-            'agama' => $request->agm,
-            'jenis_kelamin' => $request->kelamin,
-            'jurusan' => $request->jrsn,
-            'angkatan' => $request->angkatan,
+            'agama' => $request->agama,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'jurusan' => $request->jurusan,
+            // 'angkatan' => $request->angkatan,
             'id_user' => $id
         ]);
 
@@ -71,7 +72,7 @@ class AlumniController extends Controller
             'profil_picture' => $request->profil
         ]);
 
-        return redirect()->route('adminDashboard')->with(['message' => 'Data berhasil disimpan']);
+        return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil disimpan']);
     }
     /* End Create Data Pribadi */
 

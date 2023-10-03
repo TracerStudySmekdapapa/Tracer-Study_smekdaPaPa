@@ -82,11 +82,10 @@
                                     </tr>
                                 </table>
                                 <div class="w-full bg-red justify-end flex ">
-                                    <a href="">
+                                    <a href="#_">
                                         <button
                                             class="px-5 py-2 rounded-md bg-yellow-600 text-white font-semibold">Edit</button>
                                     </a>
-
                                 </div>
                             @else
                                 <table class="w-full">
@@ -98,7 +97,7 @@
 
                                 </table>
                                 <div class="w-full bg-red justify-end flex ">
-                                    <a href="">
+                                    <a href="{{ route('tambahDataPribadi') }}">
                                         <button
                                             class="px-5 py-2 rounded-md bg-green-600 text-white font-semibold">Tambah</button>
                                     </a>
@@ -154,7 +153,7 @@
                                 <a href="" class="block text-end text-blue-600 underline underline-offset-8">lihat
                                     selengkapnya</a>
 
-                                    
+
                                 <!-- data pendidikan-->
                                 <div class="w-full min-h-[300px] flex justify-stretch px-20">
                                     <ul class="steps steps-vertical">
