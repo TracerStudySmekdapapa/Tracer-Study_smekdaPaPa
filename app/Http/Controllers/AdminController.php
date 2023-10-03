@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Auth;
 class AdminController extends Controller
 {
 
-    public function index(Request $request){
+    public function index(Request $request)
+    {
         $name = $request->name;
         $alumni = User::whereHas('roles', function ($query) {
             $query->where('name', 'Alumni');
@@ -20,8 +21,9 @@ class AdminController extends Controller
             ->orderBy('users.name', 'ASC')
             ->filter(request(['search']))
             ->get();
+        $title = 'dashbord alumni';
         $cekAlumni = Alumni::where('id_user', Auth::user()->id_user)->exists();
-        return view('admin.dashboard', compact('alumni', 'name', 'cekAlumni'))->with('i');
+        return view('admin.dashboard', compact('alumni', 'name', 'cekAlumni', 'title'))->with('i');
     }
 
     public function dataAlumni(Request $request)

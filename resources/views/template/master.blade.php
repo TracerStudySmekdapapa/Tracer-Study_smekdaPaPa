@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html :class="{ 'theme-dark': dark }" x-data="data()" class="light" lang="en">
+<html x-data="data()" class="light" lang="en">
 
 <head>
     <meta charset="UTF-8" />
@@ -10,7 +10,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
-<body class="overflow-x-hidden relative">
+<body class="overflow-x-hidden relative ">
     @yield('content')
 </body>
 
