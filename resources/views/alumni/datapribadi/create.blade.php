@@ -74,12 +74,12 @@
                             <select name="agama"
                                 class="block w-full mt-1 text-sm border border-gray-600 px-10 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                                 <option disabled selected>agama</option>
-                                <option value="islam">Islam</option>
-                                <option value="kristen">Kristen</option>
-                                <option value="katolik">Katolik</option>
-                                <option value="hindu">Hindu</option>
-                                <option value="buddha">buddha</option>
-                                <option value="konghucu">konghucu</option>
+                                <option value="Islam">Islam</option>
+                                <option value="Kristen">Kristen</option>
+                                <option value="Katolik">Katolik</option>
+                                <option value="Hindu">Hindu</option>
+                                <option value="Buddha">buddha</option>
+                                <option value="Konghucu">konghucu</option>
                             </select>
 
                             <!-- error -->
@@ -141,11 +141,24 @@
                     <select name="jurusan"
                         class="block w-full mt-1 text-sm border border-gray-600 px-10 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         <option readonly>Jurusan</option>
-                        <option value="rpl">RPL</option>
-                        <option value="mm">MM</option>
-                        <option value="tkj">TKJ</option>
-                        <option value="pspt">PSPT</option>
+                        <option value="RPL">RPL</option>
+                        <option value="MM">MM</option>
+                        <option value="TKJ">TKJ</option>
+                        <option value="PSPT">PSPT</option>
                     </select>
+
+                    <div class="mt-4 text-sm">
+                        <span class="text-gray-700 dark:text-gray-400">
+                            Tamatan
+                        </span>
+                        <select name="angkatan" id=""
+                            class="block w-full mt-1 text-sm border border-gray-600 px-10 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+                            @for ($tahun = 2005; $tahun <= Carbon\Carbon::now()->year - 1; $tahun++)
+                                <option value="{{ $tahun }}">
+                                    {{ $tahun }}</option>
+                            @endfor
+                        </select>
+                    </div>
 
                     <!-- submit  -->
                     <button type="submit"

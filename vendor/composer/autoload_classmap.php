@@ -21,6 +21,7 @@ return array(
     'App\\Http\\Controllers\\Auth\\VerifyEmailController' => $baseDir . '/app/Http/Controllers/Auth/VerifyEmailController.php',
     'App\\Http\\Controllers\\AuthenticateController' => $baseDir . '/app/Http/Controllers/AuthenticateController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
+    'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\PekerjaanController' => $baseDir . '/app/Http/Controllers/PekerjaanController.php',
     'App\\Http\\Controllers\\PendidikanController' => $baseDir . '/app/Http/Controllers/PendidikanController.php',
     'App\\Http\\Controllers\\ProfileController' => $baseDir . '/app/Http/Controllers/ProfileController.php',

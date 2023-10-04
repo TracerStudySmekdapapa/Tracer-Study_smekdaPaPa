@@ -576,6 +576,7 @@ class ComposerStaticInit298f5e249570765a4b559e3b67052271
         'App\\Http\\Controllers\\Auth\\VerifyEmailController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerifyEmailController.php',
         'App\\Http\\Controllers\\AuthenticateController' => __DIR__ . '/../..' . '/app/Http/Controllers/AuthenticateController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\PekerjaanController' => __DIR__ . '/../..' . '/app/Http/Controllers/PekerjaanController.php',
         'App\\Http\\Controllers\\PendidikanController' => __DIR__ . '/../..' . '/app/Http/Controllers/PendidikanController.php',
         'App\\Http\\Controllers\\ProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProfileController.php',

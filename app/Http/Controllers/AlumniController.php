@@ -7,6 +7,7 @@ use App\Models\Alumni;
 use App\Models\Pekerjaan;
 use App\Models\Pendidikan;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -79,8 +80,9 @@ class AlumniController extends Controller
     /* Start Edit Data Pekerjaan */
     public function editDataPribadi($id)
     {
+        $title = 'Edit Data Pribadi';
         $data = Alumni::where('id_user', $id)->first();
-        return view('alumni.datapribadi.edit', compact('data'));
+        return view('alumni.datapribadi.edit', compact('data', 'title'));
     }
 
     public function updateDataPribadi(Request $request, $id)
@@ -102,9 +104,9 @@ class AlumniController extends Controller
             'no_telp' => $request->no_telp,
             'tempat_lahir' => $request->tmp_lahir,
             'tanggal_lahir' => $request->tgl_lahir,
-            'agama' => $request->agm,
-            'jenis_kelamin' => $request->kelamin,
-            'jurusan' => $request->jrsn,
+            'agama' => $request->agama,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'jurusan' => $request->jurusan,
             'angkatan' => $request->angkatan,
             'id_user' => $id
         ]);
@@ -113,7 +115,7 @@ class AlumniController extends Controller
             'profil_picture' => $request->profil
         ]);
 
-        return redirect()->route('adminDashboard')->with(['message' => 'Data berhasil diubah']);
+        return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil diubah']);
     }
     /* End Edit Data Pekerjaan */
 

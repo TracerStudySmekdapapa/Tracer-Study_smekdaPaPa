@@ -66,7 +66,11 @@
                                     <tr class="divide-y">
                                         <td>tangal lahir</td>
                                         <td class="py-2 px-6">:</td>
-                                        <td>{{ $alumni->tanggal_lahir ?? '-' }}</td>
+                                        {{-- @php
+                                            $date = ;
+                                        @endphp --}}
+                                        <td>{{ Carbon\Carbon::parse($alumni->tanggal_lahir)->isoFormat('dddd, D MMMM Y') }}
+                                        </td>
                                     </tr>
 
                                     <tr class="divide-y">
@@ -82,7 +86,7 @@
                                     </tr>
                                 </table>
                                 <div class="w-full bg-red justify-end flex ">
-                                    <a href="#_">
+                                    <a href="{{ route('editDataPribadi', $alumni->id_user) }}">
                                         <button
                                             class="px-5 py-2 rounded-md bg-yellow-600 text-white font-semibold">Edit</button>
                                     </a>
@@ -226,7 +230,8 @@
                                 <li data-content="★" class="step step-info">
                                     <p>
                                         melihat data anda apakah sudah bisa di
-                                        <a href="#" class="text-blue-600 underline underline-offset-4">ditemukan</a>
+                                        <a href="{{ route('search') }}"
+                                            class="text-blue-600 underline underline-offset-4">ditemukan</a>
                                     </p>
                                 </li>
                             </ul>
@@ -270,7 +275,8 @@
                             <li data-content="★" class="step step-info">
                                 <p>
                                     melihat data anda apakah sudah bisa di
-                                    <a href="#" class="text-blue-600 underline underline-offset-4">ditemukan</a>
+                                    <a href="{{ route('search') }}"
+                                        class="text-blue-600 underline underline-offset-4">ditemukan</a>
                                 </p>
                             </li>
                         </ul>

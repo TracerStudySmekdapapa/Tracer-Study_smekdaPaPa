@@ -1,104 +1,182 @@
-
- 
-    @extends('template.admin.master')
-
-    @section('konten')
-        <div class="flex h-screen bg-gray-0 dark:bg-gray-900 " :class="{ 'overflow-hidden': isSideMenuOpen }">
-    
-    
-    
-            {{-- ? sidebar --}}
-            @include('template.admin.sidebar')
-            {{-- end sidebar --}}
-    
-    
-            <div class="flex flex-col flex-1 w-full">
-    
-                {{-- ? ===================header --}}
-                @include('template.admin.header')
-                {{-- ! =================== end header --}}
-    
-    
-    
-    
-                <main class="h-full  " style="padding: 0 0;">
-                    <div class="container px-6 mx-auto grid">
-    
-                        {{-- ? title page --}}
-                        <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-                            Dashboard
-                        </h2>
-                        {{-- ! end title --}}
-    
-                        {{-- ? ==========table  --}}
-                      
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    <form action="{{ route('updateDataPribadi', Auth::user()->id_user) }}" method="POST">
-                        @csrf
-                        @method('PATCH')
-                        <div class="">
-                            <label for="">Nisn</label>
-                            <input type="text" name="nisn" value="{{ old('nisn', $data->nisn) }}">
-                        </div>
-                        <div class="">
-                            <label for="">No Telp</label>
-                            <input type="text" name="no_telp" value="{{ $data->no_telp }}">
-                        </div>
-                        <div class="">
-                            <label for="">Tempat Lahir</label>
-                            <input type="text" name="tmp_lahir" value="{{ $data->tempat_lahir }}">
-                        </div>
-                        <div class="">
-                            <label for="">Tanggal Lahir</label>
-                            <input type="date" name="tgl_lahir" value="{{ $data->tanggal_lahir }}">
-                        </div>
-                        <div class="">
-                            <label for="">Agama</label>
-                            <input type="text" name="agm" value="{{ $data->agama }}">
-                        </div>
-                        <div class="">
-                            <label for="">Laki-Laki</label>
-                            <input type="radio" value="Laki-Laki" name="kelamin"
-                                {{ $data->jenis_kelamin == 'Laki-Laki' ? 'checked' : '' }}>
-                            <label for="">Perempuan</label>
-                            <input type="radio" value="Perempuan" name="kelamin"
-                                {{ $data->jenis_kelamin == 'Perempuan' ? 'checked' : '' }}>
-                        </div>
-                        <div class="">
-                            <label for="">Jurusan</label>
-                            <input type="text" name="jrsn" value="{{ $data->jurusan }}">
-                        </div>
-                        <div class="">
-                            <label for="">Angkatan</label>
-                            <select name="angkatan" id="">
-                                @for ($tahun = 2000; $tahun <= 2050; $tahun++)
-                                    <option name="angkatan" value="{{ $tahun }}"
-                                        {{ $data->angkatan == $tahun ? 'selected' : '' }}>{{ $tahun }}</option>
-                                @endfor
-                            </select>
-                        </div>
-                        <div class="">
-                            <label for="">Foto Profi</label>
-                            <input type="file" name="profil">
-                        </div>
-
-                        <button type="submit">Simpan</button>
-                    </form>
-                </div>
+@extends('template.master')
+@section('content')
+    <main>
+        <!--?  navigasi ==========-->
+        <nav class="relative z-50 h-24 select-none grid md:grid-cols-2 items-start">
+            <div class="navigation__main__title">
+                <a href="#_" class="navigation__title__link"> Tracer Study </a>
             </div>
-        </div>
+
+            <!-- ?navigasi menu ===========================-->
+            <div class="grid grid-cols-3 gap-x-10 mt-5 md:mt-2">
+                <a href="#" class="flex items-center space-x-3">
+                    <div
+                        class="min-w-[24px] min-h-[24px] bg-primary rounded-full grid place-items-center text-white font-semibold">
+                        1
+                    </div>
+                    <h1 class="link_active">Data Pribadi</h1>
+                </a>
+
+                <a href="#" class="flex items-center space-x-3">
+                    <div
+                        class="min-w-[24px] min-h-[24px] bg-gray-400 rounded-full grid place-items-center text-white font-semibold">
+                        2
+                    </div>
+                    <h1>Data Pribadi</h1>
+                </a>
+
+                <a href="#" class="flex items-center space-x-3">
+                    <div
+                        class="min-w-[24px] min-h-[24px] bg-gray-400 rounded-full grid place-items-center text-white font-semibold">
+                        3
+                    </div>
+                    <h1>Data Pribadi</h1>
+                </a>
+            </div>
+            <!-- !navigasi menu ===========================-->
+        </nav>
+        <!--!  navigasi ==========-->
+    </main>
+    <div class="relative mt-16 md:-mt-3">
+        <hr />
+        <hr class="text-primary w-[33%] bg-primary h-[3px] absolute top-0 left-0" />
     </div>
 
-                        {{-- ! ==========Cards total --}}
-    
-    
-    
-                    </div>
-                </main>
+    <section class="mt-10 mx-10 lg:min-h-[55vh]">
+        <div class="flex justify-between items-start flex-col md:flex-row">
+            <div class="my-5 md:my-0">
+                <h1 class="text-[40px] lg:text-[45px] font-bold">Personal Info</h1>
+                <p class="md:max-w-[60%]">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor
+                    quaerat nulla debitis nisi ullam laudantium ipsam rem eveniet facere
+                    incidunt?
+                </p>
+
+                <a href="#" class="text-blue-500 underline-offset-8 underline mt-3 hidden md:block">kembali ke
+                    Dashboard</a>
             </div>
+            <form action="{{ route('updateDataPribadi', Auth::user()->id_user) }}" method="post" class="w-full">
+                @csrf
+                @method('PATCH')
+                <div class="flex flex-col space-y-5 w-full">
+                    <!-- nisn -->
+                    <label class="block text-sm">
+                        <span class="text-gray-700 dark:text-gray-400">nisn</span>
+                        <input type="number" name="nisn" value="{{ $data->nisn }}"
+                            class="block w-full mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                            placeholder="012345" />
+                    </label>
+
+                    <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <!--  agama  -->
+                        <label class="block text-sm">
+                            <span class="text-gray-700 dark:text-gray-400">agama</span>
+
+                            <select name="agama"
+                                class="block w-full mt-1 text-sm border border-gray-600 px-10 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+                                <option disabled selected>agama</option>
+                                <option value="Islam" {{ $data->agama == 'Islam' ? 'selected' : '' }}>Islam</option>
+                                <option value="Kristen" {{ $data->agama == 'Kristen' ? 'selected' : '' }}>Kristen</option>
+                                <option value="Katolik" {{ $data->agama == 'Katolik' ? 'selected' : '' }}>Katolik</option>
+                                <option value="Hindu" {{ $data->agama == 'Hindu' ? 'selected' : '' }}>Hindu</option>
+                                <option value="Buddha" {{ $data->agama == 'Buddha' ? 'selected' : '' }}>buddha</option>
+                                <option value="Konghucu" {{ $data->agama == 'Konghucu' ? 'selected' : '' }}>konghucu
+                                </option>
+                            </select>
+
+                            <!-- error -->
+                            <!-- <p class="text-rose-500 mt-1">invalid message</p> -->
+                            <!-- error -->
+                        </label>
+
+                        <!--  tempat tgl lahit  -->
+                        <label class="block text-sm">
+                            <span class="text-gray-700 dark:text-gray-400">No Telp</span>
+                            <input type="tel" name="no_telp" value="{{ $data->no_telp }}"
+                                class="block w-full mt-1 text-sm border border-gray-600 px-6 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                placeholder="+00 xxx xxx xxx" />
+
+                            <!-- error -->
+                            <!-- <p class="text-rose-500 mt-1">invalid message</p> -->
+                            <!-- error -->
+                        </label>
+                    </div>
+
+                    <!--  tempat tgl lahit  -->
+                    <label class="block text-sm">
+                        <span class="text-gray-700 dark:text-gray-400">Tempat Lahir</span>
+                        <input name="tmp_lahir" value="{{ $data->tempat_lahir }}"
+                            class="block w-full mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                            placeholder="Padang Panjang " />
+                    </label>
+                    <!--  tempat tgl lahit  -->
+                    <label class="block text-sm">
+                        <span class="text-gray-700 dark:text-gray-400">Tanggal Lahir</span>
+                        <input name="tgl_lahir" type="date" value="{{ $data->tanggal_lahir }}"
+                            class="block w-full mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
+
+                        <!-- error -->
+                        <p class="text-rose-500 mt-1">invalid message</p>
+                        <!-- error -->
+                    </label>
+
+                    <div class="mt-4 text-sm">
+                        <span class="text-gray-700 dark:text-gray-400">
+                            Jenis Kelamin
+                        </span>
+                        <div class="mt-2">
+                            <label class="inline-flex items-center text-gray-600 dark:text-gray-400">
+                                <input type="radio"
+                                    class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                                    name="jenis_kelamin" value="Laki-Laki"
+                                    {{ $data->jenis_kelamin == 'Laki-Laki' ? 'checked' : '' }} />
+                                <span class="ml-2">laki laki</span>
+                            </label>
+                            <label class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400">
+                                <input type="radio"
+                                    class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                                    name="jenis_kelamin" value="Perempuan"
+                                    {{ $data->jenis_kelamin == 'Perempuan' ? 'checked' : '' }} />
+                                <span class="ml-2">perempuan</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 text-sm">
+                        <span class="text-gray-700 dark:text-gray-400">
+                            Jurusan
+                        </span>
+                        <select name="jurusan"
+                            class="block w-full mt-1 text-sm border border-gray-600 px-10 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+                            <option readonly>Jurusan</option>
+                            <option value="RPL" {{ $data->jurusan == 'RPL' ? 'selected' : '' }}>RPL</option>
+                            <option value="MM" {{ $data->jurusan == 'MM' ? 'selected' : '' }}>MM</option>
+                            <option value="TKJ" {{ $data->jurusan == 'TKJ' ? 'selected' : '' }}>TKJ</option>
+                            <option value="PSPT" {{ $data->jurusan == 'PSPT' ? 'selected' : '' }}>PSPT</option>
+                        </select>
+                    </div>
+
+                    <div class="mt-4 text-sm">
+                        <span class="text-gray-700 dark:text-gray-400">
+                            Tamatan
+                        </span>
+                        <select name="angkatan" id=""
+                            class="block w-full mt-1 text-sm border border-gray-600 px-10 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+                            @for ($tahun = 2005; $tahun <= Carbon\Carbon::now()->year - 1; $tahun++)
+                                <option value="{{ $tahun }}" {{ $data->angkatan == $tahun ? 'selected' : '' }}>
+                                    {{ $tahun }}</option>
+                            @endfor
+                        </select>
+                    </div>
+
+                    <!-- submit  -->
+                    <button type="submit"
+                        class="submit hover:bg-gray-950 focus:outline-none focus:shadow-outline-purple w-full">
+                        kirim
+                    </button>
+                </div>
+            </form>
         </div>
-    @endsection
-    
+    </section>
+    @include('template.utils.footer')
+@endsection
