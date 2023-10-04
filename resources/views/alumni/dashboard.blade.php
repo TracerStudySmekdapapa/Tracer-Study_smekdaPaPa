@@ -81,7 +81,7 @@
                                     <tr class="divide-y">
                                         <td>tamatan</td>
                                         <td class="py-2 px-6">:</td>
-                                        <td>{{ $alumni->angkatan ?? '-' }}</td>
+                                        <td>{{ $alumni->tamatan ?? '-' }}</td>
                                     </tr>
                                 </table>
                                 <div class="w-full bg-red justify-end flex ">

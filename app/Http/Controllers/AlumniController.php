@@ -64,7 +64,7 @@ class AlumniController extends Controller
             'tanggal_lahir' => $request->tgl_lahir,
             'agama' => $request->agama,
             'jenis_kelamin' => $request->jenis_kelamin,
-            'jurusan' => $request->jurusan,
+            'tamatan' => $request->tamatan,
             // 'angkatan' => $request->angkatan,
             'id_user' => $id
         ]);
@@ -107,7 +107,7 @@ class AlumniController extends Controller
             'agama' => $request->agama,
             'jenis_kelamin' => $request->jenis_kelamin,
             'jurusan' => $request->jurusan,
-            'angkatan' => $request->angkatan,
+            'tamatan' => $request->tamatan,
             'id_user' => $id
         ]);
 

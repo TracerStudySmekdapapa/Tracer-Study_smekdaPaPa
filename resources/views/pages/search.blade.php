@@ -47,10 +47,10 @@
                                 <div class="rounded-full w-[30px] h-[30px] bg-rose-600 ml-5"></div>
                                 <h1 class="max-w-[40%]">{{ $item->name }}</h1>
                             </td>
-                            <td>{{ $item->nisn }}</td>
-                            <td>{{ $item->angkatan }}</td>
-                            <td>{{ $item->jenis_kelamin }}</td>
-                            <td>{{ $item->angkatan }}</td>
+                            <td>{{ $item->nisn ?? '-' }}</td>
+                            <td>{{ $item->jurusan ?? '-' }}</td>
+                            <td>{{ $item->jenis_kelamin ?? '-' }}</td>
+                            <td>{{ $item->tamatan ?? '-' }}</td>
                             <td>
                                 <div x-data="{
                                     tooltipVisible: false,

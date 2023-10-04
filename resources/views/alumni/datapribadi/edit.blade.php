@@ -113,7 +113,7 @@
                     <!--  tempat tgl lahit  -->
                     <label class="block text-sm">
                         <span class="text-gray-700 dark:text-gray-400">Tanggal Lahir</span>
-                        <input name="tgl_lahir" type="date" value="{{ $data->tanggal_lahir }}"
+                        <input name="tgl_lahir" id="tanggal" type="date" value="{{ $data->tanggal_lahir }}"
                             class="block w-full px-5 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
 
                         <!-- error -->
@@ -161,10 +161,10 @@
                         <span class="text-gray-700 dark:text-gray-400">
                             Tamatan
                         </span>
-                        <select name="angkatan" id=""
+                        <select name="tamatan" id=""
                             class="block w-full px-10 py-2 mt-1 text-sm border border-gray-600 rounded-md appearance-none dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
-                            @for ($tahun = 2005; $tahun <= Carbon\Carbon::now()->year + 1; $tahun++)
-                                <option value="{{ $tahun }}" {{ $data->angkatan == $tahun ? 'selected' : '' }}>
+                            @for ($tahun = Carbon\Carbon::now()->year + 1; $tahun >= 2005; --$tahun)
+                                <option value="{{ $tahun }}" {{ $data->tamatan == $tahun ? 'selected' : '' }}>
                                     {{ $tahun }}</option>
                             @endfor
                         </select>
@@ -173,7 +173,7 @@
                     <!-- submit  -->
                     <button type="submit"
                         class="w-full submit hover:bg-gray-950 focus:outline-none focus:shadow-outline-purple">
-                        kirim
+                        Update
                     </button>
                 </div>
             </form>

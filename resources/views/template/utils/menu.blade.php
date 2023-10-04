@@ -21,10 +21,10 @@
                         <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
                         <circle cx="12" cy="7" r="4"></circle>
                     </svg>
-                    <span>Profile</span>
+                    <span>Dashboard</span>
                 </a>
 
-                <a href="#_"
+                <a href="{{ route('profile.edit') }}"
                     class="relative flex cursor-default select-none hover:bg-neutral-100 items-center rounded px-2 py-1.5 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -34,7 +34,7 @@
                         </path>
                         <circle cx="12" cy="12" r="3"></circle>
                     </svg>
-                    <span>Setting</span>
+                    <span>Settings</span>
                 </a>
 
                 <div class="h-px my-1 -mx-1 bg-neutral-200"></div>
