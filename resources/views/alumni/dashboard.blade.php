@@ -68,7 +68,7 @@
                                         {{-- @php
                                             $date = ;
                                         @endphp --}}
-                                        <td>{{ Carbon\Carbon::parse($alumni->tanggal_lahir)->isoFormat('dddd, D MMMM Y') }}
+                                        <td>{{ $alumni->tanggal_lahir ? Carbon\Carbon::parse($alumni->tanggal_lahir)->isoFormat('dddd, D MMMM Y') : '-' }}
                                         </td>
                                     </tr>
 

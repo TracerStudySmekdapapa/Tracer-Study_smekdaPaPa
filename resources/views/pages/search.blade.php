@@ -27,7 +27,7 @@
             <thead class="rounded-lg bg-primary/5">
                 <tr class="relative h-[50px] px-[50px]">
                     <th
-                        class="before:content-[url('{{ asset('assets/icon.svg') }}')] before:absolute before:left-3 before:w-8 pl-10">
+                        class="before:content-[url('{{ asset('assets/icon.svg') }}')] before:absolute before:left-3 before:w-full before:h-8 relative before:top-0 before:z-50 pl-10">
                         Profile
                     </th>
                     <th>NISN</th>

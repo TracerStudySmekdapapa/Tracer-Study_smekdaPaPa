@@ -13,7 +13,7 @@
             <div class="p-1 mt-1 bg-white border rounded-md shadow-md border-neutral-200/70 text-neutral-700">
                 <div class="px-2 py-1.5 text-sm font-semibold">{{ Auth::user()->name }}</div>
                 <div class="h-px my-1 -mx-1 bg-neutral-200"></div>
-                <a href="#_"
+                <a href="{{ route('alumniDashboard') }}"
                     class="relative flex cursor-default select-none hover:bg-green-100 items-center rounded px-2 py-1.5 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -41,8 +41,8 @@
 
                 <div
                     class="relative  cursor-default select-none hover:bg-rose-100 items-center rounded px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
-                    <form action="" class="flex items-center space-x-1">
-
+                    <form action="{{ route('logout') }}" class="flex items-center space-x-1" method="POST">
+                        @csrf
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" class="w-4 h-4 mr-2">
@@ -53,7 +53,7 @@
 
 
 
-                        <button type="submit"><span>Log out</span></button>
+                        <button type="submit" href="{{ route('logout') }}"><span>Log out</span></button>
                     </form>
                 </div>
             </div>

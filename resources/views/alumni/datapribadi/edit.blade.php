@@ -52,7 +52,8 @@
                     incidunt?
                 </p>
 
-                <a href="#" class="hidden mt-3 text-blue-500 underline underline-offset-8 md:block">kembali ke
+                <a href="{{ route('alumniDashboard') }}"
+                    class="hidden mt-3 text-blue-500 underline underline-offset-8 md:block">kembali ke
                     Dashboard</a>
             </div>
             <form action="{{ route('updateDataPribadi', Auth::user()->id_user) }}" method="post" class="w-full">
@@ -162,7 +163,7 @@
                         </span>
                         <select name="angkatan" id=""
                             class="block w-full px-10 py-2 mt-1 text-sm border border-gray-600 rounded-md appearance-none dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
-                            @for ($tahun = 2005; $tahun <= Carbon\Carbon::now()->year - 1; $tahun++)
+                            @for ($tahun = 2005; $tahun <= Carbon\Carbon::now()->year + 1; $tahun++)
                                 <option value="{{ $tahun }}" {{ $data->angkatan == $tahun ? 'selected' : '' }}>
                                     {{ $tahun }}</option>
                             @endfor
