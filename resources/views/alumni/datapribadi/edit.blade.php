@@ -2,13 +2,13 @@
 @section('content')
     <main>
         <!--?  navigasi ==========-->
-        <nav class="relative z-50 h-24 select-none grid md:grid-cols-2 items-start">
+        <nav class="relative z-50 grid items-start h-24 select-none md:grid-cols-2">
             <div class="navigation__main__title">
                 <a href="#_" class="navigation__title__link"> Tracer Study </a>
             </div>
 
             <!-- ?navigasi menu ===========================-->
-            <div class="grid grid-cols-3 gap-x-10 mt-5 md:mt-2">
+            <div class="grid grid-cols-3 mt-5 gap-x-10 md:mt-2">
                 <a href="#" class="flex items-center space-x-3">
                     <div
                         class="min-w-[24px] min-h-[24px] bg-primary rounded-full grid place-items-center text-white font-semibold">
@@ -43,7 +43,7 @@
     </div>
 
     <section class="mt-10 mx-10 lg:min-h-[55vh]">
-        <div class="flex justify-between items-start flex-col md:flex-row">
+        <div class="flex flex-col items-start justify-between md:flex-row">
             <div class="my-5 md:my-0">
                 <h1 class="text-[40px] lg:text-[45px] font-bold">Personal Info</h1>
                 <p class="md:max-w-[60%]">
@@ -52,28 +52,28 @@
                     incidunt?
                 </p>
 
-                <a href="#" class="text-blue-500 underline-offset-8 underline mt-3 hidden md:block">kembali ke
+                <a href="#" class="hidden mt-3 text-blue-500 underline underline-offset-8 md:block">kembali ke
                     Dashboard</a>
             </div>
             <form action="{{ route('updateDataPribadi', Auth::user()->id_user) }}" method="post" class="w-full">
                 @csrf
                 @method('PATCH')
-                <div class="flex flex-col space-y-5 w-full">
+                <div class="flex flex-col w-full space-y-5">
                     <!-- nisn -->
                     <label class="block text-sm">
                         <span class="text-gray-700 dark:text-gray-400">nisn</span>
                         <input type="number" name="nisn" value="{{ $data->nisn }}"
-                            class="block w-full mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                            class="block w-full px-5 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                             placeholder="012345" />
                     </label>
 
-                    <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div class="grid w-full grid-cols-1 gap-5 md:grid-cols-2">
                         <!--  agama  -->
                         <label class="block text-sm">
                             <span class="text-gray-700 dark:text-gray-400">agama</span>
 
                             <select name="agama"
-                                class="block w-full mt-1 text-sm border border-gray-600 px-10 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+                                class="block w-full px-10 py-2 mt-1 text-sm border border-gray-600 rounded-md appearance-none dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                                 <option disabled selected>agama</option>
                                 <option value="Islam" {{ $data->agama == 'Islam' ? 'selected' : '' }}>Islam</option>
                                 <option value="Kristen" {{ $data->agama == 'Kristen' ? 'selected' : '' }}>Kristen</option>
@@ -85,7 +85,7 @@
                             </select>
 
                             <!-- error -->
-                            <!-- <p class="text-rose-500 mt-1">invalid message</p> -->
+                            <!-- <p class="mt-1 text-rose-500">invalid message</p> -->
                             <!-- error -->
                         </label>
 
@@ -93,11 +93,11 @@
                         <label class="block text-sm">
                             <span class="text-gray-700 dark:text-gray-400">No Telp</span>
                             <input type="tel" name="no_telp" value="{{ $data->no_telp }}"
-                                class="block w-full mt-1 text-sm border border-gray-600 px-6 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                class="block w-full px-6 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                 placeholder="+00 xxx xxx xxx" />
 
                             <!-- error -->
-                            <!-- <p class="text-rose-500 mt-1">invalid message</p> -->
+                            <!-- <p class="mt-1 text-rose-500">invalid message</p> -->
                             <!-- error -->
                         </label>
                     </div>
@@ -106,17 +106,17 @@
                     <label class="block text-sm">
                         <span class="text-gray-700 dark:text-gray-400">Tempat Lahir</span>
                         <input name="tmp_lahir" value="{{ $data->tempat_lahir }}"
-                            class="block w-full mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                            class="block w-full px-5 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                             placeholder="Padang Panjang " />
                     </label>
                     <!--  tempat tgl lahit  -->
                     <label class="block text-sm">
                         <span class="text-gray-700 dark:text-gray-400">Tanggal Lahir</span>
                         <input name="tgl_lahir" type="date" value="{{ $data->tanggal_lahir }}"
-                            class="block w-full mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
+                            class="block w-full px-5 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
 
                         <!-- error -->
-                        <p class="text-rose-500 mt-1">invalid message</p>
+                        <p class="mt-1 text-rose-500">invalid message</p>
                         <!-- error -->
                     </label>
 
@@ -147,7 +147,7 @@
                             Jurusan
                         </span>
                         <select name="jurusan"
-                            class="block w-full mt-1 text-sm border border-gray-600 px-10 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+                            class="block w-full px-10 py-2 mt-1 text-sm border border-gray-600 rounded-md appearance-none dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                             <option readonly>Jurusan</option>
                             <option value="RPL" {{ $data->jurusan == 'RPL' ? 'selected' : '' }}>RPL</option>
                             <option value="MM" {{ $data->jurusan == 'MM' ? 'selected' : '' }}>MM</option>
@@ -161,7 +161,7 @@
                             Tamatan
                         </span>
                         <select name="angkatan" id=""
-                            class="block w-full mt-1 text-sm border border-gray-600 px-10 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+                            class="block w-full px-10 py-2 mt-1 text-sm border border-gray-600 rounded-md appearance-none dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                             @for ($tahun = 2005; $tahun <= Carbon\Carbon::now()->year - 1; $tahun++)
                                 <option value="{{ $tahun }}" {{ $data->angkatan == $tahun ? 'selected' : '' }}>
                                     {{ $tahun }}</option>
@@ -171,7 +171,7 @@
 
                     <!-- submit  -->
                     <button type="submit"
-                        class="submit hover:bg-gray-950 focus:outline-none focus:shadow-outline-purple w-full">
+                        class="w-full submit hover:bg-gray-950 focus:outline-none focus:shadow-outline-purple">
                         kirim
                     </button>
                 </div>

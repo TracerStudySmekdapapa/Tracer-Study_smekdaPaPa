@@ -13,7 +13,7 @@
             <div class="relative">
                 <form action="{{ route('search') }}" method="get" id="form_search">
                     <input id="input_search"
-                        class="block w-[100%] mt-1 text-sm border border-gray-500 pl-5 pr-12 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                        class="relative z-[23] block w-[100%] mt-1 text-sm border border-gray-500 pl-5 pr-12 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                         placeholder="cari berdasarkan nama" type="text" required name="search"
                         value="{{ $search }}" />
                     <button type="submit" class="#submit_btn">
@@ -23,8 +23,8 @@
             </div>
         </div>
 
-        <table class="relative z-50 rounded-lg w-[90%] mx-auto table-auto mt-6 overflow-visible">
-            <thead class="bg-primary/5 rounded-lg">
+        <table class="relative z-30 rounded-lg w-[90%] mx-auto table-auto mt-6 overflow-visible">
+            <thead class="rounded-lg bg-primary/5">
                 <tr class="relative h-[50px] px-[50px]">
                     <th
                         class="before:content-[url('{{ asset('assets/icon.svg') }}')] before:absolute before:left-3 before:w-8 pl-10">
@@ -43,7 +43,7 @@
                     @forelse ($alumni as $item)
                         <!-- looping here -->
                         <tr class="divide-x bg-gray-50">
-                            <td class="flex items-center space-x-4 justify-center mx-auto py-5">
+                            <td class="flex items-center justify-center py-5 mx-auto space-x-4">
                                 <div class="rounded-full w-[30px] h-[30px] bg-rose-600 ml-5"></div>
                                 <h1 class="max-w-[40%]">{{ $item->name }}</h1>
                             </td>

@@ -29,19 +29,63 @@
                             <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                         </svg>
                     </a>
+
                 </div>
                 <!-- !navigasi menu ===========================-->
 
                 <!-- ?navigasi menu login ===========================-->
                 <div class="navigation__menu__accout">
                     @if (Auth::check())
-                        <a href="./src/login.html" class="btn___signup">{{ Auth::user()->firstName }}</a>
-                    @else
-                        <a href="{{ route('login') }}" class="btn___signin">Sign In</a>
-                        <a href="{{ route('register') }}" class="btn___signup">Sign Up</a>
+                        {{-- ?profile --}}
+                        <a href=""
+                            class="relative flex cursor-default select-none hover:bg-green-100 items-center rounded px-2 py-1.5 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+
+                            <a href="{{ '' }}" class="flex items-center space-x-1 btn___signin md:hidden">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2">
+                                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                <span>Profile</span>
+                            </a>
+                            {{-- !end profile --}}
+
+
+                            {{-- ? setting --}}
+                            <a href="" class="flex items-center space-x-1 btn___signin md:hidden"><svg
+                                    xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="w-5 h-5 mr-2">
+                                    <path
+                                        d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z">
+                                    </path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                                <span>Setting</span>
+                            </a>
+                            {{-- !end setting --}}
+
+
+
+                            {{-- ? logout --}}
+                            <div class="-mb-3 btn___signup md:hidden">
+                                <form action="">
+                                    <button type="submit" class="flex items-center space-x-2 "><img
+                                            src="{{ asset('assets/logout.svg') }}" alt=""><span>Log
+                                            Out</span></button>
+                                </form>
+                            </div>
+                            {{-- !end logout --}}
+                            {{-- tampilan desktop --}}
+                            @include('template.utils.menu')
+                        @else
+                            <a href="{{ route('login') }}" class="btn___signin">Sign In</a>
+                            <a href="{{ route('register') }}" class="btn___signup">Sign Up</a>
                     @endif
                 </div>
                 <!-- !navigasi menu login ===========================-->
+
             </div>
         </div>
 
@@ -53,9 +97,10 @@
                 <path d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
             <!-- close menu -->
-            <svg class="w-6 h-6 text-gray-700" x-show="showMenu" fill="none" stroke="currentColor"
+            <svg class="w-6 h-6 text-gray-700 -translate-x-4" x-show="showMenu" fill="none" stroke="currentColor"
                 viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display: none">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                </path>
             </svg>
         </div>
     </div>

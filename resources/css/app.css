@@ -75,7 +75,7 @@ main {
     }
 
     .navigation___mobile {
-        @apply absolute right-0 flex flex-col items-center justify-center w-10 h-10 rounded-full cursor-pointer md:hidden hover:bg-gray-100;
+        @apply absolute right-0 flex flex-col items-center justify-center w-10 h-10 rounded-full cursor-pointer md:hidden;
         /* ! ==================================mobile menu*/
     }
 }
@@ -130,14 +130,14 @@ main {
     }
 
     .main__about .right__item {
-        @apply flex flex-col items-start justify-start space-y-5 mt-6 md:mt-0;
+        @apply flex flex-col items-start justify-start mt-6 space-y-5 md:mt-0;
     }
 }
 
 /* card tutorial */
 @layer components {
     .main__tutorial {
-        @apply grid grid-cols-1 md:grid-cols-2 space-y-4 lg:space-y-0 lg:grid-cols-3 gap-3 lg:gap-y-14 place-items-center;
+        @apply grid grid-cols-1 gap-3 space-y-4 md:grid-cols-2 lg:space-y-0 lg:grid-cols-3 lg:gap-y-14 place-items-center;
     }
 
     .card {
@@ -145,7 +145,7 @@ main {
     }
 
     .card__header {
-        @apply flex space-x-6 justify-start items-center;
+        @apply flex items-center justify-start space-x-6;
     }
 
     .card__header .card___icon {
@@ -196,7 +196,7 @@ main {
     }
 
     .card__contact .card_header {
-        @apply flex space-x-5 justify-center items-center;
+        @apply flex items-center justify-center space-x-5;
     }
 
     .card__contact .card__icon {
@@ -204,7 +204,7 @@ main {
     }
 
     .card__contact .card__title {
-        @apply font-semibold text-lg capitalize;
+        @apply text-lg font-semibold capitalize;
     }
 
     .card__contact .card__desk {
@@ -216,7 +216,7 @@ main {
 /* footer */
 @layer components {
     .main__footer {
-        @apply mx-auto max-w-screen-xl px-4 pb-6 pt-16 sm:px-6 lg:px-8 lg:pt-24;
+        @apply max-w-screen-xl px-4 pt-16 pb-6 mx-auto sm:px-6 lg:px-8 lg:pt-24;
     }
 
     .main__footer .footer__title {
