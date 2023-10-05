@@ -32,4 +32,9 @@ class Alumni extends Model
     {
         return $this->hasMany(Pekerjaan::class, 'id_alumni');
     }
+
+    public function pendidikan()
+    {
+        return $this->hasMany(Pendidikan::class, 'id_alumni');
+    }
 }

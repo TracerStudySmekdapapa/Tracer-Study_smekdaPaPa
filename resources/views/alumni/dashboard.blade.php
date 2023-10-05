@@ -95,7 +95,7 @@
                                     <tr class="divide-y">
                                         <td>email</td>
                                         <td class="py-2 px-6">:</td>
-                                        <td>{{ Auth::user()->email }}</td>
+                                        <td>{{ $alumni->user->email }}</td>
                                     </tr>
 
                                 </table>
@@ -115,47 +115,28 @@
 
                 <!-- belum di verif dan isi data pribadi -->
                 <div class="w-full min-h-[400px] max-h-[500px]">
-
-
-
                     {{-- jika alumni ada data pribadi --}}
                     @if ($alumni)
-                        @if ($pekerjaan->exists() || $pendidikan->exists())
+                        @if ($pekerjaan->count() > 0 || $pendidikan->count() > 0)
                             <!-- data lain -->
                             <div class="w-full min-h-[600px] mt-14 ">
                                 <!-- data pekerjaan -->
-
                                 <div class="w-full min-h-[300px] flex justify-stretch px-20">
                                     <ul class="steps steps-vertical">
-                                        <li class="step step-primary">
-                                            <div class="flex justify-start items-start flex-col">
-                                                <h1 class="text-black/90 capitalize text-[20px]">
-                                                    programmer
-                                                </h1>
-                                                <p>PT ARG solusi teknologi</p>
-                                            </div>
-                                        </li>
-
-                                        <li class="step step-primary">
-                                            <div class="flex justify-start items-start flex-col">
-                                                <h1 class="text-black/90 capitalize text-[20px]">
-                                                    programmer
-                                                </h1>
-                                                <p>CV Mediatama indonesia</p>
-                                            </div>
-                                        </li>
-                                        <li class="step step-primary">
-                                            <div class="flex justify-start items-start flex-col">
-                                                <h1 class="text-black/90 capitalize text-[20px]">
-                                                    programmer
-                                                </h1>
-                                                <p>Barac techno indonesia</p>
-                                            </div>
-                                        </li>
+                                        @foreach ($pekerjaan->take(3) as $item)
+                                            <li class="step step-primary">
+                                                <div class="flex justify-start items-start flex-col">
+                                                    <h1 class="text-black/90 capitalize text-[20px]">
+                                                        {{ $item->nama_pekerjaan }}
+                                                    </h1>
+                                                    <p>{{ $item->nama_instansi }}</p>
+                                                </div>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                                 <div class="flex space-x-5 items-center lg:ml-32">
-                                    <a href="/"
+                                    <a href="{{ route('tambahDataPekerjaan') }}"
                                         class="rounded-full px-10   py-2 border block text-center border-black">+
                                         Data
                                         Pekerjaan</a>
@@ -170,33 +151,24 @@
                                 <!-- data pendidikan-->
                                 <div class="w-full min-h-[300px] flex justify-stretch px-20">
                                     <ul class="steps steps-vertical">
-                                        <li class="step step-primary">
-                                            <div class="flex justify-start items-start flex-col">
-                                                <h1 class="text-black/90 capitalize text-[20px]">kuliah</h1>
-                                                <p>Univ padang</p>
-                                            </div>
-                                        </li>
+                                        @foreach ($pendidikan as $item)
+                                            <li class="step step-primary">
+                                                <div class="flex justify-start items-start flex-col">
+                                                    <h1 class="text-black/90 capitalize text-[20px]">{{ $item->nama_univ }}
+                                                    </h1>
+                                                    <p>{{ $item->fakultas }}</p>
+                                                </div>
+                                            </li>
+                                        @endforeach
                                         <!-- end looping herre -->
 
-                                        <li class="step step-primary">
-                                            <div class="flex justify-start items-start flex-col">
-                                                <h1 class="text-black/90 capitalize text-[20px]">kuliah</h1>
-                                                <p>Univ pekanbaru</p>
-                                            </div>
-                                        </li>
-                                        <li class="step step-primary">
-                                            <div class="flex justify-start items-start flex-col">
-                                                <h1 class="text-black/90 capitalize text-[20px]">kuliah</h1>
-                                                <p>Univ jawa</p>
-                                            </div>
-                                        </li>
                                     </ul>
                                 </div>
                                 <div class="flex space-x-5 items-center lg:ml-32">
-                                    <a href="/"
+                                    <a href="{{ route('tambahDataPendidikan') }}"
                                         class="rounded-full px-10   py-2 border block text-center border-black">+
                                         Data
-                                        Pekerjaan</a>
+                                        Pendidikan</a>
                                     <a href=""
                                         class="block px-6 py-2 rounded-full text-white bg-blue-500 active:bg-black active:text-white border">lihat
                                         selengkapnya</a>

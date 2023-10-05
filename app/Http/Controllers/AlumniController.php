@@ -16,10 +16,16 @@ class AlumniController extends Controller
     public function index()
     {
         $title = 'Alumni Dashboard';
+        /* $alumni = Alumni::get();
+        foreach($alumni as $data){
+            foreach ($data->pekerjaan as $item) {
+                $item->nama_pekerjaan;
+            } 
+        } */
         $alumni = Alumni::where('id_user', Auth::user()->id_user)->first();
         if ($alumni) {
-            $pekerjaan = Pekerjaan::where('id_alumni', $alumni->id_alumni);
-            $pendidikan = Pendidikan::where('id_alumni', $alumni->id_alumni);
+            $pekerjaan = Pekerjaan::where('id_alumni', $alumni->id_alumni)->orderBy('created_at', 'DESC')->limit(3)->get();
+            $pendidikan = Pendidikan::where('id_alumni', $alumni->id_alumni)->orderBy('created_at', 'DESC')->limit(3)->get();
             return view('alumni.dashboard', compact('title', 'pekerjaan', 'alumni', 'pendidikan'));
         } else {
             return view('alumni.dashboard', compact('title', 'alumni'));
@@ -123,7 +129,8 @@ class AlumniController extends Controller
     /* Start Create Data Pekerjaan */
     public function tambahDataPekerjaan()
     {
-        return view('alumni.datapekerjaan.create');
+        $title = 'Tambah Data Pekerjaan';
+        return view('alumni.datapekerjaan.create', compact('title'));
     }
 
     public function simpanDataPekerjaan(Request $request, $id)
@@ -132,20 +139,22 @@ class AlumniController extends Controller
         Pekerjaan::create([
             'nama_pekerjaan' => $request->nama_pekerjaan,
             'nama_instansi' => $request->nama_instansi,
-            'alamat_instansi' => $request->alm_instansi,
-            'jabatan' => $request->jbt,
+            'alamat_instansi' => $request->alamat,
+            'jabatan' => $request->jabatan,
+            'thn_masuk' => $request->tahun_masuk,
+            'thn_keluar' => $request->tahun_keluar,
             'id_alumni' => $id_alumni->id_alumni
         ]);
 
-        return redirect()->route('adminDashboard')->with(['message' => 'Data berhasil disimpan']);
+        return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil disimpan']);
     }
     /* End Create Data Pekerjaan */
 
     /* Start Create Data Pendidikan */
     public function tambahDataPendidikan()
     {
-
-        return view('alumni.datapendidikan.create');
+        $title = 'Tambah Data Pendidikan';
+        return view('alumni.datapendidikan.create', compact('title'));
     }
     public function simpanDataPendidikan(Request $request, $id)
     {

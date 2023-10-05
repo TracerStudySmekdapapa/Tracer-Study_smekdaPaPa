@@ -10,7 +10,7 @@
         <div x-show="dropdownOpen" @click.away="dropdownOpen=false"
             class="absolute top-0 z-[99999] w-56 mt-12 -translate-x-1/2 left-1/2" x-cloak>
             <div class="p-1 mt-1 bg-white border rounded-md shadow-md border-neutral-200/70 text-neutral-700">
-                <div class="px-2 py-1.5 text-sm font-semibold">{{ Auth::user()->name }}</div>
+                <div class="px-2 py-1.5 text-sm font-semibold">{{ Str::ucfirst(Auth::user()->name) }}</div>
                 <div class="h-px my-1 -mx-1 bg-neutral-200"></div>
                 <a href="{{ route('alumniDashboard') }}"
                     class="relative flex cursor-default select-none hover:bg-green-100 items-center rounded px-2 py-1.5 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
