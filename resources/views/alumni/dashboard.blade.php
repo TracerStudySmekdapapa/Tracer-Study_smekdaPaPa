@@ -20,7 +20,7 @@
 
             @include('template.utils.navbar')
 
-            <section class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
                 <div class="w-full min-h-[500px]  justify-center items-start pt-5 flex">
                     <div class="flex flex-col space-y-5 justify-start items-center">
 
@@ -87,7 +87,7 @@
                                 <div class="w-full bg-red justify-end flex ">
                                     <a href="{{ route('editDataPribadi', $alumni->id_user) }}">
                                         <button
-                                            class="px-5 py-2 rounded-md bg-yellow-600 text-white font-semibold">Edit</button>
+                                            class=" border py-2 rounded-full px-10 border-black text-black">Edit</button>
                                     </a>
                                 </div>
                             @else
@@ -120,10 +120,11 @@
 
                     {{-- jika alumni ada data pribadi --}}
                     @if ($alumni)
-                        @if ($pekerjaan->exists())
+                        @if ($pekerjaan->exists() || $pendidikan->exists())
                             <!-- data lain -->
-                            <div class="w-full min-h-[600px] ">
+                            <div class="w-full min-h-[600px] mt-14 ">
                                 <!-- data pekerjaan -->
+
                                 <div class="w-full min-h-[300px] flex justify-stretch px-20">
                                     <ul class="steps steps-vertical">
                                         <li class="step step-primary">
@@ -153,14 +154,23 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <a href="" class="block text-end text-blue-600 underline underline-offset-8">lihat
-                                    selengkapnya</a>
+                                <div class="flex space-x-5 items-center lg:ml-32">
+                                    <a href="/"
+                                        class="rounded-full px-10   py-2 border block text-center border-black">+
+                                        Data
+                                        Pekerjaan</a>
+                                    <a href=""
+                                        class="block px-6 py-2 rounded-full text-white bg-blue-500 active:bg-black active:text-white border">lihat
+                                        selengkapnya</a>
+                                </div>
 
+
+                                <hr class="my-5">
 
                                 <!-- data pendidikan-->
                                 <div class="w-full min-h-[300px] flex justify-stretch px-20">
                                     <ul class="steps steps-vertical">
-                                        <li class="step step-secondary">
+                                        <li class="step step-primary">
                                             <div class="flex justify-start items-start flex-col">
                                                 <h1 class="text-black/90 capitalize text-[20px]">kuliah</h1>
                                                 <p>Univ padang</p>
@@ -168,13 +178,13 @@
                                         </li>
                                         <!-- end looping herre -->
 
-                                        <li class="step step-secondary">
+                                        <li class="step step-primary">
                                             <div class="flex justify-start items-start flex-col">
                                                 <h1 class="text-black/90 capitalize text-[20px]">kuliah</h1>
                                                 <p>Univ pekanbaru</p>
                                             </div>
                                         </li>
-                                        <li class="step step-secondary">
+                                        <li class="step step-primary">
                                             <div class="flex justify-start items-start flex-col">
                                                 <h1 class="text-black/90 capitalize text-[20px]">kuliah</h1>
                                                 <p>Univ jawa</p>
@@ -182,11 +192,18 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <a href="" class="block text-end text-blue-600 underline underline-offset-8">lihat
-                                    selengkapnya</a>
+                                <div class="flex space-x-5 items-center lg:ml-32">
+                                    <a href="/"
+                                        class="rounded-full px-10   py-2 border block text-center border-black">+
+                                        Data
+                                        Pekerjaan</a>
+                                    <a href=""
+                                        class="block px-6 py-2 rounded-full text-white bg-blue-500 active:bg-black active:text-white border">lihat
+                                        selengkapnya</a>
+                                </div>
                             </div>
                         @else
-                            <ul class="steps steps-vertical px-28 ">
+                            <ul class="steps steps-vertical px-28 lg:pt-20 ">
                                 <li data-content="✓" class="step step-primary">Register</li>
                                 <li data-content="✓" class="step step-primary">login</li>
 
@@ -226,13 +243,7 @@
                                 <li data-content="?" class="step step-neutral">
                                     mengisi data pendidikan
                                 </li>
-                                <li data-content="★" class="step step-info">
-                                    <p>
-                                        melihat data anda apakah sudah bisa di
-                                        <a href="{{ route('search') }}"
-                                            class="text-blue-600 underline underline-offset-4">ditemukan</a>
-                                    </p>
-                                </li>
+
                             </ul>
                         @endif
                     @else
@@ -285,7 +296,9 @@
             </section>
         </main>
 
-        @include('template.utils.footer')
+        <div class="mt-48 lg:mt-32">
+            @include('template.utils.footer')
+        </div>
 
     </body>
 
