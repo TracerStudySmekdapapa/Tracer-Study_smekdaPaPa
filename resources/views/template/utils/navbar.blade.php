@@ -80,8 +80,8 @@
                             {{-- tampilan desktop --}}
                             @include('template.utils.menu')
                         @else
-                            <a href="{{ route('login') }}" class="btn___signin">Sign In</a>
-                            <a href="{{ route('register') }}" class="btn___signup">Sign Up</a>
+                            <a href="{{ route('login') }}" class="btn___signin font-medium">Login</a>
+                            <a href="{{ route('register') }}" class="btn___signup font-medium">Register</a>
                     @endif
                 </div>
                 <!-- !navigasi menu login ===========================-->
