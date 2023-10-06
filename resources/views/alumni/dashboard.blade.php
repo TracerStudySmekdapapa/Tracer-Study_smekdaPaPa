@@ -34,8 +34,7 @@
                             <h1 class="text-[35px] font-semibold pb-4">Syaid Alfarishi</h1>
                             {{-- <h1 class="text-[35px] font-semibold pb-4">{{ $alumni->user->name ?? Auth::user()->name }}</h1> --}}
                             <p class="text-[13px] -mt-4 mb-5 text-black/50 font-light pr-10 max-w-[350px] min-w-[350px]">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel,
-                                officiis?
+                                {{ Auth::user()->bio ?? 'User ini belum memiliki bio' }}
                             </p>
                             @if ($alumni)
                                 <table class="w-full">
@@ -65,9 +64,6 @@
                                     <tr class="divide-y">
                                         <td>tangal lahir</td>
                                         <td class="py-2 px-6">:</td>
-                                        {{-- @php
-                                            $date = ;
-                                        @endphp --}}
                                         <td>{{ $alumni->tanggal_lahir ? Carbon\Carbon::parse($alumni->tanggal_lahir)->isoFormat('dddd, D MMMM Y') : '-' }}
                                         </td>
                                     </tr>
@@ -95,7 +91,11 @@
                                     <tr class="divide-y">
                                         <td>email</td>
                                         <td class="py-2 px-6">:</td>
+<<<<<<< Updated upstream
                                         <td>{{ $alumni->user->email ?? Auth::user()->email }}</td>
+=======
+                                        <td>{{ Auth::user()->email }}</td>
+>>>>>>> Stashed changes
                                     </tr>
 
                                 </table>
