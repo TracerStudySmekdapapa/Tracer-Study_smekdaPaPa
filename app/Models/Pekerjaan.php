@@ -17,6 +17,8 @@ class Pekerjaan extends Model
         'nama_instansi',
         'alamat_instansi',
         'jabatan',
+        'thn_masuk',
+        'thn_keluar',
         'id_alumni'
     ];
     

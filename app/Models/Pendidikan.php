@@ -15,4 +15,9 @@ class Pendidikan extends Model
     protected $fillable = [
         'nama_univ', 'fakultas', 'prodi', 'alamat_univ', 'id_alumni'
     ];
+
+    public function alumni()
+    {
+        return $this->belongsTo(Alumni::class, 'id_alumni');
+    }
 }

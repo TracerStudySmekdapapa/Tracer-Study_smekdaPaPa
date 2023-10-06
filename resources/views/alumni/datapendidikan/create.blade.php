@@ -1,77 +1,106 @@
-
-
-
-
-
- 
-    @extends('template.admin.master')
-
-    @section('konten')
-        <div class="flex h-screen bg-gray-0 dark:bg-gray-900 " :class="{ 'overflow-hidden': isSideMenuOpen }">
-    
-    
-    
-            {{-- ? sidebar --}}
-            @include('template.admin.sidebar')
-            {{-- end sidebar --}}
-    
-    
-            <div class="flex flex-col flex-1 w-full">
-    
-                {{-- ? ===================header --}}
-                @include('template.admin.header')
-                {{-- ! =================== end header --}}
-    
-    
-    
-    
-                <main class="h-full  " style="padding: 0 0;">
-                    <div class="container px-6 mx-auto grid">
-    
-                        {{-- ? title page --}}
-                        <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-                            Dashboard
-                        </h2>
-                        {{-- ! end title --}}
-    
-                        {{-- ? ==========table  --}}
-                            
-                        <div class="py-12">
-                            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                                    <div class="p-6 text-gray-900">
-                                        <form action="{{ route('simpanDataPendidikan', Auth::user()->id_user) }}" method="POST">
-                                            @csrf
-                                            <div class="">
-                                                <label for="">Nama Universitas</label>
-                                                <input type="text" name="nama_univ">
-                                            </div>
-                                            <div class="">
-                                                <label for="">Fakultas</label>
-                                                <input type="text" name="fakultas">
-                                            </div>
-                                            <div class="">
-                                                <label for="">Prodi</label>
-                                                <input type="text" name="prodi">
-                                            </div>
-                                            <div class="">
-                                                <label for="">Alamat Universitas</label>
-                                                <input type="text" name="alm_univ">
-                                            </div>
-                                            <button type="submit">Simpan</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {{-- ! ==========Cards total --}}
-    
-    
-    
-                    </div>
-                </main>
+@extends('template.master')
+@section('content')
+    <main>
+        <!--?  navigasi ==========-->
+        <nav class="relative z-50 h-24 select-none grid md:grid-cols-2 items-start">
+            <div class="navigation__main__title">
+                <a href="#_" class="navigation__title__link"> Tracer Study </a>
             </div>
+
+            <!-- ?navigasi menu ===========================-->
+            <div class="grid grid-cols-3 gap-x-8 mt-5 md:mt-2">
+                <a href="#" class="flex items-center space-x-3">
+                    <div
+                        class="min-w-[24px] min-h-[24px] bg-gray-400 rounded-full grid place-items-center text-white font-semibold">
+                        1
+                    </div>
+                    <h1>Data Pribadi</h1>
+                </a>
+
+                <a href="#" class="flex items-center space-x-3">
+                    <div
+                        class="min-w-[24px] min-h-[24px] bg-gray-400 rounded-full grid place-items-center text-white font-semibold">
+                        2
+                    </div>
+                    <h1>Data Pekerjaan</h1>
+                </a>
+
+                <a href="#" class="flex items-center space-x-3">
+                    <div
+                        class="min-w-[24px] min-h-[24px] bg-primary rounded-full grid place-items-center text-white font-semibold">
+                        3
+                    </div>
+                    <h1 class="link_active">Data Pendidikan</h1>
+                </a>
+            </div>
+            <!-- !navigasi menu ===========================-->
+        </nav>
+        <!--!  navigasi ==========-->
+    </main>
+
+    <div class="relative mt-16 md:-mt-3">
+        <hr />
+        <hr class="text-primary w-[33%] bg-primary h-[3px] absolute top-0 left-0" />
+    </div>
+
+    <section class="mt-10 mx-10 lg:min-h-[55vh]">
+        <div class="flex justify-between items-start flex-col md:flex-row">
+            <div class="my-5 md:my-0">
+                <h1 class="text-[40px] lg:text-[45px] font-bold">Academy Info</h1>
+                <p class="md:max-w-[60%]">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor
+                    quaerat nulla debitis nisi ullam laudantium ipsam rem eveniet facere
+                    incidunt?
+                </p>
+
+                <a href="{{ route('alumniDashboard') }}"
+                    class="text-blue-500 underline-offset-8 underline mt-3 hidden md:block">kembali ke
+                    Dashboard</a>
+            </div>
+
+            <form action="" method="post" class="w-full">
+                <div class="flex flex-col space-y-5 w-full">
+                    <!-- nama_pekerjaan -->
+                    <label class="block text-sm">
+                        <span class="text-gray-700 dark:text-gray-400">Nama Universitas</span>
+                        <input type="number" name="nama_universitas"
+                            class="block w-full md:w-[70%] mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                            placeholder="012345" />
+                    </label>
+
+                    <!-- nama_pekerjaan -->
+                    <label class="block text-sm">
+                        <span class="text-gray-700 dark:text-gray-400">Fakultas</span>
+                        <input type="text" name="fakultas"
+                            class="block w-full md:w-[70%] mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                            placeholder="Nama instansi" />
+                    </label>
+
+                    <!-- jabatan -->
+                    <label class="block text-sm">
+                        <span class="text-gray-700 dark:text-gray-400">Prodi</span>
+                        <input type="text" name="prodi"
+                            class="block w-full md:w-[70%] mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                            placeholder="Prodi an   da" />
+                    </label>
+
+                    <!-- alamat instansi -->
+                    <label class="block mt-10 text-sm">
+                        <span class="text-gray-700 dark:text-gray-400">alamat</span>
+                        <textarea name="alamat_univ"
+                            class="block border border-gray-600 px-3 py-2 rounded-md w-full md:w-[70%] mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                            rows="3" placeholder="masukan alamat universitas."></textarea>
+                    </label>
+
+                    <!-- submit  -->
+                    <button type="submit" class="submit hover:bg-gray-950 focus:outline-none focus:shadow-outline-purple">
+                        kirim
+                    </button>
+                </div>
+                <a href="#" class="text-blue-500 underline-offset-8 underline mt-10 md:hidden block">kembali ke
+                    Dashboard</a>
+            </form>
         </div>
-    @endsection
-    
+    </section>
+    @include('template.utils.footer')
+@endsection
