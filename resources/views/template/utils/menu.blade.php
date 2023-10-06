@@ -9,7 +9,8 @@
 
         <div x-show="dropdownOpen" @click.away="dropdownOpen=false"
             class="absolute top-0 z-[99999] w-56 mt-12 -translate-x-1/2 left-1/2" x-cloak>
-            <div class="p-1 mt-1 bg-white border rounded-md shadow-md border-neutral-200/70 text-neutral-700">
+            <div
+                class="p-1 mt-1 bg-white max-h-[160px] min-h-[150px] pb-1 overflow-hidden border rounded-md shadow-md border-neutral-200/70 text-neutral-700">
                 <div class="px-2 py-1.5 text-sm font-semibold">{{ Str::ucfirst(Auth::user()->name) }}</div>
                 <div class="h-px my-1 -mx-1 bg-neutral-200"></div>
                 <a href="{{ route('alumniDashboard') }}"
@@ -39,7 +40,7 @@
                 <div class="h-px my-1 -mx-1 bg-neutral-200"></div>
 
                 <div
-                    class="relative  cursor-default select-none hover:bg-rose-100 items-center rounded px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                    class="relative  cursor-default select-none  py-0.5 items-center rounded px-2  text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
                     <form action="{{ route('logout') }}" class="flex items-center space-x-1" method="POST">
                         @csrf
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"

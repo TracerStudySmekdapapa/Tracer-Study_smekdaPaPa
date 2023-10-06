@@ -95,7 +95,7 @@
                                     <tr class="divide-y">
                                         <td>email</td>
                                         <td class="py-2 px-6">:</td>
-                                        <td>{{ $alumni->user->email }}</td>
+                                        <td>{{ $alumni->user->email ?? Auth::user()->email }}</td>
                                     </tr>
 
                                 </table>
