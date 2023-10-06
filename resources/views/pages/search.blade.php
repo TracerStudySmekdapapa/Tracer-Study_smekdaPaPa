@@ -23,21 +23,21 @@
             </div>
         </div>
 
-        <table class="relative z-30 rounded-lg w-[90%] mx-auto table-auto mt-6 overflow-visible">
-            <thead class="rounded-lg bg-primary/5">
-                <tr class="relative h-[50px] px-[50px]">
+        <table
+            class="relative z-50 rounded-lg bg-primary/5 min-w-[800px] lg:w-[90%] mx-auto table-auto mt-6 overflow-x-auto lg:overflow-x-hidden">
+            <thead class="overflow-hidden bg-transparent rounded-full">
+                <tr class="relative rounded-full overflow-hidden h-[50px] px-[50px] capitalize">
                     <th
-                        class="before:content-[url('{{ asset('assets/icon.svg') }}')] before:absolute before:left-3 before:w-full before:h-8 relative before:top-0 before:z-50 pl-10">
-                        Profile
+                        class="before:content-[url('{{ asset('assets/icon.svg') }}')] before:absolute before:left-3 before:w-8 pl-10">
+                        profile
                     </th>
-                    <th>NISN</th>
-                    <th>Jurusan</th>
-                    <th>Jenis Kelamin</th>
-                    <th>Angkatan</th>
-                    <th>Lainnya</th>
+                    <th>nisn</th>
+                    <th>jurusan</th>
+                    <th>jenis_kelamin</th>
+                    <th>tamatan</th>
+                    <th>lainnya</th>
                 </tr>
             </thead>
-
             <tbody class="text-center divide-x">
                 @if ($search)
                     @forelse ($alumni as $item)
