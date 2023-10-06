@@ -90,14 +90,8 @@
                                 <table class="w-full">
                                     <tr class="divide-y">
                                         <td>email</td>
-                                        <td class="py-2 px-6">:</td>
-<<<<<<< Updated upstream
-                                        <td>{{ $alumni->user->email ?? Auth::user()->email }}</td>
-=======
                                         <td>{{ Auth::user()->email }}</td>
->>>>>>> Stashed changes
                                     </tr>
-
                                 </table>
                                 <div class="w-full bg-red justify-end flex ">
                                     <a href="{{ route('tambahDataPribadi') }}">
@@ -224,21 +218,10 @@
                             <li data-content="✓" class="step step-primary">Register</li>
                             <li data-content="✓" class="step step-primary">login</li>
 
-
-
-
-
-
                             {{-- jika data pribadi ada --}}
                             <li data-content="?" class="step step-neutral">
                                 mengisi data pribadi
                             </li>
-
-
-
-
-
-
 
                             {{-- if user ini tidak punya role has role --}}
 
