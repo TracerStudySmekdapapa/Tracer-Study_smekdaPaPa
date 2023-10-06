@@ -4,7 +4,7 @@
         <!--?  navigasi ==========-->
         <nav class="relative z-50 grid items-start h-24 select-none md:grid-cols-2">
             <div class="navigation__main__title">
-                <a href="#_" class="navigation__title__link"> Tracer Study </a>
+                <a href="{{ route('/') }}" class="navigation__title__link"> Tracer Study </a>
             </div>
 
             <!-- ?navigasi menu ===========================-->
