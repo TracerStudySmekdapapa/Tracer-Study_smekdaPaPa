@@ -81,23 +81,34 @@
                                     </tr>
                                 </table>
                                 <div class="w-full bg-red justify-end flex ">
-                                    <a href="{{ route('editDataPribadi', $alumni->id_user) }}">
-                                        <button
-                                            class=" border py-2 rounded-full px-10 border-black text-black">Edit</button>
-                                    </a>
+
+
+                                    <button
+                                        class=" mt-5 rounded-lg bg-transparent border border-primary hover:bg-black hover:border-transparent hover:text-white capitalize">
+                                        <a href="{{ route('editDataPribadi', $alumni->id_user) }}" class="block px-5 py-2">
+                                            edit Data Pribadi
+                                        </a>
+                                    </button>
+
+
                                 </div>
                             @else
-                                <table class="w-full">
+                                <table class="w-full text-black/60">
                                     <tr class="divide-y">
                                         <td>email</td>
                                         <td>{{ Auth::user()->email }}</td>
                                     </tr>
                                 </table>
                                 <div class="w-full bg-red justify-end flex ">
-                                    <a href="{{ route('tambahDataPribadi') }}">
-                                        <button
-                                            class="px-5 py-2 rounded-md bg-green-600 text-white font-semibold">Tambah</button>
-                                    </a>
+
+
+                                    <button
+                                        class=" mt-5 rounded-lg bg-transparent border border-primary hover:bg-black hover:border-transparent hover:text-white capitalize text-black/70">
+                                        <a href="{{ route('tambahDataPribadi') }}" class="block px-5 py-2 ">
+                                            + Data Pribadi
+                                        </a>
+                                    </button>
+
                                 </div>
                             @endif
 
@@ -145,15 +156,18 @@
                                 <!-- data pendidikan-->
                                 <div class="w-full min-h-[300px] flex justify-stretch px-20">
                                     <ul class="steps steps-vertical">
-                                        @foreach ($pendidikan as $item)
+                                        @forelse ($pendidikan as $item)
                                             <li class="step step-primary">
                                                 <div class="flex justify-start items-start flex-col">
-                                                    <h1 class="text-black/90 capitalize text-[20px]">{{ $item->nama_univ }}
+                                                    <h1 class="text-black/90 capitalize text-[20px]">
+                                                        {{ $item->nama_univ }}
                                                     </h1>
                                                     <p>{{ $item->fakultas }}</p>
                                                 </div>
                                             </li>
-                                        @endforeach
+                                        @empty
+                                            <h1>kontol </h1>
+                                        @endforelse
                                         <!-- end looping herre -->
 
                                     </ul>
@@ -211,6 +225,28 @@
                                 </li>
 
                             </ul>
+                            @if (Auth::user()->hasRole('Alumni'))
+                                <div class="flex space-x-5 justify-center">
+                                    <button
+                                        class=" rounded-lg bg-transparent border border-primary hover:bg-black hover:border-transparent  capitalize">
+                                        <a href="{{ route('tambahDataPekerjaan') }}"
+                                            class="block px-5 py-2 text-black/70 hover:text-white">
+                                            +
+                                            data
+                                            pekerjaan
+                                        </a>
+                                    </button>
+                                    <button
+                                        class=" rounded-lg bg-transparent border border-primary hover:bg-black hover:border-transparent capitalize">
+                                        <a href="{{ route('tambahDataPendidikan') }}"
+                                            class="px-5 py-2 block text-black/70 hover:text-white ">
+                                            +
+                                            data
+                                            Pendidikan
+                                        </a>
+                                    </button>
+                                </div>
+                            @endif
                         @endif
                     @else
                         {{-- jika data pekerjaan == 0 --}}
@@ -226,7 +262,9 @@
                             {{-- if user ini tidak punya role has role --}}
 
                             <li data-content="?" class="step step-neutral">
-                                menunggu verivikasi admin untuk melanjutkan
+                                <p class="text-left">
+                                    menunggu verivikasi admin untuk melanjutkan
+                                </p>
                             </li>
                             {{-- else --}}
 
@@ -237,21 +275,15 @@
                             <li data-content="?" class="step step-neutral">
                                 mengisi data pendidikan
                             </li>
-                            <li data-content="★" class="step step-info">
-                                <p>
-                                    melihat data anda apakah sudah bisa di
-                                    <a href="{{ route('search') }}"
-                                        class="text-blue-600 underline underline-offset-4">ditemukan</a>
-                                </p>
-                            </li>
                         </ul>
+
                     @endif
 
                 </div>
             </section>
         </main>
 
-        <div class="mt-48 lg:mt-32">
+        <div class="mt-48 md:mt-20 lg:mt-5">
             @include('template.utils.footer')
         </div>
 

@@ -63,9 +63,9 @@
                     <!-- nama_pekerjaan -->
                     <label class="block text-sm">
                         <span class="text-gray-700 dark:text-gray-400">Nama Universitas</span>
-                        <input type="number" name="nama_universitas"
+                        <input type="text" name="nama_universitas"
                             class="block w-full md:w-[70%] mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                            placeholder="012345" />
+                            placeholder="nama univ" />
                     </label>
 
                     <!-- nama_pekerjaan -->
@@ -81,7 +81,7 @@
                         <span class="text-gray-700 dark:text-gray-400">Prodi</span>
                         <input type="text" name="prodi"
                             class="block w-full md:w-[70%] mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                            placeholder="Prodi an   da" />
+                            placeholder="Prodi anda" />
                     </label>
 
                     <!-- alamat instansi -->

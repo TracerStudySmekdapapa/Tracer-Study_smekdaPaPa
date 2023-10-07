@@ -89,13 +89,13 @@
                             <span class="text-gray-700 dark:text-gray-400">Tahun Masuk</span>
                             <input type="number" name="tahun_masuk"
                                 class="block w-full md:w-[70%] mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                placeholder="jabatan anda" />
+                                placeholder="tahun masuk" />
                         </label>
                         <label class="block text-sm">
                             <span class="text-gray-700 dark:text-gray-400">Tahun Keluar</span>
                             <input type="number" name="tahun_keluar"
                                 class="block w-full md:w-[70%] mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                placeholder="jabatan anda" />
+                                placeholder="!opsional" />
                         </label>
                     </div>
 
