@@ -58,8 +58,9 @@
                     Dashboard</a>
             </div>
 
-            <form action="" method="post" class="w-full">
+            <form action="{{ route('simpanDataPendidikan', Auth::user()->id_user) }}" method="post" class="w-full">
                 <div class="flex flex-col space-y-5 w-full">
+                      @csrf
                     <!-- nama_pekerjaan -->
                     <label class="block text-sm">
                         <span class="text-gray-700 dark:text-gray-400">Nama Universitas</span>
