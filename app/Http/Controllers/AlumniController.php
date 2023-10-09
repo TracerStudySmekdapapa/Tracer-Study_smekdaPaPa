@@ -163,7 +163,7 @@ class AlumniController extends Controller
             'nama_univ' => $request->nama_univ,
             'fakultas' => $request->fakultas,
             'prodi' => $request->prodi,
-            'alamat_univ' => $request->alm_univ,
+            'alamat_univ' => $request->alamat_univ,
             'id_alumni' => $id_alumni->id_alumni
         ]);
 
