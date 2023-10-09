@@ -9,7 +9,7 @@
 
             <!-- ?navigasi menu ===========================-->
             <div class="grid grid-cols-3 gap-x-8 mt-5 md:mt-2">
-                <a href="#" class="flex items-center space-x-3">
+                <a href="{{ route('tambahDataPribadi') }}" class="flex items-center space-x-3">
                     <div
                         class="min-w-[24px] min-h-[24px] bg-gray-400 rounded-full grid place-items-center text-white font-semibold">
                         1
@@ -17,7 +17,7 @@
                     <h1>Data Pribadi</h1>
                 </a>
 
-                <a href="#" class="flex items-center space-x-3">
+                <a href="{{ route('tambahDataPekerjaan') }}" class="flex items-center space-x-3">
                     <div
                         class="min-w-[24px] min-h-[24px] bg-gray-400 rounded-full grid place-items-center text-white font-semibold">
                         2
@@ -25,7 +25,7 @@
                     <h1>Data Pekerjaan</h1>
                 </a>
 
-                <a href="#" class="flex items-center space-x-3">
+                <a href="{{ route('tambahDataPendidikan') }}" class="flex items-center space-x-3">
                     <div
                         class="min-w-[24px] min-h-[24px] bg-primary rounded-full grid place-items-center text-white font-semibold">
                         3
@@ -64,7 +64,7 @@
                     <label class="block text-sm">
                         <span class="text-gray-700 dark:text-gray-400">Nama Universitas</span>
                         <input type="text" name="nama_universitas"
-                            class="block w-full md:w-[70%] mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                            class="block w-full  mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                             placeholder="nama univ" />
                     </label>
 
@@ -72,7 +72,7 @@
                     <label class="block text-sm">
                         <span class="text-gray-700 dark:text-gray-400">Fakultas</span>
                         <input type="text" name="fakultas"
-                            class="block w-full md:w-[70%] mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                            class="block w-full  mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                             placeholder="Nama instansi" />
                     </label>
 
@@ -80,21 +80,21 @@
                     <label class="block text-sm">
                         <span class="text-gray-700 dark:text-gray-400">Prodi</span>
                         <input type="text" name="prodi"
-                            class="block w-full md:w-[70%] mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                            class="block w-full  mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                             placeholder="Prodi anda" />
                     </label>
 
                     <!-- alamat instansi -->
                     <label class="block mt-10 text-sm">
-                        <span class="text-gray-700 dark:text-gray-400">alamat</span>
+                        <span class="text-gray-700 dark:text-gray-400">Alamat</span>
                         <textarea name="alamat_univ"
-                            class="block border border-gray-600 px-3 py-2 rounded-md w-full md:w-[70%] mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                            class="block border border-gray-600 px-3 py-2 rounded-md w-full  mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
                             rows="3" placeholder="masukan alamat universitas."></textarea>
                     </label>
 
                     <!-- submit  -->
                     <button type="submit" class="submit hover:bg-gray-950 focus:outline-none focus:shadow-outline-purple">
-                        kirim
+                        Simpan
                     </button>
                 </div>
                 <a href="#" class="text-blue-500 underline-offset-8 underline mt-10 md:hidden block">kembali ke

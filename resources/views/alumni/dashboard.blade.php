@@ -34,7 +34,7 @@
                             <h1 class="text-[35px] font-semibold pb-4">Syaid Alfarishi</h1>
                             {{-- <h1 class="text-[35px] font-semibold pb-4">{{ $alumni->user->name ?? Auth::user()->name }}</h1> --}}
                             <p class="text-[13px] -mt-4 mb-5 text-black/50 font-light pr-10 max-w-[350px] min-w-[350px]">
-                                {{ Auth::user()->bio ?? 'User ini belum memiliki bio' }}
+                                {{ Auth::user()->bio ?? 'Belum Ada Bio' }}
                             </p>
                             @if ($alumni)
                                 <table class="w-full">
@@ -155,8 +155,8 @@
 
                                 <!-- data pendidikan-->
                                 <div class="w-full min-h-[300px] flex justify-stretch px-20">
-                                    <ul class="steps steps-vertical">
-                                        @forelse ($pendidikan as $item)
+                                    @forelse ($pendidikan as $item)
+                                        <ul class="steps steps-vertical">
                                             <li class="step step-primary">
                                                 <div class="flex justify-start items-start flex-col">
                                                     <h1 class="text-black/90 capitalize text-[20px]">
@@ -165,14 +165,14 @@
                                                     <p>{{ $item->fakultas }}</p>
                                                 </div>
                                             </li>
-                                        @empty
-                                            <h1>kontol </h1>
-                                        @endforelse
-                                        <!-- end looping herre -->
+                                            <!-- end looping herre -->
+                                        </ul>
 
-                                    </ul>
+                                    @empty
+                                        <h1>Tidak Ada Data Pendidikan</h1>
+                                    @endforelse
                                 </div>
-                                <div class="flex space-x-5 items-center lg:ml-32">
+                                <div class="flex space-x-5 items-center lg:ml-32 ">
                                     <a href="{{ route('tambahDataPendidikan') }}"
                                         class="rounded-full px-10   py-2 border block text-center border-black">+
                                         Data
