@@ -167,7 +167,7 @@ class AlumniController extends Controller
             'id_alumni' => $id_alumni->id_alumni
         ]);
 
-        return redirect()->route('adminDashboard')->with(['message' => 'Data berhasil disimpan']);
+        return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil disimpan']);
     }
     /* End Create Data Pekerjaan */
 }
