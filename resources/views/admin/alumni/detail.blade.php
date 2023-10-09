@@ -129,10 +129,9 @@
                                         <label for="">Nama Universitas :</label>
                                         @if ($dataPendidikan->count() > 1)
                                             {{-- Looping data pekerjaan alumni yang ada dua --}}
-                                            @for ($i = 0; $i < $dataPendidikan->count(); $i++)
-                                                <p>{{ $dataPendidikan[$i]->nama_univ }}</p>
-                                                {{-- <p>{{ $dataPekerjaan[$i]->jabatan }}</p> --}}
-                                            @endfor
+                                             @foreach ($dataPendidikan as $pendidikan)
+                                                <p>{{ $pendidikan->nama_univ }}</p>
+                                            @endforeach
                                         @else
                                             {{ $dataPendidikan->first()->nama_univ ?? '-' }}
                                         @endif
