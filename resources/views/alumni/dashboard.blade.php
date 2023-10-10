@@ -31,8 +31,9 @@
                                 alt="gambar" class="w-full h-full object-cover" />
                         </div>
                         <div class="text-[#252525]">
-                            <h1 class="text-[35px] font-semibold pb-4">Syaid Alfarishi</h1>
-                            {{-- <h1 class="text-[35px] font-semibold pb-4">{{ $alumni->user->name ?? Auth::user()->name }}</h1> --}}
+                            {{-- <h1 class="text-[35px] font-semibold pb-4">Syaid Alfarishi</h1> --}}
+                            <h1 class="text-[35px] font-semibold pb-4 capitalize">
+                                {{ $alumni->user->name ?? Auth::user()->name }}</h1>
                             <p class="text-[13px] -mt-4 mb-5 text-black/50 font-light pr-10 max-w-[350px] min-w-[350px]">
                                 {{ Auth::user()->bio ?? 'Belum Ada Bio' }}
                             </p>
@@ -145,7 +146,7 @@
                                         class="rounded-full px-10   py-2 border block text-center border-black">+
                                         Data
                                         Pekerjaan</a>
-                                    <a href=""
+                                    <a href="{{ route('detailDataPekerjaan', $alumni->id_alumni) }}"
                                         class="block px-6 py-2 rounded-full text-white bg-blue-500 active:bg-black active:text-white border">lihat
                                         selengkapnya</a>
                                 </div>
@@ -155,8 +156,8 @@
 
                                 <!-- data pendidikan-->
                                 <div class="w-full min-h-[300px] flex justify-stretch px-20">
-                                    @forelse ($pendidikan as $item)
-                                        <ul class="steps steps-vertical">
+                                    <ul class="steps steps-vertical">
+                                        @forelse ($pendidikan as $item)
                                             <li class="step step-primary">
                                                 <div class="flex justify-start items-start flex-col">
                                                     <h1 class="text-black/90 capitalize text-[20px]">
@@ -166,18 +167,18 @@
                                                 </div>
                                             </li>
                                             <!-- end looping herre -->
-                                        </ul>
 
-                                    @empty
-                                        <h1>Tidak Ada Data Pendidikan</h1>
-                                    @endforelse
+                                        @empty
+                                            <h1>Tidak Ada Data Pendidikan</h1>
+                                        @endforelse
+                                    </ul>
                                 </div>
                                 <div class="flex space-x-5 items-center lg:ml-32 ">
                                     <a href="{{ route('tambahDataPendidikan') }}"
                                         class="rounded-full px-10   py-2 border block text-center border-black">+
                                         Data
                                         Pendidikan</a>
-                                    <a href=""
+                                    <a href="{{ route('detailDataPendidikan', $alumni->id_alumni) }}"
                                         class="block px-6 py-2 rounded-full text-white bg-blue-500 active:bg-black active:text-white border">lihat
                                         selengkapnya</a>
                                 </div>

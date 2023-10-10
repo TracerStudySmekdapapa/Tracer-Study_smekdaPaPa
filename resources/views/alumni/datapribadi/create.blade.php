@@ -31,7 +31,7 @@
                             <span class="text-gray-700 dark:text-gray-400">NISN</span>
                             <input type="number" name="nisn"
                                 class="block w-full px-5 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                placeholder="0123456789" max="10" />
+                                placeholder="0123456789" />
                         </label>
 
                         <div class="grid w-full grid-cols-1 gap-5 md:grid-cols-2">
@@ -73,7 +73,7 @@
                             <span class="text-gray-700 dark:text-gray-400">Tempat Lahir</span>
                             <input name="tmp_lahir"
                                 class="block w-full px-5 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                placeholder="Padang Panjang " />
+                                placeholder="tempat lahir anda" />
                         </label>
                         <!--  tempat tgl lahit  -->
                         <label class="block text-sm">

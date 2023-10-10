@@ -6,6 +6,8 @@ use App\Http\Controllers\AuthenticateController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Alumni;
+use App\Models\Pekerjaan;
+use App\Models\Pendidikan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +25,45 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('/');
+
+
+
+// ==================================================================
+/* 
+perbaiki ini  dari baris 40 sampai baris 59, pindahkan ke controller motode pengambilan datanya
+perbaiki letak barisnya , letakkan sesuati "data-pekerjaan" , "data-pendidikan"
+ */
+// ==================================================================
+
+
+// detail data pekerjaan  (alumni melihat data sendiri)
+Route::get('/alumni/{id}/data-pekerjaan/detail', function ($id) {
+
+    $pekerjaan = Pekerjaan::get()->where('id_alumni', $id);
+    $title = 'data pekerjaan';
+
+    return view('alumni.datapekerjaan.detail', compact('title', 'pekerjaan'));
+})->name('detailDataPekerjaan');
+
+
+
+
+// detail data pendidikan pendidikan (alumni melihat data sendiri) 
+
+Route::get('/alumni/{id}/data-pendidikan/detail', function ($id) {
+
+    $pendidikan = Pendidikan::get()->where('id_alumni', $id);
+    $title = 'data pendidikan';
+
+    return view('alumni.datapendidikan.detail', compact('title', 'pendidikan'));
+})->name('detailDataPendidikan');
+
+
+// ==================================================================
+
+
+
+
 
 Route::get('/test', function () {
     $title = 'Detail Alumni';
@@ -63,6 +104,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/alumni/{id}/data-pribadi/tambah', [AlumniController::class, 'simpanDataPribadi'])->name('simpanDataPribadi');
     Route::get('/alumni/{id}/data-pribadi/edit', [AlumniController::class, 'editDataPribadi'])->name('editDataPribadi');
     Route::patch('/alumni/{id}/data-pribadi/edit', [AlumniController::class, 'updateDataPribadi'])->name('updateDataPribadi');
+
+
+
 
     // data pekerjaan
     Route::get('/alumni/data-pekerjaan/tambah', [AlumniController::class, 'tambahDataPekerjaan'])->name('tambahDataPekerjaan');
