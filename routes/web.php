@@ -30,7 +30,7 @@ Route::get('/', [HomeController::class, 'index'])->name('/');
 
 // ==================================================================
 /* 
-perbaiki ini  dari baris 40 sampai baris 59, pindahkan ke controller motode pengambilan datanya
+perbaiki ini  dari baris 40 sampai baris 59, pindahkan ke controller motode pengambilan datanya 
 perbaiki letak barisnya , letakkan sesuati "data-pekerjaan" , "data-pendidikan"
  */
 // ==================================================================
