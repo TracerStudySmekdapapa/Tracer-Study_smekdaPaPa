@@ -113,7 +113,8 @@
                                             </div>
                                         </div>
 
-                                        <a x-ref="content" class="block w-full" href=""><img class="mx-auto"
+                                        <a x-ref="content" class="block w-full"
+                                            href="{{ route('detailAlumni', $item->id_alumni) }}"><img class="mx-auto"
                                                 src="{{ asset('assets/dot.svg') }}" alt="dot" /></a>
                                     </div>
                                 </td>
@@ -128,89 +129,6 @@
                             <td colspan="6">SILAHKAN CARI NAMA ATAU NISN ALUMNI</td>
                         </tr>
                     @endif
-
-                    {{--  --}}
-                    {{-- @if ($search)
-                        @forelse ($alumni as $item)
-                            <!-- looping here -->
-                            <tr class="divide-x bg-gray-50">
-                                <td class="flex items-center justify-center py-5 mx-auto space-x-4">
-                                    <div class="rounded-full w-[30px] h-[30px] bg-rose-600 ml-5"></div>
-                                    <h1 class="max-w-[40%]">{{ $item->name }}</h1>
-                                </td>
-                                <td>{{ $item->nisn ?? '-' }}</td>
-                                <td>{{ $item->jurusan ?? '-' }}</td>
-                                <td>{{ $item->jenis_kelamin ?? '-' }}</td>
-                                <td>{{ $item->tamatan ?? '-' }}</td>
-                                <td>
-                                    <div x-data="{
-                                        tooltipVisible: false,
-                                        tooltipText: '{{ $item->name }}',
-                                        tooltipArrow: true,
-                                        tooltipPosition: 'right',
-                                    }" x-init="$refs.content.addEventListener('mouseenter', () => { tooltipVisible = true; });
-                                    $refs.content.addEventListener('mouseleave', () => { tooltipVisible = false; });" class="relative">
-                                        <div x-ref="tooltip" x-show="tooltipVisible"
-                                            :class="{
-                                                'top-0 left-1/2 -translate-x-1/2 -mt-0.5 -translate-y-full': tooltipPosition ==
-                                                    'top',
-                                                'top-1/2 -translate-y-1/2 -ml-0.5 left-0 -translate-x-full': tooltipPosition ==
-                                                    'left',
-                                                'bottom-0 left-1/2 -translate-x-1/2 -mb-0.5 translate-y-full': tooltipPosition ==
-                                                    'bottom',
-                                                'top-1/2 -translate-y-1/2 -mr-0.5 right-0 translate-x-full': tooltipPosition ==
-                                                    'right'
-                                            }"
-                                            class="absolute w-auto text-sm" x-cloak>
-                                            <div x-show="tooltipVisible" x-transition
-                                                class="relative px-2 py-1 text-white bg-black rounded bg-opacity-90">
-                                                <p x-text="tooltipText"
-                                                    class="flex-shrink-0 block text-xs whitespace-nowrap">
-                                                </p>
-                                                <div x-ref="tooltipArrow" x-show="tooltipArrow"
-                                                    :class="{
-                                                        'bottom-0 -translate-x-1/2 left-1/2 w-2.5 translate-y-full': tooltipPosition ==
-                                                            'top',
-                                                        'right-0 -translate-y-1/2 top-1/2 h-2.5 -mt-px translate-x-full': tooltipPosition ==
-                                                            'left',
-                                                        'top-0 -translate-x-1/2 left-1/2 w-2.5 -translate-y-full': tooltipPosition ==
-                                                            'bottom',
-                                                        'left-0 -translate-y-1/2 top-1/2 h-2.5 -mt-px -translate-x-full': tooltipPosition ==
-                                                            'right'
-                                                    }"
-                                                    class="absolute inline-flex items-center justify-center overflow-hidden">
-                                                    <div :class="{
-                                                        'origin-top-left -rotate-45': tooltipPosition ==
-                                                            'top',
-                                                        'origin-top-left rotate-45': tooltipPosition ==
-                                                            'left',
-                                                        'origin-bottom-left rotate-45': tooltipPosition ==
-                                                            'bottom',
-                                                        'origin-top-right -rotate-45': tooltipPosition == 'right'
-                                                    }"
-                                                        class="w-1.5 h-1.5 transform bg-black bg-opacity-90"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <a x-ref="content" class="block w-full"
-                                            href="{{ route('detailAlumni', $item->id_alumni) }}"><img class="mx-auto"
-                                                src="{{ asset('assets/dot.svg') }}" alt="dot" /></a>
-                                    </div>
-                                </td>
-                            </tr>
-                        @empty
-
-                            <tr class="bg-gray-50">
-                                <td colspan="6">TIDAK ADA DATA YANG DITEMUKAN</td>
-                            </tr>
-                        @endforelse
-                    @else
-                        <tr class="bg-gray-50">
-                            <td colspan="6">SILAHKAN CARI NAMA ATAU NISN ALUMNI</td>
-                        </tr>
-                    @endif --}}
-
                     <!-- end delete aja -->
                 </tbody>
 

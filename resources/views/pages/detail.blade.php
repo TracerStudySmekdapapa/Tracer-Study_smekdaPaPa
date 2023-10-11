@@ -14,7 +14,7 @@
                     <div>
                         <h1 class="text-[35px] font-semibold pb-4">{{ $dataPribadi->user->name }}</h1>
                         <p class="text-[15px] -mt-4 mb-5 text-black/50 font-light">
-                            {{ $dataPribadi->bio ?? 'Belum memiliki bio' }}
+                            {{ $dataPribadi->user->bio ?? 'Belum memiliki bio' }}
                         </p>
                         <table class="w-full">
                             <tr class="divide-y">
@@ -56,15 +56,37 @@
                             <tr class="divide-y">
                                 <td>Tamatan</td>
                                 <td class="py-2 px-6">:</td>
-                                <td>{{ $dataPribadi->angkatan }}</td>
+                                <td>{{ $dataPribadi->tamatan }}</td>
                             </tr>
                         </table>
                     </div>
                 </div>
             </div>
             <div class="w-full min-h-[80vh] bg-teal-500">
-                <div class="w-full min-h-[40vh] bg-violet-500"></div>
-                <div class="w-full min-h-[40vh] bg-orange-500"></div>
+                <div class="w-full min-h-[40vh] bg-violet-500">
+                    <table>
+                        @foreach ($dataPekerjaan as $item)
+                            <tr>
+                                <td>{{ $item->nama_pekerjaan }}</td>
+                                <td>:</td>
+                                <td>{{ $item->nama_instansi ?? '-' }}</td>
+                            </tr>
+                        @endforeach
+                    </table>
+                    <button class="underline">view more</button>
+                </div>
+                <div class="w-full min-h-[40vh] bg-orange-500">
+                    <table>
+                        @foreach ($dataPendidikan as $item)
+                            <tr>
+                                <td>{{ $item->nama_univ }}</td>
+                                <td>:</td>
+                                <td>{{ $item->fakultas ?? '-' }}</td>
+                            </tr>
+                        @endforeach
+                    </table>
+                    <button class="underline">view more</button>
+                </div>
             </div>
         </section>
     </main>
