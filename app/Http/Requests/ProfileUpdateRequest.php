@@ -20,7 +20,7 @@ class ProfileUpdateRequest extends FormRequest
             'name' => ['string', 'max:255'],
             'email' => ['email', 'max:255', Rule::unique(User::class)->ignore($id)],
             'bio' => ['string', 'max:255'],
-            'profil_picture' => ['string', 'max:255']
+            'profil_picture' => ['image','file:2000']
         ];
     }
 }
