@@ -129,7 +129,12 @@
                             <td colspan="6">SILAHKAN CARI NAMA ATAU NISN ALUMNI</td>
                         </tr>
                     @endif
+<<<<<<< Updated upstream
                     <!-- end delete aja -->
+=======
+
+
+>>>>>>> Stashed changes
                 </tbody>
 
                 <tfoot class="bg-primary/5">
