@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('profil_picture')->nullable();
             $table->string('bio', 100)->nullable();
             $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
