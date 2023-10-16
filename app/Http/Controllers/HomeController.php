@@ -32,6 +32,7 @@ class HomeController extends Controller
     public function detail($id){
         $title = 'Detail Alumni';
         $dataPribadi = Alumni::where('id_alumni', $id)->first();
+        // dd($dataPribadi);
         $dataPekerjaan = Pekerjaan::where('id_alumni', $dataPribadi->id_alumni)->get();
         $dataPendidikan = Pendidikan::where('id_alumni', $dataPribadi->id_alumni)->get();
         return view('pages.detail', compact('dataPribadi', 'dataPekerjaan', 'dataPendidikan', 'title'));
