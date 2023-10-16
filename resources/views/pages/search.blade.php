@@ -112,8 +112,7 @@
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <a x-ref="content" class="block w-full" hre f=""><img class="mx-auto"
+                                        <a x-ref="content" class="block w-full" href="{{route('detailAlumni', $item->id_alumni)}}"><img class="mx-auto"
                                                 src="{{ asset('assets/dot.svg') }}" alt="dot" /></a>
                                     </div>
                                 </td>
@@ -122,7 +121,7 @@
                             <tr class="bg-gray-50">
                                 <td colspan="6">TIDAK ADA DATA YANG DITEMUKAN</td>
                             </tr>
-                        @endforelse
+                    @endforelse
                     @else
                         <tr class="bg-gray-50">
                             <td colspan="6">SILAHKAN CARI NAMA ATAU NISN ALUMNI</td>
