@@ -54,13 +54,13 @@
                         <!-- forgot password -->
                         <p class="mt-4">
                             <a class="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline"
-                                href="./forgot-password.html">
+                                href="{{ route('password.request') }}">
                                 Lupa password ?
                             </a>
                         </p>
 
                         <!-- create new account -->
-                        <p class="mt-1">
+                        \<p class="mt-1">
                             <a class="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline"
                                 href="{{ route('register') }}">
                                 Buat akun baru
