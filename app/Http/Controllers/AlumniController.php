@@ -73,7 +73,6 @@ class AlumniController extends Controller
             'jenis_kelamin' => $request->jenis_kelamin,
             'jurusan' => $request->jurusan,
             'tamatan' => $request->tamatan,
-            // 'angkatan' => $request->angkatan,
             'id_user' => $id
         ]);
 
@@ -106,7 +105,6 @@ class AlumniController extends Controller
         ], $messages); */
         /* End Validasi */
 
-        $user = User::where('id_user', $id);
         $alumni->update([
             'nisn' => $request->nisn,
             'no_telp' => $request->no_telp,
@@ -118,11 +116,6 @@ class AlumniController extends Controller
             'tamatan' => $request->tamatan,
             'id_user' => $id
         ]);
-
-        $user->update([
-            'profil_picture' => $request->profil
-        ]);
-
         return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil diubah']);
     }
     /* End Edit Data Pekerjaan */
