@@ -19,7 +19,8 @@ class AlumniSeeder extends Seeder
         $user = User::create([
             'name' => 'rehan',
             'email' => 'rehan@gmail.com',
-            'password' => bcrypt('123')
+            'password' => bcrypt('123'),
+            'profil_picture' => random_int(1, 4) . '.jpg'
         ]);
 
         $user->assignRole('Alumni');
