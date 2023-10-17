@@ -142,6 +142,29 @@ class AlumniController extends Controller
 
         return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil disimpan']);
     }
+
+    public function editDataPekerjaan($id)
+    {
+        $title = 'Edit Data Pekerjaan';
+        $data = Pekerjaan::where('id_pekerjaan', $id)->first();
+        return view('alumni.datapekerjaan.edit', compact('title', 'data'));
+    }
+
+    public function updateDataPekerjaan(Request $request, $id)
+    {
+        $data = Pekerjaan::where('id_pekerjaan', $id)->first();
+
+        $data->update([
+            'nama_pekerjaan' => $request->nama_pekerjaan,
+            'nama_instansi' => $request->nama_instansi,
+            'jabatan' => $request->jabatan,
+            'thn_masuk' => $request->tahun_masuk,
+            'thn_keluar' => $request->tahun_keluar,
+            'alamat_instansi' => $request->alamat,
+        ]);
+
+        return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil disimpan']);
+    }
     /* End Create Data Pekerjaan */
 
     /* Start Create Data Pendidikan */
@@ -150,6 +173,7 @@ class AlumniController extends Controller
         $title = 'Tambah Data Pendidikan';
         return view('alumni.datapendidikan.create', compact('title'));
     }
+
     public function simpanDataPendidikan(Request $request, $id)
     {
         $id_alumni = Alumni::where('id_user', $id)->first();
@@ -162,6 +186,25 @@ class AlumniController extends Controller
         ]);
 
         return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil disimpan']);
+    }
+
+    public function editDataPendidikan($id)
+    {
+        $title = 'Edit Data Pendidikan';
+        $data = Pendidikan::where('id_pendidikan', $id)->first();
+        return view('alumni.datapendidikan.edit', compact('title', 'data'));
+    }
+
+    public function updateDataPendidikan(Request $request, $id)
+    {
+        $data = Pendidikan::where('id_pendidikan', $id)->first();
+        $data->update([
+            'nama_univ' => $request->nama_univ,
+            'fakultas' => $request->fakultas,
+            'prodi' => $request->prodi,
+            'alamat_univ' => $request->alamat_univ,
+        ]);
+        return redirect()->back();
     }
     /* End Create Data Pekerjaan */
 }

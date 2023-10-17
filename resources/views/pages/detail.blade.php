@@ -22,12 +22,9 @@
             <div class="w-full min-h-[80vh] justify-center items-start pt-5 flex">
                 <div class="flex flex-col space-y-5 justify-center items-center">
                     {{-- <div class="bg-red-500 rounded-full w-[200px] h-[200px]"></div> --}}
-                    @if ($dataPribadi->user->profil_picture)
-                        <img src="{{ Storage::url('public/foto/' . $dataPribadi->user->profil_picture) }}" alt=""
-                            srcset="" class="rounded-full w-[200px] h-[200px]">
-                    @else
-                        <div class="bg-red-500 rounded-full w-[200px] h-[200px]"></div>
-                    @endif
+                    <img src="{{ asset('assets/random/' . $dataPribadi->user->profil_picture) }}" alt=""
+                        srcset="" class="rounded-full w-[200px] h-[200px]">
+
                     <div>
                         <h1 class="text-[35px] font-semibold pb-4">{{ $dataPribadi->user->name }}</h1>
                         <p class="text-[15px] -mt-4 mb-5 text-black/50 font-light">
@@ -94,14 +91,15 @@
                                 </li>
                             @endforeach
                         </ul>
-                        <a href="{{ route('detailDataPekerjaan', $dataPribadi->id_alumni) }}" class="underline">view
+                        {{-- @dd($dataPribadi) --}}
+                        <a href="{{ route('moreDataPekerjaan', $dataPribadi->id_alumni) }}" class="underline">view
                             more</a>
                     @else
                         <h1 class="text-blue-700 bg-slate-950">Tidak Ada Data</h1>
                     @endif
                 </div>
                 <div class="w-full min-h-[40vh] ">
-                    @if ($dataPendidikan->count() > 1)
+                    @if ($dataPendidikan->count() > 0)
                         {{-- <table> --}}
                         <ul class="steps steps-vertical">
                             @foreach ($dataPendidikan as $item)
@@ -115,8 +113,8 @@
                                 </li>
                             @endforeach
                         </ul>
-                        <button class="underline">
-                            view more</button>
+                        <a href="{{ route('moreDataPendidikan', $dataPribadi->id_alumni) }}" class="underline">
+                            view more</a>
                     @else
                         <h1 class="text-blue-700 bg-slate-950">Tidak Ada Data</h1>
                     @endif

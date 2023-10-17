@@ -36,6 +36,26 @@ perbaiki letak barisnya , letakkan sesuati "data-pekerjaan" , "data-pendidikan"
 // ==================================================================
 
 
+Route::get(
+    '/alumni/{id}/data-pekerjaan/more-detail',
+    function ($id) {
+
+        $pekerjaan = Pekerjaan::get()->where('id_alumni', $id);
+        $title = 'data pekerjaan';
+        return view('pages.moreDetail.pekerjaan', compact('title', 'pekerjaan'));
+    }
+)->name('moreDataPekerjaan');
+
+Route::get(
+    '/alumni/{id}/data-pendidikan/more-detail',
+    function ($id) {
+
+        $pendidikan = Pendidikan::get()->where('id_alumni', $id);
+        $title = 'data pendidikan';
+        return view('pages.moreDetail.pendidikan', compact('title', 'pendidikan'));
+    }
+)->name('moreDataPendidikan');
+
 // detail data pekerjaan  (alumni melihat data sendiri)
 Route::get('/alumni/{id}/data-pekerjaan/detail', function ($id) {
 
@@ -96,8 +116,8 @@ Route::middleware('auth')->group(function () {
     // data pendidikan
     Route::get('/alumni/data-pendidikan/tambah', [AlumniController::class, 'tambahDataPendidikan'])->name('tambahDataPendidikan');
     Route::post('/alumni/{id}/data-pendidikan/tambah', [AlumniController::class, 'simpanDataPendidikan'])->name('simpanDataPendidikan');
-    Route::get('/alumni/{id}/data-pendidikan/edit', [AlumniController::class, 'simpanDataPendidikan'])->name('simpanDataPendidikan');
-    Route::patch('/alumni/{id}/data-pendidikan/update', [AlumniController::class, 'simpanDataPendidikan'])->name('simpanDataPendidikan');
+    Route::get('/alumni/{id}/data-pendidikan/edit', [AlumniController::class, 'editDataPendidikan'])->name('editDataPendidikan');
+    Route::patch('/alumni/{id}/data-pendidikan/update', [AlumniController::class, 'updateDataPendidikan'])->name('updateDataPendidikan');
 });
 
 // semua otrang
