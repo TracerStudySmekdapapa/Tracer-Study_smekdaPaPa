@@ -4,7 +4,7 @@
     }" class="relative">
         <button @click="dropdownOpen=true"
             class="flex items-center justify-center text-base font-medium transition-colors p-px bg-white rounded-full  after:content-['']  after:bg-[#00F50A] after:absolute after:w-[11px] after:h-[11px] after:bottom-0 after:right-0 border border-primary after:rounded-full relative after:z-50">
-            <img src="{{ Auth::user()->profil_picture ? Storage::url('public/foto/' . Auth::user()->profil_picture) : asset('assets/blankpp.jpg') }}"
+            <img src="{{ asset('assets/random/' . Auth::user()->profil_picture) }}"
                 class="object-cover w-9 h-9 border rounded-full" />
 
         </button>

@@ -208,11 +208,15 @@
                                 {{-- if user ini tidak punya role has role --}}
                                 @if (Auth::user()->hasRole('Alumni'))
                                     <li data-content="✓" class="step step-primary">
-                                        menunggu verivikasi admin untuk melanjutkan
+                                        <p class="text-left">
+                                            menunggu verifikasi admin untuk melanjutkan
+                                        </p>
                                     </li>
                                 @else
                                     <li data-content="?" class="step step-neutral">
-                                        menunggu verivikasi admin untuk melanjutkan
+                                        <p class="text-left">
+                                            menunggu verifikasi admin untuk melanjutkan
+                                        </p>
                                     </li>
                                 @endif
                                 {{-- else --}}
@@ -277,9 +281,7 @@
                                 mengisi data pendidikan
                             </li>
                         </ul>
-
                     @endif
-
                 </div>
             </section>
         </main>

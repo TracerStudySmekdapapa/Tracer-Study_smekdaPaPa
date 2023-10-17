@@ -15,6 +15,7 @@ use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
 {
+
     /**
      * Display the registration view.
      */
@@ -37,10 +38,12 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'profil_picture' => random_int(1, 4) . '.jpg'
         ]);
 
         event(new Registered($user));

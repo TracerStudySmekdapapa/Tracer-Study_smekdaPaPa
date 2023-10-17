@@ -41,15 +41,10 @@ Route::get('/alumni/{id}/data-pekerjaan/detail', function ($id) {
 
     $pekerjaan = Pekerjaan::get()->where('id_alumni', $id);
     $title = 'data pekerjaan';
-
     return view('alumni.datapekerjaan.detail', compact('title', 'pekerjaan'));
 })->name('detailDataPekerjaan');
 
-
-
-
 // detail data pendidikan pendidikan (alumni melihat data sendiri) 
-
 Route::get('/alumni/{id}/data-pendidikan/detail', function ($id) {
 
     $pendidikan = Pendidikan::get()->where('id_alumni', $id);
@@ -60,20 +55,10 @@ Route::get('/alumni/{id}/data-pendidikan/detail', function ($id) {
 
 
 // ==================================================================
-
-
-
-
-
 Route::get('/test', function () {
     $title = 'Detail Alumni';
     return view('test.detail', compact('title'));
 });
-/* 
-Route::get('/dashboard', function (Request $request) {
-   
-})->middleware(['auth', 'verified'])->name('dashboard'); */
-
 
 Route::get('/authenticate', [AuthenticateController::class, 'index'])->middleware(['auth', 'verified'])->middleware(['auth', 'verified']);
 
@@ -84,7 +69,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-
     // admin
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('adminDashboard');
     Route::get('/admin/alumni', [AdminController::class, 'dataAlumni'])->name('dataAlumni');
@@ -93,8 +77,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/alumni/verify', [AdminController::class, 'verifAlumni'])->name('verifyDataAlumni');
     Route::post('/admin/alumni/{id_user}/verify', [AdminController::class, 'verifAlumniAksi'])->name('verifalumniStore');
     Route::post('/admin/alumni/{id_user}/tolakverify', [AdminController::class, 'tolakVerifAlumniAksi'])->name('tolakVerifAlumni');
-
-
 
     // alumi 
     Route::get('/alumni/dashboard', [AlumniController::class, 'index'])->name('alumniDashboard');
@@ -105,9 +87,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/alumni/{id}/data-pribadi/edit', [AlumniController::class, 'editDataPribadi'])->name('editDataPribadi');
     Route::patch('/alumni/{id}/data-pribadi/edit', [AlumniController::class, 'updateDataPribadi'])->name('updateDataPribadi');
 
-
-
-
     // data pekerjaan
     Route::get('/alumni/data-pekerjaan/tambah', [AlumniController::class, 'tambahDataPekerjaan'])->name('tambahDataPekerjaan');
     Route::post('/alumni/{id}/data-pekerjaan/tambah', [AlumniController::class, 'simpanDataPekerjaan'])->name('simpanDataPekerjaan');
@@ -117,11 +96,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/alumni/{id}/data-pendidikan/tambah', [AlumniController::class, 'simpanDataPendidikan'])->name('simpanDataPendidikan');
 });
 
-
 // semua otrang
 Route::get('/search', [HomeController::class, 'search'])->name('search');
 Route::get('/alumni/{id}/detail', [HomeController::class, 'detail'])->name('detailAlumni');
-// Route::get('/alumni/{id}/detail', [AlumniController::class, 'detail'])->name('detailAlumni');
 
 
 require __DIR__ . '/auth.php';

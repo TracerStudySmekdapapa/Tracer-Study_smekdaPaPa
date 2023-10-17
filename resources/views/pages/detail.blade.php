@@ -1,5 +1,16 @@
 @extends('template.master')
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+<link href="https://cdn.jsdelivr.net/npm/daisyui@3.8.2/dist/full.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.tailwindcss.com"></script>
 @section('content')
+    {{-- @dd($alumni) --}}
+
     <div class="w-[130px] h-[130px] bg-primary blur-[100px] absolute top-20 -left-32 z-0"></div>
     <div class="w-[130px] h-[130px] bg-primary blur-[100px] absolute top-80 -right-52 z-0"></div>
     <main>
@@ -68,35 +79,44 @@
                     </div>
                 </div>
             </div>
-            <div class="w-full min-h-[80vh] bg-teal-500">
-                <div class="w-full min-h-[40vh] bg-violet-500">
+            <div class="w-full min-h-[80vh] ">
+                <div class="w-full min-h-[40vh]">
                     @if ($dataPekerjaan->count() > 0)
-                        <table>
+                        <ul class="steps steps-vertical">
                             @foreach ($dataPekerjaan as $item)
-                                <tr>
-                                    <td>{{ $item->nama_pekerjaan }}</td>
-                                    <td>:</td>
-                                    <td>{{ $item->nama_instansi ?? '-' }}</td>
-                                </tr>
+                                <li class="step step-primary">
+                                    <div class="flex justify-start items-start flex-col">
+                                        <h1 class="text-black/90 capitalize text-[20px]">
+                                            {{ $item->nama_pekerjaan }}
+                                        </h1>
+                                        <p>{{ $item->nama_instansi }}</p>
+                                    </div>
+                                </li>
                             @endforeach
-                        </table>
-                        <button class="underline">view more</button>
+                        </ul>
+                        <a href="{{ route('detailDataPekerjaan', $dataPribadi->id_alumni) }}" class="underline">view
+                            more</a>
                     @else
                         <h1 class="text-blue-700 bg-slate-950">Tidak Ada Data</h1>
                     @endif
                 </div>
-                <div class="w-full min-h-[40vh] bg-orange-500">
+                <div class="w-full min-h-[40vh] ">
                     @if ($dataPendidikan->count() > 1)
-                        <table>
+                        {{-- <table> --}}
+                        <ul class="steps steps-vertical">
                             @foreach ($dataPendidikan as $item)
-                                <tr>
-                                    <td>{{ $item->nama_univ }}</td>
-                                    <td>:</td>
-                                    <td>{{ $item->fakultas ?? '-' }}</td>
-                                </tr>
+                                <li class="step step-primary">
+                                    <div class="flex justify-start items-start flex-col">
+                                        <h1 class="text-black/90 capitalize text-[20px]">
+                                            {{ $item->nama_univ }}
+                                        </h1>
+                                        <p>{{ $item->fakultas }}</p>
+                                    </div>
+                                </li>
                             @endforeach
-                        </table>
-                        <button class="underline">view more</button>
+                        </ul>
+                        <button class="underline">
+                            view more</button>
                     @else
                         <h1 class="text-blue-700 bg-slate-950">Tidak Ada Data</h1>
                     @endif
