@@ -297,12 +297,6 @@
         </main>
 
 
-
-<<<<<<< HEAD
-        @include('template.utils.footer')
-
-=======
-
         @if ($alumni)
             {{-- ketika data pribadi kosong --}}
             @if ($pekerjaan->count() > 0 || $pendidikan->count() > 0)
@@ -319,16 +313,6 @@
                 @include('template.utils.footer')
             </div>
         @endif
-
-
-
-        {{-- @if (!Auth::user()->hasRole('Alumni'))
-            <div>
-                @include('template.utils.footer')
-            </div>
-        @endif --}}
->>>>>>> f2e1854bbcb055c094f3a593e384674e9a36cc0f
-
     </body>
 
     </html>
