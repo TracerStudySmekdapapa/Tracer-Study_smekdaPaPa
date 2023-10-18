@@ -4,53 +4,41 @@
     <main>
         @include('template.utils.navbar')
 
-        <div class="overflow-x-auto my-20">
-            <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
-                <thead class="ltr:text-left rtl:text-right">
-                    <tr>
-                        <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                            Nama
-                        </th>
-                        <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                            Nama Pekerjaan
-                        </th>
-                        <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                            Nama Instansi
-                        </th>
-                        <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                            Alamanat instansi
-                        </th>
-                        <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                            jabatan
-                        </th>
-                        <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                            tahun masuk
-                        </th>
-                        <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                            tahun keluar
-                        </th>
-                    </tr>
-                </thead>
+        <div
+            class="overflow-x-auto lg:mt-20 mt-10 mb-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  lg:gap-5 gap-y-10 place-items-center ">
 
-                <tbody class="divide-y divide-gray-200">
-                    @foreach ($pekerjaan as $item)
-                        <tr>
-                            <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                                {{ $item->alumni->user->name }}
-                            </td>
-                            <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                                {{ $item->nama_pekerjaan }}
-                            </td>
-                            <td class="whitespace-nowrap px-4 py-2 text-gray-700"> {{ $item->nama_instansi }}</td>
-                            <td class="whitespace-nowrap px-4 py-2 text-gray-700"> {{ $item->alamat_instansi }}</td>
-                            <td class="whitespace-nowrap px-4 py-2 text-gray-700"> {{ $item->jabatan }}</td>
-                            <td class="whitespace-nowrap px-4 py-2 text-gray-700"> {{ $item->thn_masuk }}</td>
-                            <td class="whitespace-nowrap px-4 py-2 text-gray-700"> {{ $item->thn_keluar }}</td>
-                        </tr>
-                    @endforeach
 
-                </tbody>
-            </table>
+            @php
+                $count = 0;
+            @endphp
+            @foreach ($pekerjaan as $key => $item)
+                <div
+                    class="relative z-10 min-w-[332px]  max-w-[332px] min-h-[237px] max-h-[237px] rounded-[10px]  bg-white shadow-lg border-[0.5px] border-primary pt-2 overflow-y-auto">
+                    <div class="flex justify-start  px-3 space-x-3">
+                        <div
+                            class="translate-y-2 rounded-full min-w-[40px] h-[40px] bg-primary grid place-items-center text-white font-semibold">
+                            {{ $count + 1 }}
+                        </div>
+                        <div class="flex flex-col text-[14px] capitalize">
+                            <h1 class="font-semibold text-lg">{{ $item->nama_pekerjaan }}</h1>
+                            <p class="text-primary font-normal">{{ $item->nama_instansi }}</p>
+                            <div class="text-black/80 flex justify-between py-1">
+                                <p>{{ $item->jabatan }}</p>
+                                <p>{{ $item->thn_masuk }} s/d {{ $item->thn_keluar }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="w-full   absolute left-0 right-0 bottom-0 px-[55px] place-content-center mt-1 bg-primary rounded-[10px] rounded-ss-[30px] ">
+                        <p class="text-white font-light leading-[21px] text-[14px]  py-[15px]">
+                            {{ $item->alamat_instansi }}
+                        </p>
+                    </div>
+                </div>
+                @php
+                    $count++;
+                @endphp
+            @endforeach
         </div>
     </main>
     @include('template.utils.footer')
