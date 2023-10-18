@@ -63,7 +63,6 @@ class AlumniController extends Controller
         ], $messages); */
         /* End Validasi */
 
-        $user = User::where('id_user', $id);
         Alumni::create([
             'nisn' => $request->nisn,
             'no_telp' => $request->no_telp,
@@ -74,10 +73,6 @@ class AlumniController extends Controller
             'jurusan' => $request->jurusan,
             'tamatan' => $request->tamatan,
             'id_user' => $id
-        ]);
-
-        $user->update([
-            'profil_picture' => $request->profil
         ]);
 
         return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil disimpan']);
@@ -163,8 +158,16 @@ class AlumniController extends Controller
             'alamat_instansi' => $request->alamat,
         ]);
 
-        return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil disimpan']);
+        return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil diubah']);
     }
+
+    public function deleteDataPekerjaan($id)
+    {
+        $pengaduan = Pekerjaan::where('id_pekerjaan', $id)->first();
+        $pengaduan->delete();
+        return redirect()->route('alumniDashboard')->with('message', 'Pengaduan Berhasil Dihapus!');
+    }
+
     /* End Create Data Pekerjaan */
 
     /* Start Create Data Pendidikan */
@@ -204,7 +207,15 @@ class AlumniController extends Controller
             'prodi' => $request->prodi,
             'alamat_univ' => $request->alamat_univ,
         ]);
-        return redirect()->back();
+
+        return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil diubah']);
+    }
+
+    public function deleteDataPendidikan($id)
+    {
+        $pengaduan = Pendidikan::where('id_pendidikan', $id)->first();
+        $pengaduan->delete();
+        return redirect()->route('alumniDashboard')->with('message', 'Data Berhasil Dihapus!');
     }
     /* End Create Data Pekerjaan */
 }
