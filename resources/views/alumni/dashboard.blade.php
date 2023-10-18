@@ -13,8 +13,8 @@
 
 
     <body class="overflow-x-hidden relative capitalize">
-        <div class="w-[130px] h-[130px] bg-primary blur-[100px] absolute top-20 -left-32 z-0"></div>
-        <div class="w-[130px] h-[130px] bg-primary blur-[100px] absolute top-80 -right-52 z-0"></div>
+        <div class="w-[130px] h-[130px] bg-red-500 blur-[100px] absolute top-20 -left-32 z-0"></div>
+        <div class="w-[130px] h-[130px] bg-teal-500 blur-[100px] absolute top-80 -right-52 z-0 hidden lg:block"></div>
         <main class="">
 
 
@@ -128,7 +128,7 @@
                             <div class="w-full min-h-[100px] mt-14 bg-teal-500 block">
                                 <!-- data pekerjaan -->
                                 <div class="w-full min-h-[400] max-h-[500px] flex justify-stretch px-20 bg-yellow-300 ">
-                                    <ul class="steps steps-vertical h-[100px]">
+                                    <ul class="steps steps-vertical h-[400px]">
                                         @foreach ($pekerjaan->take(3) as $item)
                                             <li class="step step-primary">
                                                 <div class="flex justify-start items-start flex-col">
@@ -298,8 +298,36 @@
 
 
 
+<<<<<<< HEAD
         @include('template.utils.footer')
 
+=======
+
+        @if ($alumni)
+            {{-- ketika data pribadi kosong --}}
+            @if ($pekerjaan->count() > 0 || $pendidikan->count() > 0)
+                <div class="mt-[26rem] md:mt-72 lg:mt-36">
+                    @include('template.utils.footer')
+                </div>
+            @else
+                <div class="mt-24 md:mt-10 lg:mt-0 ">
+                    @include('template.utils.footer')
+                </div>
+            @endif
+        @else
+            <div class="-mt-10">
+                @include('template.utils.footer')
+            </div>
+        @endif
+
+
+
+        {{-- @if (!Auth::user()->hasRole('Alumni'))
+            <div>
+                @include('template.utils.footer')
+            </div>
+        @endif --}}
+>>>>>>> f2e1854bbcb055c094f3a593e384674e9a36cc0f
 
     </body>
 

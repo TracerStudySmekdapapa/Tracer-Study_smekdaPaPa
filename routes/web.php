@@ -112,12 +112,14 @@ Route::middleware('auth')->group(function () {
     Route::post('/alumni/{id}/data-pekerjaan/tambah', [AlumniController::class, 'simpanDataPekerjaan'])->name('simpanDataPekerjaan');
     Route::get('/alumni/{id}/data-pekerjaan/edit', [AlumniController::class, 'editDataPekerjaan'])->name('editDataPekerjaan');
     Route::patch('/alumni/{id}/data-pekerjaan/update', [AlumniController::class, 'updateDataPekerjaan'])->name('updateDataPekerjaan');
+    Route::delete('/alumni/{id}/data-pekerjaan', [AlumniController::class, 'deleteDataPekerjaan'])->name('deleteDataPekerjaan');
 
     // data pendidikan
     Route::get('/alumni/data-pendidikan/tambah', [AlumniController::class, 'tambahDataPendidikan'])->name('tambahDataPendidikan');
     Route::post('/alumni/{id}/data-pendidikan/tambah', [AlumniController::class, 'simpanDataPendidikan'])->name('simpanDataPendidikan');
     Route::get('/alumni/{id}/data-pendidikan/edit', [AlumniController::class, 'editDataPendidikan'])->name('editDataPendidikan');
     Route::patch('/alumni/{id}/data-pendidikan/update', [AlumniController::class, 'updateDataPendidikan'])->name('updateDataPendidikan');
+    Route::delete('/alumni/{id}/data-pendidikan', [AlumniController::class, 'deleteDataPendidikan'])->name('deleteDataPendidikan');
 });
 
 // semua otrang
