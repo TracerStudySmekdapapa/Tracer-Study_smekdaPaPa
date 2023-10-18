@@ -15,7 +15,7 @@
     <body class="overflow-x-hidden relative capitalize">
         <div class="w-[130px] h-[130px] bg-primary blur-[100px] absolute top-20 -left-32 z-0"></div>
         <div class="w-[130px] h-[130px] bg-primary blur-[100px] absolute top-80 -right-52 z-0"></div>
-        <main class="pb-[70px] md:pb-[120px] lg:pb-[0px]">
+        <main class="">
 
 
             @include('template.utils.navbar')
@@ -24,20 +24,21 @@
                 <div class="w-full min-h-[500px]  justify-center items-start pt-5 flex">
                     <div class="flex flex-col space-y-5 justify-start items-center">
 
-                        <!-- data pribadi -->
-                        <div class="rounded-full w-[200px] h-[200px] overflow-hidden">
+                        {{-- ! data pribadi seperti nama bio dan email --}}
+                        <div class="rounded-full w-[200px] h-[200px] overflow-hidden border-2 border-black">
                             <img src="{{ asset('assets/random/' . Auth::user()->profil_picture) }}" alt="gambar"
-                                class="w-full h-full object-cover" />
+                                class="w-full h-full object-cover " />
                         </div>
-                        <div class="text-[#252525]">
-                            {{-- <h1 class="text-[35px] font-semibold pb-4">Syaid Alfarishi</h1> --}}
-                            <h1 class="text-[35px] font-semibold pb-4 capitalize">
+                        <div class="text-[#252525]  md:bg-teal-500 lg:bg-rose-600  mx-1  mb-6 ">
+                            <h1
+                                class=" text-[20px] text-center sm:text-[25px] lg:text-[30px] font-semibold pb-4 capitalize">
                                 {{ $alumni->user->name ?? Auth::user()->name }}</h1>
-                            <p class="text-[13px] -mt-4 mb-5 text-black/60 font-light pr-10 max-w-[350px] min-w-[350px]">
+                            <p
+                                class="text-[13px] -mt-4 mb-5 text-black/60 font-light lg:pr-10 text-center lg:text-left max-w-[350px] min-w-[350px]">
                                 {{ Auth::user()->bio ?? 'Belum Ada Bio' }}
                             </p>
                             @if ($alumni)
-                                <table class="w-full text-black/80">
+                                <table class="md:w-full text-black/80 w-[80%] sm:w-[90%]  mx-auto bg-red-600">
                                     <tr class="divide-y">
                                         <td>nisn</td>
                                         <td class="py-2 px-6">:</td>
@@ -84,7 +85,7 @@
 
 
                                     <button
-                                        class=" mt-5 rounded-lg bg-transparent border border-primary hover:bg-black hover:border-transparent hover:text-white capitalize">
+                                        class=" w-[80%] mx-auto mt-5 rounded-lg bg-transparent border border-primary hover:bg-black hover:border-transparent hover:text-white capitalize">
                                         <a href="{{ route('editDataPribadi', $alumni->id_user) }}" class="block px-5 py-2">
                                             edit Data Pribadi
                                         </a>
@@ -92,19 +93,19 @@
 
 
                                 </div>
+                                {{-- ! jika tidak ada data pribadi --}}
                             @else
-                                <table class="w-full text-black/70">
-                                    <tr class="divide-y">
-                                        <td>email</td>
-                                        <td>{{ Auth::user()->email }}</td>
+                                <table class="w-full text-black/70 -mt-5">
+                                    <tr class="">
+                                        <td class="hidden lg:inline">email</td>
+                                        <td class="py-2 px-6 hidden lg:inline">:</td>
+                                        <td class="text-center lg:text-left">{{ Auth::user()->email }}</td>
                                     </tr>
                                 </table>
-                                <div class="w-full bg-red justify-end flex ">
-
-
+                                <div class="w-full  justify-end flex ">
                                     <button
-                                        class=" mt-5 rounded-lg bg-transparent border border-primary hover:bg-black hover:border-transparent hover:text-white capitalize text-black/70">
-                                        <a href="{{ route('tambahDataPribadi') }}" class="block px-5 py-2 ">
+                                        class="w-[80%] mx-auto  mt-5 rounded-lg bg-transparent border border-primary hover:bg-black hover:border-transparent hover:text-white capitalize text-black/70">
+                                        <a href="{{ route('tambahDataPribadi') }}" class="block px-5 py-1 md:py-2 ">
                                             + Data Pribadi
                                         </a>
                                     </button>
@@ -118,16 +119,16 @@
 
 
 
-                <!-- belum di verif dan isi data pribadi -->
-                <div class="w-full min-h-[400px] max-h-[500px]">
-                    {{-- jika alumni ada data pribadi --}}
+                {{-- ! belum di verif dan isi data --}}
+                <div class="w-full   min-h-[400px] max-h-[500px]   ">
+                    {{-- ? jika alumni punya data pribadi --}}
                     @if ($alumni)
                         @if ($pekerjaan->count() > 0 || $pendidikan->count() > 0)
                             <!-- data lain -->
-                            <div class="w-full min-h-[600px] mt-14 ">
+                            <div class="w-full min-h-[100px] mt-14 bg-teal-500 block">
                                 <!-- data pekerjaan -->
-                                <div class="w-full min-h-[300px] flex justify-stretch px-20">
-                                    <ul class="steps steps-vertical">
+                                <div class="w-full min-h-[400] max-h-[500px] flex justify-stretch px-20 bg-yellow-300 ">
+                                    <ul class="steps steps-vertical h-[100px]">
                                         @foreach ($pekerjaan->take(3) as $item)
                                             <li class="step step-primary">
                                                 <div class="flex justify-start items-start flex-col">
@@ -183,7 +184,7 @@
                                 </div>
                             </div>
                         @else
-                            <ul class="steps steps-vertical px-28 lg:pt-20 ">
+                            <ul class="steps steps-vertical px-5 md:px-10 lg:px-28 mt-5 md:mt-0 lg:pt-20 h-full   ">
                                 <li data-content="✓" class="step step-primary">Register</li>
                                 <li data-content="✓" class="step step-primary">login</li>
 
@@ -194,7 +195,9 @@
 
                                 {{-- jika data pribadi ada --}}
                                 <li data-content="✓" class="step step-primary">
-                                    mengisi data pribadi
+                                    <p class="text-left">
+                                        mengisi data pribadi
+                                    </p>
                                 </li>
 
 
@@ -222,10 +225,11 @@
 
                                 {{--  tidak diubah --}}
                                 <li data-content="?" class="step step-neutral">
-                                    mengisi data pekerjaan
+                                    <p class="text-left">mengisi data pekerjaan
+                                    </p>
                                 </li>
                                 <li data-content="?" class="step step-neutral">
-                                    mengisi data pendidikan
+                                    <p class="text-left">mengisi data pendidikan</p>
                                 </li>
 
                             </ul>
@@ -254,13 +258,16 @@
                         @endif
                     @else
                         {{-- jika data pekerjaan == 0 --}}
-                        <ul class="steps steps-vertical px-28 ">
+                        <ul
+                            class="steps steps-vertical px-5 -mt-[100px] md:mt-0 lg:mt-10 lg:px-28 min-h-[200px] max-h-[500px] lg:min-h-[300px] lg:max-h-[700px] bg-red-600 ">
                             <li data-content="✓" class="step step-primary">Register</li>
                             <li data-content="✓" class="step step-primary">login</li>
 
                             {{-- jika data pribadi ada --}}
                             <li data-content="?" class="step step-neutral">
-                                mengisi data pribadi
+                                <p class="text-left">
+                                    mengisi data pribadi
+                                </p>
                             </li>
 
                             {{-- if user ini tidak punya role has role --}}
@@ -274,10 +281,14 @@
 
                             {{--  tidak diubah --}}
                             <li data-content="?" class="step step-neutral">
-                                mengisi data pekerjaan
+                                <p class="text-left">
+                                    mengisi data pekerjaan
+                                </p>
                             </li>
                             <li data-content="?" class="step step-neutral">
-                                mengisi data pendidikan
+                                <p class="text-left">
+                                    mengisi data pendidikan
+                                </p>
                             </li>
                         </ul>
                     @endif
@@ -285,9 +296,27 @@
             </section>
         </main>
 
-        <div class="mt-48 md:mt-20 lg:mt-5">
-            @include('template.utils.footer')
-        </div>
+
+
+        @if ()
+        {{-- ketika data pribadi dan data pekerjaan kosisng --}}
+            <div>
+                @include('template.utils.footer')
+            </div>
+            
+            {{-- letika data pribadi ada dan data pekerjaan kosong --}}
+            @elseif ()
+            <div>
+                @include('template.utils.footer')
+            </div>     
+            
+            @elseif ()
+            {{-- ketika data pribadi ada dan data pekerjaan ada --}}
+            <div>
+                @include('template.utils.footer')
+            </div>     
+
+        @endif
 
     </body>
 

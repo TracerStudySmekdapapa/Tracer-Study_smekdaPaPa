@@ -16,11 +16,6 @@
                 <!-- ?navigasi menu ===========================-->
 
                 <div class="navigation__content">
-                    <a href="{{ route('tambahDataPekerjaan') }}"
-                        class="ml-6 text-black navigation__content__link md:ml-0 lg:mx-3 ">+ Data
-                        Pekerjaan</a>
-                    <a href="{{ route('tambahDataPendidikan') }}#home"
-                        class="ml-6 text-black navigation__content__link md:ml-0 lg:mx-3">+ Data Pendidikan</a>
 
 
                 </div>
