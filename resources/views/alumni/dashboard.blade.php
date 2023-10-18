@@ -298,25 +298,8 @@
 
 
 
-        @if ()
-        {{-- ketika data pribadi dan data pekerjaan kosisng --}}
-            <div>
-                @include('template.utils.footer')
-            </div>
-            
-            {{-- letika data pribadi ada dan data pekerjaan kosong --}}
-            @elseif ()
-            <div>
-                @include('template.utils.footer')
-            </div>     
-            
-            @elseif ()
-            {{-- ketika data pribadi ada dan data pekerjaan ada --}}
-            <div>
-                @include('template.utils.footer')
-            </div>     
+        @include('template.utils.footer')
 
-        @endif
 
     </body>
 
