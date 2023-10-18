@@ -296,9 +296,12 @@
         </main>
 
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 653d34b3f5e8901a94b1152cb92737610f443191
         @if ($alumni)
             {{-- ketika data pribadi kosong --}}
             @if ($pekerjaan->count() > 0 || $pendidikan->count() > 0)
@@ -315,10 +318,13 @@
                 @include('template.utils.footer')
             </div>
         @endif
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> 653d34b3f5e8901a94b1152cb92737610f443191
     </body>
 
     </html>
