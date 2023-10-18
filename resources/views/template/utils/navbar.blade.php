@@ -40,20 +40,22 @@
                         <a href=""
                             class="relative flex cursor-default select-none hover:bg-green-100 items-center rounded px-2 py-1.5 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
 
-                            <a href="{{ '' }}" class="flex items-center space-x-1 btn___signin md:hidden">
+                            <a href="{{ route('alumniDashboard') }}"
+                                class="flex items-center space-x-1 btn___signin md:hidden">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2">
                                     <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
                                     <circle cx="12" cy="7" r="4"></circle>
                                 </svg>
-                                <span>Profile</span>
+                                <span>Dashboard</span>
                             </a>
                             {{-- !end profile --}}
 
 
                             {{-- ? setting --}}
-                            <a href="" class="flex items-center space-x-1 btn___signin md:hidden"><svg
+                            <a href="{{ route('profile.edit') }}"
+                                class="flex items-center space-x-1 btn___signin md:hidden"><svg
                                     xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" class="w-5 h-5 mr-2">
@@ -91,15 +93,15 @@
         </div>
 
         <!-- menu  mobile-->
-        <div @click="showMenu = !showMenu" class="navigation___mobile">
+        <div @click="showMenu = !showMenu" class="navigation___mobile ">
             <!-- hamburger menu -->
-            <svg class="w-6 h-6 text-gray-800 -translate-x-2" x-show="!showMenu" fill="none" stroke-linecap="round"
+            <svg class="w-6 h-6 text-gray-800 -translate-x-6" x-show="!showMenu" fill="none" stroke-linecap="round"
                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                 <path d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
             <!-- close menu -->
-            <svg class="w-6 h-6 text-gray-700 -translate-x-4" x-show="showMenu" fill="none" stroke="currentColor"
-                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display: none">
+            <svg class="w-6 h-6 text-gray-700  -translate-y-2 -translate-x-6 fixed" x-show="showMenu" fill="none"
+                stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display: none">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
                 </path>
             </svg>

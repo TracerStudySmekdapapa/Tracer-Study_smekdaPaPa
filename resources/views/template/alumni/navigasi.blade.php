@@ -1,6 +1,6 @@
 {{-- menu ini ditampilkan khusus ketika menampilkan halaman tambah data pekerjaan & pendidikan --}}
 
-<nav class="relative z-50 h-24 md:-mt-10 select-none" x-data="{ showMenu: false }">
+<nav class="relative z-50  md:-mt-10 lg:-mt-10 lg:-mb-10 select-none" x-data="{ showMenu: false }">
     <div class="navigation__main">
         <div class="navigation__main__title">
             <a href="{{ route('/') }}" class="navigation__title__link"> Tracer Study </a>

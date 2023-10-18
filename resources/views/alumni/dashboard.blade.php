@@ -13,14 +13,12 @@
 
 
     <body class="overflow-x-hidden relative capitalize">
-        <div class="w-[130px] h-[130px] bg-red-500 blur-[100px] absolute top-20 -left-32 z-0"></div>
-        <div class="w-[130px] h-[130px] bg-teal-500 blur-[100px] absolute top-80 -right-52 z-0 hidden lg:block"></div>
+        <div class="w-[130px] h-[130px] bg-primary blur-[100px] absolute top-20 -left-32 z-0"></div>
+        <div class="w-[130px] h-[130px] bg-primary blur-[100px] absolute top-80 -right-52 z-0 hidden lg:block"></div>
         <main class="">
-
-
             @include('template.utils.navbar')
 
-            <section class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-x-4 capitalize ">
                 <div class="w-full min-h-[500px]  justify-center items-start pt-5 flex">
                     <div class="flex flex-col space-y-5 justify-start items-center">
 
@@ -29,16 +27,16 @@
                             <img src="{{ asset('assets/random/' . Auth::user()->profil_picture) }}" alt="gambar"
                                 class="w-full h-full object-cover " />
                         </div>
-                        <div class="text-[#252525]  md:bg-teal-500 lg:bg-rose-600  mx-1  mb-6 ">
+                        <div class="text-[#252525] mx-1 mb-6 ">
                             <h1
-                                class=" text-[20px] text-center sm:text-[25px] lg:text-[30px] font-semibold pb-4 capitalize">
+                                class=" text-[20px] text-center  sm:text-[25px] lg:text-[30px] font-semibold pb-4 capitalize">
                                 {{ $alumni->user->name ?? Auth::user()->name }}</h1>
                             <p
                                 class="text-[13px] -mt-4 mb-5 text-black/60 font-light lg:pr-10 text-center lg:text-left max-w-[350px] min-w-[350px]">
                                 {{ Auth::user()->bio ?? 'Belum Ada Bio' }}
                             </p>
                             @if ($alumni)
-                                <table class="md:w-full text-black/80 w-[80%] sm:w-[90%]  mx-auto bg-red-600">
+                                <table class="md:w-full text-black/80 w-[80%] sm:w-[90%]  mx-auto ">
                                     <tr class="divide-y">
                                         <td>nisn</td>
                                         <td class="py-2 px-6">:</td>
@@ -81,12 +79,13 @@
                                         <td>{{ $alumni->tamatan ?? '-' }}</td>
                                     </tr>
                                 </table>
-                                <div class="w-full bg-red justify-end flex ">
+                                <div class="w-full  justify-end flex ">
 
 
                                     <button
                                         class=" w-[80%] mx-auto mt-5 rounded-lg bg-transparent border border-primary hover:bg-black hover:border-transparent hover:text-white capitalize">
-                                        <a href="{{ route('editDataPribadi', $alumni->id_user) }}" class="block px-5 py-2">
+                                        <a href="{{ route('editDataPribadi', $alumni->id_user) }}"
+                                            class="block px-5 py-2 text-sm">
                                             edit Data Pribadi
                                         </a>
                                     </button>
@@ -95,7 +94,7 @@
                                 </div>
                                 {{-- ! jika tidak ada data pribadi --}}
                             @else
-                                <table class="w-full text-black/70 -mt-5">
+                                <table class="w-full text-black/70 -mt-2">
                                     <tr class="">
                                         <td class="hidden lg:inline">email</td>
                                         <td class="py-2 px-6 hidden lg:inline">:</td>
@@ -104,8 +103,8 @@
                                 </table>
                                 <div class="w-full  justify-end flex ">
                                     <button
-                                        class="w-[80%] mx-auto  mt-5 rounded-lg bg-transparent border border-primary hover:bg-black hover:border-transparent hover:text-white capitalize text-black/70">
-                                        <a href="{{ route('tambahDataPribadi') }}" class="block px-5 py-1 md:py-2 ">
+                                        class="w-[80%] mx-auto  text-sm mt-5 rounded-lg bg-transparent border border-primary hover:bg-black hover:border-transparent hover:text-white capitalize text-black/70">
+                                        <a href="{{ route('tambahDataPribadi') }}" class="block px-5 py-1 md:py-2 text-sm">
                                             + Data Pribadi
                                         </a>
                                     </button>
@@ -125,9 +124,9 @@
                     @if ($alumni)
                         @if ($pekerjaan->count() > 0 || $pendidikan->count() > 0)
                             <!-- data lain -->
-                            <div class="w-full min-h-[100px] mt-14 bg-teal-500 block">
+                            <div class="w-full min-h-[100px] mt-14  block">
                                 <!-- data pekerjaan -->
-                                <div class="w-full min-h-[400] max-h-[500px] flex justify-stretch px-20 bg-yellow-300 ">
+                                <div class="w-full min-h-[400] max-h-[500px] flex justify-stretch px-20  ">
                                     <ul class="steps steps-vertical h-[400px]">
                                         @foreach ($pekerjaan->take(3) as $item)
                                             <li class="step step-primary">
@@ -141,13 +140,13 @@
                                         @endforeach
                                     </ul>
                                 </div>
-                                <div class="flex space-x-5 items-center lg:ml-32">
+                                <div class="flex space-x-5 items-center justify-center lg:ml-32 ">
                                     <a href="{{ route('tambahDataPekerjaan') }}"
-                                        class="rounded-lg px-10   py-2 border block text-center border-primary text-black/90">+
+                                        class="rounded-lg px-10   py-2 border block text-center border-primary text-black/90 text-sm">+
                                         Data
                                         Pekerjaan</a>
                                     <a href="{{ route('detailDataPekerjaan', $alumni->id_alumni) }}"
-                                        class="block px-6 py-2 rounded-lg text-white bg-blue-500 active:bg-black active:text-white border">lihat
+                                        class="block px-6 py-2 rounded-lg text-white bg-primary active:bg-black active:text-white border text-sm">lihat
                                         selengkapnya</a>
                                 </div>
 
@@ -173,13 +172,13 @@
                                         @endforelse
                                     </ul>
                                 </div>
-                                <div class="flex space-x-5 items-center lg:ml-32 ">
+                                <div class="flex space-x-5 items-center justify-center lg:ml-32 ">
                                     <a href="{{ route('tambahDataPendidikan') }}"
-                                        class="rounded-lg px-10   py-2 border block text-center border-primary text-black/90">+
+                                        class="rounded-lg px-10  py-2 border block text-center border-primary text-black/90 text-sm">+
                                         Data
                                         Pendidikan</a>
                                     <a href="{{ route('detailDataPendidikan', $alumni->id_alumni) }}"
-                                        class="block px-6 py-2 rounded-lg text-white bg-blue-500 active:bg-black active:text-white border">lihat
+                                        class="block px-6 py-2 rounded-lg text-white bg-primary active:bg-black active:text-white border text-sm">lihat
                                         selengkapnya</a>
                                 </div>
                             </div>
@@ -234,11 +233,11 @@
 
                             </ul>
                             @if (Auth::user()->hasRole('Alumni'))
-                                <div class="flex space-x-5 justify-center">
+                                <div class="flex mt-5 space-x-5 justify-center">
                                     <button
                                         class=" rounded-lg bg-transparent border border-primary hover:bg-black hover:border-transparent  capitalize">
                                         <a href="{{ route('tambahDataPekerjaan') }}"
-                                            class="block px-5 py-2 text-black/70 hover:text-white">
+                                            class="block px-5 py-2 text-black/70 hover:text-white text-sm">
                                             +
                                             data
                                             pekerjaan
@@ -247,7 +246,7 @@
                                     <button
                                         class=" rounded-lg bg-transparent border border-primary hover:bg-black hover:border-transparent capitalize">
                                         <a href="{{ route('tambahDataPendidikan') }}"
-                                            class="px-5 py-2 block text-black/70 hover:text-white ">
+                                            class="px-5 py-2 block text-black/70 hover:text-white text-sm ">
                                             +
                                             data
                                             Pendidikan
@@ -259,7 +258,7 @@
                     @else
                         {{-- jika data pekerjaan == 0 --}}
                         <ul
-                            class="steps steps-vertical px-5 -mt-[100px] md:mt-0 lg:mt-10 lg:px-28 min-h-[200px] max-h-[500px] lg:min-h-[300px] lg:max-h-[700px] bg-red-600 ">
+                            class="steps steps-vertical px-5 -mt-[100px] md:mt-0 lg:mt-10 lg:px-28 min-h-[200px] max-h-[500px] lg:min-h-[300px] lg:max-h-[700px]  ">
                             <li data-content="✓" class="step step-primary">Register</li>
                             <li data-content="✓" class="step step-primary">login</li>
 
@@ -298,15 +297,12 @@
 
 
 
-<<<<<<< HEAD
-        @include('template.utils.footer')
 
-=======
 
         @if ($alumni)
             {{-- ketika data pribadi kosong --}}
             @if ($pekerjaan->count() > 0 || $pendidikan->count() > 0)
-                <div class="mt-[26rem] md:mt-72 lg:mt-36">
+                <div class="mt-[26rem] md:mt-72 lg:mt-40">
                     @include('template.utils.footer')
                 </div>
             @else
@@ -322,12 +318,6 @@
 
 
 
-        {{-- @if (!Auth::user()->hasRole('Alumni'))
-            <div>
-                @include('template.utils.footer')
-            </div>
-        @endif --}}
->>>>>>> f2e1854bbcb055c094f3a593e384674e9a36cc0f
 
     </body>
 

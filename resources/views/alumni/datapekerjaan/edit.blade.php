@@ -16,9 +16,8 @@
             <div class="my-5 md:my-0">
                 <h1 class="text-[40px] lg:text-[45px] font-bold">Profesianal Info</h1>
                 <p class="md:max-w-[60%]">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor
-                    quaerat nulla debitis nisi ullam laudantium ipsam rem eveniet facere
-                    incidunt?
+                    Lengkapi data pekerjaanmu, dan jadilah bagian dari jaringan profesional yang saling mendukung dan
+                    berkembang bersama.
                 </p>
 
                 <a href="{{ route('/') }}" class="text-blue-500 underline-offset-8 underline mt-3 hidden md:block">kembali
