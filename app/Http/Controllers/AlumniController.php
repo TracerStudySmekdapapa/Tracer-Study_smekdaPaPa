@@ -161,6 +161,13 @@ class AlumniController extends Controller
         return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil diubah']);
     }
 
+    public function detailDataPekerjaan($id)
+    {
+        $pekerjaan = Pekerjaan::get()->where('id_alumni', $id);
+        $title = 'data pekerjaan';
+        return view('alumni.datapekerjaan.detail', compact('title', 'pekerjaan'));
+    }
+
     public function deleteDataPekerjaan($id)
     {
         $pengaduan = Pekerjaan::where('id_pekerjaan', $id)->first();
@@ -209,6 +216,14 @@ class AlumniController extends Controller
         ]);
 
         return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil diubah']);
+    }
+
+    public function detailDataPendidikan($id)
+    {
+        $pendidikan = Pendidikan::get()->where('id_alumni', $id);
+        $title = 'data pendidikan';
+
+        return view('alumni.datapendidikan.detail', compact('title', 'pendidikan'));
     }
 
     public function deleteDataPendidikan($id)

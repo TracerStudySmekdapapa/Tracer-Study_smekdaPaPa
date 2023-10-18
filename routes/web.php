@@ -56,24 +56,6 @@ Route::get(
     }
 )->name('moreDataPendidikan');
 
-// detail data pekerjaan  (alumni melihat data sendiri)
-Route::get('/alumni/{id}/data-pekerjaan/detail', function ($id) {
-
-    $pekerjaan = Pekerjaan::get()->where('id_alumni', $id);
-    $title = 'data pekerjaan';
-    return view('alumni.datapekerjaan.detail', compact('title', 'pekerjaan'));
-})->name('detailDataPekerjaan');
-
-// detail data pendidikan pendidikan (alumni melihat data sendiri) 
-Route::get('/alumni/{id}/data-pendidikan/detail', function ($id) {
-
-    $pendidikan = Pendidikan::get()->where('id_alumni', $id);
-    $title = 'data pendidikan';
-
-    return view('alumni.datapendidikan.detail', compact('title', 'pendidikan'));
-})->name('detailDataPendidikan');
-
-
 // ==================================================================
 Route::get('/test', function () {
     $title = 'Detail Alumni';
@@ -83,7 +65,6 @@ Route::get('/test', function () {
 Route::get('/authenticate', [AuthenticateController::class, 'index'])->middleware(['auth', 'verified'])->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
-
     // // user edit selft
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -112,6 +93,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/alumni/{id}/data-pekerjaan/tambah', [AlumniController::class, 'simpanDataPekerjaan'])->name('simpanDataPekerjaan');
     Route::get('/alumni/{id}/data-pekerjaan/edit', [AlumniController::class, 'editDataPekerjaan'])->name('editDataPekerjaan');
     Route::patch('/alumni/{id}/data-pekerjaan/update', [AlumniController::class, 'updateDataPekerjaan'])->name('updateDataPekerjaan');
+    Route::get('/alumni/{id}/data-pekerjaan/detail', [AlumniController::class, 'detailDataPekerjaan'])->name('detailDataPekerjaan');
     Route::delete('/alumni/{id}/data-pekerjaan', [AlumniController::class, 'deleteDataPekerjaan'])->name('deleteDataPekerjaan');
 
     // data pendidikan
@@ -119,6 +101,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/alumni/{id}/data-pendidikan/tambah', [AlumniController::class, 'simpanDataPendidikan'])->name('simpanDataPendidikan');
     Route::get('/alumni/{id}/data-pendidikan/edit', [AlumniController::class, 'editDataPendidikan'])->name('editDataPendidikan');
     Route::patch('/alumni/{id}/data-pendidikan/update', [AlumniController::class, 'updateDataPendidikan'])->name('updateDataPendidikan');
+    Route::get('/alumni/{id}/data-pendidikan/detail', [AlumniController::class, 'detailDataPendidikan'])->name('detailDataPendidikan');
     Route::delete('/alumni/{id}/data-pendidikan', [AlumniController::class, 'deleteDataPendidikan'])->name('deleteDataPendidikan');
 });
 
