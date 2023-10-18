@@ -18,7 +18,7 @@
         @include('template.utils.navbar')
         <!--!  navigasi ==========-->
 
-        <section class="grid grid-cols-2">
+        <section class="grid grid-cols-2 ">
             <div class="w-full min-h-[80vh] justify-center items-start pt-5 flex">
                 <div class="flex flex-col space-y-5 justify-center items-center">
                     {{-- <div class="bg-red-500 rounded-full w-[200px] h-[200px]"></div> --}}
@@ -29,11 +29,11 @@
                         <div class="bg-red-500 rounded-full w-[200px] h-[200px]"></div>
                     @endif
                     <div>
-                        <h1 class="text-[35px] font-semibold pb-4">{{ $dataPribadi->user->name }}</h1>
+                        <h1 class="text-[35px] font-semibold pb-4 text-black">{{ $dataPribadi->user->name }}</h1>
                         <p class="text-[15px] -mt-4 mb-5 text-black/50 font-light">
                             {{ $dataPribadi->user->bio ?? 'Belum memiliki bio' }}
                         </p>
-                        <table class="w-full">
+                        <table class="w-full text-black/70">
                             <tr class="divide-y">
                                 <td>NISN</td>
                                 <td class="py-2 px-6">:</td>
@@ -83,7 +83,7 @@
                 <div class="w-full min-h-[40vh]">
                     @if ($dataPekerjaan->count() > 0)
                         <ul class="steps steps-vertical">
-                            @foreach ($dataPekerjaan as $item)
+                            @foreach ($dataPekerjaan->take(3) as $item)
                                 <li class="step step-primary">
                                     <div class="flex justify-start items-start flex-col">
                                         <h1 class="text-black/90 capitalize text-[20px]">
@@ -104,7 +104,7 @@
                     @if ($dataPendidikan->count() > 1)
                         {{-- <table> --}}
                         <ul class="steps steps-vertical">
-                            @foreach ($dataPendidikan as $item)
+                            @foreach ($dataPendidikan->take(3) as $item)
                                 <li class="step step-primary">
                                     <div class="flex justify-start items-start flex-col">
                                         <h1 class="text-black/90 capitalize text-[20px]">

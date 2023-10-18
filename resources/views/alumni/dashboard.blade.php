@@ -34,11 +34,11 @@
                             {{-- <h1 class="text-[35px] font-semibold pb-4">Syaid Alfarishi</h1> --}}
                             <h1 class="text-[35px] font-semibold pb-4 capitalize">
                                 {{ $alumni->user->name ?? Auth::user()->name }}</h1>
-                            <p class="text-[13px] -mt-4 mb-5 text-black/50 font-light pr-10 max-w-[350px] min-w-[350px]">
+                            <p class="text-[13px] -mt-4 mb-5 text-black/60 font-light pr-10 max-w-[350px] min-w-[350px]">
                                 {{ Auth::user()->bio ?? 'Belum Ada Bio' }}
                             </p>
                             @if ($alumni)
-                                <table class="w-full">
+                                <table class="w-full text-black/80">
                                     <tr class="divide-y">
                                         <td>nisn</td>
                                         <td class="py-2 px-6">:</td>
@@ -94,7 +94,7 @@
 
                                 </div>
                             @else
-                                <table class="w-full text-black/60">
+                                <table class="w-full text-black/70">
                                     <tr class="divide-y">
                                         <td>email</td>
                                         <td>{{ Auth::user()->email }}</td>
@@ -143,11 +143,11 @@
                                 </div>
                                 <div class="flex space-x-5 items-center lg:ml-32">
                                     <a href="{{ route('tambahDataPekerjaan') }}"
-                                        class="rounded-full px-10   py-2 border block text-center border-black">+
+                                        class="rounded-lg px-10   py-2 border block text-center border-primary text-black/90">+
                                         Data
                                         Pekerjaan</a>
                                     <a href="{{ route('detailDataPekerjaan', $alumni->id_alumni) }}"
-                                        class="block px-6 py-2 rounded-full text-white bg-blue-500 active:bg-black active:text-white border">lihat
+                                        class="block px-6 py-2 rounded-lg text-white bg-blue-500 active:bg-black active:text-white border">lihat
                                         selengkapnya</a>
                                 </div>
 
@@ -175,11 +175,11 @@
                                 </div>
                                 <div class="flex space-x-5 items-center lg:ml-32 ">
                                     <a href="{{ route('tambahDataPendidikan') }}"
-                                        class="rounded-full px-10   py-2 border block text-center border-black">+
+                                        class="rounded-lg px-10   py-2 border block text-center border-primary text-black/90">+
                                         Data
                                         Pendidikan</a>
                                     <a href="{{ route('detailDataPendidikan', $alumni->id_alumni) }}"
-                                        class="block px-6 py-2 rounded-full text-white bg-blue-500 active:bg-black active:text-white border">lihat
+                                        class="block px-6 py-2 rounded-lg text-white bg-blue-500 active:bg-black active:text-white border">lihat
                                         selengkapnya</a>
                                 </div>
                             </div>
