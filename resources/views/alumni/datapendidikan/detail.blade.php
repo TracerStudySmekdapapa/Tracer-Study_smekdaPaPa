@@ -23,6 +23,9 @@
                         <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                             alamat_univ
                         </th>
+                        <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                            aksi
+                        </th>
 
                     </tr>
                 </thead>
@@ -39,7 +42,7 @@
                             <td class="whitespace-nowrap px-4 py-2 text-gray-700"> {{ $item->fakultas }}</td>
                             <td class="whitespace-nowrap px-4 py-2 text-gray-700"> {{ $item->prodi }}</td>
                             <td class="whitespace-nowrap px-4 py-2 text-gray-700"> {{ $item->alamat_univ }}</td>
-                            <td><a href=""
+                            <td><a href="{{ route('editDataPendidikan', $item->id_pendidikan) }}"
                                     class="rounded    px-5 py-2 text-black font-semibold bg-yellow-500">Edit</a></td>
                             <td><a href="" class="rounded    px-5 py-2 text-white font-semibold bg-red-500">Hapus</a>
                             </td>

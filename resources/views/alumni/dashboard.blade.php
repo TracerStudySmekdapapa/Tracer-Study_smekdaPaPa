@@ -24,11 +24,10 @@
                 <div class="w-full min-h-[500px]  justify-center items-start pt-5 flex">
                     <div class="flex flex-col space-y-5 justify-start items-center">
 
-
                         <!-- data pribadi -->
                         <div class="rounded-full w-[200px] h-[200px] overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
-                                alt="gambar" class="w-full h-full object-cover" />
+                            <img src="{{ asset('assets/random/' . Auth::user()->profil_picture) }}" alt="gambar"
+                                class="w-full h-full object-cover" />
                         </div>
                         <div class="text-[#252525]">
                             {{-- <h1 class="text-[35px] font-semibold pb-4">Syaid Alfarishi</h1> --}}

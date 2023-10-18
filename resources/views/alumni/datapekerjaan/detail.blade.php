@@ -49,8 +49,8 @@
                             <td class="whitespace-nowrap px-4 py-2 text-gray-700"> {{ $item->jabatan }}</td>
                             <td class="whitespace-nowrap px-4 py-2 text-gray-700"> {{ $item->thn_masuk }}</td>
                             <td class="whitespace-nowrap px-4 py-2 text-gray-700"> {{ $item->thn_keluar }}</td>
-                            <td><a href=""
-                                    class="rounded    px-5 py-2 text-black font-semibold bg-yellow-500">Edit</a></td>
+                            <td><a href="{{ route('editDataPekerjaan', $item->id_pekerjaan) }}"
+                                    class="rounded px-5 py-2 text-black font-semibold bg-yellow-500">Edit</a></td>
                             <td><a href="" class="rounded    px-5 py-2 text-white font-semibold bg-red-500">Hapus</a>
                             </td>
                         </tr>

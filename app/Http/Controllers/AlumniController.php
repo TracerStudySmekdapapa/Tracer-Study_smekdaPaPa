@@ -73,7 +73,6 @@ class AlumniController extends Controller
             'jenis_kelamin' => $request->jenis_kelamin,
             'jurusan' => $request->jurusan,
             'tamatan' => $request->tamatan,
-            // 'angkatan' => $request->angkatan,
             'id_user' => $id
         ]);
 
@@ -106,7 +105,6 @@ class AlumniController extends Controller
         ], $messages); */
         /* End Validasi */
 
-        $user = User::where('id_user', $id);
         $alumni->update([
             'nisn' => $request->nisn,
             'no_telp' => $request->no_telp,
@@ -118,11 +116,6 @@ class AlumniController extends Controller
             'tamatan' => $request->tamatan,
             'id_user' => $id
         ]);
-
-        $user->update([
-            'profil_picture' => $request->profil
-        ]);
-
         return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil diubah']);
     }
     /* End Edit Data Pekerjaan */
@@ -149,6 +142,29 @@ class AlumniController extends Controller
 
         return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil disimpan']);
     }
+
+    public function editDataPekerjaan($id)
+    {
+        $title = 'Edit Data Pekerjaan';
+        $data = Pekerjaan::where('id_pekerjaan', $id)->first();
+        return view('alumni.datapekerjaan.edit', compact('title', 'data'));
+    }
+
+    public function updateDataPekerjaan(Request $request, $id)
+    {
+        $data = Pekerjaan::where('id_pekerjaan', $id)->first();
+
+        $data->update([
+            'nama_pekerjaan' => $request->nama_pekerjaan,
+            'nama_instansi' => $request->nama_instansi,
+            'jabatan' => $request->jabatan,
+            'thn_masuk' => $request->tahun_masuk,
+            'thn_keluar' => $request->tahun_keluar,
+            'alamat_instansi' => $request->alamat,
+        ]);
+
+        return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil disimpan']);
+    }
     /* End Create Data Pekerjaan */
 
     /* Start Create Data Pendidikan */
@@ -157,6 +173,7 @@ class AlumniController extends Controller
         $title = 'Tambah Data Pendidikan';
         return view('alumni.datapendidikan.create', compact('title'));
     }
+
     public function simpanDataPendidikan(Request $request, $id)
     {
         $id_alumni = Alumni::where('id_user', $id)->first();
@@ -169,6 +186,25 @@ class AlumniController extends Controller
         ]);
 
         return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil disimpan']);
+    }
+
+    public function editDataPendidikan($id)
+    {
+        $title = 'Edit Data Pendidikan';
+        $data = Pendidikan::where('id_pendidikan', $id)->first();
+        return view('alumni.datapendidikan.edit', compact('title', 'data'));
+    }
+
+    public function updateDataPendidikan(Request $request, $id)
+    {
+        $data = Pendidikan::where('id_pendidikan', $id)->first();
+        $data->update([
+            'nama_univ' => $request->nama_univ,
+            'fakultas' => $request->fakultas,
+            'prodi' => $request->prodi,
+            'alamat_univ' => $request->alamat_univ,
+        ]);
+        return redirect()->back();
     }
     /* End Create Data Pekerjaan */
 }
