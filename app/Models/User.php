@@ -46,9 +46,9 @@ class User extends Authenticatable
                     });
             });
         });
-        /*  $query->when($filters['angkatan'] ?? false, function ($query, $angkatan) {
-            return $query->where('angkatan', 'like', "%$angkatan%");
-        }); */
+        $query->when($filters['tamatan'] ?? false, function ($query, $tamatan) {
+            return $query->where('tamatan', 'like', "%$tamatan%");
+        });
     }
 
     public function alumni()

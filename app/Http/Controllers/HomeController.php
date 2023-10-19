@@ -20,15 +20,16 @@ class HomeController extends Controller
     public function search(Request $request)
     {
         $search = $request->search;
+        $tamatan = $request->tamatan;
         $title = 'Cari Alumni';
         if ($search) {
             $alumni = User::whereHas('roles', function ($query) {
                 $query->where('name', 'Alumni');
             })->join('alumni', 'users.id_user', '=', 'alumni.id_user')
-                ->orderBy('users.name', 'ASC')->filter(request(['search']))->get();
-            return view('pages.search', compact('alumni', 'title', 'search'));
+                ->orderBy('users.name', 'ASC')->filter(request(['search', 'tamatan']))->get();
+            return view('pages.search', compact('alumni', 'title', 'search', 'tamatan'));
         }
-        return view('pages.search', compact('title', 'search'));
+        return view('pages.search', compact('title', 'search', 'tamatan'));
     }
 
     public function detail($id)

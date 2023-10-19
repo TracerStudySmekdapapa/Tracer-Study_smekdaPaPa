@@ -39,7 +39,8 @@
                             <datalist name="HeadlineAct" id="HeadlineActArtist">
 
                                 @for ($tahun = Carbon\Carbon::now()->year + 1; $tahun >= 2005; --$tahun)
-                                    <option value="{{ $tahun }}" onclick="heandleClick()">
+                                    <option value="{{ $tahun }}" onclick="heandleClick()"
+                                        {{ $tamatan == $tahun ? 'selected' : '' }}>
                                         {{ $tahun }}
                                     </option>
                                 @endfor
@@ -82,7 +83,7 @@
                     </tr>
                 </thead>
                 <tbody class="text-center divide-x">
-                    @if ($search)
+                    @if ($search || $tamatan)
                         @forelse ($alumni as $item)
                             <tr class="divide-x bg-gray-50">
                                 <td class=" py-4   max-w-[350px] ">
