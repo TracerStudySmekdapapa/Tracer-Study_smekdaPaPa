@@ -14,7 +14,7 @@
                         class="relative z-[23] block w-[100%] mt-1 text-sm border border-gray-500 pl-5 -mr-10 pr-12 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                         placeholder="cari berdasarkan nama" type="text" required name="search"
                         value="{{ $search }}" />
-                    <button type="submit" class=" relative right-5 p-5 py-2 z-30 ">
+                    <button type="submit" class=" relative right-14 p-5 py-2 z-30 ">
                         <img src="{{ asset('assets/cari.svg') }}" alt="cari" class="scale-110" />
                     </button>
                     {{--  --}}
@@ -24,7 +24,7 @@
                                 class="tamatan w-full rounded-lg border-gray-600 text-gray-700 sm:text-sm [&::-webkit-calendar-picker-indicator]:opacity-0"
                                 placeholder="tamatan" name="tamatan" />
 
-                            <span class="absolute inset-y-0 end-0 flex w-8 items-center">
+                            <span class="absolute inset-y-0 right-0 flex w-8 items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="h-5 w-5 text-gray-500">
                                     <path stroke-linecap="round" stroke-linejoin="round"
