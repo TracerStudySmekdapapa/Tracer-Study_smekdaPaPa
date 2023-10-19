@@ -9,14 +9,41 @@
 
         <div class="w-[90%] mx-auto flex justify-end items-center mt-10">
             <div class="relative">
-                <form action="{{ route('search') }}" method="get" id="form_search" class="flex">
+                <form action="{{ route('search') }}" method="get" id="form_search" class="flex space-x-0 items-center">
                     <input id="input_search"
-                        class="relative z-[23] block w-[100%] mt-1 text-sm border border-gray-500 pl-5 pr-12 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                        class="relative z-[23] block w-[100%] mt-1 text-sm border border-gray-500 pl-5 -mr-10 pr-12 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                         placeholder="cari berdasarkan nama" type="text" required name="search"
                         value="{{ $search }}" />
-                    <button type="submit" class=" relative right-14 p-5 py-2 z-30 ">
+                    <button type="submit" class=" relative right-5 p-5 py-2 z-30 ">
                         <img src="{{ asset('assets/cari.svg') }}" alt="cari" class="scale-110" />
                     </button>
+
+                    {{--  --}}
+                    <div>
+                        <div class="relative mt-1.5">
+                            <input type="text" list="HeadlineActArtist" id="HeadlineAct"
+                                class="tamatan w-full rounded-lg border-gray-600 text-gray-700 sm:text-sm [&::-webkit-calendar-picker-indicator]:opacity-0"
+                                placeholder="tamatan" name="tamatan" />
+
+                            <span class="absolute inset-y-0 end-0 flex w-8 items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="h-5 w-5 text-gray-500">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
+                                </svg>
+                            </span>
+                        </div>
+
+                        <datalist name="HeadlineAct" id="HeadlineActArtist">
+
+                            @for ($tahun = Carbon\Carbon::now()->year + 1; $tahun >= 2005; --$tahun)
+                                <option value="{{ $tahun }}" onclick="heandleClick()">
+                                    {{ $tahun }}
+                                </option>
+                            @endfor
+                        </datalist>
+                    </div>
+                    {{--  --}}
                 </form>
             </div>
         </div>
@@ -159,6 +186,12 @@
             if (e.keyCode == 13) {
                 form_search.submit();
             }
+        });
+
+
+        const tamatan = document.querySelector('.tamatan');
+        tamatan.addEventListener('change', (e) => {
+            form_search.submit();
         });
     </script>
 @endsection
