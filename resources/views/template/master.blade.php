@@ -21,13 +21,6 @@
 </head>
 
 <body x-data class="overflow-x-hidden relative ">
-
-
-
-
-
-
-
     @yield('content')
 </body>
 

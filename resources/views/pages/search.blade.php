@@ -54,9 +54,11 @@
                     @if ($search)
                         @forelse ($alumni as $item)
                             <tr class="divide-x bg-gray-50">
-                                <td class="flex items-center justify-center py-5 mx-auto space-x-4">
-                                    <div class="rounded-full w-[30px] h-[30px] bg-rose-600 ml-5"></div>
-                                    <h1 class="max-w-[40%]">{{ $item->name }}</h1>
+                                <td class=" py-4   max-w-[350px] ">
+                                    <div class="grid grid-cols-2 place-items-center mx-auto w-[200px] ">
+                                        <div class="rounded-full w-[30px] h-[30px] bg-rose-600 ml-5"></div>
+                                        <h1 class="">{{ $item->name }}</h1>
+                                    </div>
                                 </td>
                                 <td>{{ $item->nisn }}</td>
                                 <td>{{ $item->jurusan }}</td>
