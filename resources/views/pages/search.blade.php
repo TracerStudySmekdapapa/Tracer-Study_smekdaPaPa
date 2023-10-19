@@ -14,7 +14,7 @@
                         <div class="relative mr-5  w-full">
                             <input id="input_search"
                                 class="relative z-[23] block  mt-1 text-sm border border-gray-500 pl-5 w-full pr-12 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                placeholder="cari berdasarkan nama" type="text" required name="search"
+                                placeholder="cari berdasarkan nama / nisn" type="text" required name="search"
                                 value="{{ $search }}" />
                             <button type="submit" class=" absolute right-2 top-0  py-2 z-30 ">
                                 <img src="{{ asset('assets/cari.svg') }}" alt="cari" class="scale-90" />
@@ -25,7 +25,7 @@
                             <div class="relative mt-1.5">
                                 <input type="text" list="HeadlineActArtist" id="HeadlineAct"
                                     class="tamatan w-full rounded-lg border-gray-600 text-gray-700 sm:text-sm [&::-webkit-calendar-picker-indicator]:opacity-0"
-                                    placeholder="tamatan" name="tamatan" />
+                                    placeholder="tamatan" name="tamatan" value="{{ old('tamatan', $tamatan) }}" />
 
                                 <span class="absolute inset-y-0 right-0 flex w-8 items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
