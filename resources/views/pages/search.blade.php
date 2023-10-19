@@ -17,6 +17,14 @@
                     <button type="submit" class=" relative right-14 p-5 py-2 z-30 ">
                         <img src="{{ asset('assets/cari.svg') }}" alt="cari" class="scale-110" />
                     </button>
+                    <select id=""
+                        class="block w-full px-10 py-2 mt-1 text-sm border border-gray-600 rounded-md appearance-none dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+                        <option disabled selected>Tamatan</option>
+                        @for ($tahun = Carbon\Carbon::now()->year + 1; $tahun >= 2005; --$tahun)
+                            <option value="{{ $tahun }}">
+                                {{ $tahun }}</option>
+                        @endfor
+                    </select>
                 </form>
             </div>
         </div>

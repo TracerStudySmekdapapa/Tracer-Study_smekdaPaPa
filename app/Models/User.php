@@ -44,10 +44,9 @@ class User extends Authenticatable
                     ->orWhere('nisn', 'like', "%$search%");
             });
         });
-
-        $query->when($filters['angkatan'] ?? false, function ($query, $angkatan) {
+        /*  $query->when($filters['angkatan'] ?? false, function ($query, $angkatan) {
             return $query->where('angkatan', 'like', "%$angkatan%");
-        });
+        }); */
     }
 
     public function alumni()
