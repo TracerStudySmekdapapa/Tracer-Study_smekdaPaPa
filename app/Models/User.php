@@ -41,7 +41,9 @@ class User extends Authenticatable
         $query->when($filters['search'] ?? false, function ($query, $search) {
             return $query->where(function ($query) use ($search) {
                 $query->where('name', 'like', "%$search%")
-                    ->orWhere('nisn', 'like', "%$search%");
+                    ->orWhere(function ($query) use ($search) {
+                        $query->where('nisn', $search);
+                    });
             });
         });
         /*  $query->when($filters['angkatan'] ?? false, function ($query, $angkatan) {
