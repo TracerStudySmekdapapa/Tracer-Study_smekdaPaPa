@@ -11,7 +11,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AlumniController extends Controller
+class PribadiController extends Controller
 {
     public function index()
     {
