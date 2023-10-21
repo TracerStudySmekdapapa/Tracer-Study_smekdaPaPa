@@ -19,11 +19,11 @@ class Pekerjaan extends Model
         'jabatan',
         'thn_masuk',
         'thn_keluar',
-        'id_alumni'
+        'id_pribadi'
     ];
-    
+
     public function alumni()
     {
-        return $this->belongsTo(Alumni::class, 'id_alumni');
-    }    
+        return $this->belongsTo(Pribadi::class, 'id_pribadi');
+    }
 }

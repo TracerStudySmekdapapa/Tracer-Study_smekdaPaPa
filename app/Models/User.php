@@ -53,7 +53,7 @@ class User extends Authenticatable
 
     public function alumni()
     {
-        return $this->hasMany(Alumni::class, 'id_user');
+        return $this->hasMany(Pribadi::class, 'id_pribadi');
     }
 
     /**

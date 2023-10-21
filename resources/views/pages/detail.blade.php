@@ -97,7 +97,7 @@
                         </div>
                         <div class="flex space-x-5 items-center justify-center lg:justify-start lg:ml-32 ">
 
-                            <a href="{{ route('moreDataPekerjaan', $dataPribadi->id_alumni) }}"
+                            <a href="{{ route('moreDataPekerjaan', $dataPribadi->id_pribadi) }}"
                                 class="block px-6 py-2 rounded-lg text-white bg-primary active:bg-black active:text-white border text-sm">lihat
                                 selengkapnya</a>
                         </div>
@@ -127,7 +127,7 @@
                         </div>
                         <div class="flex space-x-5 items-center justify-center lg:justify-start lg:ml-32 ">
 
-                            <a href="{{ route('moreDataPendidikan', $dataPribadi->id_alumni) }}"
+                            <a href="{{ route('moreDataPendidikan', $dataPribadi->id_pribadi) }}"
                                 class="block px-6 py-2 rounded-lg text-white bg-primary active:bg-black active:text-white border text-sm">lihat
                                 selengkapnya</a>
                         </div>

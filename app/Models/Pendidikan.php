@@ -13,11 +13,11 @@ class Pendidikan extends Model
     protected $primaryKey = "id_pendidikan";
 
     protected $fillable = [
-        'nama_univ', 'fakultas', 'prodi', 'alamat_univ', 'id_alumni'
+        'nama_univ', 'fakultas', 'prodi', 'alamat_univ', 'id_pribadi'
     ];
 
     public function alumni()
     {
-        return $this->belongsTo(Alumni::class, 'id_alumni');
+        return $this->belongsTo(Pribadi::class, 'id_pribadi');
     }
 }

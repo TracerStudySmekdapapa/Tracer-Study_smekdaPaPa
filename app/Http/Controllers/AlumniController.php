@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Alumni;
 use App\Models\Pekerjaan;
 use App\Models\Pendidikan;
+use App\Models\Pribadi;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -16,16 +16,16 @@ class AlumniController extends Controller
     public function index()
     {
         $title = 'Alumni Dashboard';
-        /* $alumni = Alumni::get();
+        /* $alumni = Pribadi::get();
         foreach($alumni as $data){
             foreach ($data->pekerjaan as $item) {
                 $item->nama_pekerjaan;
             } 
         } */
-        $alumni = Alumni::where('id_user', Auth::user()->id_user)->first();
+        $alumni = Pribadi::where('id_user', Auth::user()->id_user)->first();
         if ($alumni) {
-            $pekerjaan = Pekerjaan::where('id_alumni', $alumni->id_alumni)->orderBy('created_at', 'DESC')->limit(3)->get();
-            $pendidikan = Pendidikan::where('id_alumni', $alumni->id_alumni)->orderBy('created_at', 'DESC')->limit(3)->get();
+            $pekerjaan = Pekerjaan::where('id_pribadi', $alumni->id_pribadi)->orderBy('created_at', 'DESC')->limit(3)->get();
+            $pendidikan = Pendidikan::where('id_pribadi', $alumni->id_pribadi)->orderBy('created_at', 'DESC')->limit(3)->get();
             return view('alumni.dashboard', compact('title', 'pekerjaan', 'alumni', 'pendidikan'));
         } else {
             return view('alumni.dashboard', compact('title', 'alumni'));
@@ -36,9 +36,9 @@ class AlumniController extends Controller
     public function detail($id)
     {
         $title = 'Detail Alumni';
-        $dataPribadi = Alumni::where('id_alumni', $id)->first();
-        $dataPekerjaan = Pekerjaan::where('id_alumni', $dataPribadi->id_alumni)->get();
-        $dataPendidikan = Pendidikan::where('id_alumni', $dataPribadi->id_alumni)->get();
+        $dataPribadi = Pribadi::where('id_pribadi', $id)->first();
+        $dataPekerjaan = Pekerjaan::where('id_pribadi', $dataPribadi->id_pribadi)->get();
+        $dataPendidikan = Pendidikan::where('id_pribadi', $dataPribadi->id_pribadi)->get();
         return view('alumni.detail', compact('dataPribadi', 'dataPekerjaan', 'dataPendidikan', 'title'));
     }
     /* End Detail Alumi */
@@ -63,7 +63,7 @@ class AlumniController extends Controller
         ], $messages); */
         /* End Validasi */
 
-        Alumni::create([
+        Pribadi::create([
             'nisn' => $request->nisn,
             'no_telp' => $request->no_telp,
             'tempat_lahir' => $request->tmp_lahir,
@@ -83,13 +83,13 @@ class AlumniController extends Controller
     public function editDataPribadi($id)
     {
         $title = 'Edit Data Pribadi';
-        $data = Alumni::where('id_user', $id)->first();
+        $data = Pribadi::where('id_user', $id)->first();
         return view('alumni.datapribadi.edit', compact('data', 'title'));
     }
 
     public function updateDataPribadi(Request $request, $id)
     {
-        $alumni = Alumni::where('id_user', $id)->first();
+        $alumni = Pribadi::where('id_user', $id)->first();
         /* Start Validasi */
         /*  $messages = [
             'nisn.unique' => 'NISN sudah digunakan sebelumnya',
@@ -124,7 +124,7 @@ class AlumniController extends Controller
 
     public function simpanDataPekerjaan(Request $request, $id)
     {
-        $id_alumni = Alumni::where('id_user', $id)->first();
+        $id_pribadi = Pribadi::where('id_user', $id)->first();
         Pekerjaan::create([
             'nama_pekerjaan' => $request->nama_pekerjaan,
             'nama_instansi' => $request->nama_instansi,
@@ -132,7 +132,7 @@ class AlumniController extends Controller
             'jabatan' => $request->jabatan,
             'thn_masuk' => $request->tahun_masuk,
             'thn_keluar' => $request->tahun_keluar,
-            'id_alumni' => $id_alumni->id_alumni
+            'id_pribadi' => $id_pribadi->id_pribadi
         ]);
 
         return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil disimpan']);
@@ -163,7 +163,7 @@ class AlumniController extends Controller
 
     public function detailDataPekerjaan($id)
     {
-        $pekerjaan = Pekerjaan::get()->where('id_alumni', $id);
+        $pekerjaan = Pekerjaan::get()->where('id_pribadi', $id);
         $title = 'data pekerjaan';
         return view('alumni.datapekerjaan.detail', compact('title', 'pekerjaan'));
     }
@@ -186,13 +186,13 @@ class AlumniController extends Controller
 
     public function simpanDataPendidikan(Request $request, $id)
     {
-        $id_alumni = Alumni::where('id_user', $id)->first();
+        $id_pribadi = Pribadi::where('id_user', $id)->first();
         Pendidikan::create([
             'nama_univ' => $request->nama_univ,
             'fakultas' => $request->fakultas,
             'prodi' => $request->prodi,
             'alamat_univ' => $request->alamat_univ,
-            'id_alumni' => $id_alumni->id_alumni
+            'id_pribadi' => $id_pribadi->id_pribadi
         ]);
 
         return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil disimpan']);
@@ -220,7 +220,7 @@ class AlumniController extends Controller
 
     public function detailDataPendidikan($id)
     {
-        $pendidikan = Pendidikan::get()->where('id_alumni', $id);
+        $pendidikan = Pendidikan::get()->where('id_pribadi', $id);
         $title = 'data pendidikan';
 
         return view('alumni.datapendidikan.detail', compact('title', 'pendidikan'));

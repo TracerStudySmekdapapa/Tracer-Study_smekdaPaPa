@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('alumni', function (Blueprint $table) {
-            $table->id('id_alumni');
+        Schema::create('data_pribadi', function (Blueprint $table) {
+            $table->id('id_pribadi');
             $table->string('nisn', 11)->nullable();
             $table->string('no_telp', 13)->nullable();
             $table->string('tempat_lahir', 100)->nullable();
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('alumni');
+        Schema::dropIfExists('data_pribadi');
     }
 };

@@ -147,7 +147,7 @@
                                             </div>
                                         </div>
                                         <a x-ref="content" class="block w-full"
-                                            href="{{ route('detailAlumni', $item->id_alumni) }}"><img class="mx-auto"
+                                            href="{{ route('detailAlumni', $item->id_pribadi) }}"><img class="mx-auto"
                                                 src="{{ asset('assets/dot.svg') }}" alt="dot" /></a>
                                     </div>
                                 </td>

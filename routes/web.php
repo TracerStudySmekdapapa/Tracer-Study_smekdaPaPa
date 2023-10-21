@@ -40,7 +40,7 @@ Route::get(
     '/alumni/{id}/data-pekerjaan/more-detail',
     function ($id) {
 
-        $pekerjaan = Pekerjaan::get()->where('id_alumni', $id);
+        $pekerjaan = Pekerjaan::get()->where('id_pribadi', $id);
         $title = 'data pekerjaan';
         return view('pages.moreDetail.pekerjaan', compact('title', 'pekerjaan'));
     }
@@ -50,7 +50,7 @@ Route::get(
     '/alumni/{id}/data-pendidikan/more-detail',
     function ($id) {
 
-        $pendidikan = Pendidikan::get()->where('id_alumni', $id);
+        $pendidikan = Pendidikan::get()->where('id_pribadi', $id);
         $title = 'data pendidikan';
         return view('pages.moreDetail.pendidikan', compact('title', 'pendidikan'));
     }

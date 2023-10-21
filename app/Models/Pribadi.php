@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Alumni extends Model
+class Pribadi extends Model
 {
     use HasFactory;
-    protected $table = "alumni";
-    protected $primaryKey = "id_alumni";
+    protected $table = "data_pribadi";
+    protected $primaryKey = "id_pribadi";
 
     protected $fillable = [
         'nisn',
@@ -30,11 +30,11 @@ class Alumni extends Model
 
     public function pekerjaan()
     {
-        return $this->hasMany(Pekerjaan::class, 'id_alumni');
+        return $this->hasMany(Pekerjaan::class, 'id_pribadi');
     }
 
     public function pendidikan()
     {
-        return $this->hasMany(Pendidikan::class, 'id_alumni');
+        return $this->hasMany(Pendidikan::class, 'id_pribadi');
     }
 }

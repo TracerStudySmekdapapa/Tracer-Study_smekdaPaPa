@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('jabatan', 10)->nullable();
             $table->string('thn_masuk', 4)->nullable();
             $table->string('thn_keluar', 4)->nullable();
-            $table->foreignId('id_alumni')->constrained('alumni', 'id_alumni')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('id_pribadi')->constrained('data_pribadi', 'id_pribadi')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

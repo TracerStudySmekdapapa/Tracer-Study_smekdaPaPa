@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Alumni;
+use App\Models\Pribadi;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -25,7 +25,7 @@ class AlumniSeeder extends Seeder
 
         $user->assignRole('Alumni');
 
-        Alumni::create([
+        Pribadi::create([
             'nisn' => "006972922",
             'no_telp' => "089534195182",
             'tempat_lahir' => "Padang Panjang",

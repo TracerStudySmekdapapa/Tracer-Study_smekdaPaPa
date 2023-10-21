@@ -135,7 +135,7 @@
                                     class="rounded-lg w-full mx-auto  py-2 border block text-center border-primary text-black/90 text-sm">+
                                     Data
                                     Pekerjaan</a>
-                                <a href="{{ route('detailDataPekerjaan', $alumni->id_alumni) }}"
+                                <a href="{{ route('detailDataPekerjaan', $alumni->id_pribadi) }}"
                                     class="block w-full text-center mx-auto py-2 rounded-lg text-white bg-primary active:bg-black active:text-white border text-sm">lihat
                                     selengkapnya</a>
                             </div>
@@ -168,7 +168,7 @@
                                     class="rounded-lg w-full mx-auto py-2 border block text-center border-primary text-black/90 text-sm">+
                                     Data
                                     Pendidikan</a>
-                                <a href="{{ route('detailDataPendidikan', $alumni->id_alumni) }}"
+                                <a href="{{ route('detailDataPendidikan', $alumni->id_pribadi) }}"
                                     class="block w-full mx-auto text-center py-2 rounded-lg text-white bg-primary active:bg-black active:text-white border text-sm">lihat
                                     selengkapnya</a>
                             </div>
