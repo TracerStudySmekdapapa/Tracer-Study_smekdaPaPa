@@ -59,7 +59,7 @@
                                 <tr class="divide-y">
                                     <td>jurusan</td>
                                     <td class="py-2 px-6">:</td>
-                                    <td>{{ $alumni->jurusan ?? '-' }}</td>
+                                    <td>{{ $alumni->jurusan->nama_jurusan ?? '-' }}</td>
                                 </tr>
 
                                 <tr class="divide-y">

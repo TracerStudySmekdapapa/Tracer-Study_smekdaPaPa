@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Jurusan;
 use App\Models\Pekerjaan;
 use App\Models\Pendidikan;
 use App\Models\Pribadi;
@@ -47,7 +48,8 @@ class PribadiController extends Controller
     public function tambahDataPribadi()
     {
         $title = 'Tambah Data Pribadi';
-        return view('alumni.datapribadi.create', compact('title'));
+        $jurusan = Jurusan::get();
+        return view('alumni.datapribadi.create', compact('title', 'jurusan'));
     }
 
     public function simpanDataPribadi(Request $request, $id)
@@ -70,8 +72,8 @@ class PribadiController extends Controller
             'tanggal_lahir' => $request->tgl_lahir,
             'agama' => $request->agama,
             'jenis_kelamin' => $request->jenis_kelamin,
-            'jurusan' => $request->jurusan,
             'tamatan' => $request->tamatan,
+            'id_jurusan' => $request->jurusan,
             'id_user' => $id
         ]);
 
@@ -84,7 +86,8 @@ class PribadiController extends Controller
     {
         $title = 'Edit Data Pribadi';
         $data = Pribadi::where('id_user', $id)->first();
-        return view('alumni.datapribadi.edit', compact('data', 'title'));
+        $jurusan = Jurusan::get();
+        return view('alumni.datapribadi.edit', compact('data', 'title', 'jurusan'));
     }
 
     public function updateDataPribadi(Request $request, $id)
@@ -107,8 +110,8 @@ class PribadiController extends Controller
             'tanggal_lahir' => $request->tgl_lahir,
             'agama' => $request->agama,
             'jenis_kelamin' => $request->jenis_kelamin,
-            'jurusan' => $request->jurusan,
             'tamatan' => $request->tamatan,
+            'id_jurusan' => $request->jurusan,
             'id_user' => $id
         ]);
         return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil diubah']);

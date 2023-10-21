@@ -18,14 +18,19 @@ class Pribadi extends Model
         'tanggal_lahir',
         'agama',
         'jenis_kelamin',
-        'jurusan',
         'tamatan',
+        'id_jurusan',
         'id_user'
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class, 'id_user')->orderBy('name', 'ASC');
+    }
+
+    public function jurusan()
+    {
+        return $this->belongsTo(Jurusan::class, 'id_jurusan');
     }
 
     public function pekerjaan()

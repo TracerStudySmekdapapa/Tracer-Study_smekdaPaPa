@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Jurusan;
 use App\Models\Pribadi;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -20,6 +21,7 @@ class AlumniSeeder extends Seeder
             'name' => 'rehan',
             'email' => 'rehan@gmail.com',
             'password' => bcrypt('123'),
+            'bio' => 'Aku adalah Yin',
             'profil_picture' => random_int(1, 4) . '.jpg'
         ]);
 
@@ -32,7 +34,7 @@ class AlumniSeeder extends Seeder
             'tanggal_lahir' => "2006-10-05",
             'agama' => "Islam",
             'jenis_kelamin' => "Laki-Laki",
-            'jurusan' => "RPL",
+            'id_jurusan' => 5,
             'tamatan' => "2024",
             'id_user' => $user->id_user
         ]);

@@ -108,10 +108,9 @@
                         <select name="jurusan"
                             class="block w-full px-10 py-2 mt-1 text-sm border border-gray-600 rounded-md appearance-none dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                             <option disabled selected>Jurusan</option>
-                            <option value="RPL">RPL</option>
-                            <option value="MM">MM</option>
-                            <option value="TKJ">TKJ</option>
-                            <option value="PSPT">PSPT</option>
+                            @foreach ($jurusan as $data)
+                                <option value="{{ $data->id_jurusan }}">{{ $data->nama_jurusan }}</option>
+                            @endforeach
                         </select>
 
                         <div class="mt-4 text-sm">
