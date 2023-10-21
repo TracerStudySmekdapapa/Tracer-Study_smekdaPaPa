@@ -15,7 +15,7 @@
                 class="p-1 mt-1 bg-white max-h-[180px] md:max-h-[160px] min-h-[170px] md:min-h-[150px] pb-1 overflow-hidden border rounded-md shadow-md border-neutral-200/70 text-neutral-700">
                 <div class="px-2 py-1.5 text-sm font-semibold">{{ Str::ucfirst(Auth::user()->name) }}</div>
                 <div class="h-px my-1 -mx-1 bg-neutral-200"></div>
-                <a href="{{ route('alumniDashboard') }}"
+                <a href="{{ Auth::user()->hasRole('Admin') ? route('adminDashboard') : route('alumniDashboard') }}"
                     class="relative flex cursor-default select-none hover:bg-green-100 items-center rounded px-2 py-1.5 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"

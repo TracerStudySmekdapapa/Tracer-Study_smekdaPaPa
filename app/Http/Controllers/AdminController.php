@@ -18,7 +18,7 @@ class AdminController extends Controller
         $name = $request->name;
         $alumni = User::whereHas('roles', function ($query) {
             $query->where('name', 'Alumni');
-        })->join('alumni', 'users.id_user', '=', 'alumni.id_user')
+        })->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
             ->orderBy('users.name', 'ASC')
             ->filter(request(['search']))
             ->get();
@@ -33,7 +33,7 @@ class AdminController extends Controller
         $angkatan = $request->angkatan;
         $alumni = User::whereHas('roles', function ($query) {
             $query->where('name', 'Alumni');
-        })->join('alumni', 'users.id_user', '=', 'alumni.id_user')
+        })->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
             ->orderBy('users.name', 'ASC')
             ->filter(request(['search', 'angkatan']))
             ->get();
@@ -60,7 +60,7 @@ class AdminController extends Controller
         $user = User::whereDoesntHave('roles', function ($query) {
             $query->whereIn('name', ['Alumni', 'Admin']);
         })
-            ->join('alumni', 'users.id_user', '=', 'alumni.id_user')
+            ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
             ->orderBy('users.name', 'ASC')
             ->get();
         // dd($user);
