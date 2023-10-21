@@ -22,7 +22,7 @@ class HomeController extends Controller
         $search = $request->search;
         $tamatan = $request->tamatan;
         $title = 'Cari Alumni';
-        if ($search) {
+        if ($search || $tamatan) {
             $alumni = User::whereHas('roles', function ($query) {
                 $query->where('name', 'Alumni');
             })->join('alumni', 'users.id_user', '=', 'alumni.id_user')
