@@ -30,7 +30,11 @@
                             <span class="text-gray-700 dark:text-gray-400">NISN</span>
                             <input type="number" name="nisn"
                                 class="block w-full px-5 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                placeholder="0123456789" />
+                                placeholder="0123456789" value="{{ old('nisn') }}" />
+
+                            @error('nisn')
+                                <p class="mt-1 text-rose-500">{{ $message }}</p>
+                            @enderror
                         </label>
 
                         <div class="grid w-full grid-cols-1 gap-5 md:grid-cols-2">
@@ -50,7 +54,9 @@
                                 </select>
 
                                 <!-- error -->
-                                <!-- <p class="mt-1 text-rose-500">invalid message</p> -->
+                                @error('agama')
+                                    <p class="mt-1 text-rose-500">{{ $message }}</p>
+                                @enderror
                                 <!-- error -->
                             </label>
 
@@ -59,10 +65,12 @@
                                 <span class="text-gray-700 dark:text-gray-400">No Telp</span>
                                 <input type="tel" name="no_telp"
                                     class="block w-full px-6 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                    placeholder="+00 xxx xxx xxx" />
+                                    placeholder="+00 xxx xxx xxx" value="{{ old('no_telp') }}" />
 
                                 <!-- error -->
-                                <!-- <p class="mt-1 text-rose-500">invalid message</p> -->
+                                @error('no_telp')
+                                    <p class="mt-1 text-rose-500">{{ $message }}</p>
+                                @enderror
                                 <!-- error -->
                             </label>
                         </div>
@@ -72,16 +80,24 @@
                             <span class="text-gray-700 dark:text-gray-400">Tempat Lahir</span>
                             <input name="tmp_lahir"
                                 class="block w-full px-5 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                placeholder="tempat lahir anda" />
+                                placeholder="tempat lahir anda" value="{{ old('tmp_lahir') }}" />
+                            <!-- error -->
+                            @error('tmp_lahir')
+                                <p class="mt-1 text-rose-500">{{ $message }}</p>
+                            @enderror
+                            <!-- error -->
                         </label>
                         <!--  tempat tgl lahit  -->
                         <label class="block text-sm">
                             <span class="text-gray-700 dark:text-gray-400">Tanggal Lahir</span>
                             <input name="tgl_lahir" type="date"
-                                class="block w-full px-5 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
+                                class="block w-full px-5 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                value="{{ old('tgl_lahir') }}" />
 
                             <!-- error -->
-                            <p class="mt-1 text-rose-500">invalid message</p>
+                            @error('tgl_lahir')
+                                <p class="mt-1 text-rose-500">{{ $message }}</p>
+                            @enderror
                             <!-- error -->
                         </label>
 
@@ -93,25 +109,34 @@
                                 <label class="inline-flex items-center text-gray-600 dark:text-gray-400">
                                     <input type="radio"
                                         class="w-[22px] h-[22px] text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                                        name="jenis_kelamin" value="Laki-Laki" />
+                                        name="jenis_kelamin" value="Laki-Laki"
+                                        {{ old('jenis_kelamin') == 'Laki-Laki' ? 'checked' : '' }} />
                                     <span class="ml-2 text-[15px]">laki laki</span>
                                 </label>
                                 <label class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400">
                                     <input type="radio"
                                         class="w-[22px] h-[22px] text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                                        name="jenis_kelamin" value="Perempuan" />
+                                        name="jenis_kelamin" value="Perempuan"
+                                        {{ old('jenis_kelamin') == 'Perempuan' ? 'checked' : '' }} />
                                     <span class="ml-2 text-[15px]">perempuan</span>
                                 </label>
                             </div>
                         </div>
 
-                        <select name="jurusan"
-                            class="block w-full px-10 py-2 mt-1 text-sm border border-gray-600 rounded-md appearance-none dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
-                            <option disabled selected>Jurusan</option>
-                            @foreach ($jurusan as $data)
-                                <option value="{{ $data->id_jurusan }}">{{ $data->nama_jurusan }}</option>
-                            @endforeach
-                        </select>
+                        <div class="mt-4 text-sm">
+                            <span class="text-gray-700 dark:text-gray-400">
+                                Jurusan
+                            </span>
+                            <select name="jurusan"
+                                class="block w-full px-10 py-2 mt-1 text-sm border border-gray-600 rounded-md appearance-none dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+                                <option disabled selected>Jurusan</option>
+                                @foreach ($jurusan as $data)
+                                    <option value="{{ $data->id_jurusan }}"
+                                        {{ old('jurusan') == $data->id_jurusan ? 'selected' : '' }}>
+                                        {{ $data->nama_jurusan }}</option>
+                                @endforeach
+                            </select>
+                        </div>
 
                         <div class="mt-4 text-sm">
                             <span class="text-gray-700 dark:text-gray-400">
@@ -121,7 +146,7 @@
                                 class="block w-full px-10 py-2 mt-1 text-sm border border-gray-600 rounded-md appearance-none dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                                 <option disabled selected>Tamatan</option>
                                 @for ($tahun = Carbon\Carbon::now()->year + 1; $tahun >= 2005; --$tahun)
-                                    <option value="{{ $tahun }}">
+                                    <option value="{{ $tahun }}" {{ old('tamatan') == $tahun ? 'selected' : '' }}>
                                         {{ $tahun }}</option>
                                 @endfor
                             </select>

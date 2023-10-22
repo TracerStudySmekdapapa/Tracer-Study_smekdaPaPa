@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\DataPribadiSimpanRequest;
 use App\Models\Jurusan;
 use App\Models\Pekerjaan;
 use App\Models\Pendidikan;
@@ -52,7 +53,7 @@ class PribadiController extends Controller
         return view('alumni.datapribadi.create', compact('title', 'jurusan'));
     }
 
-    public function simpanDataPribadi(Request $request, $id)
+    public function simpanDataPribadi(DataPribadiSimpanRequest $request, $id)
     {
         /* Start Validasi */
         /*  $messages = [
@@ -65,19 +66,25 @@ class PribadiController extends Controller
         ], $messages); */
         /* End Validasi */
 
-        Pribadi::create([
-            'nisn' => $request->nisn,
-            'no_telp' => $request->no_telp,
-            'tempat_lahir' => $request->tmp_lahir,
-            'tanggal_lahir' => $request->tgl_lahir,
-            'agama' => $request->agama,
-            'jenis_kelamin' => $request->jenis_kelamin,
-            'tamatan' => $request->tamatan,
-            'id_jurusan' => $request->jurusan,
-            'id_user' => $id
-        ]);
 
-        return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil disimpan']);
+        $validatedData = $request->validated();
+        if ($validatedData) {
+            Pribadi::create([
+                'nisn' => $request->nisn,
+                'no_telp' => $request->no_telp,
+                'tempat_lahir' => $request->tmp_lahir,
+                'tanggal_lahir' => $request->tgl_lahir,
+                'agama' => $request->agama,
+                'jenis_kelamin' => $request->jenis_kelamin,
+                'tamatan' => $request->tamatan,
+                'id_jurusan' => $request->jurusan,
+                'id_user' => $id
+            ]);
+
+            return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil disimpan']);
+        } else {
+            return redirect()->back()->withErrors($validatedData)->withInput($request->all());
+        }
     }
     /* End Create Data Pribadi */
 
