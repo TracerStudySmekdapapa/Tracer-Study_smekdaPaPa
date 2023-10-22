@@ -19,13 +19,13 @@ class DataPribadiSimpanRequest extends FormRequest
     public function rules()
     {
         return [
-            'nisn' => ['nullable', 'integer', 'min:10'],
-            'no_telp' => ['nullable', 'integer', 'min:10'],
+            'nisn' => ['nullable', 'numeric', 'min:10'],
+            'no_telp' => ['nullable', 'numeric', 'min:10'],
             'agama' => ['nullable', 'string'],
             'tmp_lahir' => ['nullable', 'string'],
             'tgl_lahir' => ['nullable', 'date'],
             'jenis_kelamin' => ['nullable', 'string'],
-            'jurusan' => ['nullable', 'integer'],
+            'jurusan' => ['nullable', 'numeric'],
             'tamatan' => ['nullable', 'string'],
         ];
     }

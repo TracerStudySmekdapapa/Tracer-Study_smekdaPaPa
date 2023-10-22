@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DataPribadiSimpanRequest;
+use App\Http\Requests\DataPribadiUpdateRequest;
 use App\Models\Jurusan;
 use App\Models\Pekerjaan;
 use App\Models\Pendidikan;
@@ -50,24 +51,23 @@ class PribadiController extends Controller
     {
         $title = 'Tambah Data Pribadi';
         $jurusan = Jurusan::get();
-        return view('alumni.datapribadi.create', compact('title', 'jurusan'));
+        $agama = [
+            'Islam',
+            'Kristen',
+            'Hindu',
+            'Buddha',
+            'Konghucu',
+            'Lainnya'
+        ];
+        return view('alumni.datapribadi.create', compact('title', 'jurusan', 'agama'));
     }
 
     public function simpanDataPribadi(DataPribadiSimpanRequest $request, $id)
     {
         /* Start Validasi */
-        /*  $messages = [
-            'nisn.unique' => 'NISN sudah digunakan sebelumnya',
-            'nisn.min' => 'NISN harus memiliki setidaknya 10 karakter.'
-        ];
-
-        $request->validate([
-            'nisn' => 'min:10|unique:alumni'
-        ], $messages); */
+        $validatedData = $request->validated();
         /* End Validasi */
 
-
-        $validatedData = $request->validated();
         if ($validatedData) {
             Pribadi::create([
                 'nisn' => $request->nisn,
@@ -94,34 +94,40 @@ class PribadiController extends Controller
         $title = 'Edit Data Pribadi';
         $data = Pribadi::where('id_user', $id)->first();
         $jurusan = Jurusan::get();
-        return view('alumni.datapribadi.edit', compact('data', 'title', 'jurusan'));
+        $agama = [
+            'Islam',
+            'Kristen',
+            'Hindu',
+            'Buddha',
+            'Konghucu',
+            'Lainnya'
+        ];
+        return view('alumni.datapribadi.edit', compact('data', 'title', 'jurusan', 'agama'));
     }
 
-    public function updateDataPribadi(Request $request, $id)
+    public function updateDataPribadi(DataPribadiUpdateRequest $request, $id)
     {
         $alumni = Pribadi::where('id_user', $id)->first();
         /* Start Validasi */
-        /*  $messages = [
-            'nisn.unique' => 'NISN sudah digunakan sebelumnya',
-            'nisn.min' => 'NISN harus memiliki setidaknya 10 karakter.'
-        ];
-        $request->validate([
-            'nisn' => 'min:10' . ($alumni->nisn == $request->nisn ? '' : '|unique:alumni,nisn')
-        ], $messages); */
+        $validatedData = $request->validated();
         /* End Validasi */
 
-        $alumni->update([
-            'nisn' => $request->nisn,
-            'no_telp' => $request->no_telp,
-            'tempat_lahir' => $request->tmp_lahir,
-            'tanggal_lahir' => $request->tgl_lahir,
-            'agama' => $request->agama,
-            'jenis_kelamin' => $request->jenis_kelamin,
-            'tamatan' => $request->tamatan,
-            'id_jurusan' => $request->jurusan,
-            'id_user' => $id
-        ]);
-        return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil diubah']);
+        if ($validatedData) {
+            $alumni->update([
+                'nisn' => $request->nisn,
+                'no_telp' => $request->no_telp,
+                'tempat_lahir' => $request->tmp_lahir,
+                'tanggal_lahir' => $request->tgl_lahir,
+                'agama' => $request->agama,
+                'jenis_kelamin' => $request->jenis_kelamin,
+                'tamatan' => $request->tamatan,
+                'id_jurusan' => $request->jurusan,
+                'id_user' => $id
+            ]);
+            return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil diubah']);
+        } else {
+            return redirect()->back()->withErrors($validatedData)->withInput($request->all());
+        }
     }
     /* End Edit Data Pekerjaan */
 
