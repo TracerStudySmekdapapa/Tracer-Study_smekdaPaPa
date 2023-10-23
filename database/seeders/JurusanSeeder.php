@@ -17,7 +17,7 @@ class JurusanSeeder extends Seeder
     {
         $jurusan = [
             'Desain Komunikasi Visual',
-            'Jurusan Produksi dan Siaran Program Televisi',
+            'Produksi dan Siaran Program Televisi',
             'Multimedia',
             'Pengembangan Perangkat Lunak dan Gim',
             'Rekayasa Perangkat Lunak',

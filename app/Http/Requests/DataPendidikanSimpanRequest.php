@@ -24,7 +24,23 @@ class DataPendidikanSimpanRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nama_univ' => ['required', 'string', 'min:5'],
+            'fakultas' => ['required', 'string', 'min:5'],
+            'prodi' => ['nullable', 'string', 'min:5'],
+            'alamat_univ' => ['required', 'string', 'min:10']
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'nama_univ.required' => 'Nama Universitas harus diisi',
+            'nama_univ.min' => 'Nama Universitas harus minimal 5 huruf',
+            'fakultas.required' => 'Fakultas harus diisi',
+            'fakultas.min' => 'Fakultas harus minimal 5 huruf',
+            'prodi.min' => 'Fakultas harus minimal 5 huruf',
+            'alamat_univ.required' => 'Alamat harus diisi',
+            'alamat_univ.min' => 'Alamat harus minimal 5 huruf',
         ];
     }
 }

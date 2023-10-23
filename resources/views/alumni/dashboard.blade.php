@@ -85,9 +85,9 @@
                         @else
                             <table class="w-full text-black/70 -mt-2">
                                 <tr class="">
-                                    <td class="hidden lg:inline">email</td>
+                                    <td class="hidden lg:inline ">email</td>
                                     <td class="py-2 px-6 hidden lg:inline">:</td>
-                                    <td class="text-center lg:text-left">{{ Auth::user()->email }}</td>
+                                    <td class="text-center lg:text-left lowercase">{{ Auth::user()->email }}</td>
                                 </tr>
                             </table>
                             <div class="w-full  justify-end flex ">
@@ -117,7 +117,7 @@
                             <!-- data pekerjaan -->
                             <div class="w-full min-h-[300px] flex justify-stretch lg:px-20 md:px-5  ">
                                 <ul class="steps steps-vertical ">
-                                    @foreach ($pekerjaan->take(3) as $item)
+                                    @forelse ($pekerjaan->take(3) as $item)
                                         <li class="step step-primary">
                                             <div class="flex justify-start items-start flex-col">
                                                 <h1 class="text-black/90 capitalize text-[20px]">
@@ -126,7 +126,11 @@
                                                 <p>{{ $item->nama_instansi }}</p>
                                             </div>
                                         </li>
-                                    @endforeach
+                                    @empty
+                                        <h1>
+                                            Tidak ada data pekerjaan
+                                        </h1>
+                                    @endforelse
                                 </ul>
                             </div>
                             <div

@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\DataPekerjaanSimpanRequest;
+use App\Http\Requests\DataPekerjaanUpdateRequest;
+use App\Http\Requests\DataPendidikanSimpanRequest;
+use App\Http\Requests\DataPendidikanUpdateRequest;
 use App\Http\Requests\DataPribadiSimpanRequest;
 use App\Http\Requests\DataPribadiUpdateRequest;
 use App\Models\Jurusan;
@@ -138,20 +142,29 @@ class PribadiController extends Controller
         return view('alumni.datapekerjaan.create', compact('title'));
     }
 
-    public function simpanDataPekerjaan(Request $request, $id)
+    public function simpanDataPekerjaan(DataPekerjaanSimpanRequest $request, $id)
     {
         $id_pribadi = Pribadi::where('id_user', $id)->first();
-        Pekerjaan::create([
-            'nama_pekerjaan' => $request->nama_pekerjaan,
-            'nama_instansi' => $request->nama_instansi,
-            'alamat_instansi' => $request->alamat,
-            'jabatan' => $request->jabatan,
-            'thn_masuk' => $request->tahun_masuk,
-            'thn_keluar' => $request->tahun_keluar,
-            'id_pribadi' => $id_pribadi->id_pribadi
-        ]);
 
-        return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil disimpan']);
+        /* Start Validasi */
+        $validatedData = $request->validated();
+        /* End Validasi */
+
+        if ($validatedData) {
+            Pekerjaan::create([
+                'nama_pekerjaan' => $request->nama_pekerjaan,
+                'nama_instansi' => $request->nama_instansi,
+                'alamat_instansi' => $request->alamat,
+                'jabatan' => $request->jabatan,
+                'thn_masuk' => $request->tahun_masuk,
+                'thn_keluar' => $request->tahun_keluar,
+                'id_pribadi' => $id_pribadi->id_pribadi
+            ]);
+
+            return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil disimpan']);
+        } else {
+            return redirect()->back()->withErrors($validatedData)->withInput($request->all());
+        }
     }
 
     public function editDataPekerjaan($id)
@@ -161,20 +174,28 @@ class PribadiController extends Controller
         return view('alumni.datapekerjaan.edit', compact('title', 'data'));
     }
 
-    public function updateDataPekerjaan(Request $request, $id)
+    public function updateDataPekerjaan(DataPekerjaanUpdateRequest $request, $id)
     {
         $data = Pekerjaan::where('id_pekerjaan', $id)->first();
 
-        $data->update([
-            'nama_pekerjaan' => $request->nama_pekerjaan,
-            'nama_instansi' => $request->nama_instansi,
-            'jabatan' => $request->jabatan,
-            'thn_masuk' => $request->tahun_masuk,
-            'thn_keluar' => $request->tahun_keluar,
-            'alamat_instansi' => $request->alamat,
-        ]);
+        /* Start Validasi */
+        $validatedData = $request->validated();
+        /* End Validasi */
 
-        return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil diubah']);
+        if ($validatedData) {
+            $data->update([
+                'nama_pekerjaan' => $request->nama_pekerjaan,
+                'nama_instansi' => $request->nama_instansi,
+                'jabatan' => $request->jabatan,
+                'thn_masuk' => $request->tahun_masuk,
+                'thn_keluar' => $request->tahun_keluar,
+                'alamat_instansi' => $request->alamat,
+            ]);
+
+            return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil diubah']);
+        } else {
+            return redirect()->back()->withErrors($validatedData)->withInput($request->all());
+        }
     }
 
     public function detailDataPekerjaan($id)
@@ -200,18 +221,27 @@ class PribadiController extends Controller
         return view('alumni.datapendidikan.create', compact('title'));
     }
 
-    public function simpanDataPendidikan(Request $request, $id)
+    public function simpanDataPendidikan(DataPendidikanSimpanRequest $request, $id)
     {
         $id_pribadi = Pribadi::where('id_user', $id)->first();
-        Pendidikan::create([
-            'nama_univ' => $request->nama_univ,
-            'fakultas' => $request->fakultas,
-            'prodi' => $request->prodi,
-            'alamat_univ' => $request->alamat_univ,
-            'id_pribadi' => $id_pribadi->id_pribadi
-        ]);
 
-        return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil disimpan']);
+        /* Start Validasi */
+        $validatedData = $request->validated();
+        /* End Validasi */
+
+        if ($validatedData) {
+            Pendidikan::create([
+                'nama_univ' => $request->nama_univ,
+                'fakultas' => $request->fakultas,
+                'prodi' => $request->prodi,
+                'alamat_univ' => $request->alamat_univ,
+                'id_pribadi' => $id_pribadi->id_pribadi
+            ]);
+
+            return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil disimpan']);
+        } else {
+            return redirect()->back()->withErrors($validatedData)->withInput($request->all());
+        }
     }
 
     public function editDataPendidikan($id)
@@ -221,17 +251,26 @@ class PribadiController extends Controller
         return view('alumni.datapendidikan.edit', compact('title', 'data'));
     }
 
-    public function updateDataPendidikan(Request $request, $id)
+    public function updateDataPendidikan(DataPendidikanUpdateRequest $request, $id)
     {
         $data = Pendidikan::where('id_pendidikan', $id)->first();
-        $data->update([
-            'nama_univ' => $request->nama_univ,
-            'fakultas' => $request->fakultas,
-            'prodi' => $request->prodi,
-            'alamat_univ' => $request->alamat_univ,
-        ]);
 
-        return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil diubah']);
+        /* Start Validasi */
+        $validatedData = $request->validated();
+        /* End Validasi */
+
+        if ($validatedData) {
+            $data->update([
+                'nama_univ' => $request->nama_univ,
+                'fakultas' => $request->fakultas,
+                'prodi' => $request->prodi,
+                'alamat_univ' => $request->alamat_univ,
+            ]);
+
+            return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil diubah']);
+        } else {
+            return redirect()->back()->withErrors($validatedData)->withInput($request->all());
+        }
     }
 
     public function detailDataPendidikan($id)

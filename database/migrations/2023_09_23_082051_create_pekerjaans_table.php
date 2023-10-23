@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nama_pekerjaan', 50)->nullable();
             $table->string('nama_instansi', 50)->nullable();
             $table->text('alamat_instansi')->nullable();
-            $table->string('jabatan', 10)->nullable();
+            $table->string('jabatan', 50)->nullable();
             $table->string('thn_masuk', 4)->nullable();
             $table->string('thn_keluar', 4)->nullable();
             $table->foreignId('id_pribadi')->constrained('data_pribadi', 'id_pribadi')->onDelete('cascade')->onUpdate('cascade');

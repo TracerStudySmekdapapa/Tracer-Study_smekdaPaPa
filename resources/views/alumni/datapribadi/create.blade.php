@@ -32,9 +32,11 @@
                                 class="block w-full px-5 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                 placeholder="0123456789" value="{{ old('nisn') }}" />
 
+                            <!-- error -->
                             @error('nisn')
                                 <p class="mt-1 text-rose-500">{{ $message }}</p>
                             @enderror
+                            <!-- error -->
                         </label>
 
                         <div class="grid w-full grid-cols-1 gap-5 md:grid-cols-2">

@@ -93,6 +93,7 @@
                             <input name="tgl_lahir" id="tanggal" type="date"
                                 value="{{ old('tgl_lahir', $data->tanggal_lahir) }}"
                                 class="block w-full px-5 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
+
                             <!-- error -->
                             @error('tgl_lahir')
                                 <p class="mt-1 text-rose-500">{{ $message }}</p>
@@ -134,6 +135,12 @@
                                         {{ old('jurusan', $data->id_jurusan) == $item->id_jurusan ? 'selected' : '' }}>
                                         {{ $item->nama_jurusan }}</option>
                                 @endforeach
+
+                                <!-- error -->
+                                @error('jurusan')
+                                    <p class="mt-1 text-rose-500">{{ $message }}</p>
+                                @enderror
+                                <!-- error -->
                             </select>
                         </div>
 
