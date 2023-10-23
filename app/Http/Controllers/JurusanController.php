@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Jurusan;
 use Illuminate\Http\Request;
 
 class JurusanController extends Controller
@@ -14,7 +15,8 @@ class JurusanController extends Controller
      */
     public function index()
     {
-        //
+        $jurusan = Jurusan::get();
+        return view('admin.jurusan.index', compact('jurusan'))->with('i');
     }
 
     /**
@@ -24,7 +26,7 @@ class JurusanController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.jurusan.create');
     }
 
     /**
@@ -35,7 +37,11 @@ class JurusanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Jurusan::create([
+            'nama_jurusan' => $request->nama_jurusan,
+        ]);
+
+        return redirect()->route('jurusan.index');
     }
 
     /**
@@ -46,7 +52,8 @@ class JurusanController extends Controller
      */
     public function show($id)
     {
-        //
+        $jurusan = Jurusan::find($id);
+        return view('admin.jurusan.show', compact('jurusan'));
     }
 
     /**
@@ -57,7 +64,8 @@ class JurusanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $jurusan = Jurusan::find($id);
+        return view('admin.jurusan.edit', compact('jurusan'));
     }
 
     /**
@@ -69,7 +77,9 @@ class JurusanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $jurusan = Jurusan::find($id);
+        $jurusan->update($request->all());
+        return redirect()->route('jurusan.index', compact('jurusan'));
     }
 
     /**
@@ -80,6 +90,9 @@ class JurusanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $jurusan = Jurusan::find($id);
+        $jurusan->delete();
+
+        return redirect()->route('jurusan.index', compact('jurusan'));
     }
 }

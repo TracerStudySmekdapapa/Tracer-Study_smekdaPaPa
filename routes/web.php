@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PribadiController;
 use App\Http\Controllers\AuthenticateController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Pekerjaan;
 use App\Models\Pendidikan;
@@ -102,6 +103,15 @@ Route::middleware('auth')->group(function () {
     Route::patch('/alumni/{id}/data-pendidikan/update', [PribadiController::class, 'updateDataPendidikan'])->name('updateDataPendidikan');
     Route::get('/alumni/{id}/data-pendidikan/detail', [PribadiController::class, 'detailDataPendidikan'])->name('detailDataPendidikan');
     Route::delete('/alumni/{id}/data-pendidikan', [PribadiController::class, 'deleteDataPendidikan'])->name('deleteDataPendidikan');
+
+    // Jurusan
+    Route::get('/admin/jurusan', [JurusanController::class, 'index'])->name('jurusan.index');
+    Route::get('/admin/jurusan/create', [JurusanController::class, 'create'])->name('jurusan.create');
+    Route::get('/admin/jurusan/show/{id}', [JurusanController::class, 'show'])->name('jurusan.show');
+    Route::get('/admin/jurusan/edit/{id}', [JurusanController::class, 'edit'])->name('jurusan.edit');
+    Route::patch('/admin/jurusan/{id}', [JurusanController::class, 'update'])->name('jurusan.update');
+    Route::post('/admin/jurusan/store', [JurusanController::class, 'store'])->name('jurusan.store');
+    Route::delete('/admin/jurusan/destroy/{id}', [JurusanController::class, 'destroy'])->name('jurusan.destroy');
 });
 
 // semua otrang
