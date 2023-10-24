@@ -35,7 +35,7 @@ class AlumniSeeder extends Seeder
             'agama' => "Islam",
             'jenis_kelamin' => "Laki-Laki",
             'id_jurusan' => 5,
-            'tamatan' => "2024",
+            'tamatan' => "2023",
             'id_user' => $user->id_user
         ]);
     }

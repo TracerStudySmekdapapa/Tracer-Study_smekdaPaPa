@@ -129,7 +129,7 @@
                             </span>
                             <select name="jurusan"
                                 class="block w-full px-10 py-2 mt-1 text-sm border border-gray-600 rounded-md appearance-none dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
-                                <option readonly>Jurusan</option>
+                                <option value="" readonly>Jurusan</option>
                                 @foreach ($jurusan as $item)
                                     <option value="{{ $item->id_jurusan }}"
                                         {{ old('jurusan', $data->id_jurusan) == $item->id_jurusan ? 'selected' : '' }}>
@@ -150,7 +150,7 @@
                             </span>
                             <select name="tamatan" id=""
                                 class="block w-full px-10 py-2 mt-1 text-sm border border-gray-600 rounded-md appearance-none dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
-                                @for ($tahun = Carbon\Carbon::now()->year + 1; $tahun >= 2005; --$tahun)
+                                @for ($tahun = Carbon\Carbon::now()->year; $tahun >= 2006; --$tahun)
                                     <option value="{{ $tahun }}"
                                         {{ old('tamatan', $data->tamatan) == $tahun ? 'selected' : '' }}>
                                         {{ $tahun }}</option>

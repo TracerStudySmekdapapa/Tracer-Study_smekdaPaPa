@@ -8,69 +8,98 @@ use App\Models\Pribadi;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PekerjaanController extends Controller
 {
     public function alumniPertahun()
     {
         $data = [];
-        for ($tahun = 2006; $tahun <= Carbon::now()->year(); $tahun++) {
-            $alumniCount = Pribadi::where('tamatan', $tahun)->count();
+        $currentYear = Carbon::now()->year;
+
+        for ($tahun = 2006; $tahun <= $currentYear; $tahun++) {
+            $alumniCount = User::whereHas('roles', function ($query) {
+                $query->where('name', 'Alumni');
+            })->join(
+                'data_pribadi',
+                'users.id_user',
+                '=',
+                'data_pribadi.id_user'
+            )
+                ->where('data_pribadi.tamatan', $tahun)
+                ->count();
+
             $data[] = $alumniCount;
         }
-        $responseData = ['data' => $data];
 
-        return response(json_encode($responseData, JSON_PRETTY_PRINT))
+        $prettyJson = ['data' => $data];
+        return response(json_encode($prettyJson, JSON_PRETTY_PRINT))
             ->header('Content-Type', 'application/json');
     }
 
     public function alumniBekerja()
     {
-        // Dapatkan semua alumni
-        /* $alumni = User::whereHas('roles', function ($query) {
-            $query->where('name', 'Alumni');
-        })->get();
+        $data = [];
+        $currentYear = Carbon::now()->year;
 
-        foreach ($alumni as $alumniUser) {
-            $pribadi = Pribadi::where('id_user', $alumniUser->id_user)->get();
-            foreach ($pribadi as $alumni) {
-                $jumlahOrangBekerja = Pekerjaan::where('id_pribadi', $alumni->id_pribadi)->count();
-            }
-        } */
+        for ($tahun = 2006; $tahun <= $currentYear; $tahun++) {
+            $alumniCount = User::whereHas('roles', function ($query) {
+                $query->where('name', 'Alumni');
+            })->join(
+                'data_pribadi',
+                'users.id_user',
+                '=',
+                'data_pribadi.id_user'
+            )
+                ->join(
+                    DB::raw("(SELECT id_pribadi, COUNT(DISTINCT id_pekerjaan) as total_pekerjaan FROM pekerjaan GROUP BY id_pribadi) as pekerjaan"),
+                    'data_pribadi.id_pribadi',
+                    '=',
+                    'pekerjaan.id_pribadi'
+                )
+                ->where('data_pribadi.tamatan', $tahun)
+                ->groupBy('data_pribadi.id_pribadi')
+                ->selectRaw('COUNT(pekerjaan.id_pribadi) as total_pekerjaan')
+                ->count();
 
-        $alumniYangBekerjaPertahun = [];
-
-        $alumniYears = range(2006, 2024);
-
-        foreach ($alumniYears as $tahun) {
-            $alumni = User::whereHas(
-                'roles',
-                function ($query) {
-                    $query->where('name', 'Alumni');
-                }
-            )->whereHas('alumni', function ($query) use ($tahun) {
-                $query->where('tamatan', $tahun);
-            })->get();
-
-            $jumlahOrangBekerja = 0;
-
-            foreach ($alumni as $alumniUser) {
-                $pribadi = $alumniUser->alumni;
-                foreach ($pribadi as $alumni) {
-                    $jumlahOrangBekerja += $alumni->pekerjaan->count();
-                }
-            }
-
-            $alumniYangBekerjaPertahun[$tahun] = $jumlahOrangBekerja;
+            $data[] = $alumniCount;
         }
 
-        // Hasilnya adalah array yang berisi jumlah orang yang bekerja untuk setiap tahun dari 2006 hingga 2024
-        return $alumniYangBekerjaPertahun;
+        $prettyJson = ['data' => $data];
+        return response(json_encode($prettyJson, JSON_PRETTY_PRINT))
+            ->header('Content-Type', 'application/json');
+    }
 
+    public function alumniPendidikan()
+    {
+        $data = [];
+        $currentYear = Carbon::now()->year;
 
-        // Hasilnya adalah array yang berisi jumlah orang yang bekerja untuk setiap alumni dengan peran "Alumni"
-        // return $alumniYangBekerja;
+        for ($tahun = 2006; $tahun <= $currentYear; $tahun++) {
+            $alumniCount = User::whereHas('roles', function ($query) {
+                $query->where('name', 'Alumni');
+            })->join(
+                'data_pribadi',
+                'users.id_user',
+                '=',
+                'data_pribadi.id_user'
+            )
+                ->join(
+                    DB::raw("(SELECT id_pribadi, COUNT(DISTINCT id_pendidikan) as total_pekerjaan FROM pendidikan GROUP BY id_pribadi) as pendidikan"),
+                    'data_pribadi.id_pribadi',
+                    '=',
+                    'pendidikan.id_pribadi'
+                )
+                ->where('data_pribadi.tamatan', $tahun)
+                ->groupBy('data_pribadi.id_pribadi')
+                ->selectRaw('COUNT(pendidikan.id_pribadi) as total_pendidikan')
+                ->count();
 
-        // dd($responseData);
+            $data[] = $alumniCount;
+        }
+
+        $prettyJson = ['data' => $data];
+        return response(json_encode($prettyJson, JSON_PRETTY_PRINT))
+            ->header('Content-Type', 'application/json');
     }
 }

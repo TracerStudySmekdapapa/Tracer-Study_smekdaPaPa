@@ -36,8 +36,9 @@ perbaiki letak barisnya , letakkan sesuati "data-pekerjaan" , "data-pendidikan"
  */
 // ==================================================================
 
-Route::get('tests', [PekerjaanController::class, 'alumniPertahun']);
-Route::get('testss', [PekerjaanController::class, 'alumniBekerja']);
+Route::get('alumni/pertahun', [PekerjaanController::class, 'alumniPertahun']);
+Route::get('alumni/bekerja', [PekerjaanController::class, 'alumniBekerja']);
+Route::get('alumni/pendidikan', [PekerjaanController::class, 'alumniPendidikan']);
 
 Route::get(
     '/alumni/{id}/data-pekerjaan/more-detail',

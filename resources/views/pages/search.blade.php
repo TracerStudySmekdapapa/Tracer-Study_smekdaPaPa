@@ -38,7 +38,7 @@
 
                             <datalist name="HeadlineAct" id="HeadlineActArtist">
 
-                                @for ($tahun = Carbon\Carbon::now()->year + 1; $tahun >= 2005; --$tahun)
+                                @for ($tahun = Carbon\Carbon::now()->year; $tahun >= 2006; --$tahun)
                                     <option value="{{ $tahun }}" onclick="heandleClick()"
                                         {{ $tamatan == $tahun ? 'selected' : '' }}>
                                         {{ $tahun }}
