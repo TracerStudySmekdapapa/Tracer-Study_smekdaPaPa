@@ -31,9 +31,14 @@
                         <!-- nisn -->
                         <label class="block text-sm">
                             <span class="text-gray-700 dark:text-gray-400">nisn</span>
-                            <input type="number" name="nisn" value="{{ $data->nisn }}"
+                            <input type="number" name="nisn" value="{{ old('nisn', $data->nisn) }}"
                                 class="block w-full px-5 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                 placeholder="012345" />
+                            <!-- error -->
+                            @error('nisn')
+                                <p class="mt-1 text-rose-500">{{ $message }}</p>
+                            @enderror
+                            <!-- error -->
                         </label>
 
                         <div class="grid w-full grid-cols-1 gap-5 md:grid-cols-2">
@@ -44,17 +49,12 @@
                                 <select name="agama"
                                     class="block w-full px-10 py-2 mt-1 text-sm border border-gray-600 rounded-md appearance-none dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                                     <option disabled selected>agama</option>
-                                    <option value="Islam" {{ $data->agama == 'Islam' ? 'selected' : '' }}>Islam</option>
-                                    <option value="Kristen" {{ $data->agama == 'Kristen' ? 'selected' : '' }}>Kristen
-                                    </option>
-                                    <option value="Katolik" {{ $data->agama == 'Katolik' ? 'selected' : '' }}>Katolik
-                                    </option>
-                                    <option value="Hindu" {{ $data->agama == 'Hindu' ? 'selected' : '' }}>Hindu</option>
-                                    <option value="Buddha" {{ $data->agama == 'Buddha' ? 'selected' : '' }}>buddha</option>
-                                    <option value="Konghucu" {{ $data->agama == 'Konghucu' ? 'selected' : '' }}>konghucu
-                                    </option>
+                                    @foreach ($agama as $item)
+                                        <option value="{{ $item }}"
+                                            {{ old('agama', $data->agama) == $item ? 'selected' : '' }}>{{ $item }}
+                                        </option>
+                                    @endforeach
                                 </select>
-
                                 <!-- error -->
                                 <!-- <p class="mt-1 text-rose-500">invalid message</p> -->
                                 <!-- error -->
@@ -63,12 +63,14 @@
                             <!--  tempat tgl lahit  -->
                             <label class="block text-sm">
                                 <span class="text-gray-700 dark:text-gray-400">No Telp</span>
-                                <input type="tel" name="no_telp" value="{{ $data->no_telp }}"
+                                <input type="tel" name="no_telp" value="{{ old('no_telp', $data->no_telp) }}"
                                     class="block w-full px-6 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                     placeholder="+00 xxx xxx xxx" />
 
                                 <!-- error -->
-                                <!-- <p class="mt-1 text-rose-500">invalid message</p> -->
+                                @error('no_telp')
+                                    <p class="mt-1 text-rose-500">{{ $message }}</p>
+                                @enderror
                                 <!-- error -->
                             </label>
                         </div>
@@ -76,18 +78,26 @@
                         <!--  tempat tgl lahit  -->
                         <label class="block text-sm">
                             <span class="text-gray-700 dark:text-gray-400">Tempat Lahir</span>
-                            <input name="tmp_lahir" value="{{ $data->tempat_lahir }}"
+                            <input name="tmp_lahir" value="{{ old('tmp_lahir', $data->tempat_lahir) }}"
                                 class="block w-full px-5 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                 placeholder="Padang Panjang " />
+                            <!-- error -->
+                            @error('tmp_lahir')
+                                <p class="mt-1 text-rose-500">{{ $message }}</p>
+                            @enderror
+                            <!-- error -->
                         </label>
                         <!--  tempat tgl lahit  -->
                         <label class="block text-sm">
                             <span class="text-gray-700 dark:text-gray-400">Tanggal Lahir</span>
-                            <input name="tgl_lahir" id="tanggal" type="date" value="{{ $data->tanggal_lahir }}"
+                            <input name="tgl_lahir" id="tanggal" type="date"
+                                value="{{ old('tgl_lahir', $data->tanggal_lahir) }}"
                                 class="block w-full px-5 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
 
                             <!-- error -->
-                            <p class="mt-1 text-rose-500">invalid message</p>
+                            @error('tgl_lahir')
+                                <p class="mt-1 text-rose-500">{{ $message }}</p>
+                            @enderror
                             <!-- error -->
                         </label>
 
@@ -100,14 +110,14 @@
                                     <input type="radio"
                                         class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
                                         name="jenis_kelamin" value="Laki-Laki"
-                                        {{ $data->jenis_kelamin == 'Laki-Laki' ? 'checked' : '' }} />
+                                        {{ old('jenis_kelamin', $data->jenis_kelamin) == 'Laki-Laki' ? 'checked' : '' }} />
                                     <span class="ml-2">laki laki</span>
                                 </label>
                                 <label class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400">
                                     <input type="radio"
                                         class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
                                         name="jenis_kelamin" value="Perempuan"
-                                        {{ $data->jenis_kelamin == 'Perempuan' ? 'checked' : '' }} />
+                                        {{ old('jenis_kelamin', $data->jenis_kelamin) == 'Perempuan' ? 'checked' : '' }} />
                                     <span class="ml-2">perempuan</span>
                                 </label>
                             </div>
@@ -120,10 +130,17 @@
                             <select name="jurusan"
                                 class="block w-full px-10 py-2 mt-1 text-sm border border-gray-600 rounded-md appearance-none dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                                 <option readonly>Jurusan</option>
-                                <option value="RPL" {{ $data->jurusan == 'RPL' ? 'selected' : '' }}>RPL</option>
-                                <option value="MM" {{ $data->jurusan == 'MM' ? 'selected' : '' }}>MM</option>
-                                <option value="TKJ" {{ $data->jurusan == 'TKJ' ? 'selected' : '' }}>TKJ</option>
-                                <option value="PSPT" {{ $data->jurusan == 'PSPT' ? 'selected' : '' }}>PSPT</option>
+                                @foreach ($jurusan as $item)
+                                    <option value="{{ $item->id_jurusan }}"
+                                        {{ old('jurusan', $data->id_jurusan) == $item->id_jurusan ? 'selected' : '' }}>
+                                        {{ $item->nama_jurusan }}</option>
+                                @endforeach
+
+                                <!-- error -->
+                                @error('jurusan')
+                                    <p class="mt-1 text-rose-500">{{ $message }}</p>
+                                @enderror
+                                <!-- error -->
                             </select>
                         </div>
 
@@ -134,7 +151,8 @@
                             <select name="tamatan" id=""
                                 class="block w-full px-10 py-2 mt-1 text-sm border border-gray-600 rounded-md appearance-none dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                                 @for ($tahun = Carbon\Carbon::now()->year + 1; $tahun >= 2005; --$tahun)
-                                    <option value="{{ $tahun }}" {{ $data->tamatan == $tahun ? 'selected' : '' }}>
+                                    <option value="{{ $tahun }}"
+                                        {{ old('tamatan', $data->tamatan) == $tahun ? 'selected' : '' }}>
                                         {{ $tahun }}</option>
                                 @endfor
                             </select>

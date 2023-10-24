@@ -1,11 +1,12 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AlumniController;
+use App\Http\Controllers\PribadiController;
 use App\Http\Controllers\AuthenticateController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\JurusanController;
+use App\Http\Controllers\PekerjaanController;
 use App\Http\Controllers\ProfileController;
-use App\Models\Alumni;
 use App\Models\Pekerjaan;
 use App\Models\Pendidikan;
 use App\Models\User;
@@ -35,12 +36,14 @@ perbaiki letak barisnya , letakkan sesuati "data-pekerjaan" , "data-pendidikan"
  */
 // ==================================================================
 
+Route::get('tests', [PekerjaanController::class, 'alumniPertahun']);
+Route::get('testss', [PekerjaanController::class, 'alumniBekerja']);
 
 Route::get(
     '/alumni/{id}/data-pekerjaan/more-detail',
     function ($id) {
 
-        $pekerjaan = Pekerjaan::get()->where('id_alumni', $id);
+        $pekerjaan = Pekerjaan::get()->where('id_pribadi', $id);
         $title = 'data pekerjaan';
         return view('pages.moreDetail.pekerjaan', compact('title', 'pekerjaan'));
     }
@@ -50,7 +53,7 @@ Route::get(
     '/alumni/{id}/data-pendidikan/more-detail',
     function ($id) {
 
-        $pendidikan = Pendidikan::get()->where('id_alumni', $id);
+        $pendidikan = Pendidikan::get()->where('id_pribadi', $id);
         $title = 'data pendidikan';
         return view('pages.moreDetail.pendidikan', compact('title', 'pendidikan'));
     }
@@ -80,29 +83,38 @@ Route::middleware('auth')->group(function () {
     Route::post('/admin/alumni/{id_user}/tolakverify', [AdminController::class, 'tolakVerifAlumniAksi'])->name('tolakVerifAlumni');
 
     // alumi 
-    Route::get('/alumni/dashboard', [AlumniController::class, 'index'])->name('alumniDashboard');
+    Route::get('/alumni/dashboard', [PribadiController::class, 'index'])->name('alumniDashboard');
 
     // data pribadi
-    Route::get('/alumni/data-pribadi/tambah', [AlumniController::class, 'tambahDataPribadi'])->name('tambahDataPribadi');
-    Route::post('/alumni/{id}/data-pribadi/tambah', [AlumniController::class, 'simpanDataPribadi'])->name('simpanDataPribadi');
-    Route::get('/alumni/{id}/data-pribadi/edit', [AlumniController::class, 'editDataPribadi'])->name('editDataPribadi');
-    Route::patch('/alumni/{id}/data-pribadi/update', [AlumniController::class, 'updateDataPribadi'])->name('updateDataPribadi');
+    Route::get('/alumni/data-pribadi/tambah', [PribadiController::class, 'tambahDataPribadi'])->name('tambahDataPribadi');
+    Route::post('/alumni/{id}/data-pribadi/tambah', [PribadiController::class, 'simpanDataPribadi'])->name('simpanDataPribadi');
+    Route::get('/alumni/{id}/data-pribadi/edit', [PribadiController::class, 'editDataPribadi'])->name('editDataPribadi');
+    Route::patch('/alumni/{id}/data-pribadi/update', [PribadiController::class, 'updateDataPribadi'])->name('updateDataPribadi');
 
     // data pekerjaan
-    Route::get('/alumni/data-pekerjaan/tambah', [AlumniController::class, 'tambahDataPekerjaan'])->name('tambahDataPekerjaan');
-    Route::post('/alumni/{id}/data-pekerjaan/tambah', [AlumniController::class, 'simpanDataPekerjaan'])->name('simpanDataPekerjaan');
-    Route::get('/alumni/{id}/data-pekerjaan/edit', [AlumniController::class, 'editDataPekerjaan'])->name('editDataPekerjaan');
-    Route::patch('/alumni/{id}/data-pekerjaan/update', [AlumniController::class, 'updateDataPekerjaan'])->name('updateDataPekerjaan');
-    Route::get('/alumni/{id}/data-pekerjaan/detail', [AlumniController::class, 'detailDataPekerjaan'])->name('detailDataPekerjaan');
-    Route::delete('/alumni/{id}/data-pekerjaan', [AlumniController::class, 'deleteDataPekerjaan'])->name('deleteDataPekerjaan');
+    Route::get('/alumni/data-pekerjaan/tambah', [PribadiController::class, 'tambahDataPekerjaan'])->name('tambahDataPekerjaan');
+    Route::post('/alumni/{id}/data-pekerjaan/tambah', [PribadiController::class, 'simpanDataPekerjaan'])->name('simpanDataPekerjaan');
+    Route::get('/alumni/{id}/data-pekerjaan/edit', [PribadiController::class, 'editDataPekerjaan'])->name('editDataPekerjaan');
+    Route::patch('/alumni/{id}/data-pekerjaan/update', [PribadiController::class, 'updateDataPekerjaan'])->name('updateDataPekerjaan');
+    Route::get('/alumni/{id}/data-pekerjaan/detail', [PribadiController::class, 'detailDataPekerjaan'])->name('detailDataPekerjaan');
+    Route::delete('/alumni/{id}/data-pekerjaan', [PribadiController::class, 'deleteDataPekerjaan'])->name('deleteDataPekerjaan');
 
     // data pendidikan
-    Route::get('/alumni/data-pendidikan/tambah', [AlumniController::class, 'tambahDataPendidikan'])->name('tambahDataPendidikan');
-    Route::post('/alumni/{id}/data-pendidikan/tambah', [AlumniController::class, 'simpanDataPendidikan'])->name('simpanDataPendidikan');
-    Route::get('/alumni/{id}/data-pendidikan/edit', [AlumniController::class, 'editDataPendidikan'])->name('editDataPendidikan');
-    Route::patch('/alumni/{id}/data-pendidikan/update', [AlumniController::class, 'updateDataPendidikan'])->name('updateDataPendidikan');
-    Route::get('/alumni/{id}/data-pendidikan/detail', [AlumniController::class, 'detailDataPendidikan'])->name('detailDataPendidikan');
-    Route::delete('/alumni/{id}/data-pendidikan', [AlumniController::class, 'deleteDataPendidikan'])->name('deleteDataPendidikan');
+    Route::get('/alumni/data-pendidikan/tambah', [PribadiController::class, 'tambahDataPendidikan'])->name('tambahDataPendidikan');
+    Route::post('/alumni/{id}/data-pendidikan/tambah', [PribadiController::class, 'simpanDataPendidikan'])->name('simpanDataPendidikan');
+    Route::get('/alumni/{id}/data-pendidikan/edit', [PribadiController::class, 'editDataPendidikan'])->name('editDataPendidikan');
+    Route::patch('/alumni/{id}/data-pendidikan/update', [PribadiController::class, 'updateDataPendidikan'])->name('updateDataPendidikan');
+    Route::get('/alumni/{id}/data-pendidikan/detail', [PribadiController::class, 'detailDataPendidikan'])->name('detailDataPendidikan');
+    Route::delete('/alumni/{id}/data-pendidikan', [PribadiController::class, 'deleteDataPendidikan'])->name('deleteDataPendidikan');
+
+    // Jurusan
+    Route::get('/admin/jurusan', [JurusanController::class, 'index'])->name('jurusan.index');
+    Route::get('/admin/jurusan/create', [JurusanController::class, 'create'])->name('jurusan.create');
+    Route::get('/admin/jurusan/show/{id}', [JurusanController::class, 'show'])->name('jurusan.show');
+    Route::get('/admin/jurusan/edit/{id}', [JurusanController::class, 'edit'])->name('jurusan.edit');
+    Route::patch('/admin/jurusan/{id}', [JurusanController::class, 'update'])->name('jurusan.update');
+    Route::post('/admin/jurusan/store', [JurusanController::class, 'store'])->name('jurusan.store');
+    Route::delete('/admin/jurusan/destroy/{id}', [JurusanController::class, 'destroy'])->name('jurusan.destroy');
 });
 
 // semua otrang

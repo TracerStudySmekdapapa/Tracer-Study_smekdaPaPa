@@ -67,7 +67,8 @@
                                     </div>
                                     <div class="">
                                         <label for="">Jurusan</label>
-                                        <input type="text" name="jrsn" value="{{ $dataPribadi->jurusan }}">
+                                        <input type="text" name="jrsn"
+                                            value="{{ $dataPribadi->jurusan->nama_jurusan }}">
                                     </div>
                                     <!--variabel angkatan sebenarnya tamatan-->
                                     <div class="">
@@ -129,7 +130,7 @@
                                         <label for="">Nama Universitas :</label>
                                         @if ($dataPendidikan->count() > 1)
                                             {{-- Looping data pekerjaan alumni yang ada dua --}}
-                                             @foreach ($dataPendidikan as $pendidikan)
+                                            @foreach ($dataPendidikan as $pendidikan)
                                                 <p>{{ $pendidikan->nama_univ }}</p>
                                             @endforeach
                                         @else

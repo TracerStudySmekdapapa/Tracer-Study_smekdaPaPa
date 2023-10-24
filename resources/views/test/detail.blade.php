@@ -43,7 +43,7 @@
                     </div>
                     <div class="">
                         <label for="">Jurusan</label>
-                        <input type="text" name="jrsn" value="{{ $dataPribadi->jurusan }}">
+                        <input type="text" name="jrsn" value="{{ $dataPribadi->jurusan->nama_jurusan }}">
                     </div>
                     <!--variabel angkatan sebenarnya tamatan-->
                     <div class="">

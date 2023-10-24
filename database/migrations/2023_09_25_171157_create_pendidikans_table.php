@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('fakultas', 25)->nullable();
             $table->string('prodi', 25)->nullable();
             $table->text('alamat_univ')->nullable();
-            $table->foreignId('id_alumni')->constrained('alumni', 'id_alumni')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('id_pribadi')->constrained('data_pribadi', 'id_pribadi')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

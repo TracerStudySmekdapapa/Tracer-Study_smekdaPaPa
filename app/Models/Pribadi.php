@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Alumni extends Model
+class Pribadi extends Model
 {
     use HasFactory;
-    protected $table = "alumni";
-    protected $primaryKey = "id_alumni";
+    protected $table = "data_pribadi";
+    protected $primaryKey = "id_pribadi";
 
     protected $fillable = [
         'nisn',
@@ -18,8 +18,8 @@ class Alumni extends Model
         'tanggal_lahir',
         'agama',
         'jenis_kelamin',
-        'jurusan',
         'tamatan',
+        'id_jurusan',
         'id_user'
     ];
 
@@ -28,13 +28,18 @@ class Alumni extends Model
         return $this->belongsTo(User::class, 'id_user')->orderBy('name', 'ASC');
     }
 
+    public function jurusan()
+    {
+        return $this->belongsTo(Jurusan::class, 'id_jurusan');
+    }
+
     public function pekerjaan()
     {
-        return $this->hasMany(Pekerjaan::class, 'id_alumni');
+        return $this->hasMany(Pekerjaan::class, 'id_pribadi');
     }
 
     public function pendidikan()
     {
-        return $this->hasMany(Pendidikan::class, 'id_alumni');
+        return $this->hasMany(Pendidikan::class, 'id_pribadi');
     }
 }

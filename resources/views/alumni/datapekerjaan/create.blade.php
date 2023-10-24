@@ -19,7 +19,7 @@
                         berkembang bersama.
                     </p>
 
-                    <a href="{{ route('/') }}"
+                    <a href="{{ route('alumniDashboard') }}"
                         class="text-blue-500 underline-offset-8 underline mt-3 hidden md:block">kembali
                         ke
                         Dashboard</a>
@@ -33,15 +33,27 @@
                             <span class="text-gray-700 dark:text-gray-400">Nama Pekerjaan</span>
                             <input type="text" name="nama_pekerjaan"
                                 class="block w-full  mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                placeholder="Nama Pekerjaan" />
+                                placeholder="Nama Pekerjaan" value="{{ old('nama_pekerjaan') }}" />
+
+                            <!-- error -->
+                            @error('nama_pekerjaan')
+                                <p class="mt-1 text-rose-500">{{ $message }}</p>
+                            @enderror
+                            <!-- error -->
                         </label>
 
-                        <!-- nama_pekerjaan -->
+                        <!-- nama_instansi -->
                         <label class="block text-sm">
-                            <span class="text-gray-700 dark:text-gray-400">nama Instansi</span>
+                            <span class="text-gray-700 dark:text-gray-400">Nama Instansi</span>
                             <input type="text" name="nama_instansi"
                                 class="block w-full  mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                placeholder="Nama instansi" />
+                                placeholder="Nama instansi" value="{{ old('nama_instansi') }}" />
+
+                            <!-- error -->
+                            @error('nama_instansi')
+                                <p class="mt-1 text-rose-500">{{ $message }}</p>
+                            @enderror
+                            <!-- error -->
                         </label>
 
                         <!-- jabatan -->
@@ -49,7 +61,7 @@
                             <span class="text-gray-700 dark:text-gray-400">Jabatan (opsional)</span>
                             <input type="text" name="jabatan"
                                 class="block w-full  mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                placeholder="jabatan anda" />
+                                placeholder="jabatan anda" value="{{ old('jabatan') }}" />
                         </label>
 
                         <div class="grid w-full grid-cols-1 gap-5 lg:grid-cols-2">
@@ -57,13 +69,25 @@
                                 <span class="text-gray-700 dark:text-gray-400">Tahun Masuk </span>
                                 <input type="number" name="tahun_masuk"
                                     class="block w-full  mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                    placeholder="tahun masuk" />
+                                    placeholder="tahun masuk" value="{{ old('tahun_masuk') }}" />
+
+                                <!-- error -->
+                                @error('tahun_masuk')
+                                    <p class="mt-1 text-rose-500">{{ $message }}</p>
+                                @enderror
+                                <!-- error -->
                             </label>
                             <label class="block text-sm">
-                                <span class="text-gray-700 dark:text-gray-400">Tahun Keluar (opsional)</span>
+                                <span class="text-gray-700 dark:text-gray-400">Tahun Keluar </span>
                                 <input type="number" name="tahun_keluar"
-                                    class="block w-full  mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                    placeholder="!opsional" />
+                                    class=" block w-full  mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                    placeholder="!opsional" value="{{ old('tahun_keluar') }}" />
+
+                                <!-- error -->
+                                @error('tahun_keluar')
+                                    <p class="mt-1 text-rose-500">{{ $message }}</p>
+                                @enderror
+                                <!-- error -->
                             </label>
                         </div>
 
@@ -72,7 +96,13 @@
                             <span class="text-gray-700 dark:text-gray-400">Alamat</span>
                             <textarea name="alamat"
                                 class="block border border-gray-600 px-3 py-2 rounded-md w-full  mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                                rows="3" placeholder="masukan alamat instansi."></textarea>
+                                rows="3" placeholder="masukan alamat instansi.">{{ old('alamat') }}</textarea>
+
+                            <!-- error -->
+                            @error('alamat')
+                                <p class="mt-1 text-rose-500">{{ $message }}</p>
+                            @enderror
+                            <!-- error -->
                         </label>
 
                         <!-- submit  -->

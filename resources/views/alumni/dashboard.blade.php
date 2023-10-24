@@ -59,7 +59,7 @@
                                 <tr class="divide-y">
                                     <td>jurusan</td>
                                     <td class="py-2 px-6">:</td>
-                                    <td>{{ $alumni->jurusan ?? '-' }}</td>
+                                    <td>{{ $alumni->jurusan->nama_jurusan ?? '-' }}</td>
                                 </tr>
 
                                 <tr class="divide-y">
@@ -85,9 +85,9 @@
                         @else
                             <table class="w-full text-black/70 -mt-2">
                                 <tr class="">
-                                    <td class="hidden lg:inline">email</td>
+                                    <td class="hidden lg:inline ">email</td>
                                     <td class="py-2 px-6 hidden lg:inline">:</td>
-                                    <td class="text-center lg:text-left">{{ Auth::user()->email }}</td>
+                                    <td class="text-center lg:text-left lowercase">{{ Auth::user()->email }}</td>
                                 </tr>
                             </table>
                             <div class="w-full  justify-end flex ">
@@ -117,7 +117,7 @@
                             <!-- data pekerjaan -->
                             <div class="w-full min-h-[300px] flex justify-stretch lg:px-20 md:px-5  ">
                                 <ul class="steps steps-vertical ">
-                                    @foreach ($pekerjaan->take(3) as $item)
+                                    @forelse ($pekerjaan->take(3) as $item)
                                         <li class="step step-primary">
                                             <div class="flex justify-start items-start flex-col">
                                                 <h1 class="text-black/90 capitalize text-[20px]">
@@ -126,7 +126,11 @@
                                                 <p>{{ $item->nama_instansi }}</p>
                                             </div>
                                         </li>
-                                    @endforeach
+                                    @empty
+                                        <h1>
+                                            Tidak ada data pekerjaan
+                                        </h1>
+                                    @endforelse
                                 </ul>
                             </div>
                             <div
@@ -135,7 +139,7 @@
                                     class="rounded-lg w-full mx-auto  py-2 border block text-center border-primary text-black/90 text-sm">+
                                     Data
                                     Pekerjaan</a>
-                                <a href="{{ route('detailDataPekerjaan', $alumni->id_alumni) }}"
+                                <a href="{{ route('detailDataPekerjaan', $alumni->id_pribadi) }}"
                                     class="block w-full text-center mx-auto py-2 rounded-lg text-white bg-primary active:bg-black active:text-white border text-sm">lihat
                                     selengkapnya</a>
                             </div>
@@ -168,7 +172,7 @@
                                     class="rounded-lg w-full mx-auto py-2 border block text-center border-primary text-black/90 text-sm">+
                                     Data
                                     Pendidikan</a>
-                                <a href="{{ route('detailDataPendidikan', $alumni->id_alumni) }}"
+                                <a href="{{ route('detailDataPendidikan', $alumni->id_pribadi) }}"
                                     class="block w-full mx-auto text-center py-2 rounded-lg text-white bg-primary active:bg-black active:text-white border text-sm">lihat
                                     selengkapnya</a>
                             </div>

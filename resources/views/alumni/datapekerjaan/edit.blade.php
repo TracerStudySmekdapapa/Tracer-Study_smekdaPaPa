@@ -35,6 +35,12 @@
                         <input type="text" name="nama_pekerjaan"
                             class="block w-full  mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                             placeholder="Nama Pekerjaan" value="{{ old('nama_pekerjaan', $data->nama_pekerjaan) }}" />
+
+                        <!-- error -->
+                        @error('nama_pekerjaan')
+                            <p class="mt-1 text-rose-500">{{ $message }}</p>
+                        @enderror
+                        <!-- error -->
                     </label>
 
                     <!-- nama_pekerjaan -->
@@ -43,6 +49,12 @@
                         <input type="text" name="nama_instansi"
                             class="block w-full  mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                             placeholder="Nama instansi" value="{{ old('nama_instansi', $data->nama_instansi) }}" />
+
+                        <!-- error -->
+                        @error('nama_instansi')
+                            <p class="mt-1 text-rose-500">{{ $message }}</p>
+                        @enderror
+                        <!-- error -->
                     </label>
 
                     <!-- jabatan -->
@@ -59,12 +71,24 @@
                             <input type="number" name="tahun_masuk"
                                 class="block w-full  mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                 placeholder="tahun masuk" value="{{ old('tahun_masuk', $data->thn_masuk) }}" />
+
+                            <!-- error -->
+                            @error('tahun_masuk')
+                                <p class="mt-1 text-rose-500">{{ $message }}</p>
+                            @enderror
+                            <!-- error -->
                         </label>
                         <label class="block text-sm">
                             <span class="text-gray-700 dark:text-gray-400">Tahun Keluar (opsional)</span>
                             <input type="number" name="tahun_keluar"
                                 class="block w-full  mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                 placeholder="!opsional" value="{{ old('tahun_keluar', $data->thn_keluar) }}" />
+
+                            <!-- error -->
+                            @error('tahun_keluar')
+                                <p class="mt-1 text-rose-500">{{ $message }}</p>
+                            @enderror
+                            <!-- error -->
                         </label>
                     </div>
 
@@ -74,6 +98,12 @@
                         <textarea name="alamat"
                             class="block border border-gray-600 px-3 py-2 rounded-md w-full  mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
                             rows="3" placeholder="masukan alamat instansi.">{{ old('alamat', $data->alamat_instansi) }}</textarea>
+
+                        <!-- error -->
+                        @error('alamat')
+                            <p class="mt-1 text-rose-500">{{ $message }}</p>
+                        @enderror
+                        <!-- error -->
                     </label>
 
                     <!-- submit  -->
