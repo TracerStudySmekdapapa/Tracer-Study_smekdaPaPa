@@ -5,6 +5,7 @@ use App\Http\Controllers\PribadiController;
 use App\Http\Controllers\AuthenticateController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JurusanController;
+use App\Http\Controllers\PekerjaanController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Pekerjaan;
 use App\Models\Pendidikan;
@@ -35,6 +36,8 @@ perbaiki letak barisnya , letakkan sesuati "data-pekerjaan" , "data-pendidikan"
  */
 // ==================================================================
 
+Route::get('tests', [PekerjaanController::class, 'alumniPertahun']);
+Route::get('testss', [PekerjaanController::class, 'alumniBekerja']);
 
 Route::get(
     '/alumni/{id}/data-pekerjaan/more-detail',
