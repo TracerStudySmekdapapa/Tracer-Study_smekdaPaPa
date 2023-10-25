@@ -1,186 +1,201 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
 @extends('template.admin.master')
 
 @section('konten')
-    <div class="flex h-screen bg-gray-0 dark:bg-gray-900 " :class="{ 'overflow-hidden': isSideMenuOpen }">
+    <section class="bg-white grid  grid-col-2 md:grid-cols-12 px-[30px] box-border py-5 min-h-[1000px]">
+        <div class="md:col-span-2 relative hidden md:block">
+            @include('template.admin.sidebar')
+        </div>
+        <div class="md:col-span-10 md:mr-10">
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-x-4 capitalize mt-10 ">
+                <div class="w-full min-h-[500px]  justify-center items-start pt-5 flex">
+                    <div class="flex flex-col space-y-5 justify-start items-center">
+
+                        {{-- ! data pribadi seperti nama bio dan email --}}
+                        <div class="rounded-full w-[200px] h-[200px] overflow-hidden border-2 border-black">
+                            <img src="{{ asset('assets/random/' . Auth::user()->profil_picture) }}" alt="gambar"
+                                class="w-full h-full object-cover " />
+                        </div>
+                        <div class="text-[#252525] mx-1 mb-6 ">
+                            <h1
+                                class=" text-[20px] text-center  sm:text-[25px] lg:text-[30px] font-semibold pb-4 capitalize">
+                                syaid alfarishi</h1>
+                            <p
+                                class="text-[13px] -mt-4 mb-5 text-black/60 font-light lg:pr-10 text-center lg:text-left max-w-[350px] min-w-[350px]">
+                                {{ Auth::user()->bio ?? 'Belum Ada Bio' }}
+                            </p>
+                            <table class="md:w-full text-black/80 w-[80%] sm:w-[90%]  mx-auto ">
+                                <tr class="divide-y">
+                                    <td>nisn</td>
+                                    <td class="py-2 px-6">:</td>
+                                    {{-- <td>{{ $alumni->nisn ?? '-' }}</td> --}}
+                                    <td>123456789</td>
+                                </tr>
+                                <!-- jenis_kelamin -->
+                                <tr class="divide-y">
+                                    <td>jenis kelamin</td>
+                                    <td class="py-2 px-6">:</td>
+                                    {{-- <td>{{ $alumni->jenis_kelamin ?? '-' }}</td> --}}
+                                    <td>laki laki</td>
+                                </tr>
+                                <!-- agama -->
+                                <tr class="divide-y">
+                                    <td>agama</td>
+                                    <td class="py-2 px-6">:</td>
+                                    {{-- <td>{{ $alumni->agama ?? '-' }}</td> --}}
+                                    <td>islam</td>
+                                </tr>
+                                <!-- tgl lair -->
+                                <tr class="divide-y">
+                                    <td>tempat lahir</td>
+                                    <td class="py-2 px-6">:</td>
+                                    {{-- <td>{{ $alumni->tempat_lahir ?? '-' }}</td> --}}
+                                    <td>sabu</td>
+                                </tr>
+                                <tr class="divide-y">
+                                    <td>tangal lahir</td>
+                                    <td class="py-2 px-6">:</td>
+                                    {{-- <td>{{ $alumni->tanggal_lahir ? Carbon\Carbon::parse($alumni->tanggal_lahir)->isoFormat('dddd, D MMMM Y') : '-' }} --}}
+                                    <td>sabtu,05-11-2005</td>
+                                </tr>
+
+                                <tr class="divide-y">
+                                    <td>jurusan</td>
+                                    <td class="py-2 px-6">:</td>
+                                    {{-- <td>{{ $alumni->jurusan->nama_jurusan ?? '-' }}</td> --}}
+                                    <td>rekayasa perangkat lunak</td>
+                                </tr>
+
+                                <tr class="divide-y">
+                                    <td>tamatan</td>
+                                    <td class="py-2 px-6">:</td>
+                                    {{-- <td>{{ $alumni->tamatan ?? '-' }}</td> --}}
+                                    <td>2024</td>
+                                </tr>
+                            </table>
+                            <div class="w-full  justify-end flex ">
 
 
+                                <button
+                                    class=" w-[80%] mx-auto mt-5 rounded-lg bg-transparent border border-primary hover:bg-black hover:border-transparent hover:text-white capitalize">
+                                    <a href="" class="block px-5 py-2 text-sm">
+                                        edit Data Pribadi
+                                    </a>
+                                </button>
 
-        {{-- ? sidebar --}}
-        @include('template.admin.sidebar')
-        {{-- end sidebar --}}
-
-
-        <div class="flex flex-col flex-1 w-full">
-
-            {{-- ? ===================header --}}
-            @include('template.admin.header')
-            {{-- ! =================== end header --}}
-
-
-
-
-            <main class="h-full  " style="padding: 0 0;">
-                <div class="container px-6 mx-auto grid">
-
-                    {{-- ? title page --}}
-                    <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-                        Dashboard
-                    </h2>
-                    {{-- ! end title --}}
-
-                    {{-- ? ==========table  --}}
-                    <div class="py-12">
-                        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                            <div class="overflow-hidden shadow-sm sm:rounded-lg">
-                                <div class="p-6 bg-white  text-gray-900">
-                                    <div class="">
-                                        <label for="">Foto Profil</label>
-                                        <img src="" alt="harusnya PP">
-                                    </div>
-                                    <div class="">
-                                        <label for="">Nama</label>
-                                        <input type="text" name="nisn" value="{{ $dataPribadi->user->name }}">
-                                    </div>
-                                    <div class="">
-                                        <label for="">Nisn</label>
-                                        <input type="text" name="nisn" value="{{ $dataPribadi->nisn }}">
-                                    </div>
-                                    <div class="">
-                                        <label for="">No Telp</label>
-                                        <input type="text" name="no_telp" value="{{ $dataPribadi->no_telp }}">
-                                    </div>
-                                    <div class="">
-                                        <label for="">Tempat/tgllahir</label>
-                                        <input type="text" name="tmp_lahir" value="{{ $dataPribadi->tempat_lahir }}">
-                                    </div>
-                                    <div class="">
-                                        <label for="">Agama</label>
-                                        <input type="text" name="agm" value="{{ $dataPribadi->agama }}">
-                                    </div>
-                                    <div class="">
-                                        <label for="">Laki-Laki</label>
-                                        <input disabled type="radio" value="Laki-Laki" name="kelamin"
-                                            {{ $dataPribadi->jenis_kelamin == 'Laki-Laki' ? 'checked' : '' }}>
-                                        <label for="">Perempuan</label>
-                                        <input disabled type="radio" value="Perempuan" name="kelamin"
-                                            {{ $dataPribadi->jenis_kelamin == 'Perempuan' ? 'checked' : '' }}>
-                                    </div>
-                                    <div class="">
-                                        <label for="">Jurusan</label>
-                                        <input type="text" name="jrsn"
-                                            value="{{ $dataPribadi->jurusan->nama_jurusan }}">
-                                    </div>
-                                    <!--variabel angkatan sebenarnya tamatan-->
-                                    <div class="">
-                                        <label for="">Tamatan</label>
-                                        <input type="text" name="angkatan" value="{{ $dataPribadi->angkatan }}">
-                                    </div>
-                                </div>
-                                <!-- start Data pekerjaan -->
-                                <div class="p-6 bg-white  mt-4 text-gray-900">
-                                    <p>Data Pekerjaan</p>
-                                    <div class="flex space-x-2">
-                                        <label for="">Nama Pekerjaan :</label>
-                                        @if ($dataPekerjaan->count() > 1)
-                                            {{-- Looping data pekerjaan alumni yang ada dua --}}
-                                            @foreach ($dataPekerjaan as $pekerjaan)
-                                                <p>{{ $pekerjaan->nama_pekerjaan }}</p>
-                                            @endforeach
-                                        @else
-                                            {{ $dataPekerjaan->first()->nama_pekerjaan ?? '-' }}
-                                        @endif
-                                    </div>
-                                    <div class="flex space-x-2">
-                                        <label for="">Nama Instansi :</label>
-                                        @if ($dataPekerjaan->count() > 1)
-                                            @foreach ($dataPekerjaan as $pekerjaan)
-                                                <p>{{ $pekerjaan->nama_instansi }}</p>
-                                            @endforeach
-                                        @else
-                                            {{ $dataPekerjaan->first()->nama_instansi ?? '-' }}
-                                        @endif
-                                    </div>
-                                    <div class="flex space-x-2">
-                                        <label for="">Alamat Instansi :</label>
-                                        @if ($dataPekerjaan->count() > 1)
-                                            @foreach ($dataPekerjaan as $pekerjaan)
-                                                <p>{{ $pekerjaan->alamat_instansi }}</p>
-                                            @endforeach
-                                        @else
-                                            {{ $dataPekerjaan->first()->alamat_instansi ?? '-' }}
-                                        @endif
-                                    </div>
-                                    <div class="flex space-x-2">
-                                        <label for="">Jabatan :</label>
-                                        @if ($dataPekerjaan->count() > 1)
-                                            @foreach ($dataPekerjaan as $pekerjaan)
-                                                <p>{{ $pekerjaan->jabatan }}</p>
-                                            @endforeach
-                                        @else
-                                            {{ $dataPekerjaan->first()->jabatan ?? '-' }}
-                                        @endif
-                                    </div>
-
-                                </div>
-                                <!-- endData pekerjaan -->
-                                <!-- start Data Pendidikan -->
-                                <div class="p-6 bg-white  mt-4 text-gray-900">
-                                    <p>Data Pendidikan</p>
-                                    <div class="flex space-x-2">
-                                        <label for="">Nama Universitas :</label>
-                                        @if ($dataPendidikan->count() > 1)
-                                            {{-- Looping data pekerjaan alumni yang ada dua --}}
-                                            @foreach ($dataPendidikan as $pendidikan)
-                                                <p>{{ $pendidikan->nama_univ }}</p>
-                                            @endforeach
-                                        @else
-                                            {{ $dataPendidikan->first()->nama_univ ?? '-' }}
-                                        @endif
-                                    </div>
-                                    <div class="flex space-x-2">
-                                        <label for="">Fakultas :</label>
-                                        @if ($dataPendidikan->count() > 1)
-                                            @foreach ($dataPendidikan as $pendidikan)
-                                                <p>{{ $pendidikan->fakultas }}</p>
-                                            @endforeach
-                                        @else
-                                            {{ $dataPendidikan->first()->fakultas ?? '-' }}
-                                        @endif
-                                    </div>
-                                    <div class="flex space-x-2">
-                                        <label for="">Prodi :</label>
-                                        @if ($dataPendidikan->count() > 1)
-                                            @foreach ($dataPendidikan as $pendidikan)
-                                                <p>{{ $pendidikan->prodi }}</p>
-                                            @endforeach
-                                        @else
-                                            {{ $dataPendidikan->first()->prodi ?? '-' }}
-                                        @endif
-                                    </div>
-                                    <div class="flex space-x-2">
-                                        <label for="">Alamat Universitas :</label>
-                                        @if ($dataPendidikan->count() > 1)
-                                            @foreach ($dataPendidikan as $pendidikan)
-                                                <p>{{ $pendidikan->alamat_univ }}</p>
-                                            @endforeach
-                                        @else
-                                            {{ $dataPendidikan->first()->alamat_univ ?? '-' }}
-                                        @endif
-                                    </div>
-
-                                </div>
-                                <!-- endData Pendidikan -->
 
                             </div>
+
+
                         </div>
                     </div>
-
-                    {{-- ! ==========Cards total --}}
-
-
-
                 </div>
-            </main>
+
+
+
+                <div class="w-full grid grid-cols-1 gap-y-5">
+
+                    <div class="w-full   min-h-[100px]  max-h-[500px]  mt-10  bg-[#eee]/20 shadow-md rounded-[5px] p-8">
+                        <div class="flex flex-col space-y-4">
+
+                            <div class=" grid grid-cols-3 text-center w-full   gap-5 pb-5">
+                                <div class="col-span-2">
+                                    <p class="text-[14px] font-medium text-[#252525]/80 ">Pekerjaan & instansi</p>
+                                </div>
+                                <div class="col-span-1">
+                                    <p class="text-[14px] font-medium text-[#252525]/80">Aksi</p>
+                                </div>
+                            </div>
+
+
+                            <div class=" grid grid-cols-3 place-items-center w-full   gap-5">
+                                <div class="col-span-2 text-left w-full">
+                                    <p class="font-semibold capitalize text-[#252525]">Front end developer</p>
+                                    <p class="text-primary text-[12px] font-light  -mt-0.5 uppercase">PT arg solusi
+                                        teknologi
+                                    </p>
+                                </div>
+                                <div class="w-full col-span-1">
+                                    <a href="" class="block text-center">
+                                        <img src="{{ asset('assets/aksi-edit.svg') }}" alt="edit" class="block mx-auto">
+                                    </a>
+
+                                </div>
+                            </div>
+
+                            <hr class="w-[100%] mx-auto h-[1.5px] bg-[#252525]/10 ">
+
+                            <div class=" grid grid-cols-3 place-items-center w-full   gap-5">
+                                <div class="col-span-2 text-left w-full">
+                                    <p class="font-semibold capitalize text-[#252525]">back end developer</p>
+                                    <p class="text-primary text-[12px] font-light  -mt-0.5 uppercase"> TOKOPEDIA indonesia
+                                    </p>
+                                </div>
+                                <div class="w-full col-span-1">
+                                    <a href="" class="block text-center">
+                                        <img src="{{ asset('assets/aksi-edit.svg') }}" alt="edit" class="block mx-auto">
+                                    </a>
+                                </div>
+                            </div>
+
+                            <hr class="w-[100%] mx-auto h-[1.5px] bg-[#252525]/10 ">
+
+                            <div class=" grid grid-cols-3 place-items-center w-full   gap-5">
+                                <div class="col-span-2 text-left w-full">
+                                    <p class="font-semibold capitalize text-[#252525]">IOT developer</p>
+                                    <p class="text-primary text-[12px] font-light  -mt-0.5 uppercase"> CV. Media Tama
+                                        indonesia </p>
+                                </div>
+                                <div class="w-full col-span-1">
+                                    <a href="" class="block text-center">
+                                        <img src="{{ asset('assets/aksi-edit.svg') }}" alt="edit" class="block mx-auto">
+                                    </a>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                    <div class="w-full   min-h-[100px]  max-h-[500px]   mt-10  bg-[#eee]/20 shadow-md rounded-[5px] p-8">
+                        <div class="flex flex-col space-y-4">
+
+                            <div class=" grid grid-cols-3 text-center w-full   gap-5 pb-5">
+                                <div class="col-span-2">
+                                    <p class="text-[14px] font-medium text-[#252525]/80 ">Universitas</p>
+                                </div>
+                                <div class="col-span-1">
+                                    <p class="text-[14px] font-medium text-[#252525]/80">Aksi</p>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class=" grid grid-cols-3 place-items-center w-full   gap-5">
+                                <div class="text-left w-full col-span-2">
+                                    <p class="font-semibold capitalize text-[#252525]">Universitas Negri padang</p>
+                                    <p class="text-primary text-[12px] font-light  -mt-0.5 uppercase"> Fakultas Teknik </p>
+                                </div>
+                                <div class="w-full col-span-1">
+                                    <a href="" class="block text-center">
+                                        <img src="{{ asset('assets/aksi-edit.svg') }}" alt="edit" class="block mx-auto">
+                                    </a>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+
         </div>
-    </div>
+
+
+    </section>
 @endsection

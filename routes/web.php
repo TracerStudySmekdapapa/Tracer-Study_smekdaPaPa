@@ -79,6 +79,7 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+
     // admin
     Route::middleware('isAdmin')->group(function () {
         Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('adminDashboard');
@@ -89,6 +90,18 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/admin/alumni/{id_user}/verify', [AdminController::class, 'verifAlumniAksi'])->name('verifalumniStore');
         Route::post('/admin/alumni/{id_user}/tolakverify', [AdminController::class, 'tolakVerifAlumniAksi'])->name('tolakVerifAlumni');
     });
+
+    // Jurusan
+    Route::get('/admin/jurusan', [JurusanController::class, 'index'])->name('jurusan.index');
+    Route::get('/admin/jurusan/create', [JurusanController::class, 'create'])->name('jurusan.create');
+    Route::get('/admin/jurusan/edit/{id}', [JurusanController::class, 'edit'])->name('jurusan.edit');
+    Route::patch('/admin/jurusan/{id}', [JurusanController::class, 'update'])->name('jurusan.update');
+    Route::post('/admin/jurusan/store', [JurusanController::class, 'store'])->name('jurusan.store');
+    Route::delete('/admin/jurusan/destroy/{id}', [JurusanController::class, 'destroy'])->name('jurusan.destroy');
+
+
+
+
 
     // alumi 
     Route::get('/alumni/dashboard', [PribadiController::class, 'index'])->name('alumniDashboard');
@@ -119,7 +132,6 @@ Route::middleware(['auth'])->group(function () {
     // Jurusan
     Route::get('/admin/jurusan', [JurusanController::class, 'index'])->name('jurusan.index');
     Route::get('/admin/jurusan/create', [JurusanController::class, 'create'])->name('jurusan.create');
-    Route::get('/admin/jurusan/show/{id}', [JurusanController::class, 'show'])->name('jurusan.show');
     Route::get('/admin/jurusan/edit/{id}', [JurusanController::class, 'edit'])->name('jurusan.edit');
     Route::patch('/admin/jurusan/{id}', [JurusanController::class, 'update'])->name('jurusan.update');
     Route::post('/admin/jurusan/store', [JurusanController::class, 'store'])->name('jurusan.store');
