@@ -14,11 +14,30 @@
             <div x-show="open"
                 class="w-[200px] min-h-[50px] max-h-[300px] rounded-md z-50 absolute bg-white shadow -left-40 top-10">
                 <div
-                    class="w-full min-h-[50px] max-h-[300px] flex flex-col justify-evenly items-stretch  p-5 divide-dashed divide-y-2">
+                    class="w-full min-h-[50px] max-h-[300px] flex flex-col justify-evenly items-stretch  space-y-2 p-5 ">
+                    <div>
+                        <a href="{{ route('verifyDataAlumni') }}">
+                            <h1 class="font-semibold">syaid alfarishi</h1>
+                            <p class="text-[10px] text-[#252525]/90">syaidalfarishi@gmail.com</p>
+                        </a>
+                    </div>
+                    <div>
 
+                        <a href="{{ route('verifyDataAlumni') }}">
+                            <h1 class="font-semibold">syaid alfarishi</h1>
+                            <p class="text-[10px] text-[#252525]/90">syaidalfarishi@gmail.com</p>
+                        </a>
+                    </div>
+                    <div>
+
+                        <a href="{{ route('verifyDataAlumni') }}">
+                            <h1 class="font-semibold">syaid alfarishi</h1>
+                            <p class="text-[10px] text-[#252525]/90">syaidalfarishi@gmail.com</p>
+                        </a>
+                    </div>
 
                     {{-- for else --}}
-                    <h1>tidak ada data</h1>
+                    {{-- <h1>tidak ada data</h1> --}}
                 </div>
 
             </div>

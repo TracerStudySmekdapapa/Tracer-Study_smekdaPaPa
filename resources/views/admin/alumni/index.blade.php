@@ -5,7 +5,7 @@
 @extends('template.admin.master')
 
 @section('konten')
-    <section class="bg-[#eee] grid  grid-col-2 md:grid-cols-12 px-[30px] box-border py-5 min-h-[1000px]">
+    <section class="bg-[#eee]/20 grid  grid-col-2 md:grid-cols-12 px-[30px] box-border py-5 min-h-[1000px]">
         <div class="md:col-span-2 relative hidden md:block">
             @include('template.admin.sidebar')
         </div>
