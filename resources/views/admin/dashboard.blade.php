@@ -1,15 +1,13 @@
 @extends('template.admin.master')
 
 @section('konten')
-    <div class="flex h-screen bg-gray-0 dark:bg-gray-900 " :class="{ 'overflow-hidden': isSideMenuOpen }">
-
-
-
-        {{-- ? sidebar --}}
+    <div class="bg-black">
         @include('template.admin.sidebar')
-        {{-- end sidebar --}}
+        @include('template.admin.header')
 
 
+<<<<<<< HEAD
+=======
         <div class="flex flex-col flex-1 w-full">
 
             {{-- ? ===================header --}}
@@ -222,5 +220,6 @@
                 </div>
             </main>
         </div>
+>>>>>>> habibie
     </div>
 @endsection
