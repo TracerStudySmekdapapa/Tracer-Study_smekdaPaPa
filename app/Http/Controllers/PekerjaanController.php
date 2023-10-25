@@ -12,12 +12,21 @@ use Illuminate\Support\Facades\DB;
 
 class PekerjaanController extends Controller
 {
+
+    public function semuaAlumni()
+    {
+        $user = User::whereHas('roles', function ($query) {
+            $query->where('name', 'Alumni');
+        })->count();
+
+        return $user;
+    }
+
     public function alumniPertahun()
     {
         $data = [];
-        $currentYear = Carbon::now()->year;
 
-        for ($tahun = 2006; $tahun <= $currentYear; $tahun++) {
+        for ($tahun = 2006; $tahun <= Carbon::now()->year; $tahun++) {
             $alumniCount = User::whereHas('roles', function ($query) {
                 $query->where('name', 'Alumni');
             })->join(
@@ -40,9 +49,8 @@ class PekerjaanController extends Controller
     public function alumniBekerja()
     {
         $data = [];
-        $currentYear = Carbon::now()->year;
 
-        for ($tahun = 2006; $tahun <= $currentYear; $tahun++) {
+        for ($tahun = 2006; $tahun <= Carbon::now()->year; $tahun++) {
             $alumniCount = User::whereHas('roles', function ($query) {
                 $query->where('name', 'Alumni');
             })->join(
@@ -73,9 +81,8 @@ class PekerjaanController extends Controller
     public function alumniPendidikan()
     {
         $data = [];
-        $currentYear = Carbon::now()->year;
 
-        for ($tahun = 2006; $tahun <= $currentYear; $tahun++) {
+        for ($tahun = 2006; $tahun <= Carbon::now()->year; $tahun++) {
             $alumniCount = User::whereHas('roles', function ($query) {
                 $query->where('name', 'Alumni');
             })->join(

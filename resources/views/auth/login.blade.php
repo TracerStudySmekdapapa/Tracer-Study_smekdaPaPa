@@ -1,5 +1,12 @@
 @extends('template.master')
 @section('content')
+    @if (session('message'))
+        <div class="absolute top-0 right-0 p-4">
+            <h1 class="px-4 py-2.5 bg-green-600 font-bold uppercase rounded-md text-white">
+                {{ session('message') }}
+            </h1>
+        </div>
+    @endif
     <div class="flex items-center min-h-screen p-6 bg-gray-50 dark:bg-gray-900">
         <div class="flex-1 h-full max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl dark:bg-gray-800">
             <div class="flex flex-col overflow-y-auto md:flex-row">

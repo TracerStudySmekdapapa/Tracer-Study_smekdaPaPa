@@ -3,6 +3,13 @@
 <link href="https://cdn.jsdelivr.net/npm/daisyui@3.8.2/dist/full.css" rel="stylesheet" type="text/css" />
 <script src="https://cdn.tailwindcss.com"></script>
 @section('content')
+    @if (session('message'))
+        <div class="absolute top-0 right-0 p-4">
+            <h1 class="px-4 py-2.5 bg-green-600 font-bold uppercase rounded-md text-white">
+                {{ session('message') }}
+            </h1>
+        </div>
+    @endif
     <!--link font -->
     <div class="w-[130px] h-[130px] bg-primary hidden  blur-[100px] absolute top-20 -left-32 z-0 lg:block"></div>
     <main>

@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\PekerjaanController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\IsNotLog;
 use App\Models\Pekerjaan;
 use App\Models\Pendidikan;
 use App\Models\User;
@@ -36,6 +37,7 @@ perbaiki letak barisnya , letakkan sesuati "data-pekerjaan" , "data-pendidikan"
  */
 // ==================================================================
 
+Route::get('alumni/total', [PekerjaanController::class, 'semuaAlumni']);
 Route::get('alumni/pertahun', [PekerjaanController::class, 'alumniPertahun']);
 Route::get('alumni/bekerja', [PekerjaanController::class, 'alumniBekerja']);
 Route::get('alumni/pendidikan', [PekerjaanController::class, 'alumniPendidikan']);
@@ -68,13 +70,7 @@ Route::get('/test', function () {
 
 Route::get('/authenticate', [AuthenticateController::class, 'index'])->middleware(['auth', 'verified'])->middleware(['auth', 'verified']);
 
-Route::middleware('auth')->group(function () {
-    // // user edit selft
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-    // admin
+Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('adminDashboard');
     Route::get('/admin/alumni', [AdminController::class, 'dataAlumni'])->name('dataAlumni');
     Route::get('/admin/alumni/{id}/detail', [AdminController::class, 'detailAlumni'])->name('adminDetailAlumni');
@@ -82,6 +78,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/alumni/verify', [AdminController::class, 'verifAlumni'])->name('verifyDataAlumni');
     Route::post('/admin/alumni/{id_user}/verify', [AdminController::class, 'verifAlumniAksi'])->name('verifalumniStore');
     Route::post('/admin/alumni/{id_user}/tolakverify', [AdminController::class, 'tolakVerifAlumniAksi'])->name('tolakVerifAlumni');
+});
+
+Route::middleware(['auth'])->group(function () {
+    // // user edit selft
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // admin
+
 
     // alumi 
     Route::get('/alumni/dashboard', [PribadiController::class, 'index'])->name('alumniDashboard');
