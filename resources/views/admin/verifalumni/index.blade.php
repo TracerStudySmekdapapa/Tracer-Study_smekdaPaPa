@@ -44,40 +44,34 @@
                         </tr>
                     </thead>
                     <tbody class="text-center divide-x capitalize">
-                        {{-- @if ($search || $tamatan) --}}
-                        {{-- @forelse ($alumni as $item) --}}
-                        <tr class="divide-x bg-gray-50">
-                            <td class=" py-4   max-w-[350px] ">
-                                <h1 class="">syaid alfarishi putra</h1>
-                            </td>
-                            <td>000000</td>
-                            <td>rekayasa perangkat lunak</td>
-                            <td>laki laki</td>
-                            <td>2024</td>
-                            <td>
-                                <div
-                                    class="w-full min-h-[20px] grid grid-cols-5 min-w-[100px] gap-x-1 text-white font-medium">
-                                    <div class="col-span-2"><a href=""
-                                            class="py-2.5 bg-rose-500 w-full rounded-md block ">tolak</a>
-                                    </div>
-                                    <div class="col-span-3"><a href=""
-                                            class="py-2.5 bg-blue-500 rounded-md w-full block">verif</a>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        {{-- @empty --}}
-                        {{-- <tr class="bg-gray-50"> --}}
-                        {{-- <td colspan="6">TIDAK ADA DATA YANG DITEMUKAN</td> --}}
-                        {{-- </tr> --}}
-                        {{-- @endforelse --}}
-                        {{-- @else --}}
-                        {{-- <tr class="bg-gray-50"> --}}
-                        {{-- <td colspan="6">SILAHKAN CARI NAMA ATAU NISN ALUMNI</td> --}}
-                        {{-- </tr> --}}
-                        {{-- @endif --}}
-
-
+                        @foreach ($tidakAlumni as $item)
+                            <tr class="divide-x bg-gray-50">
+                                <td class=" py-4   max-w-[350px] ">
+                                    <h1 class="">{{ $item->name }}</h1>
+                                </td>
+                                <td>{{ $item->nisn }}</td>
+                                <td>{{ $item->nama_jurusan }}</td>
+                                <td>{{ $item->jenis_kelamin }}</td>
+                                <td>{{ $item->tamatan }}</td>
+                                <td>
+                                    <form action="{{ route('verifalumniStore', $item->id_user) }}" method="POST">
+                                        @csrf
+                                        <div
+                                            class="w-full min-h-[20px] grid grid-cols-5 min-w-[100px] gap-x-1 text-white font-medium">
+                                            <div class="col-span-2">
+                                                <button formaction="{{ route('tolakVerifAlumni', $data->id_user) }}"
+                                                    class="py-2.5
+                                                    bg-rose-500 w-full rounded-md block ">tolak</button>
+                                            </div>
+                                            <div class="col-span-3">
+                                                <button type="submit"
+                                                    class="py-2.5 bg-blue-500 rounded-md w-full block">Verif</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
 
                 </table>

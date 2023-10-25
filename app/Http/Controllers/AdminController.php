@@ -15,17 +15,15 @@ class AdminController extends Controller
 
     public function index(Request $request)
     {
-        $name = $request->name;
-        $alumni = User::whereHas('roles', function ($query) {
-            $query->where('name', 'Alumni');
-        })->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
-            ->orderBy('users.name', 'ASC')
-            ->filter(request(['search']))
-            ->get();
         $title = 'Dashboard Admin';
+        $tidakAlumni = User::whereDoesntHave('roles', function ($query) {
+            $query->whereIn('name', ['Alumni', 'Admin']);
+        })
+            ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
+            ->orderBy('users.name', 'ASC')
+            ->get();
         $title_page = 'Selamat Datang, Admin';
-        $cekAlumni = Pribadi::where('id_user', Auth::user()->id_user)->exists();
-        return view('admin.dashboard', compact('alumni', 'name', 'cekAlumni', 'title', 'title_page'));
+        return view('admin.dashboard', compact('tidakAlumni', 'title', 'title_page'));
     }
 
     public function dataAlumni(Request $request)
@@ -34,14 +32,23 @@ class AdminController extends Controller
         $angkatan = $request->angkatan;
         $alumni = User::whereHas('roles', function ($query) {
             $query->where('name', 'Alumni');
-        })->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
+        })
+            ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
+            ->join('jurusan', 'data_pribadi.id_jurusan', '=', 'jurusan.id_jurusan')
             ->orderBy('users.name', 'ASC')
             ->filter(request(['search', 'angkatan']))
             ->get();
 
+        $tidakAlumni = User::whereDoesntHave('roles', function ($query) {
+            $query->whereIn('name', ['Alumni', 'Admin']);
+        })
+            ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
+            ->orderBy('users.name', 'ASC')
+            ->get();
+
         $title = 'Data Alumni';
         $title_page = 'Lihat Data Alumni';
-        return view('admin.alumni.index', compact('alumni', 'name', 'angkatan', 'title', 'title_page'));
+        return view('admin.alumni.index', compact('alumni', 'name', 'tidakAlumni', 'angkatan', 'title', 'title_page'));
     }
 
     public function detailAlumni($id)
@@ -62,16 +69,17 @@ class AdminController extends Controller
 
     public function verifAlumni()
     {
-        $user = User::whereDoesntHave('roles', function ($query) {
+        $tidakAlumni = User::whereDoesntHave('roles', function ($query) {
             $query->whereIn('name', ['Alumni', 'Admin']);
         })
             ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
+            ->join('jurusan', 'data_pribadi.id_jurusan', '=', 'jurusan.id_jurusan')
             ->orderBy('users.name', 'ASC')
             ->get();
 
         $title = "Verifikasi Data Alumni";
         $title_page = "Verifikasi Data Alumni";
-        return view('admin.verifalumni.index', compact('user', 'title', 'title_page'));
+        return view('admin.verifalumni.index', compact('tidakAlumni', 'title', 'title_page'));
     }
 
     public function verifAlumniAksi($id_user)
