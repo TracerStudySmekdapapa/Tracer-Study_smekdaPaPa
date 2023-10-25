@@ -1,84 +1,41 @@
-{{-- ? =============sidebar --}}
-<aside class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0">
-    <div class="py-4 text-gray-500 dark:text-gray-400">
+<div class="fixed">
 
-        {{-- ? show name --}}
-        <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="#">
-            Hai {{ Auth::user()->name }}
-        </a>
-        {{-- !end  show name --}}
-
-
-        {{-- ? ============ menu bar --}}
-        <ul class="mt-6">
-            <li class="relative px-6 py-3">
-                <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
-                    aria-hidden="true"></span>
-                <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
-                    href="{{ route('adminDashboard') }}">
-                    <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                        <path
-                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
-                        </path>
-                    </svg>
-                    <span class="ml-4">Dashboard</span>
-                </a>
-            </li>
-
-            @if (Auth::user()->hasRole('Admin'))
-                <li class="relative px-6 py-3">
-                    <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
-                        href="{{ route('verifyDataAlumni') }}">
-                        <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
-                            stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                            <path
-                                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
-                            </path>
-                        </svg>
-                        <span class="ml-4">Verif Alumni</span>
-                    </a>
-                </li>
-            @endif
-
-            <li class="relative px-6 py-3">
-                <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
-                    href="{{ route('dataAlumni') }}">
-                    <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                        <path
-                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
-                        </path>
-                    </svg>
-                    <span class="ml-4">Alumni</span>
-                </a>
-            </li>
-
-            <li class="relative px-6 py-3">
-                <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
-                    href="{{ route('jurusan.index') }}">
-                    <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                        <path
-                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
-                        </path>
-                    </svg>
-                    <span class="ml-4">Jurusan</span>
-                </a>
-            </li>
-
-            <li class="relative px-6 py-3">
-                <form action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <button type="submit" href="{{ route('logout') }}">logout</button>
-                </form>
-            </li>
-
-        </ul>
-        {{-- ! ============ end menu bar --}}
+    <div class="flex flex-col justify-center items-center space-y-4">
+        <div><svg xmlns="http://www.w3.org/2000/svg" width="37" height="9" viewBox="0 0 37 9" fill="none">
+                <circle cx="4.5" cy="4.5" r="4.5" fill="#FF0000" />
+                <circle cx="18.5" cy="4.5" r="4.5" fill="#05FF00" />
+                <circle cx="32.5" cy="4.5" r="4.5" fill="#FFE600" />
+            </svg>
+        </div>
+        <div class="min-h-[90vh] w-[80px] bg-primary rounded-[20px] text-white  uppercase">
+            <div class="h-[90vh] w-full   flex flex-col justify-between items-center py-10">
+                <div>
+                    <h1 class="text-[14px] font-semibold">admin</h1>
+                    <div class="flex flex-col space-y-8 items-center justify-center mt-10">
+                        <span>
+                            @include('template.admin.components.dashboard')
+                        </span>
+                        <span>
+                            @include('template.admin.components.verifikasi')
+                        </span>
+                        <span>
+                            @include('template.admin.components.alumni_menu')
+                        </span>
+                        <span>
+                            @include('template.admin.components.jurusan')
+                        </span>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        @include('template.admin.components.logout')
 
 
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
-</aside>
-{{-- ! ============= endsidebar --}}
+
+</div>

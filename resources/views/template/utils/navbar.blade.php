@@ -18,9 +18,9 @@
                     <a href="{{ route('/') }}#about"
                         class="ml-6 text-gray-700 navigation__content__link hover:text-black lg:mx-3">Tentang
                     </a>
-                    <a href="{{ route('/') }}#tutorial"
+                    <a href="{{ route('/') }}"
                         class="ml-6 text-gray-700 navigation__content__link md:w-auto md:px-0 md:mx-2 hover:text-black lg:mx-3">Tutorial</a>
-                    <a href="{{ route('/') }}#kontak"
+                    <a href="{{ route('/') }}"
                         class="ml-6 text-gray-700 navigation__content__link md:w-auto md:px-0 md:mx-2 hover:text-black lg:mx-3">Kontak</a>
                     <a href="{{ route('search') }}" class="navigation___search">
                         <!-- search -->
@@ -84,7 +84,7 @@
                         </a>
                     @else
                         <a href="{{ route('login') }}" class="btn___signin font-medium">Login</a>
-                        <a href="{{ route('register') }}" class="btn___signup font-medium">Register</a>
+                        <a href="{{ route('register') }}" class="btn___signup font-medium text-[14px]">Register</a>
                     @endif
                 </div>
                 <!-- !navigasi menu login ===========================-->

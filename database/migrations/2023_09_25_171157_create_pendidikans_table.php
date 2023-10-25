@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('pendidikan', function (Blueprint $table) {
             $table->id('id_pendidikan');
-            $table->string('nama_univ', 25)->nullable();
+            $table->string('nama_univ', 50)->nullable();
             $table->string('fakultas', 25)->nullable();
-            $table->string('prodi', 25)->nullable();
+            $table->string('prodi', 50)->nullable();
             $table->text('alamat_univ')->nullable();
             $table->foreignId('id_pribadi')->constrained('data_pribadi', 'id_pribadi')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

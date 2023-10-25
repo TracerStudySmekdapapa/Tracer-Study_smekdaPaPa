@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 
-    <title>Dashbord admin</title>
+    <title>{{ $title }}</title>
 
 
 
@@ -20,9 +20,9 @@
 
     {{-- ! =========== statick file  ========= --}}
     @vite('resources/css/app.css')
-    <script src="{{ asset('assets/js/init-alpine.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/init-alpine.js') }}"></script>
     <script src="{{ asset('assets/js/charts-lines.js') }}" defer></script>
-    <script src="{{ asset('assets/js/charts-pie.js ') }}" defer></script>
+    <script src="{{ asset('assets/js/charts-pie.js ') }}" defer></script> --}}
 </head>
 
 <body style="padding: 0; margin: 0; box-sizing: border-box;">

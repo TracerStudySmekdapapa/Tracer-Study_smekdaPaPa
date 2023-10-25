@@ -22,9 +22,10 @@ class AdminController extends Controller
             ->orderBy('users.name', 'ASC')
             ->filter(request(['search']))
             ->get();
-        $title = 'dashbord alumni';
+        $title = 'Dashboard Admin';
+        $title_page = 'Selamat Datang, Admin';
         $cekAlumni = Pribadi::where('id_user', Auth::user()->id_user)->exists();
-        return view('admin.dashboard', compact('alumni', 'name', 'cekAlumni', 'title'))->with('i');
+        return view('admin.dashboard', compact('alumni', 'name', 'cekAlumni', 'title', 'title_page'));
     }
 
     public function dataAlumni(Request $request)
@@ -37,7 +38,10 @@ class AdminController extends Controller
             ->orderBy('users.name', 'ASC')
             ->filter(request(['search', 'angkatan']))
             ->get();
-        return view('admin.alumni.index', compact('alumni', 'name', 'angkatan'))->with('i');
+
+        $title = 'Data Alumni';
+        $title_page = 'Lihat Data Alumni';
+        return view('admin.alumni.index', compact('alumni', 'name', 'angkatan', 'title', 'title_page'));
     }
 
     public function detailAlumni($id)
@@ -46,7 +50,8 @@ class AdminController extends Controller
         $dataPribadi = Pribadi::where('id_pribadi', $id)->first();
         $dataPekerjaan = Pekerjaan::where('id_pribadi', $dataPribadi->id_pribadi)->get();
         $dataPendidikan = Pendidikan::where('id_pribadi', $dataPribadi->id_pribadi)->get();
-        return view('admin.alumni.detail', compact('dataPribadi', 'dataPekerjaan', 'dataPendidikan', 'title'));
+        // $title_page = 'Detail';
+        return view('admin.alumni.detail', compact('dataPribadi', 'dataPekerjaan', 'dataPendidikan',  'title'));
     }
 
     public function dataPekerjaan()
@@ -63,8 +68,10 @@ class AdminController extends Controller
             ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
             ->orderBy('users.name', 'ASC')
             ->get();
-        // dd($user);
-        return view('admin.verifalumni.index', compact('user'))->with('i');
+
+        $title = "Verifikasi Data Alumni";
+        $title_page = "Verifikasi Data Alumni";
+        return view('admin.verifalumni.index', compact('user', 'title', 'title_page'));
     }
 
     public function verifAlumniAksi($id_user)

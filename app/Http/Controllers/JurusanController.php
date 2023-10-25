@@ -16,7 +16,9 @@ class JurusanController extends Controller
     public function index()
     {
         $jurusan = Jurusan::get();
-        return view('admin.jurusan.index', compact('jurusan'))->with('i');
+        $title = 'Data Jurusan';
+        $title_page = 'Data Jurusan';
+        return view('admin.jurusan.index', compact('jurusan', 'title', 'title_page'));
     }
 
     /**
@@ -50,11 +52,7 @@ class JurusanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        $jurusan = Jurusan::find($id);
-        return view('admin.jurusan.show', compact('jurusan'));
-    }
+
 
     /**
      * Show the form for editing the specified resource.
