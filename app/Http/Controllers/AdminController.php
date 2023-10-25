@@ -63,7 +63,7 @@ class AdminController extends Controller
             ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
             ->orderBy('users.name', 'ASC')
             ->get();
-        // dd($user);
+        // dd($user->exists() ? 'hi' : 'cok');
         return view('admin.verifalumni.index', compact('user'))->with('i');
     }
 
