@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Jurusan;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class JurusanController extends Controller
@@ -18,7 +19,13 @@ class JurusanController extends Controller
         $jurusan = Jurusan::get();
         $title = 'Data Jurusan';
         $title_page = 'Data Jurusan';
-        return view('admin.jurusan.index', compact('jurusan', 'title', 'title_page'));
+        $tidakAlumni = User::whereDoesntHave('roles', function ($query) {
+            $query->whereIn('name', ['Alumni', 'Admin']);
+        })
+            ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
+            ->orderBy('users.name', 'ASC')
+            ->get();
+        return view('admin.jurusan.index', compact('jurusan', 'title', 'title_page', 'tidakAlumni'));
     }
 
     /**

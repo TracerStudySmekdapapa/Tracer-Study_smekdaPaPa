@@ -59,7 +59,7 @@
                                         <div
                                             class="w-full min-h-[20px] grid grid-cols-5 min-w-[100px] gap-x-1 text-white font-medium">
                                             <div class="col-span-2">
-                                                <button formaction="{{ route('tolakVerifAlumni', $data->id_user) }}"
+                                                <button formaction="{{ route('tolakVerifAlumni', $item->id_user) }}"
                                                     class="py-2.5
                                                     bg-rose-500 w-full rounded-md block ">tolak</button>
                                             </div>
