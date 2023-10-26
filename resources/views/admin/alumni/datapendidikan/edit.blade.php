@@ -20,20 +20,22 @@
                         Pendidikan adalah kunci untuk membuka pintu-pintu kesempatan
                     </p>
 
-                    <a href="{{ route('alumniDashboard') }}"
-                        class="text-blue-500 underline-offset-8 underline mt-3 hidden md:block">kembali ke
-                        Dashboard</a>
+                    <a href="{{ route('adminDetailAlumni', $id_pribadi->id_pribadi) }}"
+                        class="text-blue-500 underline-offset-8 underline mt-3 hidden md:block">Kembali</a>
                 </div>
 
-                <form action="{{ route('simpanDataPendidikan', Auth::user()->id_user) }}" method="post" class="w-full">
+                <form
+                    action="{{ route('updateAlumniPendidikan', [$id_pribadi->id_pribadi, $dataPendidikan->id_pendidikan]) }}"
+                    method="post" class="w-full">
+                    @csrf
+                    @method('PATCH')
                     <div class="flex flex-col space-y-5 w-full">
-                        @csrf
                         <!-- nama_pekerjaan -->
                         <label class="block text-sm">
                             <span class="text-gray-700 dark:text-gray-400">Nama Universitas</span>
                             <input type="text" name="nama_univ"
                                 class="block w-full  mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                placeholder="nama univ" value="{{ old('nama_univ') }}" />
+                                placeholder="nama univ" value="{{ old('nama_univ', $dataPendidikan->nama_univ) }}" />
 
                             <!-- error -->
                             @error('nama_univ')
@@ -47,7 +49,7 @@
                             <span class="text-gray-700 dark:text-gray-400">Fakultas</span>
                             <input type="text" name="fakultas"
                                 class="block w-full  mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                placeholder="Nama Fakultas" value="{{ old('fakultas') }}" />
+                                placeholder="Nama Fakultas" value="{{ old('fakultas', $dataPendidikan->fakultas) }}" />
 
                             <!-- error -->
                             @error('fakultas')
@@ -61,7 +63,7 @@
                             <span class="text-gray-700 dark:text-gray-400">Prodi</span>
                             <input type="text" name="prodi"
                                 class="block w-full  mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                placeholder="Prodi anda" value="{{ old('prodi') }}" />
+                                placeholder="Prodi anda" value="{{ old('prodi', $dataPendidikan->prodi) }}" />
 
                             <!-- error -->
                             @error('prodi')
@@ -75,7 +77,7 @@
                             <span class="text-gray-700 dark:text-gray-400">Alamat</span>
                             <textarea name="alamat_univ"
                                 class="block border border-gray-600 px-3 py-2 rounded-md w-full  mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                                rows="3" placeholder="masukan alamat universitas.">{{ old('alamat_univ') }}</textarea>
+                                rows="3" placeholder="masukan alamat universitas.">{{ old('alamat_univ', $dataPendidikan->alamat_univ) }}</textarea>
 
                             <!-- error -->
                             @error('alamat_univ')

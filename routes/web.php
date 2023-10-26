@@ -38,11 +38,13 @@ perbaiki letak barisnya , letakkan sesuati "data-pekerjaan" , "data-pendidikan"
  */
 // ==================================================================
 
+/* api */
 Route::get('alumni/total', [PekerjaanController::class, 'semuaAlumni']);
 Route::get('alumni/pertahun', [PekerjaanController::class, 'alumniPertahun']);
 Route::get('alumni/bekerja', [PekerjaanController::class, 'alumniBekerja']);
 Route::get('alumni/pendidikan', [PekerjaanController::class, 'alumniPendidikan']);
 
+// semua orang
 Route::get(
     '/alumni/{id}/data-pekerjaan/more-detail',
     function ($id) {
@@ -63,11 +65,14 @@ Route::get(
     }
 )->name('moreDataPendidikan');
 
+Route::get('/search', [HomeController::class, 'search'])->name('search');
+Route::get('/alumni/{id}/detail', [HomeController::class, 'detail'])->name('detailAlumni');
+
 // ==================================================================
-Route::get('/test', function () {
+/* Route::get('/test', function () {
     $title = 'Detail Alumni';
     return view('test.detail', compact('title'));
-});
+}); */
 
 Route::get('/authenticate', [AuthenticateController::class, 'index'])->middleware(['auth', 'verified'])->middleware(['auth', 'verified']);
 
@@ -84,24 +89,29 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware('isAdmin')->group(function () {
         Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('adminDashboard');
         Route::get('/admin/alumni', [AdminController::class, 'dataAlumni'])->name('dataAlumni');
+
         Route::get('/admin/alumni/{id}/detail', [AdminController::class, 'detailAlumni'])->name('adminDetailAlumni');
-        Route::get('/admin/alumni/data-pekerjaan', [AdminController::class, 'dataPekerjaan'])->name('dataPekerjaan');
+
+        Route::get('/admin/alumni/{id}/data-pribadi/edit', [AdminController::class, 'editAlumniPribadi'])->name('editAlumniPribadi');
+        Route::patch('/admin/alumni/{id}/data-pendidikan', [AdminController::class, 'updateAlumniPribadi'])->name('updateAlumniPribadi');
+
+        Route::get('/admin/alumni/{id}/data-pendidikan/{id_pendidikan}/edit', [AdminController::class, 'editAlumniPendidikan'])->name('editAlumniPendidikan');
+        Route::patch('/admin/alumni/{id}/data-pendidikan/{id_pendidikan}', [AdminController::class, 'updateAlumniPendidikan'])->name('updateAlumniPendidikan');
+
+        Route::get('/admin/alumni/{id}/data-pekerjaan/{id_pekerjaan}/edit', [AdminController::class, 'editAlumniPekerjaan'])->name('editAlumniPekerjaan');
+        Route::patch('/admin/alumni/{id}/data-pekerjaan/{id_pekerjaan}', [AdminController::class, 'updateAlumniPekerjaan'])->name('updateAlumniPekerjaan');
+
         Route::get('/admin/alumni/verify', [AdminController::class, 'verifAlumni'])->name('verifyDataAlumni');
         Route::post('/admin/alumni/{id_user}/verify', [AdminController::class, 'verifAlumniAksi'])->name('verifalumniStore');
         Route::post('/admin/alumni/{id_user}/tolakverify', [AdminController::class, 'tolakVerifAlumniAksi'])->name('tolakVerifAlumni');
+
+        Route::get('/admin/jurusan', [JurusanController::class, 'index'])->name('jurusan.index');
+        Route::get('/admin/jurusan/create', [JurusanController::class, 'create'])->name('jurusan.create');
+        Route::get('/admin/jurusan/edit/{id}', [JurusanController::class, 'edit'])->name('jurusan.edit');
+        Route::patch('/admin/jurusan/{id}', [JurusanController::class, 'update'])->name('jurusan.update');
+        Route::post('/admin/jurusan/store', [JurusanController::class, 'store'])->name('jurusan.store');
+        Route::delete('/admin/jurusan/destroy/{id}', [JurusanController::class, 'destroy'])->name('jurusan.destroy');
     });
-
-    // Jurusan
-    Route::get('/admin/jurusan', [JurusanController::class, 'index'])->name('jurusan.index');
-    Route::get('/admin/jurusan/create', [JurusanController::class, 'create'])->name('jurusan.create');
-    Route::get('/admin/jurusan/edit/{id}', [JurusanController::class, 'edit'])->name('jurusan.edit');
-    Route::patch('/admin/jurusan/{id}', [JurusanController::class, 'update'])->name('jurusan.update');
-    Route::post('/admin/jurusan/store', [JurusanController::class, 'store'])->name('jurusan.store');
-    Route::delete('/admin/jurusan/destroy/{id}', [JurusanController::class, 'destroy'])->name('jurusan.destroy');
-
-
-
-
 
     // alumi 
     Route::get('/alumni/dashboard', [PribadiController::class, 'index'])->name('alumniDashboard');
@@ -129,18 +139,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/alumni/{id}/data-pendidikan/detail', [PribadiController::class, 'detailDataPendidikan'])->name('detailDataPendidikan');
         Route::delete('/alumni/{id}/data-pendidikan', [PribadiController::class, 'deleteDataPendidikan'])->name('deleteDataPendidikan');
     });
-    // Jurusan
-    Route::get('/admin/jurusan', [JurusanController::class, 'index'])->name('jurusan.index');
-    Route::get('/admin/jurusan/create', [JurusanController::class, 'create'])->name('jurusan.create');
-    Route::get('/admin/jurusan/edit/{id}', [JurusanController::class, 'edit'])->name('jurusan.edit');
-    Route::patch('/admin/jurusan/{id}', [JurusanController::class, 'update'])->name('jurusan.update');
-    Route::post('/admin/jurusan/store', [JurusanController::class, 'store'])->name('jurusan.store');
-    Route::delete('/admin/jurusan/destroy/{id}', [JurusanController::class, 'destroy'])->name('jurusan.destroy');
 });
-
-// semua otrang
-Route::get('/search', [HomeController::class, 'search'])->name('search');
-Route::get('/alumni/{id}/detail', [HomeController::class, 'detail'])->name('detailAlumni');
 
 
 require __DIR__ . '/auth.php';
