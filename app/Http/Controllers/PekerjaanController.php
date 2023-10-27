@@ -81,6 +81,7 @@ class PekerjaanController extends Controller
     public function alumniPendidikan()
     {
         $data = [];
+        // Json::from
 
         for ($tahun = 2006; $tahun <= Carbon::now()->year; $tahun++) {
             $alumniCount = User::whereHas('roles', function ($query) {
@@ -104,9 +105,12 @@ class PekerjaanController extends Controller
 
             $data[] = $alumniCount;
         }
+        // $data = Json::from($data);
+        // dd($data);
 
-        $prettyJson = ['data' => $data];
+        return view('test.data', compact('data'));
+        /* $prettyJson = ['data' => $data];
         return response(json_encode($prettyJson, JSON_PRETTY_PRINT))
-            ->header('Content-Type', 'application/json');
+            ->header('Content-Type', 'application/json'); */
     }
 }
