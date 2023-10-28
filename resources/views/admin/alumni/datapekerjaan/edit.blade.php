@@ -19,21 +19,21 @@
                         berkembang bersama.
                     </p>
 
-                    <a href="{{ route('alumniDashboard') }}"
-                        class="text-blue-500 underline-offset-8 underline mt-3 hidden md:block">kembali
-                        ke
-                        Dashboard</a>
+                    <a href="{{ route('adminDetailAlumni', $id_pribadi->id_pribadi) }}"
+                        class="text-blue-500 underline-offset-8 underline mt-3 hidden md:block">Kembali</a>
                 </div>
-
-                <form action="{{ route('simpanDataPekerjaan', Auth::user()->id_user) }}" method="post" class="w-full ">
+                <form action="{{ route('updateAlumniPekerjaan', [$id_pribadi->id_pribadi, $dataPekerjaan->id_pekerjaan]) }}"
+                    method="post" class="w-full ">
                     @csrf
+                    @method('PATCH')
                     <div class="flex flex-col space-y-5 w-full">
                         <!-- nama_pekerjaan -->
                         <label class="block text-sm">
                             <span class="text-gray-700 dark:text-gray-400">Nama Pekerjaan</span>
                             <input type="text" name="nama_pekerjaan"
                                 class="block w-full  mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                placeholder="Nama Pekerjaan" value="{{ old('nama_pekerjaan') }}" />
+                                placeholder="Nama Pekerjaan"
+                                value="{{ old('nama_pekerjaan', $dataPekerjaan->nama_pekerjaan) }}" />
 
                             <!-- error -->
                             @error('nama_pekerjaan')
@@ -47,7 +47,8 @@
                             <span class="text-gray-700 dark:text-gray-400">Nama Instansi</span>
                             <input type="text" name="nama_instansi"
                                 class="block w-full  mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                placeholder="Nama instansi" value="{{ old('nama_instansi') }}" />
+                                placeholder="Nama instansi"
+                                value="{{ old('nama_instansi', $dataPekerjaan->nama_instansi) }}" />
 
                             <!-- error -->
                             @error('nama_instansi')
@@ -61,7 +62,7 @@
                             <span class="text-gray-700 dark:text-gray-400">Jabatan (opsional)</span>
                             <input type="text" name="jabatan"
                                 class="block w-full  mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                placeholder="jabatan anda" value="{{ old('jabatan') }}" />
+                                placeholder="jabatan anda" value="{{ old('jabatan', $dataPekerjaan->jabatan) }}" />
                         </label>
 
                         <div class="grid w-full grid-cols-1 gap-5 lg:grid-cols-2">
@@ -69,7 +70,7 @@
                                 <span class="text-gray-700 dark:text-gray-400">Tahun Masuk </span>
                                 <input type="number" name="tahun_masuk"
                                     class="block w-full  mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                    placeholder="tahun masuk" value="{{ old('tahun_masuk') }}" />
+                                    placeholder="tahun masuk" value="{{ old('tahun_masuk', $dataPekerjaan->thn_masuk) }}" />
 
                                 <!-- error -->
                                 @error('tahun_masuk')
@@ -81,7 +82,7 @@
                                 <span class="text-gray-700 dark:text-gray-400">Tahun Keluar </span>
                                 <input type="number" name="tahun_keluar"
                                     class=" block w-full  mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                    placeholder="!opsional" value="{{ old('tahun_keluar') }}" />
+                                    placeholder="!opsional" value="{{ old('tahun_keluar', $dataPekerjaan->thn_keluar) }}" />
 
                                 <!-- error -->
                                 @error('tahun_keluar')
@@ -96,7 +97,7 @@
                             <span class="text-gray-700 dark:text-gray-400">Alamat</span>
                             <textarea name="alamat"
                                 class="block border border-gray-600 px-3 py-2 rounded-md w-full  mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                                rows="3" placeholder="masukan alamat instansi.">{{ old('alamat') }}</textarea>
+                                rows="3" placeholder="masukan alamat instansi.">{{ old('alamat', $dataPekerjaan->alamat_instansi) }}</textarea>
 
                             <!-- error -->
                             @error('alamat')
