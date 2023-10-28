@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>kontak</title>
+  </head>
+
+  <!-- font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!--link font -->
+
+  <link rel="stylesheet" href="style.css" />
+
+  <body id="home" class="overflow-x-hidden">
+    <!--?  navigasi ==========-->
+    <nav
+      class="relative z-50 h-24 select-none py-5"
+      x-data="{ showMenu: false }"
+    >
+      <div class="navigation__main">
+        <div class="navigation__main__title">
+          <a href="#home" class="navigation__title__link"> Tracer Study </a>
+        </div>
+
+        <div
+          class="top-0 left-0 items-start hidden w-full h-full p-4 text-sm bg-gray-900 bg-opacity-50 md:items-center md:w-3/4 md:absolute lg:text-base md:bg-transparent md:p-0 md:relative md:flex"
+          :class="{'flex fixed': showMenu, 'hidden': !showMenu }"
+        >
+          <div class="container__mobile__menu relative">
+            <a href="#_" class="header__nav__mobile relative">
+              <h1 class="navigation__title__link">Tracer Study</h1>
+            </a>
+
+            <!-- ?navigasi menu ===========================-->
+            <div class="navigation__content">
+              <a
+                @click="showMenu = !showMenu"
+                href="#home"
+                class="ml-6 text-black navigation__content__link md:ml-0 lg:mx-3"
+                >Beranda</a
+              >
+              <a
+                @click="showMenu = !showMenu"
+                href="#about"
+                class="ml-6 text-gray-700 navigation__content__link hover:text-black lg:mx-3"
+                >Tentang
+              </a>
+              <a
+                @click="showMenu = !showMenu"
+                href="#tutorial"
+                class="ml-6 text-gray-700 navigation__content__link md:w-auto md:px-0 md:mx-2 hover:text-black lg:mx-3"
+                >Tutorial</a
+              >
+              <a
+                @click="showMenu = !showMenu"
+                href="contact.html"
+                class="ml-6 text-gray-700 navigation__content__link md:w-auto md:px-0 md:mx-2 hover:text-black lg:mx-3"
+                >Kontak</a
+              >
+
+              <a
+                @click="showMenu = !showMenu"
+                href="./src/halaman_cari.html"
+                class="navigation___search"
+              >
+                <!-- search -->
+                <svg
+                  class="inline w-6 h-6"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+              </a>
+            </div>
+            <!-- !navigasi menu ===========================-->
+
+            <!-- ?navigasi menu login ===========================-->
+            <div class="navigation__menu__accout">
+              <!-- ========================== -->
+            </div>
+            <!-- !navigasi menu login ===========================-->
+          </div>
+        </div>
+
+        <!-- menu  mobile-->
+        <div @click="showMenu = !showMenu" class="navigation___mobile">
+          <!-- hamburger menu -->
+          <svg
+            class="w-6 h-6 text-gray-800 -translate-x-2"
+            x-show="!showMenu"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <!-- close menu -->
+          <svg
+            class="w-6 h-6 text-gray-700 -translate-x-5"
+            x-show="showMenu"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            style="display: none"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </div>
+      </div>
+    </nav>
+    <!--!  navigasi ==========-->
+
+    <!-- ? contact -->
+    <section id="kontak" class="pt-[50px] mb-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-10 lg:gap-y-0">
+        <div class="w-full flex flex-col space-y-5 px-5">
+          <h1 class="font-bold text-[30px] capitalize">get in touch</h1>
+          <p class="font-normal text-black/70 leading-[25px] w-[70%]">
+            Hubungi Kami jika anda punya saran atau keluhan ataupun keperluan
+            yang lain
+          </p>
+
+          <div class="w-full flex flex-col space-y-8">
+            <div class="gap-y-4 grid grid-cols-1">
+              <!-- ============ -->
+              <div class="flex justify-start items-center space-x-3">
+                <div
+                  class="min-w-[40px] max-w-[45px] aspect-square shadow-md p-2 rounded-lg"
+                >
+                  <img
+                    src="public/assets/email.svg"
+                    alt="email"
+                    class="w-full h-full"
+                  />
+                </div>
+                <p class="card__desk break-words">
+                  smkn2padangpanjang@gmail.com
+                </p>
+              </div>
+
+              <!-- ====================== -->
+
+              <div class="flex justify-start items-center space-x-3">
+                <div
+                  class="min-w-[40px] max-w-[45px] aspect-square shadow-md p-2 rounded-lg"
+                >
+                  <img
+                    src="public/assets/talp.svg"
+                    alt="email"
+                    class="w-full h-full"
+                  />
+                </div>
+                <p class="card__desk break-words">081234565411</p>
+              </div>
+
+              <!-- ============= -->
+
+              <div class="flex justify-start items-center space-x-3">
+                <div
+                  class="min-w-[40px] max-w-[45px] aspect-square shadow-md p-2 rounded-lg"
+                >
+                  <img
+                    src="public/assets/lokasi.svg"
+                    alt="email"
+                    class="w-full h-full"
+                  />
+                </div>
+                <p class="card__desk min-w-[220px]">
+                  Jl. Syech Ibrahim Musa No.26 Padang Panjang Timur
+                </p>
+              </div>
+              <!-- -=== -->
+            </div>
+
+            <div class="mb-11">
+              <form action="" method=" post">
+                <label class="block text-sm">
+                  <span
+                    class="label__input focus:shadow-outline-purple form-input"
+                    >Nama</span
+                  >
+                  <input
+                    name="nama"
+                    class="input__contact"
+                    placeholder="masukan nama anda"
+                  />
+                </label>
+                <div class="flex space-x-5 mt-5">
+                  <label class="block text-sm w-full">
+                    <span
+                      class="label__input focus:shadow-outline-purple form-input"
+                      >Email</span
+                    >
+                    <input
+                      name="email"
+                      type="email"
+                      class="input__contact"
+                      placeholder="masukan email anda"
+                    />
+                  </label>
+                  <label class="block text-sm w-full">
+                    <span
+                      class="label__input focus:shadow-outline-purple form-input"
+                      >subjek</span
+                    >
+                    <input
+                      name="subjek"
+                      class="input__contact"
+                      placeholder="masukan subjek"
+                    />
+                  </label>
+                </div>
+                <label class="block mt-5 text-sm">
+                  <span class="text-gray-700 dark:text-gray-400">Pesan</span>
+                  <textarea
+                    name="pesan"
+                    class="block border border-gray-600 px-3 py-2 rounded-md w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                    rows="3"
+                    placeholder="masukan pesan anda."
+                  ></textarea>
+                </label>
+
+                <button
+                  type="submit"
+                  class="hover:bg-gray-950 bg-primary px-16 py-2 rounded-md text-white font-semibold mt-5"
+                >
+                  kirim
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="w-full h-[90vh] rounded-md overflow-hidden shadow-lg p-3">
+          <div class="w-full h-full">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.6882809520066!2d100.4182927743779!3d-0.4625936995328707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fd5256a42809263%3A0x83bcff4acf01d06b!2sSMKN2%20Padang%20Panjang!5e0!3m2!1sen!2sid!4v1697872579587!5m2!1sen!2sid"
+              width="100%"
+              height="100%"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- !contact -->
+
+    <!-- ?footer -->
+    <footer>
+      <div class="main__footer">
+        <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+          <div>
+            <div class="flex justify-center sm:justify-start">
+              <h1 class="footer__title">Tracer study sMKN 2 padang panjang</h1>
+            </div>
+
+            <p
+              class="mt-6 max-w-md text-center leading-relaxed text-gray-500 sm:max-w-xs sm:text-left"
+            >
+              Bantu kami meningkatkan kualitas pendidikan. Tracer study,
+              kontribusimu untuk pendidikan dan jendela untuk masa depanmu.
+            </p>
+          </div>
+
+          <div
+            class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:col-span-2"
+          >
+            <!-- about us -->
+            <div class="text-center sm:text-left">
+              <p class="text-lg font-medium text-gray-900">About Us</p>
+
+              <ul class="mt-8 space-y-4 text-sm">
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="https://smkn2-padangpanjang.sch.id/profil"
+                  >
+                    Profil
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="https://smkn2-padangpanjang.sch.id/berita/1"
+                  >
+                    Berita
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Keji=ruruan -->
+            <div class="text-center sm:text-left">
+              <p class="text-lg font-medium text-gray-900">Jurusan</p>
+
+              <ul class="mt-8 space-y-4 text-sm">
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="https://smkn2-padangpanjang.sch.id/berita/detail/teknik-komputer-dan-jaringan-tkj"
+                  >
+                    TKJ
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="https://smkn2-padangpanjang.sch.id/berita/detail/pengembangan-perangkat-lunak-dan-gim-pplg"
+                  >
+                    RPL
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="https://smkn2-padangpanjang.sch.id/berita/detail/disian-komunikasi-visual-dkv"
+                  >
+                    MM
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="https://smkn2-padangpanjang.sch.id/berita/detail/produksi-siaran-program-televisi-pspt"
+                  >
+                    PSPT
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- helpfull link -->
+            <div class="text-center sm:text-left">
+              <p class="text-lg font-medium text-gray-900">Helpful Links</p>
+
+              <ul class="mt-8 space-y-4 text-sm">
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="#faq"
+                  >
+                    FAQs
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="#kontak"
+                  >
+                    Kontak
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- lembaga -->
+            <div class="text-center sm:text-left">
+              <p class="text-lg font-medium text-gray-900">Lembaga</p>
+
+              <ul class="mt-8 space-y-4 text-sm">
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="https://smkn2-padangpanjang.sch.id/berita/detail/bursa-kerja-khusus-bkk"
+                  >
+                    BKK
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="https://smkn2-padangpanjang.sch.id/berita/detail/teaching-factory-tefa"
+                  >
+                    TEFA
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="https://smkn2-padangpanjang.sch.id/berita/detail/smekdatv"
+                  >
+                    SMEKDA.TV
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="text-gray-700 transition hover:text-gray-700/75"
+                    href="https://smkn2-padangpanjang.sch.id/berita/detail/pusat-pengelolaan-informasi-dokumentasi-i-ppid"
+                  >
+                    PPID
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- copyright -->
+        <div class="mt-12 border-t border-gray-100 pt-6">
+          <div class="text-center sm:flex sm:justify-between sm:text-left">
+            <p class="text-sm text-gray-500">
+              <span class="block sm:inline">All rights reserved.</span>
+
+              <a
+                class="inline-block text-teal-600 underline transition hover:text-teal-600/75"
+                href="/"
+              >
+                Terms & Conditions
+              </a>
+
+              <span>&middot;</span>
+
+              <a
+                class="inline-block text-teal-600 underline transition hover:text-teal-600/75"
+                href="/"
+              >
+                Privacy Policy
+              </a>
+            </p>
+
+            <p class="mt-4 text-sm text-gray-500 sm:order-first sm:mt-0">
+              &copy; 2023 SMKN 2 Padang Panjang
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- !footer -->
+  </body>
+</html>

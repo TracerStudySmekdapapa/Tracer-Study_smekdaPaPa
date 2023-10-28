@@ -12,17 +12,24 @@
 
 
     {{-- ! =========== CDN  ========= --}}
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" defer></script>
+
+
+    {{-- ! =======JS LIBRARY ============= --}}
+    {{-- ? alpine --}}
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    {{-- ? chart --}}
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
 
     {{-- ! =========== statick file  ========= --}}
     @vite('resources/css/app.css')
-    {{-- <script src="{{ asset('assets/js/init-alpine.js') }}"></script>
-    <script src="{{ asset('assets/js/charts-lines.js') }}" defer></script>
-    <script src="{{ asset('assets/js/charts-pie.js ') }}" defer></script> --}}
 </head>
 
 <body style="padding: 0; margin: 0; box-sizing: border-box;">

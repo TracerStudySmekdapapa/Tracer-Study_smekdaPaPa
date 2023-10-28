@@ -1,20 +1,25 @@
-<canvas id="chart" style="width:100%;max-width:480"></canvas>
+<div id="alumni_terdaftar_line" style="width:100%;">
+</div>
 
 <script>
     var options = {
         series: [{
-            name: "Desktops",
-            data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+            name: "Alumni Terdaftar",
+            data: [51, 49, 62, 69, 91, 148, 120, 133, 150, 190, 170, 150, 200, 222, 180, 190,
+                190
+            ],
+
+
         }],
         chart: {
             height: 350,
             type: 'line',
             zoom: {
                 enabled: false
-            }
+            },
         },
         dataLabels: {
-            enabled: false
+            enabled: false,
         },
         stroke: {
             curve: 'straight'
@@ -30,10 +35,12 @@
             },
         },
         xaxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
-        }
+            categories: ['2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2016', '2017',
+                '2018', '2019', '2020', '2021', '2022', '2023'
+            ],
+        },
     };
 
-    var chart = new ApexCharts(document.querySelector("#chart"), options);
-    chart.render();
+    let alumni_terdaftar_line = new ApexCharts(document.querySelector("#alumni_terdaftar_line"), options);
+    alumni_terdaftar_line.render();
 </script>
