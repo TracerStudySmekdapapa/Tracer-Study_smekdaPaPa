@@ -1,18 +1,28 @@
-<div id="myPlot" style="width:100%; max-width:480px max-height:300px;"></div>
+<div id="alumni_terdaftar_bar" style="width:100%; x max-height:300px;"></div>
 
 <script>
-    const xArray = [50, 150, 300, 550];
-    const yArray = ["tanpa data  ", "Pendidikan  ", "Bekerja  ", "Terdaftar  "];
-
-    const data = [{
-        x: xArray,
-        y: yArray,
-        type: "bar",
-        orientation: "h",
-        marker: {
-            color: "#7E3AF2"
+    var options = {
+        series: [{
+            data: [90, 32, 16, 40, ]
+        }],
+        chart: {
+            type: 'bar',
+            height: 350
+        },
+        plotOptions: {
+            bar: {
+                borderRadius: 4,
+                horizontal: true,
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        xaxis: {
+            categories: ['Terverif', 'Pekerjaan', 'Pendidikan', 'Nganggur'],
         }
-    }];
+    };
 
-    Plotly.newPlot("myPlot", data);
+    let alumni_terdaftar_bar = new ApexCharts(document.querySelector("#alumni_terdaftar_bar"), options);
+    alumni_terdaftar_bar.render();
 </script>

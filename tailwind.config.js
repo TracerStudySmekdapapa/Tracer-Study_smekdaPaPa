@@ -17,6 +17,7 @@ module.exports = {
             },
             fontFamily: {
                 sans: ["Figtree", ...defaultTheme.fontFamily.sans],
+                montserrat: "Montserrat",
             },
             colors: {
                 primary: "#7E3AF2",
