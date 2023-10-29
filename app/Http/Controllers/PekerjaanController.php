@@ -13,40 +13,28 @@ use Illuminate\Support\Facades\DB;
 class PekerjaanController extends Controller
 {
 
-    public function semuaAlumni()
+    public static function alumniBekerja()
     {
-        $user = User::whereHas('roles', function ($query) {
+        $alumniCount = User::whereHas('roles', function ($query) {
             $query->where('name', 'Alumni');
-        })->count();
-
-        return $user;
-    }
-
-    public function alumniPertahun()
-    {
-        $data = [];
-
-        for ($tahun = 2006; $tahun <= Carbon::now()->year; $tahun++) {
-            $alumniCount = User::whereHas('roles', function ($query) {
-                $query->where('name', 'Alumni');
-            })->join(
-                'data_pribadi',
-                'users.id_user',
+        })->join(
+            'data_pribadi',
+            'users.id_user',
+            '=',
+            'data_pribadi.id_user'
+        )
+            ->join(
+                DB::raw("(SELECT id_pribadi, COUNT(DISTINCT id_pekerjaan) as total_pekerjaan FROM pekerjaan GROUP BY id_pribadi) as pekerjaan"),
+                'data_pribadi.id_pribadi',
                 '=',
-                'data_pribadi.id_user'
+                'pekerjaan.id_pribadi'
             )
-                ->where('data_pribadi.tamatan', $tahun)
-                ->count();
+            ->count();
 
-            $data[] = $alumniCount;
-        }
-
-        $prettyJson = ['data' => $data];
-        return response(json_encode($prettyJson, JSON_PRETTY_PRINT))
-            ->header('Content-Type', 'application/json');
+        return $alumniCount;
     }
 
-    public function alumniBekerja()
+    public static function alumniBekerjaPertahun()
     {
         $data = [];
 
@@ -74,43 +62,6 @@ class PekerjaanController extends Controller
         }
 
         $prettyJson = ['data' => $data];
-        return response(json_encode($prettyJson, JSON_PRETTY_PRINT))
-            ->header('Content-Type', 'application/json');
-    }
-
-    public function alumniPendidikan()
-    {
-        $data = [];
-        // Json::from
-
-        for ($tahun = 2006; $tahun <= Carbon::now()->year; $tahun++) {
-            $alumniCount = User::whereHas('roles', function ($query) {
-                $query->where('name', 'Alumni');
-            })->join(
-                'data_pribadi',
-                'users.id_user',
-                '=',
-                'data_pribadi.id_user'
-            )
-                ->join(
-                    DB::raw("(SELECT id_pribadi, COUNT(DISTINCT id_pendidikan) as total_pekerjaan FROM pendidikan GROUP BY id_pribadi) as pendidikan"),
-                    'data_pribadi.id_pribadi',
-                    '=',
-                    'pendidikan.id_pribadi'
-                )
-                ->where('data_pribadi.tamatan', $tahun)
-                ->groupBy('data_pribadi.id_pribadi')
-                ->selectRaw('COUNT(pendidikan.id_pribadi) as total_pendidikan')
-                ->count();
-
-            $data[] = $alumniCount;
-        }
-        // $data = Json::from($data);
-        // dd($data);
-
-        return view('test.data', compact('data'));
-        /* $prettyJson = ['data' => $data];
-        return response(json_encode($prettyJson, JSON_PRETTY_PRINT))
-            ->header('Content-Type', 'application/json'); */
+        return $prettyJson;
     }
 }

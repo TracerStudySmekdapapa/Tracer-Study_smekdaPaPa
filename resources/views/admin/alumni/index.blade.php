@@ -55,7 +55,7 @@
                                     </div>
                                 </td>
                                 <td>{{ $item->nisn }}</td>
-                                <td>{{ $item->nama_jurusan }}</td>
+                                <td>{{ $item->nama_jurusan ?? '-' }}</td>
                                 <td>{{ $item->jenis_kelamin }}</td>
                                 <td>{{ $item->tamatan }}</td>
                                 <td>

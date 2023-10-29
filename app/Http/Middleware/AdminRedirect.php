@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class IsNotLog
+class AdminRedirect
 {
     /**
      * Handle an incoming request.
@@ -17,10 +17,9 @@ class IsNotLog
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check()) {
-            return $next($request);
+        if (Auth::check() && Auth::user()->hasRole('Admin')) {
+            return redirect()->route('adminDashboard');
         }
-
-        return redirect()->route('login')->with(['message' => 'Silahkan Login Terlebih Dahulu']);
+        return $next($request);
     }
 }

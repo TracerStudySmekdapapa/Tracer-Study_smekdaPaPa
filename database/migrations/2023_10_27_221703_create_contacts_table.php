@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('nama', 50);
             $table->string('subjek', 50);
             $table->text('pesan');
+            $table->enum('status', ['0', '1']);
             $table->timestamps();
         });
     }

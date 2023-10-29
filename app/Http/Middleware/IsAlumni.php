@@ -17,9 +17,15 @@ class IsAlumni
      */
     public function handle(Request $request, Closure $next)
     {
+
+        if (Auth::check() && Auth::user()->hasRole('Admin')) {
+            return redirect()->route('adminDashboard');
+        }
+
         if (Auth::user()->hasRole('Alumni')) {
             return $next($request);
         }
+
 
         return redirect()->back()->with(['message' => 'Anda Bukan Alumni']);
     }

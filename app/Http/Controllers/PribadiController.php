@@ -17,6 +17,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PribadiController extends Controller
 {
@@ -112,6 +113,7 @@ class PribadiController extends Controller
     public function updateDataPribadi(DataPribadiUpdateRequest $request, $id)
     {
         $alumni = Pribadi::where('id_user', $id)->first();
+        // dd($alumni);
         /* Start Validasi */
         $validatedData = $request->validated();
         /* End Validasi */
@@ -288,4 +290,64 @@ class PribadiController extends Controller
         return redirect()->route('alumniDashboard')->with('message', 'Data Berhasil Dihapus!');
     }
     /* End Create Data Pekerjaan */
+
+    /* Start Count */
+    public static function alumniMendaftar()
+    {
+        $user = User::whereDoesntHave('roles', function ($query) {
+            $query->where('name', 'Admin');
+        })->count();
+
+        return $user;
+    }
+
+    public static function alumniTidakBekerjaDanTidakPendidikan()
+    {
+        $alumniCount = User::whereHas('roles', function ($query) {
+            $query->where('name', 'Alumni');
+        })->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
+            ->leftJoin(DB::raw("(SELECT id_pribadi, COUNT(DISTINCT id_pekerjaan) as total_pekerjaan FROM pekerjaan GROUP BY id_pribadi) as pekerjaan"), 'data_pribadi.id_pribadi', '=', 'pekerjaan.id_pribadi')
+            ->leftJoin(DB::raw("(SELECT id_pribadi, COUNT(DISTINCT id_pendidikan) as total_pendidikan FROM pendidikan GROUP BY id_pribadi) as pendidikan"), 'data_pribadi.id_pribadi', '=', 'pendidikan.id_pribadi')
+            ->where(function ($query) {
+                $query->whereNull('pekerjaan.total_pekerjaan')->orWhere('pekerjaan.total_pekerjaan', '=', 0);
+            })
+            ->where(function ($query) {
+                $query->whereNull('pendidikan.total_pendidikan')->orWhere('pendidikan.total_pendidikan', '=', 0);
+            })
+            ->count();
+
+        return $alumniCount;
+    }
+
+
+    public static function semuaAlumni()
+    {
+        $user = User::whereHas('roles', function ($query) {
+            $query->where('name', 'Alumni');
+        })->count();
+
+        return $user;
+    }
+
+    public static function alumniPertahun()
+    {
+        $data = [];
+
+        for ($tahun = 2006; $tahun <= Carbon::now()->year; $tahun++) {
+            $alumniCount = User::whereHas('roles', function ($query) {
+                $query->where('name', 'Alumni');
+            })->join(
+                'data_pribadi',
+                'users.id_user',
+                '=',
+                'data_pribadi.id_user'
+            )
+                ->where('data_pribadi.tamatan', $tahun)
+                ->count();
+
+            $data[$tahun] = $alumniCount;
+        }
+        return $data;
+    }
+    /* End Count */
 }

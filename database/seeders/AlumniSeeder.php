@@ -17,26 +17,55 @@ class AlumniSeeder extends Seeder
      */
     public function run()
     {
-        $user = User::create([
-            'name' => 'rehan',
-            'email' => 'rehan@gmail.com',
-            'password' => bcrypt('123'),
-            'bio' => 'Aku adalah Yin',
-            'profil_picture' => random_int(1, 4) . '.jpg'
-        ]);
+        $userData = [
+            [
+                'name' => 'rehan',
+                'email' => 'rehan@gmail.com',
+                'password' => bcrypt('123'),
+                'bio' => 'Aku adalah Yin',
+                'profil_picture' => random_int(1, 4) . '.jpg',
+            ],
+            [
+                'name' => 'habibiesanji',
+                'email' => 'habibiesanji@gmail.com',
+                'password' => bcrypt('123'),
+                'bio' => 'Aku adalah Yin',
+                'profil_picture' => random_int(1, 4) . '.jpg',
+            ],
+        ];
 
-        $user->assignRole('Alumni');
+        $pribadiData = [
+            [
+                'nisn' => "12345678",
+                'no_telp' => "089534195182",
+                'tempat_lahir' => "Padang Panjang",
+                'tanggal_lahir' => "2006-10-05",
+                'agama' => "Islam",
+                'jenis_kelamin' => "Laki-Laki",
+                'id_jurusan' => 5,
+                'tamatan' => "2023",
+            ],
+            [
+                'nisn' => "006972922",
+                'no_telp' => "089534195182",
+                'tempat_lahir' => "Padang Panjang",
+                'tanggal_lahir' => "2006-10-05",
+                'agama' => "Islam",
+                'jenis_kelamin' => "Laki-Laki",
+                'id_jurusan' => 5,
+                'tamatan' => "2006",
+            ],
+        ];
 
-        Pribadi::create([
-            'nisn' => "006972922",
-            'no_telp' => "089534195182",
-            'tempat_lahir' => "Padang Panjang",
-            'tanggal_lahir' => "2006-10-05",
-            'agama' => "Islam",
-            'jenis_kelamin' => "Laki-Laki",
-            'id_jurusan' => 5,
-            'tamatan' => "2023",
-            'id_user' => $user->id_user
-        ]);
+
+        foreach ($userData as $key => $data) {
+            $user = User::create($data);
+            $user->assignRole('Alumni');
+
+            $pribadi = $pribadiData[$key];
+            $pribadi['id_user'] = $user->id_user;
+
+            Pribadi::create($pribadi);
+        }
     }
 }

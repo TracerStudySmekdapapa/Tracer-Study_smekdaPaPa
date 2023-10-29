@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PribadiController;
 use App\Http\Controllers\AuthenticateController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\PekerjaanController;
@@ -40,9 +41,12 @@ perbaiki letak barisnya , letakkan sesuati "data-pekerjaan" , "data-pendidikan"
 
 /* api */
 Route::get('alumni/total', [PekerjaanController::class, 'semuaAlumni']);
-Route::get('alumni/pertahun', [PekerjaanController::class, 'alumniPertahun']);
+Route::get('alumni/pertahun', [PribadiController::class, 'alumniPertahun']);
 Route::get('alumni/bekerja', [PekerjaanController::class, 'alumniBekerja']);
 Route::get('alumni/pendidikan', [PekerjaanController::class, 'alumniPendidikan']);
+
+Route::get('contact', [ContactController::class, 'create'])->name('tambahContact');
+Route::post('contact', [ContactController::class, 'store'])->name('simpanContact');
 
 // semua orang
 Route::get(
@@ -113,14 +117,16 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('/admin/jurusan/destroy/{id}', [JurusanController::class, 'destroy'])->name('jurusan.destroy');
     });
 
-    // alumi 
-    Route::get('/alumni/dashboard', [PribadiController::class, 'index'])->name('alumniDashboard');
+    // alumi
+    Route::middleware('adminRedirect')->group(function () {
+        Route::get('/alumni/dashboard', [PribadiController::class, 'index'])->name('alumniDashboard');
 
-    // data pribadi
-    Route::get('/alumni/data-pribadi/tambah', [PribadiController::class, 'tambahDataPribadi'])->name('tambahDataPribadi');
-    Route::post('/alumni/{id}/data-pribadi/tambah', [PribadiController::class, 'simpanDataPribadi'])->name('simpanDataPribadi');
-    Route::get('/alumni/{id}/data-pribadi/edit', [PribadiController::class, 'editDataPribadi'])->name('editDataPribadi');
-    Route::patch('/alumni/{id}/data-pribadi/update', [PribadiController::class, 'updateDataPribadi'])->name('updateDataPribadi');
+        // data pribadi
+        Route::get('/alumni/data-pribadi/tambah', [PribadiController::class, 'tambahDataPribadi'])->name('tambahDataPribadi');
+        Route::post('/alumni/{id}/data-pribadi/tambah', [PribadiController::class, 'simpanDataPribadi'])->name('simpanDataPribadi');
+        Route::get('/alumni/{id}/data-pribadi/edit', [PribadiController::class, 'editDataPribadi'])->name('editDataPribadi');
+        Route::patch('/alumni/{id}/data-pribadi/update', [PribadiController::class, 'updateDataPribadi'])->name('updateDataPribadi');
+    });
 
     Route::middleware(IsAlumni::class)->group(function () {
         // data pekerjaan

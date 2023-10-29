@@ -10,9 +10,7 @@ use App\Models\Pekerjaan;
 use App\Models\Pendidikan;
 use App\Models\Pribadi;
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -27,7 +25,15 @@ class AdminController extends Controller
             ->orderBy('users.name', 'ASC')
             ->get();
         $title_page = 'Selamat Datang, Admin';
-        return view('admin.dashboard', compact('tidakAlumni', 'title', 'title_page'));
+        $countPendidikan = PendidikanController::alumniPendidikan();
+        $countPendidikanPertahun = PendidikanController::alumniPendidikanPertahun();
+        $countPekerjaan = PekerjaanController::alumniBekerja();
+        $countPekerjaanPertahun = PekerjaanController::alumniBekerjaPertahun();
+        $countAlumniPertahun = PribadiController::alumniPertahun();
+        $countAlumni = PribadiController::semuaAlumni();
+        $countAlumniMendaftar = PribadiController::alumniMendaftar();
+        $countAlumniNganggur = PribadiController::alumniTidakBekerjaDanTidakPendidikan();
+        return view('admin.dashboard', compact('tidakAlumni', 'title', 'title_page', 'countAlumni', 'countPekerjaan', 'countPendidikan', 'countPendidikanPertahun', 'countAlumniPertahun', 'countAlumniNganggur', 'countAlumniMendaftar'));
     }
 
     /* Start Data Alumni */
@@ -39,10 +45,11 @@ class AdminController extends Controller
             $query->where('name', 'Alumni');
         })
             ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
-            ->join('jurusan', 'data_pribadi.id_jurusan', '=', 'jurusan.id_jurusan')
+            ->leftJoin('jurusan', 'data_pribadi.id_jurusan', '=', 'jurusan.id_jurusan')
             ->orderBy('users.name', 'ASC')
             ->filter(request(['search', 'angkatan']))
             ->get();
+
 
         $tidakAlumni = User::whereDoesntHave('roles', function ($query) {
             $query->whereIn('name', ['Alumni', 'Admin']);
@@ -176,7 +183,7 @@ class AdminController extends Controller
             $query->whereIn('name', ['Alumni', 'Admin']);
         })
             ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
-            ->join('jurusan', 'data_pribadi.id_jurusan', '=', 'jurusan.id_jurusan')
+            ->leftJoin('jurusan', 'data_pribadi.id_jurusan', '=', 'jurusan.id_jurusan')
             ->orderBy('users.name', 'ASC')
             ->get();
 

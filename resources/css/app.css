@@ -185,6 +185,7 @@ main {
 @layer components {
     .label__input {
         @apply text-gray-700 dark:text-gray-400;
+        all: unset;
     }
 
     .input__contact {

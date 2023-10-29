@@ -26,10 +26,9 @@ class DataPribadiUpdateRequest extends FormRequest
      */
     public function rules()
     {
-        if (Auth::user()->hasRole('Alumni')) {
-            # code...
-            $alumni = Pribadi::where('id_user', $this->id)->first();
-            // dd($this);
+        if (Auth::user()->hasRole('Alumni') || Auth::user()->hasRole('Admin')) {
+            $alumni = Auth::user()->hasRole('Alumni') ? Pribadi::where('id_user', $this->id)->first() : Pribadi::where('id_pribadi', $this->id)->first();
+
             return [
                 'nisn' => ['nullable', 'numeric', 'digits_between:5,11', ($alumni->nisn == $this->nisn ? '' : 'unique:data_pribadi,nisn')],
                 'no_telp' => ['nullable', 'numeric', 'digits_between:5,13'],
@@ -40,11 +39,8 @@ class DataPribadiUpdateRequest extends FormRequest
                 'jurusan' => ['nullable', 'numeric'],
                 'tamatan' => ['nullable', 'string'],
             ];
-        }
-
-        if (Auth::user()->hasRole('Admin')) {
-            $alumni = Pribadi::where('id_pribadi', $this->id)->first();
-            // dd($this);
+        } else {
+            $alumni = Pribadi::where('id_user', $this->id)->first();
             return [
                 'nisn' => ['nullable', 'numeric', 'digits_between:5,11', ($alumni->nisn == $this->nisn ? '' : 'unique:data_pribadi,nisn')],
                 'no_telp' => ['nullable', 'numeric', 'digits_between:5,13'],

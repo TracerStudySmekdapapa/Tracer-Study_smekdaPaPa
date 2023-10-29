@@ -2,12 +2,41 @@
 </div>
 
 <script>
-    var options = {
+    let data = @json($countAlumniPertahun);
+    console.log(data);
+
+
+    function dataValue() {
+        const finalValue = []
+        for (const property in data) {
+            finalValue.push(`${data[property]}`);
+        }
+        // console.log(finalValue);
+        return finalValue;
+    }
+
+    // console.log(dataValue());
+
+
+    function dataYear() {
+        const finalValueYears = []
+        for (const property in data) {
+            finalValueYears.push(`${property}`);
+        }
+        return finalValueYears;
+    }
+
+    console.log(dataYear());
+
+
+
+    // data.shift();
+
+
+    let options = {
         series: [{
             name: "Alumni Terdaftar",
-            data: [51, 49, 62, 69, 91, 148, 120, 133, 150, 190, 170, 150, 200, 222, 180, 190,
-                190
-            ],
+            data: dataValue(),
 
 
         }],
@@ -35,9 +64,7 @@
             },
         },
         xaxis: {
-            categories: ['2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2016', '2017',
-                '2018', '2019', '2020', '2021', '2022', '2023'
-            ],
+            categories: dataYear(),
         },
     };
 

@@ -1,9 +1,13 @@
 <div id="alumni_terdaftar_bar" style="width:100%; x max-height:300px;"></div>
 
 <script>
-    var options = {
+    /* let terverif = {{ $countAlumni }}
+    console.info(terverif) */
+    var bar_option = {
         series: [{
-            data: [90, 32, 16, 40, ]
+            data: [{{ $countAlumni }}, {{ $countPekerjaan }}, {{ $countPendidikan }},
+                {{ $countAlumniNganggur }}
+            ]
         }],
         chart: {
             type: 'bar',
@@ -23,6 +27,6 @@
         }
     };
 
-    let alumni_terdaftar_bar = new ApexCharts(document.querySelector("#alumni_terdaftar_bar"), options);
-    alumni_terdaftar_bar.render();
+    let alumniTerdaftarBar = new ApexCharts(document.querySelector("#alumni_terdaftar_bar"), bar_option);
+    alumniTerdaftarBar.render();
 </script>
