@@ -16,7 +16,7 @@
                 langsung ...
             </p>
 
-            <div x-data="{ modalOpen: false }" @keydown.escape.window="modalOpen = false"
+            <div x-data="{ modalOpen: false }" @keydown.escape.window="modalOpen=false"
                 class="relative z-50 w-auto h-auto">
                 <button @click="modalOpen=true"
                     class="px-5 py-2 font-semibold text-white rounded-lg bg-primary btn___signup">
@@ -53,7 +53,7 @@
                                 </button>
                             </div>
                             <div class="relative w-auto font-normal text-black/80">
-                                <p>Tujuan tracer study adalah untuk:</p>
+                                <p class="text-lg font-semibold">Tujuan tracer study adalah untuk : </p>
                                 <ul class="list-disc text-black/60 text-[15px]">
                                     <li>
                                         Mengetahui keberhasilan lulusan dalam memasuki dunia
@@ -72,9 +72,8 @@
                                         pembelajaran
                                     </li>
                                 </ul>
-                                <p>
-                                    Tracer study dapat dilakukan dengan berbagai metode,
-                                    antara lain:
+                                <p class="text-lg font-semibold">
+                                    Tracer study dapat dilakukan dengan metode : 
                                 </p>
                                 <ul class="list-disc text-black/60 text-[15px]">
                                     <li>Survei alumni</li>
@@ -82,7 +81,7 @@
                                     <li>Studi kasus</li>
                                     <li>Analisis data statistik</li>
                                 </ul>
-                                <p>sdsd</p>
+                                <p class="text-lg font-semibold">contoh dari survei : </p>
                                 <ul class="list-disc text-black/60 text-[15px]">
                                     <li>Apakah Anda telah bekerja setelah lulus?</li>
                                     <li>Apa bidang pekerjaan Anda saat ini?</li>

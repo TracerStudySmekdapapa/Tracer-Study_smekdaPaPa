@@ -7,13 +7,13 @@
 }
 
 body {
-  @apply mx-[5px] sm:mx-[30px] md:mx-[0px] lg:mx-[40px];
+  @apply mx-[5px] sm:mx-[30px] md:mx-[10px] lg:mx-[40px] xl:mx-0 ;
   font-family: "Poppins", sans-serif;
   background-color: rgb(250, 250, 250);
 }
 
 main {
-  @apply pt-10 sm:max-w-[1280px] mx-auto px-[10px] sm:px-[20px] md:px-[20px] lg:px-[30px] xl:px-[50px];
+  @apply pt-10 sm:max-w-[1280px] mx-auto px-[10px] sm:px-[20px] md:px-[20px] lg:px-[30px] xl:px-[30px];
 }
 
 /* !!! ===================================HOME PAGE */
@@ -83,7 +83,7 @@ main {
 /* section hero */
 @layer components {
   .main__hero {
-    @apply xl:bg-red-500 relative grid grid-cols-1 place-items-center  md:grid-cols-2 mt-10 ;
+    @apply relative grid grid-cols-1 xl:gap-10 place-items-center  md:grid-cols-2 mt-10 lg:mt-12 xl:mt-16;
   }
 
   /* left */
@@ -92,15 +92,15 @@ main {
   }
 
   .main__hero .title {
-    @apply text-[28px] md:text-[30px] lg:text-[35px] relative font-bold;
+    @apply text-[28px] md:text-[30px] lg:text-[35px] xl:text-[50px] relative font-bold;
   }
 
   .main__hero .subTitle {
-    @apply text-[18px] md:text-[20px] lg:text-[20px] text-primary font-bold mt-[5px];
+    @apply text-[18px] md:text-[20px] lg:text-[20px] xl:text-[30px] text-primary font-bold mt-[5px];
   }
 
   .main__hero .deskripsi {
-    @apply max-w-[325px] leading-6 md:leading-[27px] text-black/70 my-[17px] text-sm text-justify lg:text-left  md:max-w-[300px];
+    @apply max-w-[325px] xl:max-w-[400px]  leading-6 md:leading-[27px] text-black/70 my-[17px] text-sm text-justify lg:text-left xl:text-base md:max-w-[300px];
   }
 
   .main__hero .hero___register {
@@ -136,7 +136,7 @@ main {
 /* card tutorial */
 @layer components {
   .main__tutorial {
-    @apply grid grid-cols-1 gap-3 space-y-4 md:grid-cols-2 lg:space-y-0 lg:grid-cols-3 lg:gap-y-14 place-items-center;
+    @apply grid grid-cols-1 gap-3 space-y-4 md:grid-cols-2  lg:grid-cols-3  place-items-center;
   }
 
   .card {

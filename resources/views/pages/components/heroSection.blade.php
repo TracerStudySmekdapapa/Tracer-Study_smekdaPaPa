@@ -1,5 +1,5 @@
  <!-- ? section-hero ======== -->
- <section class="w-full mt-[30px] mb-[50px]">
+ <section class="w-full mt-[30px] mb-[30px]">
      <div class="main__hero">
          <!-- left -->
          <div class="left__item">
@@ -9,7 +9,7 @@
                  Bantu kami meningkatkan kualitas pendidikan. Tracer study,
                  kontribusimu untuk pendidikan dan jendela untuk masa depanmu.
              </p>
-
+ 
              <div class="flex space-x-10 mt-[17px]">
                  <button class="inset-0">
                      <a href="" class="px-6 py-2 text-white rounded-full bg-primary hover:bg-gray-800">cari

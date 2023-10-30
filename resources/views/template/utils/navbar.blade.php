@@ -1,4 +1,4 @@
-<nav class="relative z-50  mb-5  -mt-5 mx-5  select-none" x-data="{ showMenu: false }">
+<nav class="relative z-50  mb-5   mx-5  select-none" x-data="{ showMenu: false }">
     <div class="navigation__main">
         <div class="navigation__main__title">
             <a href="{{ route('/') }}" class="navigation__title__link"> Tracer Study </a>
