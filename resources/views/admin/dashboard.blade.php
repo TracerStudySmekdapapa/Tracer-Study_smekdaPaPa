@@ -32,14 +32,11 @@
             {{-- ! alumni yang bekerja dari tahun ke tahun --}}
 
             <div>
-                <h1 class="text-[20px] font-semibold mt-20">Alumni yang Terdaftar</h1>
-                <div class="grid grid-cols-1 mt-5 lg:gap-x-2 gap-y-5 lg:gap-y-0 lg:grid-cols-12">
+                <h1 class="text-[20px] font-semibold mt-20">Data Alumni Sekarang</h1>
+                <div class="grid grid-cols-1 mt-5 lg:gap-x-2 gap-y-5 lg:gap-y-0 ">
 
-                    <div class="w-full h-full bg-white rounded-[10px] shadow-md p-3 col-span-7">
-                        @include('admin.dashboard_components.alumni_bekerja_chart')
-                    </div>
-                    <div class="w-full h-full bg-white rounded-[10px] shadow-md p-3 col-span-5">
-                        @include('admin.dashboard_components.bar_alumni_terdaftar')
+                    <div class="w-full h-full bg-white rounded-[10px] shadow-md p-3 ">
+                        @include('admin.dashboard_components.alumni_berlanjut')
                     </div>
 
                 </div>

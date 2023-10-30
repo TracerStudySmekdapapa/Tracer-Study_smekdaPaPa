@@ -114,7 +114,7 @@ main {
   }
 
   .main__hero .hero__image {
-    @apply relative scale-105 -top-10 lg:absolute lg:-right-20 lg:top-0;
+    @apply relative scale-105 -top-10 lg:absolute lg:-right-20 lg:top-5;
   }
 }
 
