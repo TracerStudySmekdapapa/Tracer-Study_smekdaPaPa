@@ -3,7 +3,7 @@
 
 
 <script>
-    var options = {
+    var options_berlanjut = {
         series: [{
             name: 'series1',
             data: [31, 40, 28, 51, 42, 109, 100]
@@ -35,6 +35,6 @@
         },
     };
 
-    var chart = new ApexCharts(document.querySelector("#chart_lanjut"), options);
+    var chart = new ApexCharts(document.querySelector("#chart_lanjut"), options_berlanjut);
     chart.render()
 </script>
