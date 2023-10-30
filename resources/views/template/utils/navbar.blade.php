@@ -18,7 +18,7 @@
                     <a href="{{ route('/') }}#about"
                         class="ml-6 text-gray-700 navigation__content__link text-base py-1 hover:text-black lg:mr-3">Tentang
                     </a>
-                    <a href="{{ route('/') }}"
+                    <a href="{{ route('tutorial') }}"
                         class="ml-6 text-gray-700 navigation__content__link text-base py-1 md:w-auto md:px-0 md:mx-2 hover:text-black lg:mr-3">Tutorial</a>
                     <a href="{{ route('tambahContact') }}"
                         class="ml-6 text-gray-700 navigation__content__link text-base py-1 md:w-auto md:px-0 md:mx-2 hover:text-black lg:mr-3">Kontak</a>

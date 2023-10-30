@@ -71,6 +71,10 @@ Route::get(
 
 Route::get('/search', [HomeController::class, 'search'])->name('search');
 Route::get('/alumni/{id}/detail', [HomeController::class, 'detail'])->name('detailAlumni');
+Route::get('/tutorial', function(){
+    $title = 'tutorial';
+    return view('pages.tutorial')->with('title');
+})->name('tutorial');
 
 // ==================================================================
 /* Route::get('/test', function () {
