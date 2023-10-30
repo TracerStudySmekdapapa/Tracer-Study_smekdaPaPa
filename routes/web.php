@@ -6,81 +6,25 @@ use App\Http\Controllers\AuthenticateController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JurusanController;
-use App\Http\Controllers\PekerjaanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\IsAlumni;
-use App\Http\Middleware\IsNotLog;
 use App\Models\Pekerjaan;
-use App\Models\Pendidikan;
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', [HomeController::class, 'index'])->name('/');
-
-
-
-// ==================================================================
-/* 
-perbaiki ini  dari baris 40 sampai baris 59, pindahkan ke controller motode pengambilan datanya 
-perbaiki letak barisnya , letakkan sesuati "data-pekerjaan" , "data-pendidikan"
- */
-// ==================================================================
-
-/* api */
-Route::get('alumni/total', [PekerjaanController::class, 'semuaAlumni']);
-Route::get('alumni/pertahun', [PribadiController::class, 'alumniPertahun']);
-Route::get('alumni/bekerja', [PekerjaanController::class, 'alumniBekerja']);
-Route::get('alumni/pendidikan', [PekerjaanController::class, 'alumniPendidikan']);
-
 Route::get('contact', [ContactController::class, 'create'])->name('tambahContact');
 Route::post('contact', [ContactController::class, 'store'])->name('simpanContact');
 
 // semua orang
-Route::get(
-    '/alumni/{id}/data-pekerjaan/more-detail',
-    function ($id) {
 
-        $pekerjaan = Pekerjaan::get()->where('id_pribadi', $id);
-        $title = 'data pekerjaan';
-        return view('pages.moreDetail.pekerjaan', compact('title', 'pekerjaan'));
-    }
-)->name('moreDataPekerjaan');
-
-Route::get(
-    '/alumni/{id}/data-pendidikan/more-detail',
-    function ($id) {
-
-        $pendidikan = Pendidikan::get()->where('id_pribadi', $id);
-        $title = 'data pendidikan';
-        return view('pages.moreDetail.pendidikan', compact('title', 'pendidikan'));
-    }
-)->name('moreDataPendidikan');
 
 Route::get('/search', [HomeController::class, 'search'])->name('search');
 Route::get('/alumni/{id}/detail', [HomeController::class, 'detail'])->name('detailAlumni');
+Route::get('/alumni/{id}/data-pendidikan/more-detail', [HomeController::class, 'moreDetailPendidikan'])->name('moreDataPendidikan');
+Route::get('/alumni/{id}/data-pekerjaan/more-detail', [HomeController::class, 'moreDetailPekerjaan'])->name('moreDataPekerjaan');
 
-// ==================================================================
-/* Route::get('/test', function () {
-    $title = 'Detail Alumni';
-    return view('test.detail', compact('title'));
-}); */
 
 Route::get('/authenticate', [AuthenticateController::class, 'index'])->middleware(['auth', 'verified'])->middleware(['auth', 'verified']);
-
-
 
 Route::middleware(['auth'])->group(function () {
     // // user edit selft
@@ -109,23 +53,23 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/admin/alumni/{id_user}/verify', [AdminController::class, 'verifAlumniAksi'])->name('verifalumniStore');
         Route::post('/admin/alumni/{id_user}/tolakverify', [AdminController::class, 'tolakVerifAlumniAksi'])->name('tolakVerifAlumni');
 
-        Route::get('/admin/jurusan', [JurusanController::class, 'index'])->name('jurusan.index');
+        Route::get('/admin/jurusan', [JurusanController::class, 'index'])->name('jurusan');
         Route::get('/admin/jurusan/create', [JurusanController::class, 'create'])->name('jurusan.create');
         Route::get('/admin/jurusan/edit/{id}', [JurusanController::class, 'edit'])->name('jurusan.edit');
         Route::patch('/admin/jurusan/{id}', [JurusanController::class, 'update'])->name('jurusan.update');
         Route::post('/admin/jurusan/store', [JurusanController::class, 'store'])->name('jurusan.store');
         Route::delete('/admin/jurusan/destroy/{id}', [JurusanController::class, 'destroy'])->name('jurusan.destroy');
+
+        Route::get('/admin/pesan', [ContactController::class, 'index'])->name('pesan');
     });
 
-    // alumi
+    // alumni
     Route::middleware('adminRedirect')->group(function () {
-        Route::get('/alumni/dashboard', [PribadiController::class, 'index'])->name('alumniDashboard');
-
-        // data pribadi
-        Route::get('/alumni/data-pribadi/tambah', [PribadiController::class, 'tambahDataPribadi'])->name('tambahDataPribadi');
-        Route::post('/alumni/{id}/data-pribadi/tambah', [PribadiController::class, 'simpanDataPribadi'])->name('simpanDataPribadi');
-        Route::get('/alumni/{id}/data-pribadi/edit', [PribadiController::class, 'editDataPribadi'])->name('editDataPribadi');
-        Route::patch('/alumni/{id}/data-pribadi/update', [PribadiController::class, 'updateDataPribadi'])->name('updateDataPribadi');
+        Route::get('/dashboard', [PribadiController::class, 'index'])->name('dashboard');
+        Route::get('/data-pribadi/tambah', [PribadiController::class, 'tambahDataPribadi'])->name('tambahDataPribadi');
+        Route::post('/data-pribadi/{id}', [PribadiController::class, 'simpanDataPribadi'])->name('simpanDataPribadi');
+        Route::get('/data-pribadi/{id}/edit', [PribadiController::class, 'editDataPribadi'])->name('editDataPribadi');
+        Route::patch('/data-pribadi/{id}', [PribadiController::class, 'updateDataPribadi'])->name('updateDataPribadi');
     });
 
     Route::middleware(IsAlumni::class)->group(function () {

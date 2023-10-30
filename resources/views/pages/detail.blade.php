@@ -119,7 +119,7 @@
                                             <h1 class="text-black/90 capitalize text-[20px]">
                                                 {{ $item->nama_univ }}
                                             </h1>
-                                            <p>{{ $item->prodi }}</p>
+                                            <p>{{ $item->fakultas }}</p>
                                         </div>
                                     </li>
                                 @endforeach

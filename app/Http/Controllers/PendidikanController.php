@@ -35,6 +35,7 @@ class PendidikanController extends Controller
     public static function alumniPendidikanPertahun()
     {
         $data = [];
+
         for ($tahun = 2006; $tahun <= Carbon::now()->year; $tahun++) {
             $alumniCount = User::whereHas('roles', function ($query) {
                 $query->where('name', 'Alumni');
@@ -45,18 +46,18 @@ class PendidikanController extends Controller
                 'data_pribadi.id_user'
             )
                 ->join(
-                    DB::raw("(SELECT id_pribadi, COUNT(DISTINCT id_pendidikan) as total_pekerjaan FROM pendidikan GROUP BY id_pribadi) as pendidikan"),
+                    DB::raw("(SELECT id_pribadi, COUNT(DISTINCT id_pendidikan) as total_pendidikan FROM pendidikan GROUP BY id_pribadi) as pendidikan"),
                     'data_pribadi.id_pribadi',
                     '=',
                     'pendidikan.id_pribadi'
                 )
-                ->where('data_pribadi.tamatan', $tahun)
-                ->groupBy('data_pribadi.id_pribadi')
+                ->whereRaw("CAST(data_pribadi.tamatan AS UNSIGNED) = $tahun")
                 ->selectRaw('COUNT(pendidikan.id_pribadi) as total_pendidikan')
                 ->count();
 
             $data[$tahun] = $alumniCount;
         }
+
         return $data;
     }
 }

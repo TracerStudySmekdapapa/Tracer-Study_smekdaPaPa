@@ -3,20 +3,15 @@
 
 <script>
     let data = @json($countAlumniPertahun);
-    console.log(data);
-
 
     function dataValue() {
         const finalValue = []
         for (const property in data) {
             finalValue.push(`${data[property]}`);
         }
-        // console.log(finalValue);
+
         return finalValue;
     }
-
-    // console.log(dataValue());
-
 
     function dataYear() {
         const finalValueYears = []
@@ -25,13 +20,6 @@
         }
         return finalValueYears;
     }
-
-    console.log(dataYear());
-
-
-
-    // data.shift();
-
 
     let options = {
         series: [{

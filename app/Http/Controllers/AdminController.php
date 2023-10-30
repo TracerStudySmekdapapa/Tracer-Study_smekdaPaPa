@@ -23,44 +23,52 @@ class AdminController extends Controller
         })
             ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
             ->orderBy('users.name', 'ASC')
-            ->get();
+            ->limit(3)->get();
         $title_page = 'Selamat Datang, Admin';
         $countPendidikan = PendidikanController::alumniPendidikan();
         $countPendidikanPertahun = PendidikanController::alumniPendidikanPertahun();
         $countPekerjaan = PekerjaanController::alumniBekerja();
         $countPekerjaanPertahun = PekerjaanController::alumniBekerjaPertahun();
+        // dd($countPekerjaanPertahun);
         $countAlumniPertahun = PribadiController::alumniPertahun();
         $countAlumni = PribadiController::semuaAlumni();
         $countAlumniMendaftar = PribadiController::alumniMendaftar();
         $countAlumniNganggur = PribadiController::alumniTidakBekerjaDanTidakPendidikan();
-        return view('admin.dashboard', compact('tidakAlumni', 'title', 'title_page', 'countAlumni', 'countPekerjaan', 'countPendidikan', 'countPendidikanPertahun', 'countAlumniPertahun', 'countAlumniNganggur', 'countAlumniMendaftar'));
+        return view('admin.dashboard', compact('tidakAlumni', 'title', 'title_page', 'countAlumni', 'countPekerjaan', 'countPendidikan', 'countPendidikanPertahun', 'countAlumniPertahun', 'countAlumniNganggur', 'countAlumniMendaftar', 'countPekerjaanPertahun'));
     }
 
     /* Start Data Alumni */
     public function dataAlumni(Request $request)
     {
-        $name = $request->search;
-        $angkatan = $request->angkatan;
-        $alumni = User::whereHas('roles', function ($query) {
-            $query->where('name', 'Alumni');
-        })
-            ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
-            ->leftJoin('jurusan', 'data_pribadi.id_jurusan', '=', 'jurusan.id_jurusan')
-            ->orderBy('users.name', 'ASC')
-            ->filter(request(['search', 'angkatan']))
-            ->get();
-
-
+        $search = $request->search;
+        $title = 'Data Alumni';
+        $title_page = 'Lihat Data Alumni';
         $tidakAlumni = User::whereDoesntHave('roles', function ($query) {
             $query->whereIn('name', ['Alumni', 'Admin']);
         })
             ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
             ->orderBy('users.name', 'ASC')
             ->get();
+        if ($search) {
 
-        $title = 'Data Alumni';
-        $title_page = 'Lihat Data Alumni';
-        return view('admin.alumni.index', compact('alumni', 'name', 'tidakAlumni', 'angkatan', 'title', 'title_page'));
+            $results = User::whereHas('roles', function ($query) {
+                $query->where('name', 'Alumni');
+            })
+                ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
+                ->leftJoin('jurusan', 'data_pribadi.id_jurusan', '=', 'jurusan.id_jurusan')
+                ->orderBy('users.name', 'ASC')
+                ->filter(request(['search']))
+                ->paginate(10)->withQueryString();
+            return view('admin.alumni.index', compact('tidakAlumni', 'results', 'search', 'title', 'title_page'));
+        }
+        $alumni = User::whereHas('roles', function ($query) {
+            $query->where('name', 'Alumni');
+        })
+            ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
+            ->leftJoin('jurusan', 'data_pribadi.id_jurusan', '=', 'jurusan.id_jurusan')
+            ->orderBy('users.name', 'ASC')
+            ->paginate(10)->withQueryString();
+        return view('admin.alumni.index', compact('alumni', 'tidakAlumni', 'search', 'title', 'title_page'));
     }
 
     public function detailAlumni($id)

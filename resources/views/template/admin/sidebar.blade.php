@@ -24,6 +24,9 @@
                         <span>
                             @include('template.admin.components.jurusan')
                         </span>
+                        <span>
+                            @include('template.admin.components.pesan')
+                        </span>
                     </div>
                 </div>
                 <div>

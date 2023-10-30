@@ -1,6 +1,6 @@
 <div x-data="{
     tooltipVisible: false,
-    tooltipText: 'jurusan',
+    tooltipText: 'pesan',
     tooltipArrow: true,
     tooltipPosition: 'right',
 }" x-init="$refs.content.addEventListener('mouseenter', () => { tooltipVisible = true; });
@@ -45,6 +45,6 @@ $refs.content.addEventListener('mouseleave', () => { tooltipVisible = false; });
             </div>
         </div>
     </div>
-    <a x-ref="content" class="block w-full" href="{{ route('jurusan') }}"><img class="mx-auto"
-            src="{{ asset('assets/jurusan.svg') }}" alt="jurusan" /></a>
+    <a x-ref="content" class="block w-full" href="{{ route('pesan') }}"><img class="mx-auto"
+            src="{{ asset('assets/pesan.svg') }}" alt="jurusan" /></a>
 </div>

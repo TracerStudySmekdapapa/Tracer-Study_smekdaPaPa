@@ -20,7 +20,7 @@
                         Dapatkan kesempatan yang lebih luas dengan data pribadi yang lengkap.
                     </p>
 
-                    <a href="{{ route('alumniDashboard') }}"
+                    <a href="{{ route('dashboard') }}"
                         class="hidden mt-3 text-blue-500 underline underline-offset-8 md:block">kembali ke
                         Dashboard</a>
                 </div>

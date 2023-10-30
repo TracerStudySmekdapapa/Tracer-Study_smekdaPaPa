@@ -53,15 +53,13 @@ class PekerjaanController extends Controller
                     '=',
                     'pekerjaan.id_pribadi'
                 )
-                ->where('data_pribadi.tamatan', $tahun)
-                ->groupBy('data_pribadi.id_pribadi')
+                ->whereRaw("CAST(data_pribadi.tamatan AS UNSIGNED) = $tahun")
                 ->selectRaw('COUNT(pekerjaan.id_pribadi) as total_pekerjaan')
                 ->count();
 
-            $data[] = $alumniCount;
+            $data[$tahun] = $alumniCount;
         }
 
-        $prettyJson = ['data' => $data];
-        return $prettyJson;
+        return $data;
     }
 }

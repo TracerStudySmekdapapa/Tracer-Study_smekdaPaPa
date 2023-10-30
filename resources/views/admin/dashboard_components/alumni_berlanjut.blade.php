@@ -3,13 +3,40 @@
 
 
 <script>
+    let pekerjaan = @json($countPekerjaanPertahun);
+    let pendidikan = @json($countPendidikanPertahun);
+
+    function dataPekerjaanValue() {
+        const finalValue = []
+        for (const property in pekerjaan) {
+            finalValue.push(`${pekerjaan[property]}`);
+        }
+        return finalValue;
+    }
+
+    function dataPendidikanValue() {
+        const finalValue = []
+        for (const property in pendidikan) {
+            finalValue.push(`${pendidikan[property]}`);
+        }
+        return finalValue;
+    }
+
+    function dataYear() {
+        const finalValueYears = []
+        for (const property in pekerjaan) {
+            finalValueYears.push(`${property}`);
+        }
+        return finalValueYears;
+    }
+
     var options_berlanjut = {
         series: [{
-            name: 'series1',
-            data: [31, 40, 28, 51, 42, 109, 100]
+            name: 'Alumni yang bekerja',
+            data: dataPekerjaanValue()
         }, {
-            name: 'series2',
-            data: [11, 32, 45, 32, 34, 52, 41]
+            name: 'Alumni yang melanjutkan pendidikan',
+            data: dataPendidikanValue()
         }],
         chart: {
             height: 350,
@@ -23,10 +50,7 @@
         },
         xaxis: {
             type: 'datetime',
-            categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z",
-                "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z",
-                "2018-09-19T06:30:00.000Z"
-            ]
+            categories: dataYear()
         },
         tooltip: {
             x: {

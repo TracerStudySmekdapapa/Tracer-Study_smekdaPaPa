@@ -12,7 +12,16 @@
         <div class="md:col-span-10 md:mr-10">
             @include('template.admin.header')
 
+            <div class="w-1/5">
+                <form action="{{ route('dataAlumni') }}" method="get" id="form_search">
 
+                    <input id="input_search"
+                        class="relative z-[23] block  mt-1 text-sm border border-gray-500 pl-5 w-full pr-12 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                        placeholder="cari berdasarkan nama / nisn" type="text" name="search"
+                        value="{{ $search }}" />
+
+                </form>
+            </div>
             <div class="overflow-x-auto lg:overflow-visible   mt-20 ">
                 <table
                     class="relative z-20 rounded-lg bg-primary/5 min-w-[800px]  w-full  mt-6 overflow-x-scroll lg:overflow-x-hidden">
@@ -46,7 +55,7 @@
                         {{-- looping --}}
 
                         {{-- @if ($search || $tamatan) --}}
-                        @forelse ($alumni as $item)
+                        @forelse ($search ? $results : $alumni as $item)
                             <tr class="divide-x bg-gray-50">
                                 <td class=" py-4   max-w-[350px] ">
                                     <div class="grid grid-cols-2 place-items-center mx-auto w-[200px] ">
@@ -127,6 +136,11 @@
 
 
                     </tbody>
+                    <tfoot>
+                        <tr class="bg-gray-50">
+                            <td colspan="6">{{ $search ? $results : $alumni->links() }}</td>
+                        </tr>
+                    </tfoot>
 
                 </table>
             </div>

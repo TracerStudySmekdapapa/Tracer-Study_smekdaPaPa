@@ -20,7 +20,7 @@
                     </a>
                     <a href="{{ route('/') }}"
                         class="ml-6 text-gray-700 navigation__content__link md:w-auto md:px-0 md:mx-2 hover:text-black lg:mx-3">Tutorial</a>
-                    <a href="{{ route('/') }}"
+                    <a href="{{ route('tambahContact') }}"
                         class="ml-6 text-gray-700 navigation__content__link md:w-auto md:px-0 md:mx-2 hover:text-black lg:mx-3">Kontak</a>
                     <a href="{{ route('search') }}" class="navigation___search">
                         <!-- search -->
@@ -40,7 +40,7 @@
                         <a href=""
                             class="relative flex cursor-default select-none hover:bg-green-100 items-center rounded px-2 py-1.5 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
 
-                            <a href="{{ route('alumniDashboard') }}"
+                            <a href="{{ route('dashboard') }}"
                                 class="flex items-center space-x-1 btn___signin md:hidden">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -72,7 +72,8 @@
 
                             {{-- ? logout --}}
                             <div class="-mb-3 btn___signup md:hidden">
-                                <form action="">
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
                                     <button type="submit" class="flex items-center space-x-2 "><img
                                             src="{{ asset('assets/logout.svg') }}" alt=""><span>Log
                                             Out</span></button>

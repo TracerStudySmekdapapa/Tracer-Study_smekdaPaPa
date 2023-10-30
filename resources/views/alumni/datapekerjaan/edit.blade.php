@@ -20,7 +20,8 @@
                     berkembang bersama.
                 </p>
 
-                <a href="{{ route('/') }}" class="text-blue-500 underline-offset-8 underline mt-3 hidden md:block">kembali
+                <a href="{{ route('dashboard') }}"
+                    class="text-blue-500 underline-offset-8 underline mt-3 hidden md:block">kembali
                     ke
                     Dashboard</a>
             </div>

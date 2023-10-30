@@ -86,7 +86,7 @@ class PribadiController extends Controller
                 'id_user' => $id
             ]);
 
-            return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil disimpan']);
+            return redirect()->route('dashboard')->with(['message' => 'Data berhasil disimpan']);
         } else {
             return redirect()->back()->withErrors($validatedData)->withInput($request->all());
         }
@@ -130,7 +130,7 @@ class PribadiController extends Controller
                 'id_jurusan' => $request->jurusan,
                 'id_user' => $id
             ]);
-            return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil diubah']);
+            return redirect()->route('dashboard')->with(['message' => 'Data berhasil diubah']);
         } else {
             return redirect()->back()->withErrors($validatedData)->withInput($request->all());
         }
@@ -163,7 +163,7 @@ class PribadiController extends Controller
                 'id_pribadi' => $id_pribadi->id_pribadi
             ]);
 
-            return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil disimpan']);
+            return redirect()->route('dashboard')->with(['message' => 'Data berhasil disimpan']);
         } else {
             return redirect()->back()->withErrors($validatedData)->withInput($request->all());
         }
@@ -194,7 +194,7 @@ class PribadiController extends Controller
                 'alamat_instansi' => $request->alamat,
             ]);
 
-            return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil diubah']);
+            return redirect()->route('dashboard')->with(['message' => 'Data berhasil diubah']);
         } else {
             return redirect()->back()->withErrors($validatedData)->withInput($request->all());
         }
@@ -211,7 +211,7 @@ class PribadiController extends Controller
     {
         $pengaduan = Pekerjaan::where('id_pekerjaan', $id)->first();
         $pengaduan->delete();
-        return redirect()->route('alumniDashboard')->with('message', 'Pengaduan Berhasil Dihapus!');
+        return redirect()->route('dashboard')->with('message', 'Pengaduan Berhasil Dihapus!');
     }
 
     /* End Create Data Pekerjaan */
@@ -240,7 +240,7 @@ class PribadiController extends Controller
                 'id_pribadi' => $id_pribadi->id_pribadi
             ]);
 
-            return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil disimpan']);
+            return redirect()->route('dashboard')->with(['message' => 'Data berhasil disimpan']);
         } else {
             return redirect()->back()->withErrors($validatedData)->withInput($request->all());
         }
@@ -269,7 +269,7 @@ class PribadiController extends Controller
                 'alamat_univ' => $request->alamat_univ,
             ]);
 
-            return redirect()->route('alumniDashboard')->with(['message' => 'Data berhasil diubah']);
+            return redirect()->route('dashboard')->with(['message' => 'Data berhasil diubah']);
         } else {
             return redirect()->back()->withErrors($validatedData)->withInput($request->all());
         }
@@ -287,7 +287,7 @@ class PribadiController extends Controller
     {
         $pengaduan = Pendidikan::where('id_pendidikan', $id)->first();
         $pengaduan->delete();
-        return redirect()->route('alumniDashboard')->with('message', 'Data Berhasil Dihapus!');
+        return redirect()->route('dashboard')->with('message', 'Data Berhasil Dihapus!');
     }
     /* End Create Data Pekerjaan */
 

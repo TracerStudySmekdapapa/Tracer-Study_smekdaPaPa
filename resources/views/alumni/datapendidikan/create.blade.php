@@ -20,7 +20,7 @@
                         Pendidikan adalah kunci untuk membuka pintu-pintu kesempatan
                     </p>
 
-                    <a href="{{ route('alumniDashboard') }}"
+                    <a href="{{ route('dashboard') }}"
                         class="text-blue-500 underline-offset-8 underline mt-3 hidden md:block">kembali ke
                         Dashboard</a>
                 </div>

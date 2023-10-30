@@ -44,7 +44,7 @@
                         </tr>
                     </thead>
                     <tbody class="text-center divide-x capitalize">
-                        @foreach ($tidakAlumni as $item)
+                        @forelse ($tidakAlumni as $item)
                             <tr class="divide-x bg-gray-50">
                                 <td class=" py-4   max-w-[350px] ">
                                     <h1 class="">{{ $item->name }}</h1>
@@ -71,7 +71,11 @@
                                     </form>
                                 </td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr>
+                                <td colspan="6" class="text-red-600">Tidak ada data</td>
+                            </tr>
+                        @endforelse
                     </tbody>
 
                 </table>

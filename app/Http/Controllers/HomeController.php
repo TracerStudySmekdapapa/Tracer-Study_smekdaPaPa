@@ -8,6 +8,7 @@ use App\Models\Pendidikan;
 use App\Models\Pribadi;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
@@ -26,6 +27,7 @@ class HomeController extends Controller
             $alumni = User::whereHas('roles', function ($query) {
                 $query->where('name', 'Alumni');
             })->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
+                ->leftJoin('jurusan', 'data_pribadi.id_jurusan', '=', 'jurusan.id_jurusan')
                 ->orderBy('users.name', 'ASC')->filter(request(['search', 'tamatan']))->get();
             return view('pages.search', compact('alumni', 'title', 'search', 'tamatan'));
         }
@@ -39,5 +41,21 @@ class HomeController extends Controller
         $dataPekerjaan = Pekerjaan::where('id_pribadi', $dataPribadi->id_pribadi)->get();
         $dataPendidikan = Pendidikan::where('id_pribadi', $dataPribadi->id_pribadi)->get();
         return view('pages.detail', compact('dataPribadi', 'dataPekerjaan', 'dataPendidikan', 'title'));
+    }
+
+    public function moreDetailPendidikan($id)
+    {
+        $pendidikan = Pendidikan::where('id_pribadi', $id)->get();
+        $name = $pendidikan->first()->alumni->user;
+        $title = 'Data Pendidikan ' . Str::ucfirst($name->name);
+        return view('pages.moreDetail.pendidikan', compact('title', 'pendidikan'));
+    }
+
+    public function moreDetailPekerjaan($id)
+    {
+        $pekerjaan = Pekerjaan::where('id_pribadi', $id)->get();
+        $name = $pekerjaan->first()->alumni->user;
+        $title = 'Data Pekerjaan ' . Str::ucfirst($name->name);
+        return view('pages.moreDetail.pekerjaan', compact('title', 'pekerjaan'));
     }
 }

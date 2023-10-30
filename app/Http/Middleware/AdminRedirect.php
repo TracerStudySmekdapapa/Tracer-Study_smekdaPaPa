@@ -20,6 +20,7 @@ class AdminRedirect
         if (Auth::check() && Auth::user()->hasRole('Admin')) {
             return redirect()->route('adminDashboard');
         }
+
         return $next($request);
     }
 }
