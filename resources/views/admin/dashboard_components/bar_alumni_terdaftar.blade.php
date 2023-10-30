@@ -1,4 +1,4 @@
-<div id="alumni_terdaftar_bar" style="width:100%; x max-height:300px;"></div>
+<div id="alumni_terdaftar_bar" style="width:100%; "></div>
 
 <script>
     /* let terverif = {{ $countAlumni }}
