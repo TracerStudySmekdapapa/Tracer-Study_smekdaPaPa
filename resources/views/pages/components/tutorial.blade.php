@@ -19,7 +19,7 @@
 
         @foreach ($angka as $item)
 
-        <div class="card">
+        <div class="card ">
             <div class="card__header">
                 <div class="card___icon">
                     <img src="{{ asset('assets/' . $gambar[$item] . '.svg') }}" alt="" />

@@ -76,13 +76,13 @@
 
                     <ul class="mt-8 space-y-4 text-sm">
                         <li>
-                            <a class="text-gray-700 transition hover:text-gray-700/75" href="#faq">
+                            <a href="{{ route('/') }}#faq" class="text-gray-700 transition hover:text-gray-700/75" href="#faq">
                                 FAQs
                             </a>
                         </li>
 
                         <li>
-                            <a class="text-gray-700 transition hover:text-gray-700/75" href="#kontak">
+                            <a  href="{{ route('tambahContact') }}" class="text-gray-700 transition hover:text-gray-700/75" href="#kontak">
                                 Kontak
                             </a>
                         </li>

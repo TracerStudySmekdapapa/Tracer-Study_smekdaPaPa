@@ -4,7 +4,7 @@
         this.activeAccordion = (this.activeAccordion == id) ? '' : id
     }
 }" class="relative w-full max-w-3xl py-5 mx-auto mt-12 text-base">
-    <h1 class="py-6 text-[#2525255] text-[20px] font-semibold">FAQ ?</h1>
+    <h1 class="py-6 text-[#2525255] text-[20px] font-semibold">FAQs ?</h1>
     <div x-data="{ id: $id('accordion') }"
         :class="{
             'border-neutral-200/60 text-neutral-800': activeAccordion ==

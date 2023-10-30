@@ -120,7 +120,7 @@ main {
 /* about */
 @layer components {
   .main__about {
-    @apply grid grid-cols-1 md:grid-cols-2 md:gap-8 lg:gap-4 place-items-center;
+    @apply grid grid-cols-1 md:grid-cols-2 md:gap-8 lg:gap-4 place-items-center  w-[90%] mx-auto;
   }
 
   /* left */
@@ -129,14 +129,14 @@ main {
   }
 
   .main__about .right__item {
-    @apply flex flex-col items-start justify-start mt-6 space-y-5 md:mt-0;
+    @apply flex flex-col items-start justify-start mt-6 space-y-5 md:mt-0 w-[90%] ;
   }
 }
 
 /* card tutorial */
 @layer components {
   .main__tutorial {
-    @apply grid grid-cols-1 gap-3 space-y-4 md:grid-cols-2  lg:grid-cols-3  place-items-center;
+    @apply grid grid-cols-1 gap-3 space-y-4 lg:space-y-0 md:grid-cols-2  lg:grid-cols-3  place-items-center;
   }
 
   .card {

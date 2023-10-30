@@ -15,7 +15,7 @@
                         </div>
                         <div class="flex flex-col text-[14px] capitalize">
                             <h1 class="font-semibold text-lg">{{ $item->nama_instansi }}</h1>
-                            <p class="text-primary font-normal min-h-[30px]">{{ $item->alamat_instansi }}</p>
+                            <p class="text-primary font-normal min-h-[40px]">{{ $item->alamat_instansi }}</p>
                             <div class="text-black/80 flex justify-between pr-3 my-0.5 min-h-[30px]">
                                 <p>{{ $item->jabatan }}</p>
                                 <p>{{ $item->thn_masuk }} s/d {{ $item->thn_keluar }}</p>

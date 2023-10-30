@@ -12,12 +12,12 @@
  
              <div class="flex space-x-10 mt-[17px]">
                  <button class="inset-0">
-                     <a href="" class="px-6 py-2 text-white rounded-full bg-primary hover:bg-gray-800">cari
-                         alumni
+                     <a href="" class="px-6 py-2  text-white rounded-full bg-primary hover:bg-gray-800">Cari
+                         Alumni
                      </a>
                  </button>
                  <button>
-                     <a href="" class="hero___register">mendaftar </a>
+                     <a href="" class="hero___register">Mendaftar</a>
                  </button>
              </div>
 
