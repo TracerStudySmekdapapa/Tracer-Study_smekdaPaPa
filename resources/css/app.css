@@ -7,13 +7,13 @@
 }
 
 body {
-  @apply mx-[5px] sm:mx-[30px] md:mx-[0px] lg:mx-[50px];
+  @apply mx-[5px] sm:mx-[30px] md:mx-[0px] lg:mx-[40px];
   font-family: "Poppins", sans-serif;
   background-color: rgb(250, 250, 250);
 }
 
 main {
-  @apply pt-10 sm:max-w-[1280px] mx-auto px-[10px] sm:px-[20px] md:px-[30px] lg:px-[50px];
+  @apply pt-10 sm:max-w-[1280px] mx-auto px-[10px] sm:px-[20px] md:px-[20px] lg:px-[30px] xl:px-[50px];
 }
 
 /* !!! ===================================HOME PAGE */
@@ -36,7 +36,7 @@ main {
 
   /* ?navigation link  page*/
   .navigation__content {
-    @apply flex flex-col items-start justify-start w-full mx-auto text-center md:space-x-2 lg:justify-center lg:space-x-8 md:w-2/3 md:mt-0 md:flex-row md:items-center;
+    @apply flex flex-col items-start lg:ml-1 justify-start w-full mx-auto text-center md:space-x-2 lg:justify-center lg:space-x-8 md:w-2/3 md:mt-0 md:flex-row md:items-center;
   }
 
   .navigation__content__link {
@@ -83,24 +83,24 @@ main {
 /* section hero */
 @layer components {
   .main__hero {
-    @apply relative flex flex-col-reverse justify-start md:flex-row;
+    @apply xl:bg-red-500 relative grid grid-cols-1 place-items-center  md:grid-cols-2 mt-10 ;
   }
 
   /* left */
   .main__hero .left__item {
-    @apply flex flex-col -mt-10 lg:mt-[50px];
+    @apply flex flex-col;
   }
 
   .main__hero .title {
-    @apply text-[45px] md:text-[30px] lg:text-[47px] relative font-bold;
+    @apply text-[28px] md:text-[30px] lg:text-[35px] relative font-bold;
   }
 
   .main__hero .subTitle {
-    @apply text-[25px] md:text-[20px] lg:text-[30px] text-primary font-bold mt-[5px];
+    @apply text-[18px] md:text-[20px] lg:text-[20px] text-primary font-bold mt-[5px];
   }
 
   .main__hero .deskripsi {
-    @apply max-w-[395px] leading-[27px] text-black/70 my-[17px];
+    @apply max-w-[325px] leading-6 md:leading-[27px] text-black/70 my-[17px] text-sm text-justify lg:text-left  md:max-w-[300px];
   }
 
   .main__hero .hero___register {
@@ -110,11 +110,10 @@ main {
   /* right */
 
   .main__hero .right__item {
-    @apply -mt-5 md:-mt-0 lg:w-[50%] relative md:max-w-[300px] lg:max-w-[570px];
   }
 
   .main__hero .hero__image {
-    @apply relative scale-105 -top-10 lg:absolute lg:-right-20 lg:top-5;
+    @apply relative scale-90 md:scale-100  lg:scale-100;
   }
 }
 
