@@ -6,7 +6,8 @@
                     <h1 class="footer__title">Tracer study sMKN 2 padang panjang</h1>
                 </div>
 
-                <p class="mt-6 max-w-md text-center leading-relaxed text-gray-500 sm:max-w-xs sm:text-left">
+                <p
+                    class="mt-6 max-w-md text-justify leading-relaxed text-gray-500 sm:max-w-xs sm:text-left text-sm md:text-base">
                     Bantu kami meningkatkan kualitas pendidikan. Tracer study,
                     kontribusimu untuk pendidikan dan jendela untuk masa depanmu.
                 </p>

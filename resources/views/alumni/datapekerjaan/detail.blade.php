@@ -4,10 +4,10 @@
     <main>
         @include('template.utils.navbar')
 
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-5">
+        <div class="mt-1 md:mt-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-y-5 place-items-center md:gap-5">
             @foreach ($pekerjaan as $index => $item)
                 <div
-                    class="relative z-10 min-w-[300px]  max-w-[332px] min-h-[280px] max-h-[300px] rounded-[10px]  bg-white shadow-lg py-4 overflow-y-auto">
+                    class="relative z-10 min-w-[300px]  max-w-[332px] min-h-[280px] max-h-[300px] rounded-[10px]  px-2 bg-white shadow-lg py-4 overflow-y-auto">
                     <div class="flex justify-start  px-5 space-x-3">
                         <div
                             class="translate-y-2 rounded-full min-w-[40px] h-[40px] bg-primary grid place-items-center text-white font-semibold">
@@ -15,8 +15,8 @@
                         </div>
                         <div class="flex flex-col text-[14px] capitalize">
                             <h1 class="font-semibold text-lg">{{ $item->nama_instansi }}</h1>
-                            <p class="text-primary font-normal">{{ $item->alamat_instansi }}</p>
-                            <div class="text-black/80 flex justify-between pr-3 my-0.5">
+                            <p class="text-primary font-normal min-h-[30px]">{{ $item->alamat_instansi }}</p>
+                            <div class="text-black/80 flex justify-between pr-3 my-0.5 min-h-[30px]">
                                 <p>{{ $item->jabatan }}</p>
                                 <p>{{ $item->thn_masuk }} s/d {{ $item->thn_keluar }}</p>
                             </div>

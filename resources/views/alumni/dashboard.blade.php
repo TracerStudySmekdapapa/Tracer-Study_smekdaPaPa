@@ -15,7 +15,7 @@
     <main>
         @include('template.utils.navbar')
 
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-x-4 capitalize ">
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-x-4 capitalize mt-10 ">
             <div class="w-full min-h-[500px]  justify-center items-start pt-5 flex">
                 <div class="flex flex-col space-y-5 justify-start items-center">
 

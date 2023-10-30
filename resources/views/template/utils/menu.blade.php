@@ -59,7 +59,7 @@
                                     <line x1="21" x2="9" y1="12" y2="12"></line>
                                 </svg>
                             </span>
-                            <span>Log out</span>
+                            <span>Log Outs</span>
                         </button>
                     </form>
                 </div>

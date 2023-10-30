@@ -1,4 +1,4 @@
-<nav class="relative z-50 h-24 select-none" x-data="{ showMenu: false }">
+<nav class="relative z-50  h-20 md:h-24 md:-mt-10  select-none" x-data="{ showMenu: false }">
     <div class="navigation__main">
         <div class="navigation__main__title">
             <a href="{{ route('/') }}" class="navigation__title__link"> Tracer Study </a>
@@ -14,14 +14,14 @@
                 <!-- ?navigasi menu ===========================-->
                 <div class="navigation__content">
                     <a href="{{ route('/') }}#home"
-                        class="ml-6 text-black navigation__content__link md:ml-0 lg:mx-3">Beranda</a>
+                        class="ml-6 text-black navigation__content__link text-base py-1 md:ml-0 lg:mx-3">Beranda</a>
                     <a href="{{ route('/') }}#about"
-                        class="ml-6 text-gray-700 navigation__content__link hover:text-black lg:mx-3">Tentang
+                        class="ml-6 text-gray-700 navigation__content__link text-base py-1 hover:text-black lg:mx-3">Tentang
                     </a>
                     <a href="{{ route('/') }}"
-                        class="ml-6 text-gray-700 navigation__content__link md:w-auto md:px-0 md:mx-2 hover:text-black lg:mx-3">Tutorial</a>
+                        class="ml-6 text-gray-700 navigation__content__link text-base py-1 md:w-auto md:px-0 md:mx-2 hover:text-black lg:mx-3">Tutorial</a>
                     <a href="{{ route('/') }}"
-                        class="ml-6 text-gray-700 navigation__content__link md:w-auto md:px-0 md:mx-2 hover:text-black lg:mx-3">Kontak</a>
+                        class="ml-6 text-gray-700 navigation__content__link text-base py-1 md:w-auto md:px-0 md:mx-2 hover:text-black lg:mx-3">Kontak</a>
                     <a href="{{ route('search') }}" class="navigation___search">
                         <!-- search -->
                         <svg class="inline w-6 h-6" fill="none" stroke-linecap="round" stroke-linejoin="round"
@@ -48,7 +48,7 @@
                                     <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
                                     <circle cx="12" cy="7" r="4"></circle>
                                 </svg>
-                                <span>Dashboard</span>
+                                <span class="text-base">Dashboard</span>
                             </a>
                             {{-- !end profile --}}
 
@@ -64,17 +64,18 @@
                                     </path>
                                     <circle cx="12" cy="12" r="3"></circle>
                                 </svg>
-                                <span>Setting</span>
+                                <span class="text-base">Setting</span>
                             </a>
                             {{-- !end setting --}}
 
 
 
                             {{-- ? logout --}}
-                            <div class="-mb-3 btn___signup md:hidden">
+                            <div class=" btn___signup md:hidden">
                                 <form action="">
                                     <button type="submit" class="flex items-center space-x-2 "><img
-                                            src="{{ asset('assets/logout.svg') }}" alt=""><span>Log
+                                            src="{{ asset('assets/logout.svg') }}" alt=""><span
+                                            class="text-base">Log
                                             Out</span></button>
                                 </form>
                             </div>
@@ -83,8 +84,9 @@
                             @include('template.utils.menu')
                         </a>
                     @else
-                        <a href="{{ route('login') }}" class="btn___signin font-medium">Login</a>
-                        <a href="{{ route('register') }}" class="btn___signup font-medium text-[14px]">Register</a>
+                        <a href="{{ route('login') }}" class="btn___signin font-medium  min-h-[30px]">Login</a>
+                        <a href="{{ route('register') }}"
+                            class="btn___signup font-medium text-[15px] min-h-[30px]">Register</a>
                     @endif
                 </div>
                 <!-- !navigasi menu login ===========================-->
