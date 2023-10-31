@@ -67,7 +67,6 @@ class HomeController extends Controller
 
     public function tutorial()
     {
-        $data = Jurusan::get();
         $title = 'tutorial';
         return view('pages.tutorial', compact('title'));
     }

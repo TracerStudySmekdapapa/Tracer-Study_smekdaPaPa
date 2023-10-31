@@ -6,7 +6,7 @@
         </div>
 
         <div>
-            <a href="">
+            <a href="{{ route('search') }}">
                 <button>cari disii</button>
             </a>
         </div>

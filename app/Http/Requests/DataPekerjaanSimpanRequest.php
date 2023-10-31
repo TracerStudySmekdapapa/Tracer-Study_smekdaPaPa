@@ -37,6 +37,7 @@ class DataPekerjaanSimpanRequest extends FormRequest
     {
         return [
             'nama_pekerjaan.required' => 'Nama Pekerjaan harus diisi.',
+            'nama_instansi.required' => 'Nama Instansi harus diisi.',
             'nama_univ.required' => 'Nama Pekerjaan harus diisi.',
             'tahun_masuk.digits' => 'Tahun masuk harus terdiri dari 4 digit.',
             'tahun_keluar.digits' => 'Tahun keluar harus terdiri dari 4 digit.',

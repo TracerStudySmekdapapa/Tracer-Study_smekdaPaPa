@@ -25,57 +25,53 @@
                 <div class="navigation__menu__accout">
                     @if (Auth::check())
                         {{-- ?profile --}}
-                        <<<<<<< HEAD <a href="{{ route('dashboard') }}"
+                        <a href="{{ route('dashboard') }}"
                             class="flex items-center space-x-1 text-base btn___signin md:hidden">
-                            =======
-                            <a href="{{ route('alumniDashboard') }}"
-                                class=" flex items-center space-x-1 text-base btn___signin md:hidden">
-                                >>>>>>> syaid
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2">
-                                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                                    <circle cx="12" cy="7" r="4"></circle>
-                                </svg>
-                                <span class="hover:cursor-pointer">Dashboard</span>
-                            </a>
-                            {{-- !end profile --}}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="w-5 h-5 mr-2">
+                                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                            <span class="hover:cursor-pointer">Dashboard</span>
+                        </a>
+                        {{-- !end profile --}}
 
 
-                            {{-- ? setting --}}
-                            <a href="{{ route('profile.edit') }}"
-                                class="cursor-pointer flex items-center space-x-1 text-base  btn___signin md:hidden"><svg
-                                    xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="w-5 h-5 mr-2">
-                                    <path
-                                        d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z">
-                                    </path>
-                                    <circle cx="12" cy="12" r="3"></circle>
-                                </svg>
-                                <span class="hover:cursor-pointer">Setting</span>
-                            </a>
-                            {{-- !end setting --}}
+                        {{-- ? setting --}}
+                        <a href="{{ route('profile.edit') }}"
+                            class="cursor-pointer flex items-center space-x-1 text-base  btn___signin md:hidden"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="w-5 h-5 mr-2">
+                                <path
+                                    d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z">
+                                </path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                            <span class="hover:cursor-pointer">Setting</span>
+                        </a>
+                        {{-- !end setting --}}
 
 
 
-                            {{-- ? logout --}}
-                            <div class=" btn___signup md:hidden ">
-                                <form action="{{ route('logout') }}" method="POST">
-                                    @csrf
-                                    <button type="submit" class="text-base flex items-center space-x-2 "><img
-                                            src="{{ asset('assets/logout.svg') }}" alt=""><span>Log
+                        {{-- ? logout --}}
+                        <div class=" btn___signup md:hidden ">
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="text-base flex items-center space-x-2 "><img
+                                        src="{{ asset('assets/logout.svg') }}" alt=""><span>Log
 
-                                            Out</span></button>
-                                </form>
-                            </div>
-                            {{-- !end logout --}}
-                            {{-- tampilan desktop --}}
-                            @include('template.utils.menu')
-                            </a>
-                        @else
-                            <a href="{{ route('login') }}" class="btn___signin font-medium">Login</a>
-                            <a href="{{ route('register') }}" class="btn___signup font-medium">Register</a>
+                                        Out</span></button>
+                            </form>
+                        </div>
+                        {{-- !end logout --}}
+                        {{-- tampilan desktop --}}
+                        @include('template.utils.menu')
+                        </a>
+                    @else
+                        <a href="{{ route('login') }}" class="btn___signin font-medium">Login</a>
+                        <a href="{{ route('register') }}" class="btn___signup font-medium">Register</a>
                     @endif
                 </div>
                 <!-- !navigasi menu login ===========================-->

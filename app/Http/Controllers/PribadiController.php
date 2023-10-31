@@ -211,7 +211,7 @@ class PribadiController extends Controller
     {
         $pengaduan = Pekerjaan::where('id_pekerjaan', $id)->first();
         $pengaduan->delete();
-        return redirect()->route('dashboard')->with('message', 'Pengaduan Berhasil Dihapus!');
+        return redirect()->route('dashboard')->with('message', 'Data Berhasil Dihapus!');
     }
 
     /* End Create Data Pekerjaan */

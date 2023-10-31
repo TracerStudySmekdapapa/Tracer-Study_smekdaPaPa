@@ -1,9 +1,9 @@
 @extends('template.master')
 @section('content')
-    @if (session('message'))
+    @if (session('error'))
         <div class="absolute top-0 right-0 p-4">
-            <h1 class="px-4 py-2.5 bg-green-600 font-bold uppercase rounded-md text-white">
-                {{ session('message') }}
+            <h1 class="px-4 py-2.5 bg-red-600 font-bold uppercase rounded-md text-white">
+                {{ session('error') }}
             </h1>
         </div>
     @endif
