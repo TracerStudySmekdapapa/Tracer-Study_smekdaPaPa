@@ -35,7 +35,15 @@ class JurusanController extends Controller
      */
     public function create()
     {
-        return view('admin.jurusan.create');
+        $title = 'Create Jurusan';
+        $title_page = 'Create Jurusan';
+        $tidakAlumni = User::whereDoesntHave('roles', function ($query) {
+            $query->whereIn('name', ['Alumni', 'Admin']);
+        })
+            ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
+            ->orderBy('users.name', 'ASC')
+            ->get();
+        return view('admin.jurusan.create', compact('title', 'title_page', 'tidakAlumni'));
     }
 
     /**
