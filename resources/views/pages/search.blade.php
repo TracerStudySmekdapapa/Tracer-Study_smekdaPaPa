@@ -100,7 +100,7 @@
 
                                         $abbreviation = '';
                                         foreach ($words as $word) {
-                                            $abbreviation .= strtoupper($word[0]);
+                                            $abbreviation .= str($word[0]);
                                         }
                                         echo $abbreviation;
                                     @endphp
