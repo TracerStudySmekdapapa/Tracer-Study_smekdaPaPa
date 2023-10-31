@@ -21,18 +21,18 @@
 
 
                 <a href="{{ Auth::user()->hasRole('Admin') ? route('adminDashboard') : route('alumniDashboard') }}"
-                    class="relative flex cursor-default select-none hover:bg-nature-100 items-center rounded px-2 py-1.5 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                    class="cursor-pointer relative flex cursor-default select-none hover:bg-nature-100 items-center rounded px-2 py-1.5 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round" class="w-4 h-4 mr-2">
                         <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
                         <circle cx="12" cy="7" r="4"></circle>
                     </svg>
-                    <span>Dashboard</span>
+                    <span class="cursor-pointer">Dashboard</span>
                 </a>
 
                 <a href="{{ route('profile.edit') }}"
-                    class="relative flex cursor-default select-none hover:bg-neutral-100 items-center rounded px-2 py-1.5 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                    class="cursor-pointer relative flex cursor-default select-none hover:bg-neutral-100 items-center rounded px-2 py-1.5 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round" class="w-4 h-4 mr-2">
@@ -41,7 +41,7 @@
                         </path>
                         <circle cx="12" cy="12" r="3"></circle>
                     </svg>
-                    <span>Settings</span>
+                    <span class="cursor-pointer">Settings</span>
                 </a>
 
                 <div class="h-px my-1 -mx-1 bg-neutral-200"></div>

@@ -1,6 +1,6 @@
 {{-- menu ini ditampilkan khusus ketika menampilkan halaman tambah data pekerjaan & pendidikan --}}
 
-<nav class="relative z-50  mx-2 md:-top-16 lg:-top-10 md:-mb-24 lg:-mb-20 select-none" x-data="{ showMenu: false }">
+<nav class="relative z-50  mx-2 md:-top-0 md:-mb-0 lg:-top-5  lg:-mb-5  select-none" x-data="{ showMenu: false }">
     <div class="navigation__main">
         <div class="navigation__main__title">
             <a href="{{ route('/') }}" class="navigation__title__link"> Tracer Study </a>
@@ -26,21 +26,21 @@
                     @if (Auth::check())
                         {{-- ?profile --}}
                         <a href="{{ route('alumniDashboard') }}"
-                            class="flex items-center space-x-1 text-base btn___signin md:hidden">
+                            class=" flex items-center space-x-1 text-base btn___signin md:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round" class="w-5 h-5 mr-2">
                                 <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
                                 <circle cx="12" cy="7" r="4"></circle>
                             </svg>
-                            <span>Dashboard</span>
+                            <span class="hover:cursor-pointer">Dashboard</span>
                         </a>
                         {{-- !end profile --}}
 
 
                         {{-- ? setting --}}
                         <a href="{{ route('profile.edit') }}"
-                            class="flex items-center space-x-1 text-base  btn___signin md:hidden"><svg
+                            class="cursor-pointer flex items-center space-x-1 text-base  btn___signin md:hidden"><svg
                                 xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round" class="w-5 h-5 mr-2">
@@ -49,7 +49,7 @@
                                 </path>
                                 <circle cx="12" cy="12" r="3"></circle>
                             </svg>
-                            <span>Setting</span>
+                            <span class="hover:cursor-pointer">Setting</span>
                         </a>
                         {{-- !end setting --}}
 
@@ -58,7 +58,7 @@
                         {{-- ? logout --}}
                         <div class=" btn___signup md:hidden ">
                             <form action="">
-                                <button type="submit" class="text-base flex items-center space-x-2 "><img
+                                <button type="submit" class="cursor-pointer text-base flex items-center space-x-2 "><img
                                         src="{{ asset('assets/logout.svg') }}" alt=""><span>Log
                                         Out</span></button>
                             </form>
