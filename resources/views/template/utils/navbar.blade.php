@@ -71,22 +71,20 @@
 
 
                             {{-- ? logout --}}
-                            <<<<<<< HEAD <div class="-mb-3 btn___signup md:hidden">
+
+
+                            <div class=" btn___signup md:hidden">
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
-                                    =======
-                                    <div class=" btn___signup md:hidden">
-                                        <form action="">
-                                            >>>>>>> syaid
-                                            <button type="submit" class="flex items-center space-x-2 "><img
-                                                    src="{{ asset('assets/logout.svg') }}" alt=""><span
-                                                    class="text-base">Log
-                                                    Out</span></button>
-                                        </form>
-                                    </div>
-                                    {{-- !end logout --}}
-                                    {{-- tampilan desktop --}}
-                                    @include('template.utils.menu')
+                                    <button type="submit" class="flex items-center space-x-2 "><img
+                                            src="{{ asset('assets/logout.svg') }}" alt=""><span
+                                            class="text-base">Log
+                                            Out</span></button>
+                                </form>
+                            </div>
+                            {{-- !end logout --}}
+                            {{-- tampilan desktop --}}
+                            @include('template.utils.menu')
                         </a>
                     @else
                         <a href="{{ route('login') }}" class="btn___signin font-medium  ">Login</a>

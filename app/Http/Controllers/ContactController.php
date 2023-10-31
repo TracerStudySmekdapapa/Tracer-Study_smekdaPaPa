@@ -45,7 +45,7 @@ class ContactController extends Controller
         })
             ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
             ->orderBy('users.name', 'ASC')
-            ->limit(3)->get();
+            ->get();
         $data = Contact::get();
         return view('admin.pesan', compact('title', 'data', 'title_page', 'tidakAlumni'));
     }

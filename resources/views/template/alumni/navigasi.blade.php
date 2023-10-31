@@ -57,18 +57,13 @@
 
                         {{-- ? logout --}}
                         <div class=" btn___signup md:hidden ">
-                            <<<<<<< HEAD <form action="{{ route('logout') }}" method="POST">
+                            <form action="{{ route('logout') }}" method="POST">
                                 @csrf
-                                <button type="submit" href={{ route('logout') }}
-                                    class="flex items-center space-x-2 "><img src="{{ asset('assets/logout.svg') }}"
-                                        alt=""><span>Log
-                                        =======
-                                        <form action="">
-                                            <button type="submit" class="text-base flex items-center space-x-2 "><img
-                                                    src="{{ asset('assets/logout.svg') }}" alt=""><span>Log
-                                                    >>>>>>> syaid
-                                                    Out</span></button>
-                                        </form>
+                                <button type="submit" class="text-base flex items-center space-x-2 "><img
+                                        src="{{ asset('assets/logout.svg') }}" alt=""><span>Log
+
+                                        Out</span></button>
+                            </form>
                         </div>
                         {{-- !end logout --}}
                         {{-- tampilan desktop --}}

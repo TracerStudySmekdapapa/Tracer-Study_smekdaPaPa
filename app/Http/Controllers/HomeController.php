@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Jurusan;
 use App\Models\Pekerjaan;
 use App\Models\Pendidikan;
 use App\Models\Pribadi;
@@ -57,5 +58,12 @@ class HomeController extends Controller
         $name = $pekerjaan->first()->alumni->user;
         $title = 'Data Pekerjaan ' . Str::ucfirst($name->name);
         return view('pages.moreDetail.pekerjaan', compact('title', 'pekerjaan'));
+    }
+
+    public function tutorial()
+    {
+        $data = Jurusan::get();
+        $title = 'tutorial';
+        return view('pages.tutorial', compact('title'));
     }
 }

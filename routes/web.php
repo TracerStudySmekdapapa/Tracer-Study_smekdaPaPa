@@ -8,24 +8,18 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\IsAlumni;
-use App\Models\Pekerjaan;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('/');
+Route::get('/tutorial', [HomeController::class, 'tutorial'])->name('tutorial');
 Route::get('contact', [ContactController::class, 'create'])->name('tambahContact');
 Route::post('contact', [ContactController::class, 'store'])->name('simpanContact');
 
-// semua orang
-
-
 Route::get('/search', [HomeController::class, 'search'])->name('search');
+
 Route::get('/alumni/{id}/detail', [HomeController::class, 'detail'])->name('detailAlumni');
 Route::get('/alumni/{id}/data-pendidikan/more-detail', [HomeController::class, 'moreDetailPendidikan'])->name('moreDataPendidikan');
 Route::get('/alumni/{id}/data-pekerjaan/more-detail', [HomeController::class, 'moreDetailPekerjaan'])->name('moreDataPekerjaan');
-Route::get('/tutorial', function () {
-    $title = 'tutorial';
-    return view('pages.tutorial')->with('title');
-})->name('tutorial');
 
 
 Route::get('/authenticate', [AuthenticateController::class, 'index'])->middleware(['auth', 'verified'])->middleware(['auth', 'verified']);
@@ -35,7 +29,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
 
     // admin
     Route::middleware('isAdmin')->group(function () {
