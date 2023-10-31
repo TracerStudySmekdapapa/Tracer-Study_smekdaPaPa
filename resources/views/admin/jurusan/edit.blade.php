@@ -13,7 +13,7 @@
         <div class="flex flex-col flex-1 w-full">
 
             {{-- ? ===================header --}}
-            @include('template.admin.header')
+            {{-- @include('template.admin.header') --}}
             {{-- ! =================== end header --}}
 
 

@@ -39,7 +39,7 @@
 
                                     <td class=" py-2 px">
 
-                                        <a href="{{ route('jurusan.edit', ['id'=>$id_jurusan]) }}"
+                                        <a href="{{ route('jurusan.edit', $item->id_jurusan) }}"
                                             class="inline-block  rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700">
                                             <img src="{{ asset('assets/jurusan-edit.svg') }}" alt="edit icon">
                                         </a>

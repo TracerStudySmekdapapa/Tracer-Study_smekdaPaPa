@@ -1,3 +1,5 @@
+@dd($alumni)
+
 @extends('template.master')
 @section('content')
     <div class="w-[130px] h-[130px] bg-primary blur-[100px] absolute top-20 -left-32 z-0"></div>
@@ -93,7 +95,7 @@
                                     </div>
                                 </td>
                                 <td>{{ $item->nisn }}</td>
-                                <td>{{ $item->jurusan }}</td>
+                                <td>{{ $item->jurusan->id_jurusan }}</td>
                                 <td>{{ $item->jenis_kelamin }}</td>
                                 <td>{{ $item->tamatan }}</td>
                                 <td>
