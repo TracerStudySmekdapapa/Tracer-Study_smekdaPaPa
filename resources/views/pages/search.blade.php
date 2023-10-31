@@ -1,5 +1,3 @@
-@dd($alumni)
-
 @extends('template.master')
 @section('content')
     <div class="w-[130px] h-[130px] bg-primary blur-[100px] absolute top-20 -left-32 z-0"></div>
@@ -95,7 +93,20 @@
                                     </div>
                                 </td>
                                 <td>{{ $item->nisn }}</td>
-                                <td>{{ $item->jurusan->id_jurusan }}</td>
+                                <td>
+                                    @php
+                                        $jurusan = $item->jurusan->nama_jurusan;
+                                        $words = explode(' ', $jurusan);
+
+                                        $abbreviation = '';
+                                        foreach ($words as $word) {
+                                            $abbreviation .= strtoupper($word[0]);
+                                        }
+                                        echo $abbreviation;
+                                    @endphp
+                                </td>
+
+
                                 <td>{{ $item->jenis_kelamin }}</td>
                                 <td>{{ $item->tamatan }}</td>
                                 <td>

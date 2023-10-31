@@ -16,12 +16,12 @@ class JurusanSeeder extends Seeder
     public function run()
     {
         $jurusan = [
-            'Desain Komunikasi Visual',
-            'Produksi dan Siaran Program Televisi',
-            'Multimedia',
-            'Pengembangan Perangkat Lunak dan Gim',
+            'Teknik Komputer Jaringan',
             'Rekayasa Perangkat Lunak',
-            'Teknik Komputer Jaringan'
+            'Pengembangan Perangkat Lunak Gim',
+            'Multi Media',
+            'Desain Komunikasi Visual',
+            'Produksi Siaran Program Televisi'
         ];
 
         foreach ($jurusan as $nama_jurusan) {
