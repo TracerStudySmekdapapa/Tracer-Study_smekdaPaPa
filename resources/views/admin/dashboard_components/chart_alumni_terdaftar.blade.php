@@ -2,7 +2,7 @@
 </div>
 
 <script>
-    let data = @json($countAlumniPertahun);
+    let data = @json($alumniData['countAlumniPertahun']);
 
     function dataValue() {
         const finalValue = []

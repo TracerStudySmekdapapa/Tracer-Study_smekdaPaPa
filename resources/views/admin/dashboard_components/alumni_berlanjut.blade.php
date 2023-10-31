@@ -3,8 +3,8 @@
 
 
 <script>
-    let pekerjaan = @json($countPekerjaanPertahun);
-    let pendidikan = @json($countPendidikanPertahun);
+    let pekerjaan = @json($alumniData['countPekerjaanPertahun']);
+    let pendidikan = @json($alumniData['countPendidikanPertahun']);
 
     function dataPekerjaanValue() {
         const finalValue = []

@@ -1,6 +1,6 @@
     @php
         $data = [1, 2, 3, 4];
-        $total = [$countAlumniMendaftar, $countAlumni, $countPekerjaan, $countPendidikan];
+        $total = [$alumniData['countAlumniMendaftar'], $alumniData['countAlumni'], $alumniData['countPekerjaan'], $alumniData['countPendidikan']];
         $text = ['Alumni Yang Telah Mendaftar', 'Alumni  Yang Telah Deferivikasi', 'Alumni yang telah bekerja ', 'Alumni melanjutkan pendidikan'];
         $img = ['admin_register', 'admin_verif', 'admin_bekerja', 'admin_pendidikan'];
     @endphp

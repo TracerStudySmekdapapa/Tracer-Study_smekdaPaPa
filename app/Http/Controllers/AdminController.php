@@ -25,16 +25,18 @@ class AdminController extends Controller
             ->orderBy('users.name', 'ASC')
             ->limit(3)->get();
         $title_page = 'Selamat Datang, Admin';
-        $countPendidikan = PendidikanController::alumniPendidikan();
-        $countPendidikanPertahun = PendidikanController::alumniPendidikanPertahun();
-        $countPekerjaan = PekerjaanController::alumniBekerja();
-        $countPekerjaanPertahun = PekerjaanController::alumniBekerjaPertahun();
-        // dd($countPekerjaanPertahun);
-        $countAlumniPertahun = PribadiController::alumniPertahun();
-        $countAlumni = PribadiController::semuaAlumni();
-        $countAlumniMendaftar = PribadiController::alumniMendaftar();
-        $countAlumniNganggur = PribadiController::alumniTidakBekerjaDanTidakPendidikan();
-        return view('admin.dashboard', compact('tidakAlumni', 'title', 'title_page', 'countAlumni', 'countPekerjaan', 'countPendidikan', 'countPendidikanPertahun', 'countAlumniPertahun', 'countAlumniNganggur', 'countAlumniMendaftar', 'countPekerjaanPertahun'));
+        $alumniData = [
+            'countPendidikan' => PendidikanController::alumniPendidikan(),
+            'countPendidikanPertahun' => PendidikanController::alumniPendidikanPertahun(),
+            'countPekerjaan' => PekerjaanController::alumniBekerja(),
+            'countPekerjaanPertahun' => PekerjaanController::alumniBekerjaPertahun(),
+            'countAlumniPertahun' => PribadiController::alumniPertahun(),
+            'countAlumni' => PribadiController::semuaAlumni(),
+            'countAlumniMendaftar' => PribadiController::alumniMendaftar(),
+            'countAlumniNganggur' => PribadiController::alumniTidakBekerjaDanTidakPendidikan()
+        ];
+
+        return view('admin.dashboard', compact('tidakAlumni', 'title', 'title_page', 'alumniData'));
     }
 
     /* Start Data Alumni */
@@ -50,7 +52,6 @@ class AdminController extends Controller
             ->orderBy('users.name', 'ASC')
             ->get();
         if ($search) {
-
             $results = User::whereHas('roles', function ($query) {
                 $query->where('name', 'Alumni');
             })

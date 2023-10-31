@@ -1,12 +1,11 @@
 <div id="alumni_terdaftar_bar" style="width:100%; "></div>
 
 <script>
-    /* let terverif = {{ $countAlumni }}
-    console.info(terverif) */
     var bar_option = {
         series: [{
-            data: [{{ $countAlumni }}, {{ $countPekerjaan }}, {{ $countPendidikan }},
-                {{ $countAlumniNganggur }}
+            data: [{{ $alumniData['countAlumni'] }}, {{ $alumniData['countPekerjaan'] }},
+                {{ $alumniData['countPendidikan'] }},
+                {{ $alumniData['countAlumniNganggur'] }}
             ]
         }],
         chart: {
