@@ -58,6 +58,8 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('/admin/jurusan/destroy/{id}', [JurusanController::class, 'destroy'])->name('jurusan.destroy');
 
         Route::get('/admin/pesan', [ContactController::class, 'index'])->name('pesan');
+        Route::patch('/admin/tolakPesan/{id}', [ContactController::class, 'tolakPesan'])->name('tolakPesan');
+        Route::patch('/admin/terimaPesan/{id}', [ContactController::class, 'terimaPesan'])->name('terimaPesan');
     });
 
     // alumni

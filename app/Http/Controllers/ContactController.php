@@ -49,4 +49,24 @@ class ContactController extends Controller
         $data = Contact::get();
         return view('admin.pesan', compact('title', 'data', 'title_page', 'tidakAlumni'));
     }
+
+    public function tolakPesan($id)
+    {
+        $pesan = Contact::findOrFail($id);
+        $pesan->update([
+            'status' => 'tolak'
+        ]);
+
+        return redirect()->back()->with(['message' => 'Pesan Ditolak']);
+    }
+
+    public function terimaPesan($id)
+    {
+        $pesan = Contact::findOrFail($id);
+        $pesan->update([
+            'status' => 'terima'
+        ]);
+
+        return redirect()->back()->with(['message' => 'Pesan Diterima']);
+    }
 }

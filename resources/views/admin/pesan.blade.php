@@ -23,6 +23,7 @@
                                 </th>
                                 <th class="px-4 py-2">Email</th>
                                 <th class="px-4 py-2">Pesan</th>
+                                <th class="px-4 py-2">Aksi</th>
                             </tr>
                         </thead>
 
@@ -40,6 +41,19 @@
                                     </td>
                                     <td>
                                         {{ $item->pesan }}
+                                    </td>
+                                    <td>
+                                        <form method="POST">
+                                            @csrf
+                                            @method('PATCH')
+
+                                            @if ($item->status == 'terima' || $item->status == 'tolak')
+                                                <button formaction={{ route('tolakPesan', $item->id) }}>hapus</button>
+                                            @else
+                                                <button formaction={{ route('tolakPesan', $item->id) }}>-</button>
+                                                <button formaction={{ route('terimaPesan', $item->id) }}>✓</button>
+                                            @endif
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

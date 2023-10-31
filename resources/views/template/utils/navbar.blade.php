@@ -38,7 +38,7 @@
                     @if (Auth::check())
                         {{-- ?profile --}}
                         <a href=""
-                            class="relative flex cursor-default select-none hover:bg-green-100 items-center rounded px-2 py-1.5 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                            class="relative flex cursor-default select-none  items-center rounded px-2 py-1.5 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
 
                             <a href="{{ route('dashboard') }}"
                                 class="flex items-center space-x-1 btn___signin md:hidden">

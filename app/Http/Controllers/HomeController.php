@@ -16,7 +16,12 @@ class HomeController extends Controller
     public function index()
     {
         $title = 'Home';
-        return view('welcome', compact('title'));
+        $counterData = [
+            'alumniTerverif' => PribadiController::semuaAlumni(),
+            'alumniBekerja' => PekerjaanController::alumniBekerja(),
+            'alumniPendidikan' => PendidikanController::alumniPendidikan()
+        ];
+        return view('welcome', compact('title', 'counterData'));
     }
 
     public function search(Request $request)
