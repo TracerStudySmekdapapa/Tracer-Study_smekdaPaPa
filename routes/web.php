@@ -22,6 +22,10 @@ Route::get('/search', [HomeController::class, 'search'])->name('search');
 Route::get('/alumni/{id}/detail', [HomeController::class, 'detail'])->name('detailAlumni');
 Route::get('/alumni/{id}/data-pendidikan/more-detail', [HomeController::class, 'moreDetailPendidikan'])->name('moreDataPendidikan');
 Route::get('/alumni/{id}/data-pekerjaan/more-detail', [HomeController::class, 'moreDetailPekerjaan'])->name('moreDataPekerjaan');
+Route::get('/tutorial', function () {
+    $title = 'tutorial';
+    return view('pages.tutorial')->with('title');
+})->name('tutorial');
 
 
 Route::get('/authenticate', [AuthenticateController::class, 'index'])->middleware(['auth', 'verified'])->middleware(['auth', 'verified']);

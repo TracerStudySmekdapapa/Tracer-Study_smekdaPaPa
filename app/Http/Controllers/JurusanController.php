@@ -70,7 +70,9 @@ class JurusanController extends Controller
     public function edit($id)
     {
         $jurusan = Jurusan::find($id);
-        return view('admin.jurusan.edit', compact('jurusan'));
+        $title = 'edit jurusan';
+        $title_page = 'edit jurusan';
+        return view('admin.jurusan.edit', compact('jurusan', 'title', 'title_page'));
     }
 
     /**
@@ -84,6 +86,7 @@ class JurusanController extends Controller
     {
         $jurusan = Jurusan::find($id);
         $jurusan->update($request->all());
+
         return redirect()->route('jurusan.index', compact('jurusan'));
     }
 

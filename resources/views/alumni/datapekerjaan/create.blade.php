@@ -10,11 +10,11 @@
             <hr class="text-primary w-[33%] bg-primary h-[3px] absolute top-0 left-0" />
         </div>
 
-        <section class="mt-10 mx-10 lg:min-h-[55vh] ">
+        <section class="mt-10 mx-3 md:mx-6 lg:min-h-[55vh] ">
             <div class="flex justify-between items-start flex-col md:flex-row">
                 <div class="my-5 md:my-0">
-                    <h1 class="text-[40px] lg:text-[45px] font-bold">Profesianal Info</h1>
-                    <p class="md:max-w-[60%]">
+                    <h1 class=" text-[35px] lg:text-[45px] font-bold">Profesianal Info</h1>
+                    <p class="text-[14px] md:text-base md:max-w-[70%] lg:max-w-[60%]">
                         Lengkapi data pekerjaanmu, dan jadilah bagian dari jaringan profesional yang saling mendukung dan
                         berkembang bersama.
                     </p>

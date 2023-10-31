@@ -3,7 +3,8 @@
 @section('content')
     <main>
         @include('template.utils.navbar')
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-5">
+        <div class="mt-1 md:mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-5 place-items-center md:gap-5">
+
             @foreach ($pendidikan as $index => $item)
                 <div
                     class="relative z-10 min-w-[300px]  max-w-[332px] min-h-[235px] max-h-[300px] rounded-[10px]  bg-white shadow-lg py-4 overflow-y-auto">

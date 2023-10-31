@@ -6,7 +6,8 @@
                     <h1 class="footer__title">Tracer study sMKN 2 padang panjang</h1>
                 </div>
 
-                <p class="mt-6 max-w-md text-center leading-relaxed text-gray-500 sm:max-w-xs sm:text-left">
+                <p
+                    class="mt-6 max-w-md text-justify leading-relaxed text-gray-500 sm:max-w-xs sm:text-left text-sm md:text-base">
                     Bantu kami meningkatkan kualitas pendidikan. Tracer study,
                     kontribusimu untuk pendidikan dan jendela untuk masa depanmu.
                 </p>
@@ -75,13 +76,13 @@
 
                     <ul class="mt-8 space-y-4 text-sm">
                         <li>
-                            <a class="text-gray-700 transition hover:text-gray-700/75" href="#faq">
+                            <a href="{{ route('/') }}#faq" class="text-gray-700 transition hover:text-gray-700/75" href="#faq">
                                 FAQs
                             </a>
                         </li>
 
                         <li>
-                            <a class="text-gray-700 transition hover:text-gray-700/75" href="#kontak">
+                            <a  href="{{ route('tambahContact') }}" class="text-gray-700 transition hover:text-gray-700/75" href="#kontak">
                                 Kontak
                             </a>
                         </li>

@@ -10,7 +10,7 @@
                 <div class="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
                     <div class="w-full">
                         <h1 class="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200">
-                            Create account
+                            Buat Akun
                         </h1>
 
                         <!-- form action -->
@@ -61,7 +61,7 @@
                             <!-- confirm password -->
                             <label class="block mt-4 text-sm">
                                 <span class="text-gray-700 dark:text-gray-400">
-                                    Confirm password
+                                    Konfirmasi Password
                                 </span>
                                 <input required name="password_confirmation"
                                     class="block w-full mt-1 border border-gray-600 rounded-md px-5 py-2 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
@@ -76,7 +76,7 @@
                             <!-- btn submit  -->
                             <button
                                 class="submit active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
-                                type="submit">Create account</button>
+                                type="submit">Buat Akun</button>
                         </form>
                         <!-- have accoutn -->
                         <p class="mt-4">

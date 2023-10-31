@@ -12,11 +12,11 @@
 
 
 
-        <section class="mt-10 mx-10 lg:min-h-[55vh]">
+        <section class="mt-10 mx-3 md:mx-10 lg:min-h-[55vh]">
             <div class="grid grid-cols-1 lg:grid-cols-2">
-                <div class="my-5 md:my-0">
-                    <h1 class="text-[40px] lg:text-[45px] font-bold">Academy Info</h1>
-                    <p class="md:max-w-[60%]">Lengkapi data pendidikanmu,
+                <div class="my-4 md:my-0">
+                    <h1 class="text-[35px] lg:text-[45px] font-bold">Academy Info</h1>
+                    <p class="text-[14px] md:text-base md:max-w-[60%]">Lengkapi data pendidikanmu,
                         Pendidikan adalah kunci untuk membuka pintu-pintu kesempatan
                     </p>
 

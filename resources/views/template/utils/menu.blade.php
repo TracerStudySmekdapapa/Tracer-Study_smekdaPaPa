@@ -1,4 +1,4 @@
-<div class="max-w-[200px] px-3 m-10 hidden md:block">
+<div class="max-w-[200px] px-3 mx-10  hidden md:block">
     <div x-data="{
         dropdownOpen: false,
     }" class="relative">
@@ -12,11 +12,16 @@
         <div x-show="dropdownOpen" @click.away="dropdownOpen=false"
             class="absolute top-0 z-[99999] w-56 mt-12 -translate-x-1/2 left-1/2" x-cloak>
             <div
-                class="p-1 mt-1 bg-white max-h-[180px] md:max-h-[160px] min-h-[170px] md:min-h-[150px] pb-1 overflow-hidden border rounded-md shadow-md border-neutral-200/70 text-neutral-700">
+                class="p-1 mt-1  bg-white max-h-[180px] md:max-h-[150px] min-h-[170px] md:min-h-[150px] pb-1 overflow-hidden border rounded-md shadow-lg border-neutral-200/70 text-neutral-700">
                 <div class="px-2 py-1.5 text-sm font-semibold">{{ Str::ucfirst(Auth::user()->name) }}</div>
+
+
                 <div class="h-px my-1 -mx-1 bg-neutral-200"></div>
+
+
+
                 <a href="{{ Auth::user()->hasRole('Admin') ? route('adminDashboard') : route('dashboard') }}"
-                    class="relative flex cursor-default select-none hover:bg-green-100 items-center rounded px-2 py-1.5 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                    class="relative flex cursor-default select-none hover:bg-nature-100 items-center rounded px-2 py-1.5 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round" class="w-4 h-4 mr-2">
@@ -45,18 +50,23 @@
                     class="relative  cursor-pointer select-none  lg:py-0.5  items-center rounded px-2  text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
                     <form action="{{ route('logout') }}" class="flex items-center space-x-1" method="POST">
                         @csrf
-                        <button type="submit" href="{{ route('logout') }}" class="flex  items-center">
-                            <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-2">
-                                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                                    <polyline points="16 17 21 12 16 7"></polyline>
-                                    <line x1="21" x2="9" y1="12" y2="12"></line>
-                                </svg>
-                            </span>
-                            <span>Log out</span>
-                        </button>
+                        <<<<<<< HEAD <button type="submit" href="{{ route('logout') }}" class="flex  items-center">
+                            =======
+
+                            <button type="submit" href="{{ route('logout') }}"
+                                class="flex  pr-5  py-2  items-center -mt-2">
+                                >>>>>>> syaid
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-2">
+                                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                        <polyline points="16 17 21 12 16 7"></polyline>
+                                        <line x1="21" x2="9" y1="12" y2="12"></line>
+                                    </svg>
+                                </span>
+                                <span>Log Out</span>
+                            </button>
                     </form>
                 </div>
             </div>

@@ -9,11 +9,11 @@
             <hr />
             <hr class="text-primary w-[33%] bg-primary h-[3px] absolute top-0 left-0" />
         </div>
-        <section class="mt-10 mx-10 lg:min-h-[55vh]">
+        <section class="mt-10 mx-3 md:mx-10 lg:min-h-[55vh]">
             <div class="flex flex-col items-start justify-between md:flex-row">
                 <div class="my-5 md:my-0">
-                    <h1 class="text-[40px] lg:text-[45px] font-bold">Personal Info</h1>
-                    <p class="md:max-w-[60%]">
+                    <h1 class="text-[35px] lg:text-[45px] font-bold">Personal Info</h1>
+                    <p class="text-[14px] md:text-base md:max-w-[60%]">
                         Isi data pribadimu dengan benar dan lengkap.
                         Dapatkan kesempatan yang lebih luas dengan data pribadi yang lengkap.
                     </p>
