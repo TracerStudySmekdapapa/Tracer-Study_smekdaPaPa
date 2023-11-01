@@ -1,4 +1,3 @@
-
 @extends('template.admin.master')
 
 @section('konten')
@@ -11,7 +10,8 @@
             <div class="overflow-x-auto lg:overflow-visible  mt-20">
 
                 <div class="overflow-x-auto">
-                    <h1 class="my-5  underline-offset-4"> <a href="{{ route('jurusan.create') }}" class="font-bold text-[20px] underline">[+] Tambah Jurusan</a></h1>
+                    <h1 class="my-5  underline-offset-4"> <a href="{{ route('jurusan.create') }}"
+                            class="font-bold text-[20px] underline">[+] Tambah Jurusan</a></h1>
                     <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
                         <thead class="ltr:text-left rtl:text-right">
                             <tr>
@@ -57,34 +57,3 @@
 
     </section>
 @endsection
-
-
-
-
-
-
-
-
-
-
-{{-- 
-
-@foreach ($jurusan as $index => $item)
-    <tr>
-        <td>{{ $index + 1 }}</td>
-        <td>{{ $item->nama_jurusan }}</td>
-        <td>
-            <form action="{{ route('jurusan.destroy', $item->id_jurusan) }}" method="POST">
-
-                <a href="{{ route('jurusan.show', $item->id_jurusan) }}">Show</a>
-
-                <a href="{{ route('jurusan.edit', $item->id_jurusan) }}">Edit</a>
-
-                @csrf
-                @method('DELETE')
-
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </form>
-        </td>
-    </tr>
-@endforeach --}}

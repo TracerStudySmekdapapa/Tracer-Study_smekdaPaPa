@@ -58,7 +58,7 @@ class JurusanController extends Controller
             'nama_jurusan' => $request->nama_jurusan,
         ]);
 
-        return redirect()->route('jurusan.index');
+        return redirect()->route('jurusan');
     }
 
     /**
@@ -80,7 +80,13 @@ class JurusanController extends Controller
         $jurusan = Jurusan::find($id);
         $title = 'edit jurusan';
         $title_page = 'edit jurusan';
-        return view('admin.jurusan.edit', compact('jurusan', 'title', 'title_page'));
+        $tidakAlumni = User::whereDoesntHave('roles', function ($query) {
+            $query->whereIn('name', ['Alumni', 'Admin']);
+        })
+            ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
+            ->orderBy('users.name', 'ASC')
+            ->get();
+        return view('admin.jurusan.edit', compact('jurusan', 'title', 'title_page', 'tidakAlumni'));
     }
 
     /**
@@ -95,7 +101,7 @@ class JurusanController extends Controller
         $jurusan = Jurusan::find($id);
         $jurusan->update($request->all());
 
-        return redirect()->route('jurusan.index', compact('jurusan'));
+        return redirect()->route('jurusan', compact('jurusan'));
     }
 
     /**
@@ -109,6 +115,6 @@ class JurusanController extends Controller
         $jurusan = Jurusan::find($id);
         $jurusan->delete();
 
-        return redirect()->route('jurusan.index', compact('jurusan'));
+        return redirect()->route('jurusan', compact('jurusan'));
     }
 }

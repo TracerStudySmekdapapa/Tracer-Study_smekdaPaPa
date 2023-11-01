@@ -1,65 +1,52 @@
 @extends('template.admin.master')
 
 @section('konten')
-    <div class="flex h-screen bg-gray-0 dark:bg-gray-900 " :class="{ 'overflow-hidden': isSideMenuOpen }">
-
-
-
-        {{-- ? sidebar --}}
-        @include('template.admin.sidebar')
-        {{-- end sidebar --}}
-
-
-        <div class="flex flex-col flex-1 w-full">
-
-            {{-- ? ===================header --}}
+    <section class=" bg-[#eee]/20 grid  grid-col-2 md:grid-cols-12 px-[30px] box-border py-5 ">
+        <div class="md:col-span-2 relative hidden md:block">
+            @include('template.admin.sidebar')
+        </div>
+        <div class="md:col-span-10 md:mr-10">
             @include('template.admin.header')
-            {{-- ! =================== end header --}}
+            <div class="overflow-x-auto lg:overflow-visible  mt-20">
+
+                <form action="{{ route('jurusan.store') }}" method="post">
 
 
+                    @csrf
+
+                    <div class="container">
+                        <table class="w-full ">
+                            <tr>
+                                <td>
+                                    <strong>Nama Jurusan </strong>
+                                </td>
+                                <td>: </td>
+                                <td>
+                                    <input type="text" name="nama_jurusan"
+                                        class="pl-5 min-w-[400px] py-2 border-gray-200 rounded-lg ml-10"
+                                        placeholder="Nama Jurusan">
+                                </td>
+                            </tr>
+                            <tr class="">
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <button type="submit"
+                                        class="mt-5 ml-10 px-10 py-2 bg-blue-500 hover:bg-black  text-white font-semibold rounded-md block">Buat
+                                        Jurusan Baru</button>
+                                </td>
+                            </tr>
+                </form>
+            </div>
+            </table>
 
 
-            <main class="h-full  " style="padding: 0 0;">
-                <div class="container px-6 mx-auto grid">
+            </form>
 
-                    {{-- ? title page --}}
-                    <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-                        Dashboard
-                    </h2>
+        </div>
+
+        </div>
 
 
-                    {{-- ! end title --}}
-
-                    {{-- ? ==========table  --}}
-                    <div class="py-12">
-                        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                                <div class="p-6 text-gray-900">
-
-                                    <form action="{{ route('jurusan.store') }}" method="POST">
-                                        @csrf
-
-                                        <div class="row">
-                                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <div class="form-group">
-                                                    <strong>Nama Jurusan : </strong>
-                                                    <input type="text" name="nama_jurusan" class="form-control"
-                                                        placeholder="nama_jurusan">
-                                                </div>
-                                            </div>
-
-                                            <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-3">
-                                                <button type="submit" class="btn btn-success">Submit</button>
-                                            </div>
-                                        </div>
-
-                                    </form>
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </main>
-        @endsection
+    </section>
+@endsection
