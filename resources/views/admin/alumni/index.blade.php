@@ -12,17 +12,34 @@
         <div class="md:col-span-10 md:mr-10">
             @include('template.admin.header')
 
-            <div class="w-1/5">
-                <form action="{{ route('dataAlumni') }}" method="get" id="form_search">
+            <div class="flex justify-between items-center mt-20  ">
 
-                    <input id="input_search"
-                        class="relative z-[23] block  mt-1 text-sm border border-gray-500 pl-5 w-full pr-12 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                        placeholder="cari berdasarkan nama / nisn" type="text" name="search"
-                        value="{{ $search }}" />
+                {{--  --}}
+                <div class="relative">
 
-                </form>
+                    <select name="filter">
+
+                        <option value="semua">semua
+                        </option>
+                        <option value="bekerja">Bekerja
+                        </option>
+                        <option value="pendidikan">Pendidikan
+                        </option>
+                    </select>
+                    </form>
+                </div>
+                {{--  --}}
+
+                <div class="w-[30%] ">
+                    <form action="{{ route('dataAlumni') }}" method="get" id="form_search">
+                        <input id="input_search"
+                            class="relative z-[23] block  mt-1 text-sm border border-gray-500 pl-5 w-full pr-12 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                            placeholder="cari berdasarkan nama / nisn" type="text" name="search"
+                            value="{{ $search }}" />
+                    </form>
+                </div>
             </div>
-            <div class="overflow-x-auto lg:overflow-visible   mt-20 ">
+            <div class="overflow-x-auto lg:overflow-visible   mt-10 ">
                 <table
                     class="relative z-20 rounded-lg bg-primary/5 min-w-[800px]  w-full  mt-6 overflow-x-scroll lg:overflow-x-hidden">
                     <thead class="overflow-hidden bg-transparent rounded-full relative">
@@ -57,11 +74,8 @@
                         {{-- @if ($search || $tamatan) --}}
                         @forelse ($search ? $results : $alumni as $item)
                             <tr class="divide-x bg-gray-50">
-                                <td class=" py-4   max-w-[350px] ">
-                                    <div class="grid grid-cols-2 place-items-center mx-auto w-[200px] ">
-                                        <div class="rounded-full w-[30px] h-[30px] bg-rose-600 ml-5"></div>
-                                        <h1 class="">{{ $item->name }}</h1>
-                                    </div>
+                                <td class="text-left px-4 py-4">
+                                    {{ $item->name }}
                                 </td>
                                 <td>{{ $item->nisn }}</td>
                                 <td>
@@ -147,9 +161,10 @@
 
 
                     </tbody>
-                    <tfoot>
-                        <tr class="bg-gray-50">
-                            <td colspan="6">{{ $search ? $results : $alumni->links() }}</td>
+
+                    <tfoot class="bg-primary/5">
+                        <tr>
+                            <td class="py-0.5 px-5" colspan="6">{{ $search ? $results : $alumni->links() }}</td>
                         </tr>
                     </tfoot>
 
@@ -162,4 +177,15 @@
 
 
     </section>
+
+
+    <script>
+        const form_search = document.querySelector("#filterByAll");
+
+
+        const tamatan = document.querySelector('.tamatan');
+        tamatan.addEventListener('change', (e) => {
+            form_search.submit();
+        });
+    </script>
 @endsection

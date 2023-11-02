@@ -32,8 +32,6 @@
                 <div>
                     <div>
                         @include('template.admin.components.logout')
-
-
                     </div>
                 </div>
             </div>
