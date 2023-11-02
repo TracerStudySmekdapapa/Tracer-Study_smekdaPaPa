@@ -78,7 +78,7 @@ class ResetPassword extends Notification
             ->subject(Lang::get('Notifikasi Reset Password'))
             ->line(Lang::get('Anda menerima email ini, karena kami menerima permintaan pengaturan ulang kata sandi untuk akun Anda.'))
             ->action(Lang::get('Reset Password'), $url)
-            ->line(Lang::get('Tautan pengaturan ulang kata sandi ini akan habis pada :count minutes.', ['count' => config('auth.passwords.' . config('auth.defaults.passwords') . '.expire')]))
+            ->line(Lang::get('Tautan pengaturan ulang kata sandi ini akan habis pada :count menit.', ['count' => config('auth.passwords.' . config('auth.defaults.passwords') . '.expire')]))
             ->line(Lang::get('Jika Anda tidak meminta pengaturan ulang kata sandi, tidak ada tindakan lebih lanjut yang diperlukan.'));
     }
 
