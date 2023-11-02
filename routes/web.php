@@ -33,23 +33,29 @@ Route::middleware(['auth'])->group(function () {
     // admin
     Route::middleware('isAdmin')->group(function () {
         Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('adminDashboard');
-        Route::get('/admin/alumni', [AdminController::class, 'dataAlumni'])->name('dataAlumni');
 
+        /* Alumni */
+        Route::get('/admin/alumni', [AdminController::class, 'dataAlumni'])->name('dataAlumni');
         Route::get('/admin/alumni/{id}/detail', [AdminController::class, 'detailAlumni'])->name('adminDetailAlumni');
 
+        /* Edit Data Pribadi Alumni */
         Route::get('/admin/alumni/{id}/data-pribadi/edit', [AdminController::class, 'editAlumniPribadi'])->name('editAlumniPribadi');
         Route::patch('/admin/alumni/{id}/data-pendidikan', [AdminController::class, 'updateAlumniPribadi'])->name('updateAlumniPribadi');
 
+        /* Edit Pendidikan Alumni */
         Route::get('/admin/alumni/{id}/data-pendidikan/{id_pendidikan}/edit', [AdminController::class, 'editAlumniPendidikan'])->name('editAlumniPendidikan');
         Route::patch('/admin/alumni/{id}/data-pendidikan/{id_pendidikan}', [AdminController::class, 'updateAlumniPendidikan'])->name('updateAlumniPendidikan');
 
+        /* Edit Pekerjaan Alumni */
         Route::get('/admin/alumni/{id}/data-pekerjaan/{id_pekerjaan}/edit', [AdminController::class, 'editAlumniPekerjaan'])->name('editAlumniPekerjaan');
         Route::patch('/admin/alumni/{id}/data-pekerjaan/{id_pekerjaan}', [AdminController::class, 'updateAlumniPekerjaan'])->name('updateAlumniPekerjaan');
 
+        /* Verif Alumni */
         Route::get('/admin/alumni/verify', [AdminController::class, 'verifAlumni'])->name('verifyDataAlumni');
         Route::post('/admin/alumni/{id_user}/verify', [AdminController::class, 'verifAlumniAksi'])->name('verifalumniStore');
         Route::post('/admin/alumni/{id_user}/tolakverify', [AdminController::class, 'tolakVerifAlumniAksi'])->name('tolakVerifAlumni');
 
+        /* Jurusan */
         Route::get('/admin/jurusan', [JurusanController::class, 'index'])->name('jurusan');
         Route::get('/admin/jurusan/create', [JurusanController::class, 'create'])->name('jurusan.create');
         Route::get('/admin/jurusan/edit/{id}', [JurusanController::class, 'edit'])->name('jurusan.edit');
@@ -57,9 +63,11 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/admin/jurusan/store', [JurusanController::class, 'store'])->name('jurusan.store');
         Route::delete('/admin/jurusan/destroy/{id}', [JurusanController::class, 'destroy'])->name('jurusan.destroy');
 
+        /* Contact */
         Route::get('/admin/pesan', [ContactController::class, 'index'])->name('pesan');
         Route::patch('/admin/tolakPesan/{id}', [ContactController::class, 'tolakPesan'])->name('tolakPesan');
         Route::patch('/admin/terimaPesan/{id}', [ContactController::class, 'terimaPesan'])->name('terimaPesan');
+        Route::delete('/admin/deletePesan/{id}', [ContactController::class, 'deletePesan'])->name('deletePesan');
     });
 
     // alumni

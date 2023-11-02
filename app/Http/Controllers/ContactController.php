@@ -10,6 +10,21 @@ use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
+    public function index()
+    {
+        $title = 'Pesan';
+        $title_page = 'Pesan';
+        $tidakAlumni = User::whereDoesntHave('roles', function ($query) {
+            $query->whereIn('name', ['Alumni', 'Admin']);
+        })
+            ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
+            ->orderBy('users.name', 'ASC')
+            ->get();
+        $pesan = Contact::whereIn('status', ['0', 'tolak'])->get();
+        $testimoni = Contact::where('status', 'terima')->get();
+        return view('admin.pesan', compact('title', 'pesan', 'title_page', 'tidakAlumni', 'testimoni'));
+    }
+
     public function create()
     {
         $title = 'Contact';
@@ -36,19 +51,6 @@ class ContactController extends Controller
         }
     }
 
-    public function index()
-    {
-        $title = 'Pesan';
-        $title_page = 'Pesan';
-        $tidakAlumni = User::whereDoesntHave('roles', function ($query) {
-            $query->whereIn('name', ['Alumni', 'Admin']);
-        })
-            ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
-            ->orderBy('users.name', 'ASC')
-            ->get();
-        $data = Contact::get();
-        return view('admin.pesan', compact('title', 'data', 'title_page', 'tidakAlumni'));
-    }
 
     public function tolakPesan($id)
     {
@@ -68,5 +70,11 @@ class ContactController extends Controller
         ]);
 
         return redirect()->back()->with(['message' => 'Pesan Diterima']);
+    }
+
+    public static function testimonial()
+    {
+        $data = Contact::where('status', 'terima')->get();
+        return $data;
     }
 }
