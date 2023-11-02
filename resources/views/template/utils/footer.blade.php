@@ -13,9 +13,9 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:col-span-2">
+            <div class="grid grid-cols-2 w-full gap-8  md:grid-cols-3 lg:col-span-2">
                 <!-- about us -->
-                <div class="text-center sm:text-left">
+                <div class="text-center sm:text-left col-start-1 col-end-2 row-start-1  ">
                     <p class="text-lg font-medium text-gray-900">About Us</p>
 
                     <ul class="mt-8 space-y-4 text-sm">
@@ -36,7 +36,8 @@
                 </div>
 
                 <!-- Keji=ruruan -->
-                <div class="text-center sm:text-left">
+                <div
+                    class="text-center sm:text-left col-start-1 col-end-1 row-start-2 md:col-start-3 md:col-end-4 md:row-start-1">
                     <p class="text-lg font-medium text-gray-900">Jurusan</p>
 
                     <ul class="mt-8 space-y-4 text-sm">
@@ -71,18 +72,20 @@
                 </div>
 
                 <!-- helpfull link -->
-                <div class="text-center sm:text-left">
+                <div class="text-center sm:text-left col-start-2 col-end-3 row-start-1">
                     <p class="text-lg font-medium text-gray-900">Helpful Links</p>
 
                     <ul class="mt-8 space-y-4 text-sm">
                         <li>
-                            <a href="{{ route('/') }}#faq" class="text-gray-700 transition hover:text-gray-700/75" href="#faq">
+                            <a href="{{ route('/') }}#faq" class="text-gray-700 transition hover:text-gray-700/75"
+                                href="#faq">
                                 FAQs
                             </a>
                         </li>
 
                         <li>
-                            <a  href="{{ route('tambahContact') }}" class="text-gray-700 transition hover:text-gray-700/75" href="#kontak">
+                            <a href="{{ route('tambahContact') }}"
+                                class="text-gray-700 transition hover:text-gray-700/75" href="#kontak">
                                 Kontak
                             </a>
                         </li>
@@ -90,7 +93,8 @@
                 </div>
 
                 <!-- lembaga -->
-                <div class="text-center sm:text-left">
+                <div
+                    class="text-center sm:text-left start-4 col-start-2 col-end-3 row-start-2 md:col-start-1 xl:col-start-4 xl:col-end-5 xl:row-start-1">
                     <p class="text-lg font-medium text-gray-900">Lembaga</p>
 
                     <ul class="mt-8 space-y-4 text-sm">

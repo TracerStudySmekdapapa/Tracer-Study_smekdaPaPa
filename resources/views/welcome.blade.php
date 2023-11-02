@@ -33,8 +33,14 @@
         <!-- !CTA -->
 
 
+        {{-- testimonial --}}
+        @include('pages.components.testimonial')
+        {{-- testimonial --}}
+
 
 
     </main>
+    {{-- footer --}}
     @include('template.utils.footer')
+    {{-- footer --}}
 @endsection

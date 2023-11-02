@@ -12,13 +12,18 @@
             @include('template.admin.header')
 
 
-            <div class="overflow-x-auto lg:overflow-visible  mt-20">
+            <div class="  mt-20">
 
-                <div class="overflow-x-auto">
+                <div class="">
+                    <div class="w-[100px] bg-blue-200 px-5 py-2 rounded-md ml-auto mr-10 my-10 font-semibold">
+                        <span>
+                            Info
+                        </span>
+                    </div>
                     <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
                         <thead class="ltr:text-left rtl:text-right">
                             <tr>
-                                <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                                <th class="whitespace-nowrap px-4 py-2  text-gray-900">
                                     Name
                                 </th>
                                 <th class="px-4 py-2">Email</th>
@@ -40,7 +45,9 @@
                                         {{ $item->email }}
                                     </td>
                                     <td>
-                                        {{ $item->pesan }}
+                                        <p class="text-[13px]">
+                                            {{ $item->pesan }}
+                                        </p>
                                     </td>
                                     <td>
                                         <form method="POST">
@@ -48,10 +55,17 @@
                                             @method('PATCH')
 
                                             @if ($item->status == 'terima' || $item->status == 'tolak')
-                                                <button formaction={{ route('tolakPesan', $item->id) }}>hapus</button>
+                                                <button class="px-5 py-2 rounded-md bg-rose-500 text-white font-semibold"
+                                                    formaction={{ route('tolakPesan', $item->id) }}>hapus</button>
                                             @else
-                                                <button formaction={{ route('tolakPesan', $item->id) }}>-</button>
-                                                <button formaction={{ route('terimaPesan', $item->id) }}>✓</button>
+                                                <div class="w-full grid grid-cols-2 gap-1">
+                                                    <button
+                                                        class="px-5 py-2 rounded-md bg-rose-500 text-white font-semibold"
+                                                        formaction={{ route('tolakPesan', $item->id) }}>tolak</button>
+                                                    <button
+                                                        class="px-5 py-2 rounded-md bg-blue-500 text-white font-semibold"
+                                                        formaction={{ route('terimaPesan', $item->id) }}>terima</button>
+                                                </div>
                                             @endif
                                         </form>
                                     </td>
