@@ -68,7 +68,7 @@ class AdminController extends Controller
             ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
             ->leftJoin('jurusan', 'data_pribadi.id_jurusan', '=', 'jurusan.id_jurusan')
             ->orderBy('users.name', 'ASC')
-            ->paginate(10)->withQueryString();
+            ->paginate(2)->withQueryString();
         return view('admin.alumni.index', compact('alumni', 'tidakAlumni', 'search', 'title', 'title_page'));
     }
 
