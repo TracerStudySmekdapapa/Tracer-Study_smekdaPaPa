@@ -136,7 +136,7 @@ main {
 /* card tutorial */
 @layer components {
   .main__tutorial {
-    @apply grid grid-cols-1 gap-3 space-y-4 lg:space-y-0 md:grid-cols-2  lg:grid-cols-3  place-items-center;
+    @apply grid grid-cols-1 gap-3  md:gap-10 lg:gap-3 md:grid-cols-2  lg:grid-cols-3  place-items-center;
   }
 
   .card {
