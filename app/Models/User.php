@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -35,9 +36,34 @@ class User extends Authenticatable
         return $nameParts[0];
     }
 
-
     public function scopeFilter($query, array $filters)
     {
+        $query = $query->whereHas('roles', function ($query) {
+            $query->where('name', 'Alumni');
+        })
+            ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
+            ->leftJoin('jurusan', 'data_pribadi.id_jurusan', '=', 'jurusan.id_jurusan')
+            ->orderBy('users.name', 'ASC');
+
+        $query->when(isset($filters['status']) && $filters['status'] == 'bekerja', function ($query) {
+            return $query->join(
+                DB::raw("(SELECT id_pribadi, COUNT(DISTINCT id_pekerjaan) as total_pekerjaan FROM pekerjaan GROUP BY id_pribadi) as pekerjaan"),
+                'data_pribadi.id_pribadi',
+                '=',
+                'pekerjaan.id_pribadi'
+            );
+        });
+
+
+        $query->when(isset($filters['status']) && $filters['status'] == 'pendidikan', function ($query) {
+            $query->join(
+                DB::raw("(SELECT id_pribadi, COUNT(DISTINCT id_pendidikan) as total_pendidikan FROM pendidikan GROUP BY id_pribadi) as pendidikan"),
+                'data_pribadi.id_pribadi',
+                '=',
+                'pendidikan.id_pribadi'
+            );
+        });
+
         $query->when($filters['search'] ?? false, function ($query, $search) {
             return $query->where(function ($query) use ($search) {
                 $query->where('name', 'like', "%$search%")
@@ -46,9 +72,19 @@ class User extends Authenticatable
                     });
             });
         });
+
         $query->when($filters['tamatan'] ?? false, function ($query, $tamatan) {
             return $query->where('tamatan', 'like', "%$tamatan%");
         });
+    }
+
+    public function scopeTidakAlumni($query)
+    {
+        return $query->whereDoesntHave('roles', function ($query) {
+            $query->whereIn('name', ['Alumni', 'Admin']);
+        })
+            ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
+            ->orderBy('users.name', 'ASC');
     }
 
     public function alumni()

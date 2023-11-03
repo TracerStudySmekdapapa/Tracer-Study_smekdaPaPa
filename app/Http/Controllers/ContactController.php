@@ -14,12 +14,7 @@ class ContactController extends Controller
     {
         $title = 'Pesan';
         $title_page = 'Pesan';
-        $tidakAlumni = User::whereDoesntHave('roles', function ($query) {
-            $query->whereIn('name', ['Alumni', 'Admin']);
-        })
-            ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
-            ->orderBy('users.name', 'ASC')
-            ->get();
+        $tidakAlumni = User::tidakAlumni()->limit(3)->get();
         $pesan = Contact::whereIn('status', ['0', 'tolak'])->get();
         $testimoni = Contact::where('status', 'terima')->get();
         return view('admin.pesan', compact('title', 'pesan', 'title_page', 'tidakAlumni', 'testimoni'));

@@ -11,6 +11,7 @@ use App\Models\Pendidikan;
 use App\Models\Pribadi;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -18,17 +19,12 @@ class AdminController extends Controller
     public function index(Request $request)
     {
         $title = 'Dashboard Admin';
-        $tidakAlumni = User::whereDoesntHave('roles', function ($query) {
-            $query->whereIn('name', ['Alumni', 'Admin']);
-        })
-            ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
-            ->orderBy('users.name', 'ASC')
-            ->limit(3)->get();
+        $tidakAlumni = User::tidakAlumni()->limit(3)->get();
         $title_page = 'Selamat Datang, Admin';
         $alumniData = [
             'countPendidikan' => PendidikanController::alumniPendidikan(),
             'countPendidikanPertahun' => PendidikanController::alumniPendidikanPertahun(),
-            'countPekerjaan' => PekerjaanController::alumniBekerja(),
+            'countPekerjaan' => PekerjaanController::alumniBekerja()->count(),
             'countPekerjaanPertahun' => PekerjaanController::alumniBekerjaPertahun(),
             'countAlumniPertahun' => PribadiController::alumniPertahun(),
             'countAlumni' => PribadiController::semuaAlumni(),
@@ -43,33 +39,27 @@ class AdminController extends Controller
     public function dataAlumni(Request $request)
     {
         $search = $request->search;
+        $status = $request->status;
         $title = 'Data Alumni';
         $title_page = 'Lihat Data Alumni';
-        $tidakAlumni = User::whereDoesntHave('roles', function ($query) {
-            $query->whereIn('name', ['Alumni', 'Admin']);
-        })
-            ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
-            ->orderBy('users.name', 'ASC')
-            ->get();
-        if ($search) {
-            $results = User::whereHas('roles', function ($query) {
-                $query->where('name', 'Alumni');
-            })
-                ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
-                ->leftJoin('jurusan', 'data_pribadi.id_jurusan', '=', 'jurusan.id_jurusan')
-                ->orderBy('users.name', 'ASC')
-                ->filter(request(['search']))
+
+        $tidakAlumni = User::tidakAlumni()->limit(3)->get();
+
+        if ($search || $status) {
+            $results = User::filter(request(['search', 'status']))
                 ->paginate(10)->withQueryString();
-            return view('admin.alumni.index', compact('tidakAlumni', 'results', 'search', 'title', 'title_page'));
+            return view('admin.alumni.index', compact('tidakAlumni', 'results', 'search', 'status', 'title', 'title_page'));
         }
+
         $alumni = User::whereHas('roles', function ($query) {
             $query->where('name', 'Alumni');
         })
             ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
             ->leftJoin('jurusan', 'data_pribadi.id_jurusan', '=', 'jurusan.id_jurusan')
             ->orderBy('users.name', 'ASC')
-            ->paginate(2)->withQueryString();
-        return view('admin.alumni.index', compact('alumni', 'tidakAlumni', 'search', 'title', 'title_page'));
+            ->paginate(10)->withQueryString();
+
+        return view('admin.alumni.index', compact('alumni', 'tidakAlumni', 'search', 'status', 'title', 'title_page'));
     }
 
     public function detailAlumni($id)
@@ -188,12 +178,7 @@ class AdminController extends Controller
 
     public function verifAlumni()
     {
-        $tidakAlumni = User::whereDoesntHave('roles', function ($query) {
-            $query->whereIn('name', ['Alumni', 'Admin']);
-        })
-            ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
-            ->leftJoin('jurusan', 'data_pribadi.id_jurusan', '=', 'jurusan.id_jurusan')
-            ->orderBy('users.name', 'ASC')
+        $tidakAlumni = User::tidakAlumni()->leftJoin('jurusan', 'data_pribadi.id_jurusan', '=', 'jurusan.id_jurusan')
             ->get();
 
         $title = "Verifikasi Data Alumni";

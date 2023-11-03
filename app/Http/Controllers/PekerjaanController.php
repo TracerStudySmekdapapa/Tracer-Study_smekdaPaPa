@@ -28,8 +28,8 @@ class PekerjaanController extends Controller
                 'data_pribadi.id_pribadi',
                 '=',
                 'pekerjaan.id_pribadi'
-            )
-            ->count();
+            );
+
 
         return $alumniCount;
     }

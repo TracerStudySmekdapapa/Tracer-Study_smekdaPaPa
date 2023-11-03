@@ -18,7 +18,7 @@ class HomeController extends Controller
         $title = 'Home';
         $counterData = [
             'alumniTerverif' => PribadiController::semuaAlumni(),
-            'alumniBekerja' => PekerjaanController::alumniBekerja(),
+            'alumniBekerja' => PekerjaanController::alumniBekerja()->count(),
             'alumniPendidikan' => PendidikanController::alumniPendidikan()
         ];
         $testimoni = ContactController::testimonial();
@@ -31,11 +31,7 @@ class HomeController extends Controller
         $tamatan = $request->tamatan;
         $title = 'Cari Alumni';
         if ($search || $tamatan) {
-            $alumni = User::whereHas('roles', function ($query) {
-                $query->where('name', 'Alumni');
-            })->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
-                ->leftJoin('jurusan', 'data_pribadi.id_jurusan', '=', 'jurusan.id_jurusan')
-                ->orderBy('users.name', 'ASC')->filter(request(['search', 'tamatan']))->get();
+            $alumni = User::filter(request(['search', 'tamatan']))->orderBy('name', 'ASC')->get();
             return view('pages.search', compact('alumni', 'title', 'search', 'tamatan'));
         }
         return view('pages.search', compact('title', 'search', 'tamatan'));
