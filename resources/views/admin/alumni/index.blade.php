@@ -78,7 +78,18 @@
                                     {{ $item->name }}
                                 </td>
                                 <td>{{ $item->nisn }}</td>
-                                <td>{{ $item->nama_jurusan ?? '-' }}</td>
+                                <td>
+                                    @php
+                                        $jurusan = $item->nama_jurusan;
+                                        $words = explode(' ', $jurusan);
+
+                                        $abbreviation = '';
+                                        foreach ($words as $word) {
+                                            $abbreviation .= str($word[0]);
+                                        }
+                                        echo $abbreviation;
+                                    @endphp
+                                </td>
                                 <td>{{ $item->jenis_kelamin }}</td>
                                 <td>{{ $item->tamatan }}</td>
                                 <td>

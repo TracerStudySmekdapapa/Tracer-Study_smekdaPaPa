@@ -6,7 +6,7 @@
 @if ($level === 'error')
 # @lang('Whoops!')
 @else
-# @lang('Hello!')
+# @lang('Halo!')
 @endif
 @endif
 
@@ -39,7 +39,7 @@
 @if (! empty($salutation))
 {{ $salutation }}
 @else
-@lang('Regards'),<br>
+@lang('TracerStudy'),<br>
 {{ config('app.name') }}
 @endif
 
@@ -47,8 +47,8 @@
 @isset($actionText)
 <x-slot:subcopy>
 @lang(
-    "If you're having trouble clicking the \":actionText\" button, copy and paste the URL below\n".
-    'into your web browser:',
+    "Jika Anda kesulitan mengklik \":actionText\" button, salin dan tempel URL di bawah\n".
+    'ke web browser anda:',
     [
         'actionText' => $actionText,
     ]

@@ -21,7 +21,8 @@ class HomeController extends Controller
             'alumniBekerja' => PekerjaanController::alumniBekerja(),
             'alumniPendidikan' => PendidikanController::alumniPendidikan()
         ];
-        return view('welcome', compact('title', 'counterData'));
+        $testimoni = ContactController::testimonial();
+        return view('welcome', compact('title', 'counterData', 'testimoni'));
     }
 
     public function search(Request $request)

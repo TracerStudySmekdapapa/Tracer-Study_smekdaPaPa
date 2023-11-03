@@ -1,5 +1,5 @@
-<section class="flex items-center justify-center py-16  min-w-screen">
-    <div class="max-w-6xl px-12 mx-auto  md:px-16 xl:px-10">
+<section class="flex items-center justify-center py-16 min-w-screen">
+    <div class="max-w-6xl px-12 mx-auto md:px-16 xl:px-10">
         <div class="flex flex-col items-center lg:flex-row">
             <div class="flex flex-col items-start justify-center w-full h-full pr-8 mb-10 lg:mb-0 lg:w-1/2">
                 <p class="mb-2 text-base font-medium tracking-tight text-indigo-500 capitalize" data-primary="indigo-500">
@@ -11,133 +11,35 @@
                     kasus dan testimoni pelanggan kami.</p>
             </div>
             <div
-                class="w-full lg:w-1/2 max-h-[520px]  min-h-[500px] pt-8 flex flex-col justify-start items-center space-y-5 overflow-y-auto scoll">
+                class="w-full lg:w-1/2 max-h-[525px]  min-h-[500px] pt-8 flex flex-col justify-start items-center space-y-5 overflow-y-auto scoll">
+
 
 
 
                 {{-- looping --}}
-                <blockquote class="flex items-center justify-between w-[88%] col-span-1 p-6 bg-white rounded-lg shadow"
-                    data-rounded="rounded-lg" data-rounded-max="rounded-full">
-                    <div class="flex flex-col pr-2 md:pr-4">
-                        <div class="relative pl-3 md:pl-6">
-                            <svg class="absolute -top-10 -left-10 w-11 h-11 md:-top-11 md:-left-11  md:w-14 md:h-14 text-indigo-500 fill-current"
-                                data-primary="indigo-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 125">
-                                <path
-                                    d="M30.7 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2C12.7 83.1 5 72.6 5 61.5c0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S30.7 31.6 30.7 42zM82.4 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2-11.8 0-19.5-10.5-19.5-21.6 0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S82.4 31.6 82.4 42z" />
-                            </svg>
-                            <p class="mt-2  ml-2 text-[11px] md:text-sm text-gray-600  ">Lorem ipsum dolor, sit amet
-                                consectetur
-                                adipisicing
-                                elit. Sint veniam consectetur
-                                adipisicing
-                                elit. Sint veniam consectetur
-                                adipisicing
-                                elit. Sint veniam saepe eligendi eveniet repudiandae assumenda dolores quisquam sunt
-                            </p>
+                {{-- looping --}}
+                @foreach ($testimoni as $data)
+                    <blockquote
+                        class="flex items-center justify-between w-[88%] col-span-1 p-6 bg-white rounded-lg shadow"
+                        data-rounded="rounded-lg" data-rounded-max="rounded-full">
+                        <div class="flex flex-col pr-2 md:pr-4">
+                            <div class="relative pl-3 md:pl-6">
+                                <svg class="absolute text-indigo-500 fill-current -top-10 -left-10 w-11 h-11 md:-top-11 md:-left-11 md:w-14 md:h-14"
+                                    data-primary="indigo-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 125">
+                                    <path
+                                        d="M30.7 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2C12.7 83.1 5 72.6 5 61.5c0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S30.7 31.6 30.7 42zM82.4 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2-11.8 0-19.5-10.5-19.5-21.6 0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S82.4 31.6 82.4 42z" />
+                                </svg>
+                                <p class="mt-2  ml-2 text-[11px] md:text-sm text-gray-600  ">{{ $data->pesan }}
+                                </p>
+                            </div>
+
+                            <h3 class="pl-5 mt-3 text-sm font-medium leading-5 text-gray-800 truncate md:pl-8 ">
+                                {{ $data->nama }}
+                            </h3>
                         </div>
-
-                        <h3 class="mt-3 text-sm font-medium leading-5 text-gray-800 truncate pl-5 md:pl-8 lowercase ">
-                            kevin ilham syahreza
-                        </h3>
-                    </div>
-                </blockquote>
+                    </blockquote>
+                @endforeach
                 {{-- looping --}}
-                {{-- looping --}}
-                <blockquote class="flex items-center justify-between w-[88%] col-span-1 p-6 bg-white rounded-lg shadow"
-                    data-rounded="rounded-lg" data-rounded-max="rounded-full">
-                    <div class="flex flex-col pr-2 md:pr-4">
-                        <div class="relative pl-3 md:pl-6">
-                            <svg class="absolute -top-10 -left-10 w-11 h-11 md:-top-11 md:-left-11  md:w-14 md:h-14 text-indigo-500 fill-current"
-                                data-primary="indigo-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 125">
-                                <path
-                                    d="M30.7 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2C12.7 83.1 5 72.6 5 61.5c0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S30.7 31.6 30.7 42zM82.4 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2-11.8 0-19.5-10.5-19.5-21.6 0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S82.4 31.6 82.4 42z" />
-                            </svg>
-                            <p class="mt-2  ml-2 text-[11px] md:text-sm text-gray-600  ">Lorem ipsum dolor, sit amet
-                                consectetur
-                                adipisicing
-                                elit. Sint veniam consectetur
-                                adipisicing
-                                elit. Sint veniam saepe eligendi eveniet repudiandae assumenda dolores quisquam sunt
-                            </p>
-                        </div>
-
-                        <h3 class="mt-3 text-sm font-medium leading-5 text-gray-800 truncate pl-5 md:pl-8 ">
-                            habibie bayezid wildan
-                        </h3>
-                    </div>
-                </blockquote>
-                {{-- looping --}}
-                {{-- looping --}}
-                <blockquote class="flex items-center justify-between w-[88%] col-span-1 p-6 bg-white rounded-lg shadow"
-                    data-rounded="rounded-lg" data-rounded-max="rounded-full">
-                    <div class="flex flex-col pr-2 md:pr-4">
-                        <div class="relative pl-3 md:pl-6">
-                            <svg class="absolute -top-10 -left-10 w-11 h-11 md:-top-11 md:-left-11  md:w-14 md:h-14 text-indigo-500 fill-current"
-                                data-primary="indigo-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 125">
-                                <path
-                                    d="M30.7 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2C12.7 83.1 5 72.6 5 61.5c0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S30.7 31.6 30.7 42zM82.4 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2-11.8 0-19.5-10.5-19.5-21.6 0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S82.4 31.6 82.4 42z" />
-                            </svg>
-                            <p class="mt-2  ml-2 text-[11px] md:text-sm text-gray-600  ">Lorem ipsum dolor, sit amet
-                                consectetur
-                                adipisicing
-                                elit. Sint veniam saepe eligendi eveniet repudiandae assumenda dolores quisquam sunt
-                            </p>
-                        </div>
-
-                        <h3 class="mt-3 text-sm font-medium leading-5 text-gray-800 truncate pl-5 md:pl-8 ">
-                            agma zaqy labary
-                        </h3>
-                    </div>
-                </blockquote>
-                {{-- looping --}}
-                {{-- looping --}}
-                <blockquote class="flex items-center justify-between w-[88%] col-span-1 p-6 bg-white rounded-lg shadow"
-                    data-rounded="rounded-lg" data-rounded-max="rounded-full">
-                    <div class="flex flex-col pr-2 md:pr-4">
-                        <div class="relative pl-3 md:pl-6">
-                            <svg class="absolute -top-10 -left-10 w-11 h-11 md:-top-11 md:-left-11  md:w-14 md:h-14 text-indigo-500 fill-current"
-                                data-primary="indigo-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 125">
-                                <path
-                                    d="M30.7 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2C12.7 83.1 5 72.6 5 61.5c0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S30.7 31.6 30.7 42zM82.4 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2-11.8 0-19.5-10.5-19.5-21.6 0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S82.4 31.6 82.4 42z" />
-                            </svg>
-                            <p class="mt-2  ml-2 text-[11px] md:text-sm text-gray-600  ">Lorem ipsum dolor, sit amet
-                                consectetur
-                                adipisicing
-                                elit. Sint veniam saepe eligendi eveniet repudiandae assumenda dolores quisquam sunt
-                            </p>
-                        </div>
-
-                        <h3 class="mt-3 text-sm font-medium leading-5 text-gray-800 truncate pl-5 md:pl-8 ">
-                            syaid alfarishi
-                        </h3>
-                    </div>
-                </blockquote>
-                {{-- looping --}}
-                {{-- looping --}}
-                <blockquote class="flex items-center justify-between w-[88%] col-span-1 p-6 bg-white rounded-lg shadow"
-                    data-rounded="rounded-lg" data-rounded-max="rounded-full">
-                    <div class="flex flex-col pr-2 md:pr-4">
-                        <div class="relative pl-3 md:pl-6">
-                            <svg class="absolute -top-10 -left-10 w-11 h-11 md:-top-11 md:-left-11  md:w-14 md:h-14 text-indigo-500 fill-current"
-                                data-primary="indigo-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 125">
-                                <path
-                                    d="M30.7 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2C12.7 83.1 5 72.6 5 61.5c0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S30.7 31.6 30.7 42zM82.4 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2-11.8 0-19.5-10.5-19.5-21.6 0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S82.4 31.6 82.4 42z" />
-                            </svg>
-                            <p class="mt-2  ml-2 text-[11px] md:text-sm text-gray-600  ">Lorem ipsum dolor, sit amet
-                                consectetur
-                                adipisicing
-                                elit. Sint veniam saepe eligendi eveniet repudiandae assumenda dolores quisquam sunt
-                            </p>
-                        </div>
-
-                        <h3 class="mt-3 text-sm font-medium leading-5 text-gray-800 truncate pl-5 md:pl-8 ">
-                            Fitri Rahmi Imami
-                        </h3>
-                    </div>
-                </blockquote>
-                {{-- looping --}}
-
-
 
             </div>
         </div>
