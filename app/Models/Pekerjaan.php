@@ -2,15 +2,18 @@
 
 namespace App\Models;
 
+use App\Models\Traits\HasUuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Pekerjaan extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUuid;
 
     protected $table = 'pekerjaan';
     protected $primaryKey = 'id_pekerjaan';
+    protected $keyType = 'string';
+    public $incrementing = false;
 
     protected $fillable = [
         'nama_pekerjaan',

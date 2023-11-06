@@ -2,14 +2,17 @@
 
 namespace App\Models;
 
+use App\Models\Traits\HasUuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Pribadi extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUuid;
     protected $table = "data_pribadi";
     protected $primaryKey = "id_pribadi";
+    protected $keyType = 'string';
+    public $incrementing = false;
 
     protected $fillable = [
         'nisn',
