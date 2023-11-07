@@ -1,8 +1,8 @@
     @php
-        $data = [1, 2, 3, 4];
-        $total = [$alumniData['countAlumniMendaftar'], $alumniData['countAlumni'], $alumniData['countPekerjaan'], $alumniData['countPendidikan']];
-        $text = ['Alumni Yang Telah Mendaftar', 'Alumni  Yang Telah Deferivikasi', 'Alumni yang telah bekerja ', 'Alumni melanjutkan pendidikan'];
-        $img = ['admin_re', 'admin_verif', 'admin_bekerja', 'admin_pendidikan'];
+        $data = [1, 2, 3, 4, 5];
+        $total = [$alumniData['countAlumniMendaftar'], $alumniData['countAlumni'], $alumniData['countPekerjaan'], $alumniData['countPendidikan'], $alumniData['countPendidikan']];
+        $text = ['Alumni Yang Telah Mendaftar', 'Alumni  Yang Telah Deferivikasi', 'Alumni yang telah bekerja ', 'Alumni melanjutkan pendidikan', 'Fresh Graduate'];
+        $img = ['admin_re', 'admin_verif', 'admin_bekerja', 'admin_book', 'admin_pendidikan'];
     @endphp
 
 
@@ -12,17 +12,17 @@
 
 
 
-    <div class="grid grid-cols-2 gap-5 lg:grid-cols-4 place-items-center">
+    <div class="grid grid-cols-2  lg:grid-cols-5 place-items-center">
 
 
         @foreach ($data as $index => $item)
             <div
-                class=" bg-white shadow-lg rounded-[20px] max-w-[210px] min-w-[200px] min-h-[190px] max-h-[200px]  flex flex-col p-5">
-                <div class="flex flex-col ">
-                    <div class="mx-4">
+                class=" bg-white shadow-lg rounded-[10px] max-w-[207px] min-w-[200px] min-h-[125px] max-h-[128px]  flex flex-col px-5 py-2.5">
+                <div class="flex flex-col space-y-3 ">
+                    <div class="mx-4 flex space-x-7">
                         <img src="{{ asset('assets/' . $img[$index] . '.svg') }}" alt="">
+                        <h1 class="font-bold text-[30px] mt-1 font-montserrat">{{ $total[$index] }}</h1>
                     </div>
-                    <h1 class="font-bold text-[30px] mt-2 font-montserrat">{{ $total[$index] }}</h1>
                     <p class="text-[14px] text-black/60 font-normal">{{ $text[$index] }}</p>
                 </div>
             </div>

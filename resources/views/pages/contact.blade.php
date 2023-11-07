@@ -26,7 +26,7 @@
                                 <div class="min-w-[40px] max-w-[45px] aspect-square shadow-md p-2 rounded-lg">
                                     <img src="{{ asset('assets/email.svg') }}" alt="email" class="w-full h-full" />
                                 </div>
-                                <p class="card__desk break-words">
+                                <p class="card__desk break-words overflow-x-auto">
                                     smkn2padangpanjang@gmail.com
                                 </p>
                             </div>

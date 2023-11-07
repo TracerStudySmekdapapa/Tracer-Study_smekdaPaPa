@@ -2,14 +2,21 @@
 
 @section('konten')
     <section class="bg-[#eee]/20 grid  grid-col-2 md:grid-cols-12 px-[30px] box-border py-5 min-h-[1000px]">
-        <div class="relative hidden md:col-span-2 md:block">
+        <div class="relative hidden md:col-span-1 md:block ">
             @include('template.admin.sidebar')
         </div>
-        <div class="md:col-span-10 md:mr-10">
+
+
+        <div class="md:col-span-11 md:mr-2 px-5 ">
             @include('template.admin.header')
             <div class="mt-20 ">
                 @include('admin.dashboard_components.total')
             </div>
+            <div class="my-10">
+
+                @include('admin.dashboard_components.table_freshGraduate')
+            </div>
+
 
 
             {{-- ! alumni yang terdaftar --}}
