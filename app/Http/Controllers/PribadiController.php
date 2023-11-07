@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\EncryptionHelpers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DataPekerjaanSimpanRequest;
 use App\Http\Requests\DataPekerjaanUpdateRequest;
@@ -94,9 +95,10 @@ class PribadiController extends Controller
     /* End Create Data Pribadi */
 
     /* Start Edit Data Pekerjaan */
-    public function editDataPribadi($id)
+    public function editDataPribadi($data)
     {
         $title = 'Edit Data Pribadi';
+        $id = EncryptionHelpers::decrypt($data);
         $data = Pribadi::where('id_user', $id)->first();
         $jurusan = Jurusan::get();
         $agama = [

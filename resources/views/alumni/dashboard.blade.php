@@ -33,6 +33,9 @@
                         </p>
                         @if ($alumni)
                             <table class="md:w-full text-black/80 w-[80%] sm:w-[90%]  mx-auto ">
+                                @php
+                                    $data = App\Helpers\EncryptionHelpers::encrypt($alumni->id_user);
+                                @endphp
                                 <tr class="divide-y">
                                     <td>nisn</td>
                                     <td class="py-2 px-6">:</td>
@@ -80,8 +83,7 @@
 
                                 <button
                                     class=" w-[80%] mx-auto mt-5 rounded-lg bg-transparent border border-primary hover:bg-black hover:border-transparent hover:text-white capitalize">
-                                    <a href="{{ route('editDataPribadi', $alumni->id_user) }}"
-                                        class="block px-5 py-2 text-sm">
+                                    <a href="{{ route('editDataPribadi', $data) }}" class="block px-5 py-2 text-sm">
                                         edit Data Pribadi
                                     </a>
                                 </button>
