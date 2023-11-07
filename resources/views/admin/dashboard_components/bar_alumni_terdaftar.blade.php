@@ -6,7 +6,9 @@
             data: [{{ $alumniData['countAlumni'] }}, {{ $alumniData['countPekerjaan'] }},
                 {{ $alumniData['countPendidikan'] }},
                 {{ $alumniData['countAlumniNganggur'] }}
-            ]
+            ],
+            color: '#7E3AF2',
+
         }],
         chart: {
             type: 'bar',

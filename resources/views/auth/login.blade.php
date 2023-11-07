@@ -49,9 +49,34 @@
                                 <!-- error -->
                             </label>
 
+
+                            {{--  <div>
+                                <div class="my-5 h-full  flex justify-between items-center">
+                                    <div id="angkaPertama"
+                                        class="w-[150px]  border  border-gray-200 rounded-full grid place-items-center py-1.5">
+                                        32
+                                    </div>
+                                    <div id="jenisAritmatika" class="w-[100px]  grid place-items-center py-1.5">
+                                        +
+                                    </div>
+                                    <div id="angkaKedua"
+                                        class="w-[150px]  border  border-gray-200 rounded-full grid place-items-center py-1.5">
+                                        65
+                                    </div>
+
+
+                                </div>
+                                <div class="flex-grow-1 w-full min-h-3  ">
+                                    <input id="finalHasil" type="number"
+                                        class="block w-full h-full text-center py-1.5 border border-gray-200 rounded-full"
+                                        placeholder="hasil dari jawaban diatas ?">
+                                </div>
+
+                            </div> --}}
+
+
                             <!-- submit  -->
-                            <button type="submit"
-                                class="submit active:bg-purple-600 hover:bg-gray-950 focus:outline-none focus:shadow-outline-purple">
+                            <button id="tombolSubmit" type="submit" class="submit  ">
                                 Log in
                             </button>
                         </form>
@@ -60,7 +85,7 @@
 
                         <!-- forgot password -->
                         <p class="mt-4">
-                            <a class="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline"
+                            <a class="text-sm  font-medium text-purple-600 dark:text-purple-400 hover:underline"
                                 href="{{ route('password.request') }}">
                                 Lupa password ?
                             </a>
@@ -80,67 +105,86 @@
     </div>
 
     <script>
-        function data() {
-            function getThemeFromLocalStorage() {
-                // if user already changed the theme, use it
-                if (window.localStorage.getItem("dark")) {
-                    return JSON.parse(window.localStorage.getItem("dark"));
+        // for debugging 
+        function jalanKanScript() {
+
+            const angkaPertama = document.getElementById('angkaPertama');
+            const jenisAritmatika = document.getElementById('jenisAritmatika');
+            const angkaKedua = document.getElementById('angkaKedua');
+            const finalHasil = document.getElementById('finalHasil');
+            const tombolSubmit = document.getElementById('tombolSubmit');
+
+            // medendapatkan random angka pertama
+
+            function getRandomData() {
+                return Math.floor(Math.random() * 100);
+            }
+
+            function cekKondisiAritmatika(param = false) {
+                let isfinalHasilFill = finalHasil.value;
+                if (isfinalHasilFill && param) {
+                    //ada isi
+                    tombolSubmit.classList.remove('bg-gray-500', 'cursor-no-drop');
+                    tombolSubmit.classList.add(
+                        'active:bg-purple-600', 'hover:bg-gray-950', 'focus:outline-none', 'focus:shadow-outline-purple'
+                    );
+                    tombolSubmit.type = 'submit';
+
+                } else {
+                    tombolSubmit.classList.add('bg-gray-500', 'cursor-no-drop');
+                    tombolSubmit.classList.remove(
+                        'active:bg-purple-600', 'hover:bg-gray-950', 'focus:outline-none', 'focus:shadow-outline-purple'
+                    );
+                    tombolSubmit.type = 'button';
+                }
+            }
+            cekKondisiAritmatika();
+
+
+
+            let isfinalHasilFill = finalHasil.textContent;
+            if (isfinalHasilFill) {
+                tombolSubmit.classList
+            }
+
+
+            let countFirst = getRandomData() + 10;
+            // medendapatkan random angka kedua
+            let countSecond = getRandomData() - 10;
+            // medendapatkan random operator aritmatika
+            // const aritmatikaOperator = ['+', '-', 'X', '/'];
+            const aritmatikaOperator = ['+', '-'];
+            const RandomAritmatikaOperator = Math.floor(Math.random() * aritmatikaOperator.length);
+
+
+            // operasi aritmatika dan penyimoanan hasil akhir
+            let hasilAkhirTrue;
+            hasilAkhirTrue = aritmatikaOperator[RandomAritmatikaOperator] == '+' ? countFirst + countSecond :
+                aritmatikaOperator[RandomAritmatikaOperator] == '-' ? countFirst - countSecond : '';
+            // aritmatikaOperator[RandomAritmatikaOperator] == '/' ? countFirst / countSecond : '';
+            console.info(hasilAkhirTrue);
+
+            // memasukan ke tampilan
+            angkaPertama.textContent = countFirst;
+            jenisAritmatika.textContent = aritmatikaOperator[RandomAritmatikaOperator];
+            angkaKedua.textContent = countSecond;
+
+            // mendapatkan hasil user
+
+            finalHasil.addEventListener('keyup', (e) => {
+                if (e.target.value == hasilAkhirTrue) {
+
+                    cekKondisiAritmatika(true)
+                } else {
+                    cekKondisiAritmatika(false)
                 }
 
-                // else return their preferences
-                return (
-                    !!window.matchMedia &&
-                    window.matchMedia("(prefers-color-scheme: dark)").matches
-                );
-            }
+            })
 
-            function setThemeToLocalStorage(value) {
-                window.localStorage.setItem("dark", value);
-            }
 
-            return {
-                dark: getThemeFromLocalStorage(),
-                toggleTheme() {
-                    this.dark = !this.dark;
-                    setThemeToLocalStorage(this.dark);
-                },
-                isSideMenuOpen: false,
-                toggleSideMenu() {
-                    this.isSideMenuOpen = !this.isSideMenuOpen;
-                },
-                closeSideMenu() {
-                    this.isSideMenuOpen = false;
-                },
-                isNotificationsMenuOpen: false,
-                toggleNotificationsMenu() {
-                    this.isNotificationsMenuOpen = !this.isNotificationsMenuOpen;
-                },
-                closeNotificationsMenu() {
-                    this.isNotificationsMenuOpen = false;
-                },
-                isProfileMenuOpen: false,
-                toggleProfileMenu() {
-                    this.isProfileMenuOpen = !this.isProfileMenuOpen;
-                },
-                closeProfileMenu() {
-                    this.isProfileMenuOpen = false;
-                },
-                isPagesMenuOpen: false,
-                togglePagesMenu() {
-                    this.isPagesMenuOpen = !this.isPagesMenuOpen;
-                },
-                // Modal
-                isModalOpen: false,
-                trapCleanup: null,
-                openModal() {
-                    this.isModalOpen = true;
-                    this.trapCleanup = focusTrap(document.querySelector("#modal"));
-                },
-                closeModal() {
-                    this.isModalOpen = false;
-                    this.trapCleanup();
-                },
-            };
+
+
         }
+        // jalanKanScript();
     </script>
 @endsection

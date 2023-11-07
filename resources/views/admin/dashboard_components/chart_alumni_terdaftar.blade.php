@@ -25,6 +25,7 @@
         series: [{
             name: "Alumni Terdaftar",
             data: dataValue(),
+            color: '#7E3AF2',
 
 
         }],
@@ -42,7 +43,7 @@
             curve: 'straight'
         },
         title: {
-            text: 'Product Trends by Month',
+            text: 'Total Terdaftar Setiap Tahun',
             align: 'left'
         },
         grid: {
