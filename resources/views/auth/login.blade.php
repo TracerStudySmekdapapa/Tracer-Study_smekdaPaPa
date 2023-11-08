@@ -50,7 +50,7 @@
                             </label>
 
 
-                            {{--  <div>
+                             <div>
                                 <div class="my-5 h-full  flex justify-between items-center">
                                     <div id="angkaPertama"
                                         class="w-[150px]  border  border-gray-200 rounded-full grid place-items-center py-1.5">
@@ -72,7 +72,7 @@
                                         placeholder="hasil dari jawaban diatas ?">
                                 </div>
 
-                            </div> --}}
+                            </div>
 
 
                             <!-- submit  -->
@@ -185,6 +185,6 @@
 
 
         }
-        // jalanKanScript();
+        jalanKanScript();
     </script>
 @endsection
