@@ -143,6 +143,11 @@
                                 </tr>
                             @endforeach
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                {{ $pesan->links() }}
+                            </tr>
+                        </tfoot>
                     </table>
                     <table class="min-w-full text-sm bg-white divide-y-2 divide-gray-200">
                         <thead class="ltr:text-left rtl:text-right">

@@ -15,8 +15,8 @@ class ContactController extends Controller
         $title = 'Pesan';
         $title_page = 'Pesan';
         $tidakAlumni = User::tidakAlumni()->limit(3)->get();
-        $pesan = Contact::whereIn('status', ['0', 'tolak'])->get();
-        $testimoni = Contact::where('status', 'terima')->get();
+        $pesan = Contact::whereIn('status', ['0', 'tolak'])->paginate(5);
+        $testimoni = Contact::where('status', 'terima')->limit(5)->get();
         return view('admin.pesan', compact('title', 'pesan', 'title_page', 'tidakAlumni', 'testimoni'));
     }
 
