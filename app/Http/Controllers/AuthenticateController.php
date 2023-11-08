@@ -13,9 +13,9 @@ class AuthenticateController extends Controller
             return redirect()->route('adminDashboard');
         }
         if (Auth::user()->hasRole('Alumni')) {
-            return redirect()->route('dashboard')->with(['message' => 'Selamat datang alumni']);
+            return redirect()->route('dashboard')->with(['message' => 'Selamat datang']);
         }
 
-        return redirect()->route('dashboard')->with(['message' => 'Mohon Tunggu Persetujuan admin']);
+        return redirect()->route('dashboard')->with(['message' => 'Mohon Ikuti Step Yang Tertera']);
     }
 }

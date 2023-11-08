@@ -25,7 +25,7 @@ class ContactRequest extends FormRequest
     {
         return [
             'nama' => ['required', 'min:3'],
-            'email' => ['required', 'email'],
+            'email' => ['required', 'email:rcf,dns'],
             'subjek' => ['required', 'min:10'],
             'pesan' => ['required', 'min:10']
         ];

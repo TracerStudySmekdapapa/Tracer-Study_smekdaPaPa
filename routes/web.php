@@ -67,7 +67,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/pesan', [ContactController::class, 'index'])->name('pesan');
         Route::patch('/admin/tolakPesan/{id}', [ContactController::class, 'tolakPesan'])->name('tolakPesan');
         Route::patch('/admin/terimaPesan/{id}', [ContactController::class, 'terimaPesan'])->name('terimaPesan');
-        Route::patch('/admin/terimaPesan/{id}', [ContactController::class, 'hidePesan'])->name('hidePesan');
+        Route::patch('/admin/hidePesan/{id}', [ContactController::class, 'hidePesan'])->name('hidePesan');
         Route::delete('/admin/deletePesan/{id}', [ContactController::class, 'deletePesan'])->name('deletePesan');
     });
 

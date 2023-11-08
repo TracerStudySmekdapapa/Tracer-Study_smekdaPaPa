@@ -79,11 +79,11 @@
                                             Rerum repellat temporibus veritatis ullam numquam, eius debitis?</p>
                                     </div>
 
-                                    <div class="border-t-2 py-2">
+                                    <div class="py-2 border-t-2">
                                         <p>Untuk pesan yang akan dijadikan testimonial <strong> maximal 5
                                                 pesan yang menurut
                                                 admin terbaik </strong> , jika menekan tombol <span
-                                                class="px-4 py-1 bg-rose-500 rounded-md scale-90 hover:cursor-no-drop inline-block text-white">Hide</span>
+                                                class="inline-block px-4 py-1 text-white scale-90 rounded-md bg-rose-500 hover:cursor-no-drop">Hide</span>
                                             maka pesan tidak adan di tampilkan pada bagian testimonial
                                         </p>
 
@@ -101,8 +101,8 @@
 
 
 
-                    <h1 class=" mb-3 captalize font-semibold">semua pesan</h1>
-                    <table class="min-w-full text-sm bg-white divide-y-2 divide-gray-200 mb-10">
+                    <h1 class="mb-3 font-semibold captalize">semua pesan</h1>
+                    <table class="min-w-full mb-10 text-sm bg-white divide-y-2 divide-gray-200">
                         <thead class="ltr:text-left rtl:text-right">
                             <tr>
                                 <th class="px-4 py-2 text-gray-900 whitespace-nowrap">
@@ -114,7 +114,7 @@
                             </tr>
                         </thead>
 
-                        <tbody class="text-center divide-y divide-gray-200 box-border ">
+                        <tbody class="box-border text-center divide-y divide-gray-200 ">
 
 
 
@@ -132,15 +132,20 @@
                                         </p>
                                     </td>
                                     <td class="pt-1">
-                                        <form method="POST">
-                                            @csrf
-                                            @method('PATCH')
 
-                                            @if ($item->status == 'terima' || $item->status == 'tolak')
+                                        @if ($item->status == 'terima' || $item->status == 'tolak')
+                                            <form action="{{ route('deletePesan', $item->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
                                                 <button
-                                                    class="px-5 py-2 font-semibold capitalize text-white rounded-md bg-rose-500"
-                                                    formaction={{ route('tolakPesan', $item->id) }}>hapus</button>
-                                            @else
+                                                    class="px-5 py-2 font-semibold text-white capitalize rounded-md bg-rose-500"
+                                                    type="submit">hapus</button>
+                                            </form>
+                                        @else
+                                            <form method="POST">
+                                                @csrf
+                                                @method('PATCH')
+
                                                 <div class="grid w-full grid-cols-2 gap-1">
                                                     <button
                                                         class="px-5 py-2 font-semibold text-white capitalize rounded-md bg-rose-500"
@@ -149,22 +154,25 @@
                                                         class="px-5 py-2 font-semibold text-white capitalize bg-blue-500 rounded-md"
                                                         formaction={{ route('terimaPesan', $item->id) }}>terima</button>
                                                 </div>
-                                            @endif
-                                        </form>
+                                            </form>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                         <tfoot>
                             <tr>
-                                {{ $pesan->links() }}
+                                <td colspan="4" class="px-10">
+
+                                    {{ $pesan->links() }}
+                                </td>
                             </tr>
                         </tfoot>
                     </table>
 
 
-                    <h1 class="capitalize font-semibold mb-3 mt-10">pesan jadi testimoni</h1>
-                    <table class="min-w-full text-sm bg-white divide-y-2 divide-gray-200 mt-10">
+                    <h1 class="mt-10 mb-3 font-semibold capitalize">pesan jadi testimoni</h1>
+                    <table class="min-w-full mt-10 text-sm bg-white divide-y-2 divide-gray-200">
                         <thead class="ltr:text-left rtl:text-right">
                             <tr>
                                 <th class="px-4 py-2 text-gray-900 whitespace-nowrap">
@@ -176,7 +184,7 @@
                             </tr>
                         </thead>
 
-                        <tbody class="text-center divide-y divide-gray-200 px-3">
+                        <tbody class="px-3 text-center divide-y divide-gray-200">
 
                             @foreach ($testimoni as $item)
                                 <tr>
@@ -197,7 +205,7 @@
                                             @method('PATCH')
 
                                             <button class="px-5 py-2 mt-1 font-semibold text-white rounded-md bg-rose-500"
-                                                formaction={{ route('tolakPesan', $item->id) }}>Hide</button>
+                                                formaction={{ route('hidePesan', $item->id) }}>Hide</button>
 
                                         </form>
                                     </td>
