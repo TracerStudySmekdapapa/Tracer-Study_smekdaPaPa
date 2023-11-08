@@ -14,14 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('pekerjaan', function (Blueprint $table) {
-            $table->id('id_pekerjaan');
+            $table->uuid('id_pekerjaan');
             $table->string('nama_pekerjaan', 50)->nullable();
             $table->string('nama_instansi', 50)->nullable();
             $table->text('alamat_instansi')->nullable();
             $table->string('jabatan', 50)->nullable();
             $table->string('thn_masuk', 4)->nullable();
             $table->string('thn_keluar', 4)->nullable();
-            $table->foreignId('id_pribadi')->constrained('data_pribadi', 'id_pribadi')->onDelete('cascade')->onUpdate('cascade');
+            $table->uuid('id_pribadi')->foreignId('id_pribadi')->constrained('data_pribadi', 'id_pribadi')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

@@ -14,12 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('pendidikan', function (Blueprint $table) {
-            $table->id('id_pendidikan');
+            $table->uuid('id_pendidikan');
             $table->string('nama_univ', 50)->nullable();
             $table->string('fakultas', 25)->nullable();
             $table->string('prodi', 50)->nullable();
             $table->text('alamat_univ')->nullable();
-            $table->foreignId('id_pribadi')->constrained('data_pribadi', 'id_pribadi')->onDelete('cascade')->onUpdate('cascade');
+            $table->uuid('id_pribadi')->foreignId('id_pribadi')->constrained('data_pribadi', 'id_pribadi')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
