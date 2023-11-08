@@ -57,6 +57,24 @@ class ContactController extends Controller
         return redirect()->back()->with(['message' => 'Pesan Ditolak']);
     }
 
+    public function deletePesan($id)
+    {
+        $pesan = Contact::findOrFail($id);
+        $pesan->delete();
+
+        return redirect()->back()->with(['message' => 'Pesan Dihapus']);
+    }
+
+    public function hidePesan($id)
+    {
+        $pesan = Contact::findOrFail($id);
+        $pesan->update([
+            'status' => '0'
+        ]);
+
+        return redirect()->back()->with(['message' => 'Pesan Dihide']);
+    }
+
     public function terimaPesan($id)
     {
         $pesan = Contact::findOrFail($id);

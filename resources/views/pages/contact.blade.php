@@ -1,5 +1,12 @@
 @extends('template.master')
 @section('content')
+    @if (session('message'))
+        <div class="absolute top-0 right-0 p-4">
+            <h1 class="px-4 py-2.5 bg-green-600 font-bold uppercase rounded-md text-white">
+                {{ session('message') }}
+            </h1>
+        </div>
+    @endif
     <div class="w-[130px] h-[130px] bg-primary blur-[100px] absolute top-0 -left-40 z-0"></div>
 
     <main>
@@ -12,37 +19,37 @@
         <!-- ? contact -->
         <section id="kontak" class="pt-[50px] mb-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-10 lg:gap-y-0">
-                <div class="w-full flex flex-col space-y-5 px-5">
+                <div class="flex flex-col w-full px-5 space-y-5">
                     <h1 class="font-bold text-[30px] capitalize">get in touch</h1>
                     <p class="font-normal text-black/70 leading-[25px] w-[70%]">
                         Hubungi Kami jika anda punya saran atau keluhan ataupun keperluan
                         yang lain
                     </p>
 
-                    <div class="w-full flex flex-col space-y-8">
-                        <div class="gap-y-4 grid grid-cols-1">
+                    <div class="flex flex-col w-full space-y-8">
+                        <div class="grid grid-cols-1 gap-y-4">
                             <!-- ============ -->
-                            <div class="flex justify-start items-center space-x-3">
+                            <div class="flex items-center justify-start space-x-3">
                                 <div class="min-w-[40px] max-w-[45px] aspect-square shadow-md p-2 rounded-lg">
                                     <img src="{{ asset('assets/email.svg') }}" alt="email" class="w-full h-full" />
                                 </div>
-                                <p class="card__desk break-words overflow-x-auto">
+                                <p class="overflow-x-auto break-words card__desk">
                                     smkn2padangpanjang@gmail.com
                                 </p>
                             </div>
 
                             <!-- ====================== -->
 
-                            <div class="flex justify-start items-center space-x-3">
+                            <div class="flex items-center justify-start space-x-3">
                                 <div class="min-w-[40px] max-w-[45px] aspect-square shadow-md p-2 rounded-lg">
                                     <img src="{{ asset('assets/talp.svg') }}" alt="telp" class="w-full h-full" />
                                 </div>
-                                <p class="card__desk break-words">081234565411</p>
+                                <p class="break-words card__desk">081234565411</p>
                             </div>
 
                             <!-- ============= -->
 
-                            <div class="flex justify-start items-center space-x-3">
+                            <div class="flex items-center justify-start space-x-3">
                                 <div class="min-w-[40px] max-w-[45px] aspect-square shadow-md p-2 rounded-lg">
                                     <img src="{{ asset('assets/lokasi.svg') }}" alt="location" class="w-full h-full" />
                                 </div>
@@ -67,8 +74,8 @@
                                     @enderror
                                     <!-- error -->
                                 </label>
-                                <div class="flex space-x-5 mt-5">
-                                    <label class="block text-sm w-full">
+                                <div class="flex mt-5 space-x-5">
+                                    <label class="block w-full text-sm">
                                         <span class="label__input focus:shadow-outline-purple form-input">Email</span>
                                         <input name="email" type="email" class="input__contact"
                                             placeholder="masukan email anda" value="{{ old('email') }}" />
@@ -79,7 +86,7 @@
                                         @enderror
                                         <!-- error -->
                                     </label>
-                                    <label class="block text-sm w-full">
+                                    <label class="block w-full text-sm">
                                         <span class="label__input focus:shadow-outline-purple form-input">subjek</span>
                                         <input name="subjek" class="input__contact" placeholder="masukan subjek"
                                             value="{{ old('subjek') }}" />
@@ -94,7 +101,7 @@
                                 <label class="block mt-5 text-sm">
                                     <span class="text-gray-700 dark:text-gray-400">Pesan</span>
                                     <textarea name="pesan"
-                                        class="block border border-gray-600 px-3 py-2 rounded-md w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                                        class="block w-full px-3 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
                                         rows="3" placeholder="masukan pesan anda.">{{ old('pesan') }}</textarea>
 
                                     <!-- error -->
@@ -105,7 +112,7 @@
                                 </label>
 
                                 <button type="submit"
-                                    class="hover:bg-gray-950 bg-primary px-16 py-2 rounded-md text-white font-semibold mt-5">
+                                    class="px-16 py-2 mt-5 font-semibold text-white rounded-md hover:bg-gray-950 bg-primary">
                                     Kirim
                                 </button>
                             </form>
