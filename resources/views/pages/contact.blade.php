@@ -1,12 +1,54 @@
 @extends('template.master')
 @section('content')
-    @if (session('message'))
-        <div class="absolute top-0 right-0 p-4">
-            <h1 class="px-4 py-2.5 bg-green-600 font-bold uppercase rounded-md text-white">
-                {{ session('message') }}
-            </h1>
-        </div>
-    @endif
+    <div x-data>
+
+
+
+        @if (session('message'))
+            <div x-data="{
+                bannerVisible: false,
+                bannerVisibleAfter: 300,
+            }" x-show="bannerVisible" x-transition:enter="transition ease-out duration-500"
+                x-transition:enter-start="translate-x-40" x-transition:enter-end="translate-x-0"
+                x-transition:leave="transition ease-in duration-300" x-transition:leave-start="translate-x-0"
+                x-transition:leave-end="translate-x-40" x-init="setTimeout(() => { bannerVisible = true }, bannerVisibleAfter);" x-cloak
+                class="absolute top-7 right-28 p-4 z-[99999]">
+                <div class="px-3 py-2 capitalize bg-white border border-gray-100 rounded-md">
+                    <div class="flex items-center space-x-3">
+
+                        <div class="bg-primary/80 w-[40px] aspect-square rounded-md grid place-items-center">
+                            <img src="{{ asset('assets/validation.svg') }}" alt="svg" class="w-[25px]">
+                        </div>
+
+                        <div class="flex flex-col font-medium text-[15px] ">
+                            <span class="text-[#252525]/90">
+                                {{ Session::get('message') }}
+                            </span>
+                            <span class="text-[#252525]/70 -mt-1 text-sm">
+                                {{ Auth::user()->name }}
+                            </span>
+                        </div>
+
+                        <div class="w-[100px] h-[50px] flex justify-end items-center ">
+                            <button @click="bannerVisible=false;"
+                                class=" bg-gray-200 rounded-full grid place-items-center min-h-[25px] max-h-[25px] min-w-[25px] max-w-[25px] text-black">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-[17px] h-[17px]">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+        @endif
+
+
+    </div>
+
+
+
+
     <div class="w-[130px] h-[130px] bg-primary blur-[100px] absolute top-0 -left-40 z-0"></div>
 
     <main>
