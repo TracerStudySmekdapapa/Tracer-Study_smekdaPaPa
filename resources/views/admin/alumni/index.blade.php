@@ -17,22 +17,21 @@
                 <div class="relative">
 
                 </div>
-                <div class="w-[30%] ">
-                    <form action="{{ route('dataAlumni') }}" method="get" id="form_search">
+                <div class="w-[50%] ">
+                    <form action="{{ route('dataAlumni') }}" method="get" id="form_search" class="flex space-x-5">
                         <input id="input_search"
                             class="relative z-[23] block  mt-1 text-sm border border-gray-500 pl-5 w-full pr-12 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                             placeholder="cari berdasarkan nama / nisn" type="text" name="search"
                             value="{{ $search }}" />
 
-                        <select name="status">
-                            <option>semua
-                            </option>
+                        <select name="status" id="status"
+                            class="tamatan max-w-[150px]  h-[45px] rounded-lg border-gray-600 text-gray-700 sm:text-sm [&::-webkit-calendar-picker-indicator]:opacity-0">
+                            <option>semua</option>
                             <option value="bekerja" @selected($status == 'bekerja')>Bekerja
                             </option>
                             <option value="pendidikan" @selected($status == 'pendidikan')>Pendidikan
                             </option>
                         </select>
-                        <button type="submit">button</button>
                     </form>
                 </div>
             </div>
@@ -154,7 +153,7 @@
 
                         @empty
                             <tr class="bg-gray-50">
-                                <td colspan="6">TIDAK ADA DATA YANG DITEMUKAN</td>
+                                <td colspan="8">TIDAK ADA DATA YANG DITEMUKAN</td>
                             </tr>
                         @endforelse
                     </tbody>
@@ -169,12 +168,22 @@
                 </table>
             </div>
 
-            <div class="">
-                <h1>Jumlah : {{ $search || $status ? $countSearch : $alumniCount }}</h1>
+            <div class="my-2 text-base">
+                <h1>Jumlah : {{ $search || $status ? $countSearch : $alumniCount }} orang</h1>
             </div>
 
         </div>
 
 
     </section>
+
+
+    <script>
+        const form_search = document.querySelector("#form_search");
+
+        const status = document.querySelector('#status');
+        status.addEventListener('change', (e) => {
+            form_search.submit();
+        });
+    </script>
 @endsection

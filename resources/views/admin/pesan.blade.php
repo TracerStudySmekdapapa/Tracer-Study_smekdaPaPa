@@ -4,7 +4,7 @@
 @extends('template.admin.master')
 
 @section('konten')
-    <section class="bg-[#eee]/20 grid  grid-col-2 md:grid-cols-12 px-[30px] box-border py-5 min-h-[1000px]">
+    <section class="bg-[#eee]/20 grid  grid-col-2 md:grid-cols-12 px-[30px] box-border py-5 pb-[200px]">
         <div class="relative hidden md:col-span-2 md:block">
             @include('template.admin.sidebar')
         </div>
@@ -79,6 +79,16 @@
                                             Rerum repellat temporibus veritatis ullam numquam, eius debitis?</p>
                                     </div>
 
+                                    <div class="border-t-2 py-2">
+                                        <p>Untuk pesan yang akan dijadikan testimonial <strong> maximal 5
+                                                pesan yang menurut
+                                                admin terbaik </strong> , jika menekan tombol <span
+                                                class="px-4 py-1 bg-rose-500 rounded-md scale-90 hover:cursor-no-drop inline-block text-white">Hide</span>
+                                            maka pesan tidak adan di tampilkan pada bagian testimonial
+                                        </p>
+
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -91,7 +101,8 @@
 
 
 
-                    <table class="min-w-full text-sm bg-white divide-y-2 divide-gray-200">
+                    <h1 class=" mb-3 captalize font-semibold">semua pesan</h1>
+                    <table class="min-w-full text-sm bg-white divide-y-2 divide-gray-200 mb-10">
                         <thead class="ltr:text-left rtl:text-right">
                             <tr>
                                 <th class="px-4 py-2 text-gray-900 whitespace-nowrap">
@@ -103,12 +114,12 @@
                             </tr>
                         </thead>
 
-                        <tbody class="text-center divide-y divide-gray-200">
+                        <tbody class="text-center divide-y divide-gray-200 box-border ">
 
 
 
                             @foreach ($pesan as $item)
-                                <tr>
+                                <tr class="px-3">
                                     <td class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap">
                                         {{ $item->nama }}
                                     </td>
@@ -116,25 +127,26 @@
                                         {{ $item->email }}
                                     </td>
                                     <td>
-                                        <p class="text-[13px] px-5">
+                                        <p class="text-[13px] max-w-[400px] mx-auto min-w-[300px] ">
                                             {{ $item->pesan }}
                                         </p>
                                     </td>
-                                    <td>
+                                    <td class="pt-1">
                                         <form method="POST">
                                             @csrf
                                             @method('PATCH')
 
                                             @if ($item->status == 'terima' || $item->status == 'tolak')
-                                                <button class="px-5 py-2 font-semibold text-white rounded-md bg-rose-500"
+                                                <button
+                                                    class="px-5 py-2 font-semibold capitalize text-white rounded-md bg-rose-500"
                                                     formaction={{ route('tolakPesan', $item->id) }}>hapus</button>
                                             @else
                                                 <div class="grid w-full grid-cols-2 gap-1">
                                                     <button
-                                                        class="px-5 py-2 font-semibold text-white rounded-md bg-rose-500"
+                                                        class="px-5 py-2 font-semibold text-white capitalize rounded-md bg-rose-500"
                                                         formaction={{ route('tolakPesan', $item->id) }}>tolak</button>
                                                     <button
-                                                        class="px-5 py-2 font-semibold text-white bg-blue-500 rounded-md"
+                                                        class="px-5 py-2 font-semibold text-white capitalize bg-blue-500 rounded-md"
                                                         formaction={{ route('terimaPesan', $item->id) }}>terima</button>
                                                 </div>
                                             @endif
@@ -144,7 +156,10 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <table class="min-w-full text-sm bg-white divide-y-2 divide-gray-200">
+
+
+                    <h1 class="capitalize font-semibold mb-3 mt-10">pesan jadi testimoni</h1>
+                    <table class="min-w-full text-sm bg-white divide-y-2 divide-gray-200 mt-10">
                         <thead class="ltr:text-left rtl:text-right">
                             <tr>
                                 <th class="px-4 py-2 text-gray-900 whitespace-nowrap">
@@ -156,9 +171,7 @@
                             </tr>
                         </thead>
 
-                        <tbody class="text-center divide-y divide-gray-200">
-
-
+                        <tbody class="text-center divide-y divide-gray-200 px-3">
 
                             @foreach ($testimoni as $item)
                                 <tr>
@@ -169,28 +182,18 @@
                                         {{ $item->email }}
                                     </td>
                                     <td>
-                                        <p class="text-[13px]">
+                                        <p class="text-[13px] max-w-[400px] mx-auto min-w-[300px]">
                                             {{ $item->pesan }}
                                         </p>
                                     </td>
-                                    <td>
+                                    <td class="p-1">
                                         <form method="POST">
                                             @csrf
                                             @method('PATCH')
 
-                                            @if ($item->status == 'terima' || $item->status == 'tolak')
-                                                <button class="px-5 py-2 font-semibold text-white rounded-md bg-rose-500"
-                                                    formaction={{ route('tolakPesan', $item->id) }}>hapus</button>
-                                            @else
-                                                <div class="grid w-full grid-cols-2 gap-1">
-                                                    <button
-                                                        class="px-5 py-2 font-semibold text-white rounded-md bg-rose-500"
-                                                        formaction={{ route('tolakPesan', $item->id) }}>tolak</button>
-                                                    <button
-                                                        class="px-5 py-2 font-semibold text-white bg-blue-500 rounded-md"
-                                                        formaction={{ route('terimaPesan', $item->id) }}>terima</button>
-                                                </div>
-                                            @endif
+                                            <button class="px-5 py-2 mt-1 font-semibold text-white rounded-md bg-rose-500"
+                                                formaction={{ route('tolakPesan', $item->id) }}>Hide</button>
+
                                         </form>
                                     </td>
                                 </tr>

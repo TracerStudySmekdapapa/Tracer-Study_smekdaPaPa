@@ -94,16 +94,18 @@ $refs.content.addEventListener('mouseleave', () => { tooltipVisible = false; });
                             </button>
                         </div>
                         <div class="relative w-auto">
-                            <p class="text-black/70 mt-2 mb-8">
+                            <p class="text-black/70 mt-2 mb-5">
                                 Setelah anda Keluar Anda perlu login kembali untuk masuk ke halaman , yakin mau keluar ?
                             </p>
-                            <div class="grid grid-cols-7 gap-x-2 ">
-                                <button class="px-6 py-2 rounded-md font-semibold text-white col-span-4 bg-blue-500 "
-                                    @click="modalOpen=false">cancle</button>
-                                <form x-ref="content" action="{{ route('logout') }}" method="POST" class="col-span-3">
+                            <div class="">
+                                <form x-ref="content" action="{{ route('logout') }}" method="POST"
+                                    class=" grid grid-cols-7 gap-x-2 py-2">
                                     @csrf
+                                    <button type="button"
+                                        class="block col-span-4 py-2 px-6  rounded-md font-semibold text-white  bg-gray-500 "
+                                        @click="modalOpen=false">cancle</button>
                                     <button type="submit" href="{{ route('logout') }} "
-                                        class="rounded-md px-6 py-2 font-semibold text-white  bg-rose-400">
+                                        class="block col-span-3 rounded-md px-6  font-semibold text-white  bg-rose-400">
                                         iya, keluar
                                     </button>
                                 </form>

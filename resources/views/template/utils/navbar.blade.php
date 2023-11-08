@@ -14,7 +14,7 @@
                 <!-- ?navigasi menu ===========================-->
                 <div class="navigation__content">
                     <a href="{{ route('/') }}#home"
-                        class="ml-6 text-black navigation__content__link text-base py-1 md:ml-0 lg:mr-3">Beranda</a>
+                        class="ml-6 text-black navigation__content__link text-base py-1 md:ml-0 lg:mr-3">Beranda </a>
                     <a href="{{ route('/') }}#about"
                         class="ml-6 text-gray-700 navigation__content__link text-base py-1 hover:text-black lg:mr-3">Tentang
                     </a>
