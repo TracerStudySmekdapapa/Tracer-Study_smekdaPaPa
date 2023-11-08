@@ -22,7 +22,7 @@ class PendidikanController extends Controller
             'data_pribadi.id_user'
         )
             ->join(
-                DB::raw("(SELECT id_pribadi, COUNT(DISTINCT id_pendidikan) as total_pekerjaan FROM pendidikan GROUP BY id_pribadi) as pendidikan"),
+                DB::raw("(SELECT id_pribadi, COUNT(DISTINCT id_pendidikan) as total_pendidikan FROM pendidikan GROUP BY id_pribadi) as pendidikan"),
                 'data_pribadi.id_pribadi',
                 '=',
                 'pendidikan.id_pribadi'

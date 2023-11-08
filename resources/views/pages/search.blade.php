@@ -10,13 +10,13 @@
         <div class="w-[90%] mx-auto flex justify-end items-center mt-10">
             <div class="relative">
                 <form action="{{ route('search') }}" method="get" id="form_search">
-                    <div class="flex  items-center">
-                        <div class="relative mr-5  w-full">
+                    <div class="flex items-center">
+                        <div class="relative w-full mr-5">
                             <input id="input_search"
                                 class="relative z-[23] block  mt-1 text-sm border border-gray-500 pl-5 w-full pr-12 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                 placeholder="Cari berdasarkan nama / nisn" type="text" required name="search"
                                 value="{{ $search }}" />
-                            <button type="submit" class=" absolute right-2 top-0  py-2 z-30 ">
+                            <button type="submit" class="absolute top-0 z-30 py-2 right-2">
                                 <img src="{{ asset('assets/cari.svg') }}" alt="cari" class="scale-90" />
                             </button>
                         </div>
@@ -27,9 +27,9 @@
                                     class="tamatan w-full rounded-lg border-gray-600 text-gray-700 sm:text-sm [&::-webkit-calendar-picker-indicator]:opacity-0"
                                     placeholder="Tamatan" name="tamatan" value="{{ old('tamatan', $tamatan) }}" />
 
-                                <span class="absolute inset-y-0 right-0 flex w-8 items-center">
+                                <span class="absolute inset-y-0 right-0 flex items-center w-8">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class="h-5 w-5 text-gray-500">
+                                        stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-gray-500">
                                         <path stroke-linecap="round" stroke-linejoin="round"
                                             d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
                                     </svg>
@@ -53,10 +53,10 @@
             </div>
         </div>
 
-        <div class="overflow-x-auto lg:overflow-visible  ">
+        <div class="overflow-x-auto lg:overflow-visible ">
             <table
                 class="relative z-20 rounded-lg bg-primary/5 min-w-[800px] lg:w-[90%] mx-auto  mt-6 overflow-x-scroll lg:overflow-x-hidden">
-                <thead class="overflow-hidden bg-transparent rounded-full relative">
+                <thead class="relative overflow-hidden bg-transparent rounded-full">
                     <tr>
 
                         <td class="absolute left-5 top-5">
@@ -72,7 +72,7 @@
                         </td>
                     </tr>
                     <tr class="relative rounded-full overflow-hidden h-[50px] px-[50px] capitalize ">
-                        <th class="before:left-3 before:w-8 pl-10">
+                        <th class="pl-10 before:left-3 before:w-8">
                             profile
                         </th>
                         <th>nisn</th>
@@ -95,14 +95,17 @@
                                 <td>{{ $item->nisn }}</td>
                                 <td>
                                     @php
-                                        $jurusan = $item->nama_jurusan;
-                                        $words = explode(' ', $jurusan);
+                                        if ($jurusan = $item->nama_jurusan) {
+                                            $words = explode(' ', $jurusan);
 
-                                        $abbreviation = '';
-                                        foreach ($words as $word) {
-                                            $abbreviation .= str($word[0]);
+                                            $abbreviation = '';
+                                            foreach ($words as $word) {
+                                                $abbreviation .= str($word[0]);
+                                            }
+                                            echo $abbreviation;
+                                        } else {
+                                            echo '-';
                                         }
-                                        echo $abbreviation;
                                     @endphp
                                 </td>
 

@@ -1,6 +1,6 @@
     @php
         $data = [1, 2, 3, 4, 5];
-        $total = [$alumniData['countAlumniMendaftar'], $alumniData['countAlumni'], $alumniData['countPekerjaan'], $alumniData['countPendidikan'], $alumniData['countPendidikan']];
+        $total = [$alumniData['countAlumniMendaftar'], $alumniData['countAlumni'], $alumniData['countPekerjaan'], $alumniData['countPendidikan'], $alumniData['countAlumniFreshGraduate']];
         $text = ['Alumni Yang Telah Mendaftar', 'Alumni  Yang Telah Deferivikasi', 'Alumni yang telah bekerja ', 'Alumni melanjutkan pendidikan', 'Fresh Graduate'];
         $img = ['admin_re', 'admin_verif', 'admin_bekerja', 'admin_book', 'admin_pendidikan'];
     @endphp
@@ -10,9 +10,7 @@
 
 
 
-
-
-    <div class="grid grid-cols-2  lg:grid-cols-5 place-items-center">
+    <div class="grid grid-cols-2 lg:grid-cols-5 place-items-center">
 
 
         @foreach ($data as $index => $item)

@@ -6,43 +6,40 @@
 
 @section('konten')
     <section class="bg-[#eee]/20 grid  grid-col-2 md:grid-cols-12 px-[30px] box-border py-5 min-h-[1000px]">
-        <div class="md:col-span-2 relative hidden md:block">
+        <div class="relative hidden md:col-span-2 md:block">
             @include('template.admin.sidebar')
         </div>
         <div class="md:col-span-10 md:mr-10">
             @include('template.admin.header')
 
-            <div class="flex justify-between items-center mt-20  ">
+            <div class="flex items-center justify-between mt-20 ">
 
-                {{--  --}}
                 <div class="relative">
 
-                    <select name="filter">
-
-                        <option value="semua">semua
-                        </option>
-                        <option value="bekerja">Bekerja
-                        </option>
-                        <option value="pendidikan">Pendidikan
-                        </option>
-                    </select>
-                    </form>
                 </div>
-                {{--  --}}
-
                 <div class="w-[30%] ">
                     <form action="{{ route('dataAlumni') }}" method="get" id="form_search">
                         <input id="input_search"
                             class="relative z-[23] block  mt-1 text-sm border border-gray-500 pl-5 w-full pr-12 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                             placeholder="cari berdasarkan nama / nisn" type="text" name="search"
                             value="{{ $search }}" />
+
+                        <select name="status">
+                            <option>semua
+                            </option>
+                            <option value="bekerja" @selected($status == 'bekerja')>Bekerja
+                            </option>
+                            <option value="pendidikan" @selected($status == 'pendidikan')>Pendidikan
+                            </option>
+                        </select>
+                        <button type="submit">button</button>
                     </form>
                 </div>
             </div>
-            <div class="overflow-x-auto lg:overflow-visible   mt-10 ">
+            <div class="mt-10 overflow-x-auto lg:overflow-visible ">
                 <table
                     class="relative z-20 rounded-lg bg-primary/5 min-w-[800px]  w-full  mt-6 overflow-x-scroll lg:overflow-x-hidden">
-                    <thead class="overflow-hidden bg-transparent rounded-full relative">
+                    <thead class="relative overflow-hidden bg-transparent rounded-full">
                         <tr>
 
                             <td class="absolute left-5 top-5">
@@ -58,39 +55,44 @@
                             </td>
                         </tr>
                         <tr class="relative rounded-full overflow-hidden h-[50px] px-[50px] capitalize ">
-                            <th class="before:left-3 before:w-8 pl-10">
+                            <th class="pl-10 before:left-3 before:w-8">
                                 profile
                             </th>
                             <th>nisn</th>
                             <th>jurusan</th>
                             <th>jenis Kelamin</th>
+                            <th>bekerja</th>
+                            <th>pendidikan</th>
                             <th>tamatan</th>
                             <th>Detail</th>
                         </tr>
                     </thead>
-                    <tbody class="text-center divide-x capitalize">
-                        {{-- looping --}}
+                    <tbody class="text-center capitalize divide-x">
 
-                        {{-- @if ($search || $tamatan) --}}
-                        @forelse ($search ? $results : $alumni as $item)
+                        @forelse ($search || $status ? $results : $alumni as $item)
                             <tr class="divide-x bg-gray-50">
-                                <td class="text-left px-4 py-4">
+                                <td class="px-4 py-4 text-left">
                                     {{ $item->name }}
                                 </td>
                                 <td>{{ $item->nisn }}</td>
                                 <td>
                                     @php
-                                        $jurusan = $item->nama_jurusan;
-                                        $words = explode(' ', $jurusan);
+                                        if ($jurusan = $item->nama_jurusan) {
+                                            $words = explode(' ', $jurusan);
 
-                                        $abbreviation = '';
-                                        foreach ($words as $word) {
-                                            $abbreviation .= str($word[0]);
+                                            $abbreviation = '';
+                                            foreach ($words as $word) {
+                                                $abbreviation .= str($word[0]);
+                                            }
+                                            echo $abbreviation;
+                                        } else {
+                                            echo '-';
                                         }
-                                        echo $abbreviation;
                                     @endphp
                                 </td>
                                 <td>{{ $item->jenis_kelamin }}</td>
+                                <td> {{ $item->hasJob == 'true' ? 'Ya' : 'Tidak' }}</td>
+                                <td> {{ $item->hasPendidikan == 'true' ? 'Ya' : 'Tidak' }}</td>
                                 <td>{{ $item->tamatan }}</td>
                                 <td>
                                     <div x-data="{
@@ -142,50 +144,37 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        {{-- @dd($item->id_pribadi) --}}
                                         <a x-ref="content" class="block w-full"
-                                            href="{{ route('adminDetailAlumni', $item->id_pribadi) }}"><img class="mx-auto"
-                                                src="{{ asset('assets/dot.svg') }}" alt="dot" /></a>
+                                            href="{{ route('adminDetailAlumni', $item->id_pribadi ?? '-') }}"><img
+                                                class="mx-auto" src="{{ asset('assets/dot.svg') }}" alt="dot" /></a>
                                     </div>
                                 </td>
                             </tr>
+
                         @empty
                             <tr class="bg-gray-50">
                                 <td colspan="6">TIDAK ADA DATA YANG DITEMUKAN</td>
                             </tr>
                         @endforelse
-                        {{-- @else
-                            <tr class="bg-gray-50">
-                                <td colspan="6">SILAHKAN CARI NAMA ATAU NISN ALUMNI</td>
-                            </tr>
-                        @endif --}}
-
-
                     </tbody>
 
                     <tfoot class="bg-primary/5">
                         <tr>
-                            <td class="py-0.5 px-5" colspan="6">{{ $search ? $results : $alumni->links() }}</td>
+                            <td class="py-0.5 px-5" colspan="6">{{ $search || $status ? $results : $alumni->links() }}
+                            </td>
                         </tr>
                     </tfoot>
 
                 </table>
             </div>
 
+            <div class="">
+                <h1>Jumlah : {{ $search || $status ? $countSearch : $alumniCount }}</h1>
+            </div>
 
-        </div>
         </div>
 
 
     </section>
-
-
-    <script>
-        const form_search = document.querySelector("#filterByAll");
-
-
-        const tamatan = document.querySelector('.tamatan');
-        tamatan.addEventListener('change', (e) => {
-            form_search.submit();
-        });
-    </script>
 @endsection

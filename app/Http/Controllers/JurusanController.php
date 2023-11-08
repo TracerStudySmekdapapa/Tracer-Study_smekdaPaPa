@@ -19,12 +19,7 @@ class JurusanController extends Controller
         $jurusan = Jurusan::get();
         $title = 'Data Jurusan';
         $title_page = 'Data Jurusan';
-        $tidakAlumni = User::whereDoesntHave('roles', function ($query) {
-            $query->whereIn('name', ['Alumni', 'Admin']);
-        })
-            ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
-            ->orderBy('users.name', 'ASC')
-            ->get();
+        $tidakAlumni = User::tidakAlumni()->limit(3)->get();
         return view('admin.jurusan.index', compact('jurusan', 'title', 'title_page', 'tidakAlumni'));
     }
 
@@ -37,12 +32,7 @@ class JurusanController extends Controller
     {
         $title = 'Create Jurusan';
         $title_page = 'Create Jurusan';
-        $tidakAlumni = User::whereDoesntHave('roles', function ($query) {
-            $query->whereIn('name', ['Alumni', 'Admin']);
-        })
-            ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
-            ->orderBy('users.name', 'ASC')
-            ->get();
+        $tidakAlumni = User::tidakAlumni()->limit(3)->get();
         return view('admin.jurusan.create', compact('title', 'title_page', 'tidakAlumni'));
     }
 
@@ -80,12 +70,7 @@ class JurusanController extends Controller
         $jurusan = Jurusan::find($id);
         $title = 'edit jurusan';
         $title_page = 'edit jurusan';
-        $tidakAlumni = User::whereDoesntHave('roles', function ($query) {
-            $query->whereIn('name', ['Alumni', 'Admin']);
-        })
-            ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
-            ->orderBy('users.name', 'ASC')
-            ->get();
+        $tidakAlumni = User::tidakAlumni()->limit(3)->get();
         return view('admin.jurusan.edit', compact('jurusan', 'title', 'title_page', 'tidakAlumni'));
     }
 

@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('data_pribadi', function (Blueprint $table) {
-            $table->id('id_pribadi');
+            $table->uuid('id_pribadi');
             $table->string('nisn', 11)->nullable();
             $table->string('no_telp', 13)->nullable();
             $table->string('tempat_lahir', 100)->nullable();
