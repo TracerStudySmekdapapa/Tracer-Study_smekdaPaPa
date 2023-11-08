@@ -1,7 +1,7 @@
-<div class="overflow-x-auto">
+<div class="overflow-hidden overflow-x-auto">
     <h1 class="mt-2 mb-5 font-semibold text-[20px] capitalize">data fresh graduate</h1>
     <table class="min-w-full text-sm bg-white divide-y-2 divide-gray-200">
-        <thead class="ltr:text-left rtl:text-right">
+        <thead>
             <tr>
                 <th class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap">
                     Nama

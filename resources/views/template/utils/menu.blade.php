@@ -32,7 +32,7 @@
                 </a>
 
                 <a href="{{ route('profile.edit') }}"
-                    class="cursor-pointer relative flex cursor-default select-none hover:bg-neutral-100 items-center rounded px-2 py-1.5 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                    class="cursor-pointer relative flex  select-none hover:bg-neutral-100 items-center rounded px-2 py-1.5 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round" class="w-4 h-4 mr-2">
@@ -50,7 +50,6 @@
                     class="relative  cursor-pointer select-none  lg:py-0.5  items-center rounded px-2  text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
                     <form action="{{ route('logout') }}" class="flex items-center space-x-1" method="POST">
                         @csrf
-
                         <button type="submit" href="{{ route('logout') }}"
                             class="flex  pr-5  py-2  items-center -mt-2">
                             <span>
