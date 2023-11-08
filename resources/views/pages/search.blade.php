@@ -88,7 +88,8 @@
                             <tr class="divide-x bg-gray-50">
                                 <td class=" py-4   max-w-[350px] ">
                                     <div class="grid grid-cols-2 place-items-center mx-auto w-[200px] ">
-                                        <div class="rounded-full w-[30px] h-[30px] bg-rose-600 ml-5"></div>
+                                        <img src="{{ asset('assets/random/' . $item->profil_picture) }}" alt="gambar"
+                                            class="rounded-full w-[40px] h-[40px] ml-5 " />
                                         <h1 class="">{{ $item->name }}</h1>
                                     </div>
                                 </td>
