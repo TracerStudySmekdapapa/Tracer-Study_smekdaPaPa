@@ -323,7 +323,7 @@ class PribadiController extends Controller
             'users.id_user',
             '=',
             'data_pribadi.id_user'
-        )
+        )->leftJoin('jurusan', 'data_pribadi.id_jurusan', '=', 'jurusan.id_jurusan')
             ->where('data_pribadi.tamatan', Carbon::now()->year - 1);
 
         return $alumniCount;
