@@ -10,6 +10,7 @@ use App\Models\Pekerjaan;
 use App\Models\Pendidikan;
 use App\Models\Pribadi;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -21,6 +22,8 @@ class AdminController extends Controller
         $title = 'Dashboard Admin';
         $tidakAlumni = User::tidakAlumni()->limit(3)->get();
         $title_page = 'Selamat Datang, Admin';
+
+
         $alumniData = [
             'countPendidikan' => PendidikanController::alumniPendidikan(),
             'countPendidikanPertahun' => PendidikanController::alumniPendidikanPertahun(),
@@ -29,10 +32,13 @@ class AdminController extends Controller
             'countAlumniPertahun' => PribadiController::alumniPertahun(),
             'countAlumni' => PribadiController::semuaAlumni(),
             'countAlumniMendaftar' => PribadiController::alumniMendaftar(),
-            'countAlumniNganggur' => PribadiController::alumniTidakBekerjaDanTidakPendidikan()
+            'countAlumniNganggur' => PribadiController::alumniTidakBekerjaDanTidakPendidikan(),
+            'countAlumniFreshGraduate' => PribadiController::alumniFreshGraduate()->count(),
         ];
 
-        return view('admin.dashboard', compact('tidakAlumni', 'title', 'title_page', 'alumniData'));
+        $freshGraduate = PribadiController::alumniFreshGraduate()->get();
+
+        return view('admin.dashboard', compact('tidakAlumni', 'title', 'title_page', 'alumniData', 'freshGraduate'));
     }
 
     /* Start Data Alumni */
@@ -42,24 +48,20 @@ class AdminController extends Controller
         $status = $request->status;
         $title = 'Data Alumni';
         $title_page = 'Lihat Data Alumni';
-
         $tidakAlumni = User::tidakAlumni()->limit(3)->get();
 
         if ($search || $status) {
             $results = User::filter(request(['search', 'status']))
-                ->paginate(10)->withQueryString();
-            return view('admin.alumni.index', compact('tidakAlumni', 'results', 'search', 'status', 'title', 'title_page'));
+                ->paginate(10);
+            $countSearch = User::filter(request(['search', 'status']))
+                ->count();
+            return view('admin.alumni.index', compact('tidakAlumni', 'results', 'search', 'status', 'title', 'title_page', 'countSearch'));
         }
 
-        $alumni = User::whereHas('roles', function ($query) {
-            $query->where('name', 'Alumni');
-        })
-            ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
-            ->leftJoin('jurusan', 'data_pribadi.id_jurusan', '=', 'jurusan.id_jurusan')
-            ->orderBy('users.name', 'ASC')
-            ->paginate(10)->withQueryString();
-
-        return view('admin.alumni.index', compact('alumni', 'tidakAlumni', 'search', 'status', 'title', 'title_page'));
+        // dd(User::DataAlumni()->get());
+        $alumni = User::DataAlumni()->paginate(10)->withQueryString();
+        $alumniCount = User::DataAlumni()->get()->count();
+        return view('admin.alumni.index', compact('alumni', 'tidakAlumni', 'search', 'status', 'title', 'title_page', 'alumniCount'));
     }
 
     public function detailAlumni($id)

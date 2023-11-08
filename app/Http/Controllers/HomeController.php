@@ -31,7 +31,7 @@ class HomeController extends Controller
         $tamatan = $request->tamatan;
         $title = 'Cari Alumni';
         if ($search || $tamatan) {
-            $alumni = User::filter(request(['search', 'tamatan']))->orderBy('name', 'ASC')->get();
+            $alumni = User::search(request(['search', 'tamatan']))->get();
             return view('pages.search', compact('alumni', 'title', 'search', 'tamatan'));
         }
         return view('pages.search', compact('title', 'search', 'tamatan'));

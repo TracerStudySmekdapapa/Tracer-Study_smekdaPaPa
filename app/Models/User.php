@@ -36,33 +36,117 @@ class User extends Authenticatable
         return $nameParts[0];
     }
 
+    public function scopeDataAlumni($query)
+    {
+        $query = $query->whereHas('roles', fn ($q) => $q->where('name', 'Alumni'))
+            ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
+            ->leftJoin('jurusan', 'data_pribadi.id_jurusan', '=', 'jurusan.id_jurusan')
+            ->leftJoin(DB::raw("(SELECT id_pribadi, COUNT(DISTINCT id_pekerjaan) as total_pekerjaan FROM pekerjaan GROUP BY id_pribadi) as pekerjaan"), 'data_pribadi.id_pribadi', '=', 'pekerjaan.id_pribadi')
+            ->leftJoin(DB::raw("(SELECT id_pribadi, COUNT(DISTINCT id_pendidikan) as total_pendidikan FROM pendidikan GROUP BY id_pribadi) as pendidikan"), 'data_pribadi.id_pribadi', '=', 'pendidikan.id_pribadi')
+            ->select([
+                'users.*',
+                'data_pribadi.*',
+                'jurusan.*',
+                DB::raw("CASE WHEN pekerjaan.total_pekerjaan > 0 THEN 'true' ELSE 'false' END as hasJob"),
+                DB::raw("CASE WHEN pendidikan.total_pendidikan > 0 THEN 'true' ELSE 'false' END as hasPendidikan")
+            ])
+            ->orderBy('users.name', 'ASC');
+    }
+
     public function scopeFilter($query, array $filters)
+    {
+
+        $query->when(isset($filters['status']) && $filters['status'] == 'semua', function ($query) {
+            $query->whereHas('roles', fn ($q) => $q->where('name', 'Alumni'))
+                ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
+                ->leftJoin('jurusan', 'data_pribadi.id_jurusan', '=', 'jurusan.id_jurusan')
+                ->leftJoin(DB::raw("(SELECT id_pribadi, COUNT(DISTINCT id_pekerjaan) as total_pekerjaan FROM pekerjaan GROUP BY id_pribadi) as pekerjaan"), 'data_pribadi.id_pribadi', '=', 'pekerjaan.id_pribadi')
+                ->leftJoin(DB::raw("(SELECT id_pribadi, COUNT(DISTINCT id_pendidikan) as total_pendidikan FROM pendidikan GROUP BY id_pribadi) as pendidikan"), 'data_pribadi.id_pribadi', '=', 'pendidikan.id_pribadi')
+                ->select([
+                    'users.*',
+                    'data_pribadi.*',
+                    'jurusan.*',
+                    DB::raw("CASE WHEN pekerjaan.total_pekerjaan > 0 THEN 'true' ELSE 'false' END as hasJob"),
+                    DB::raw("CASE WHEN pendidikan.total_pendidikan > 0 THEN 'true' ELSE 'false' END as hasPendidikan")
+                ])
+                ->orderBy('users.name', 'ASC');
+        });
+
+        $query->when(isset($filters['status']) && $filters['status'] == 'bekerja', function ($query) {
+            $query->whereHas('roles', function ($query) {
+                $query->where('name', 'Alumni');
+            })
+                ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
+                ->join(
+                    DB::raw("(SELECT id_pribadi, COUNT(DISTINCT id_pekerjaan) as total_pekerjaan FROM pekerjaan GROUP BY id_pribadi) as pekerjaan"),
+                    'data_pribadi.id_pribadi',
+                    '=',
+                    'pekerjaan.id_pribadi'
+                );
+
+            $query->select([
+                'users.*',
+                'data_pribadi.*',
+                DB::raw("CASE WHEN pekerjaan.total_pekerjaan > 0 THEN 'true' ELSE 'false' END as hasJob")
+            ])
+                ->orderBy('users.name', 'ASC');
+
+            $query->leftJoin('jurusan', 'data_pribadi.id_jurusan', '=', 'jurusan.id_jurusan')
+                ->leftJoin(DB::raw("(SELECT id_pribadi, COUNT(DISTINCT id_pendidikan) as total_pendidikan FROM pendidikan GROUP BY id_pribadi) as pendidikan"), 'data_pribadi.id_pribadi', '=', 'pendidikan.id_pribadi')
+                ->addSelect([
+                    'jurusan.*',
+                    DB::raw("CASE WHEN pendidikan.total_pendidikan > 0 THEN 'true' ELSE 'false' END as hasPendidikan")
+                ]);
+        });
+
+        $query->when(isset($filters['status']) && $filters['status'] == 'pendidikan', function ($query) {
+            $query->whereHas('roles', function ($query) {
+                $query->where('name', 'Alumni');
+            })
+                ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
+                ->join(
+                    DB::raw("(SELECT id_pribadi, COUNT(DISTINCT id_pendidikan) as total_pendidikan FROM pendidikan GROUP BY id_pribadi) as pendidikan"),
+                    'data_pribadi.id_pribadi',
+                    '=',
+                    'pendidikan.id_pribadi'
+                );
+
+            $query->select([
+                'users.*',
+                'data_pribadi.*',
+                DB::raw("CASE WHEN pendidikan.total_pendidikan > 0 THEN 'true' ELSE 'false' END as hasPendidikan")
+            ])
+                ->orderBy('users.name', 'ASC');
+
+            $query->leftJoin('jurusan', 'data_pribadi.id_jurusan', '=', 'jurusan.id_jurusan')
+                ->leftJoin(DB::raw("(SELECT id_pribadi, COUNT(DISTINCT id_pekerjaan) as total_pekerjaan FROM pekerjaan GROUP BY id_pribadi) as pekerjaan"), 'data_pribadi.id_pribadi', '=', 'pekerjaan.id_pribadi')
+                ->addSelect([
+                    'jurusan.*',
+                    DB::raw("CASE WHEN pekerjaan.total_pekerjaan > 0 THEN 'true' ELSE 'false' END as hasJob")
+                ]);
+        });
+
+        $query->when($filters['search'] ?? false, function ($query, $search) {
+            return $query->where(function ($query) use ($search) {
+                $query->where('name', 'like', "%$search%")
+                    ->orWhere(function ($query) use ($search) {
+                        $query->where('nisn', $search);
+                    });
+            });
+        });
+
+        $query->when($filters['tamatan'] ?? false, function ($query, $tamatan) {
+            return $query->where('tamatan', 'like', "%$tamatan%");
+        });
+    }
+
+    public function scopeSearch($query, array $filters)
     {
         $query = $query->whereHas('roles', function ($query) {
             $query->where('name', 'Alumni');
-        })
-            ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
+        })->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
             ->leftJoin('jurusan', 'data_pribadi.id_jurusan', '=', 'jurusan.id_jurusan')
             ->orderBy('users.name', 'ASC');
-
-        $query->when(isset($filters['status']) && $filters['status'] == 'bekerja', function ($query) {
-            return $query->join(
-                DB::raw("(SELECT id_pribadi, COUNT(DISTINCT id_pekerjaan) as total_pekerjaan FROM pekerjaan GROUP BY id_pribadi) as pekerjaan"),
-                'data_pribadi.id_pribadi',
-                '=',
-                'pekerjaan.id_pribadi'
-            );
-        });
-
-
-        $query->when(isset($filters['status']) && $filters['status'] == 'pendidikan', function ($query) {
-            $query->join(
-                DB::raw("(SELECT id_pribadi, COUNT(DISTINCT id_pendidikan) as total_pendidikan FROM pendidikan GROUP BY id_pribadi) as pendidikan"),
-                'data_pribadi.id_pribadi',
-                '=',
-                'pendidikan.id_pribadi'
-            );
-        });
 
         $query->when($filters['search'] ?? false, function ($query, $search) {
             return $query->where(function ($query) use ($search) {

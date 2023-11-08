@@ -1,59 +1,52 @@
 <div class="overflow-x-auto">
     <h1 class="mt-2 mb-5 font-semibold text-[20px] capitalize">data fresh graduate</h1>
-    <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+    <table class="min-w-full text-sm bg-white divide-y-2 divide-gray-200">
         <thead class="ltr:text-left rtl:text-right">
             <tr>
-                <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                <th class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap">
                     Nama
                 </th>
-                <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                <th class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap">
                     NISN
                 </th>
-                <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                <th class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap">
                     Jurusan
                 </th>
-                <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 capitalize">
+                <th class="px-4 py-2 font-medium text-gray-900 capitalize whitespace-nowrap">
                     jenis Kelamin
                 </th>
-                <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 capitalize">
+                <th class="px-4 py-2 font-medium text-gray-900 capitalize whitespace-nowrap">
                     phone
                 </th>
                 <th class="px-4 py-2"></th>
             </tr>
         </thead>
 
-        <tbody class="divide-y divide-gray-200 text-center">
-            <tr>
-                <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 capitalize">
-                    syaid alfarishi
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">2456632</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">RPL</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700 capitalize">Laki Laki</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">+6283181435850</td>
-            </tr>
-            <tr>
-                <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                    Diva Aurelia
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">2452322</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">IPA</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">Perempuan</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">+6283185574412</td>
-            </tr>
-            <tr>
-                <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                    abhirul fathan
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">23152232</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">TKR</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">Laki Laki</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">+6285232342342</td>
-            </tr>
+        <tbody class="text-center divide-y divide-gray-200">
+            @foreach ($freshGraduate as $item)
+                <tr>
+                    <td class="px-4 py-2 font-medium text-gray-900 capitalize whitespace-nowrap">
+                        {{ $item->name }}
+                    </td>
+                    <td class="px-4 py-2 text-gray-700 whitespace-nowrap">{{ $item->nisn }}</td>
+                    <td class="px-4 py-2 text-gray-700 whitespace-nowrap">
+                        @php
+                            if ($jurusan = $item->nama_jurusan) {
+                                $words = explode(' ', $jurusan);
 
-
-
-
+                                $abbreviation = '';
+                                foreach ($words as $word) {
+                                    $abbreviation .= str($word[0]);
+                                }
+                                echo $abbreviation;
+                            } else {
+                                echo '-';
+                            }
+                        @endphp</td>
+                    <td class="px-4 py-2 text-gray-700 capitalize whitespace-nowrap">{{ $item->jenis_kelamin }}</td>
+                    <td class="px-4 py-2 text-gray-700 whitespace-nowrap">{{ $item->no_telp }}</td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 </div>

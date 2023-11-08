@@ -15,7 +15,6 @@ use App\Models\Pendidikan;
 use App\Models\Pribadi;
 use App\Models\User;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -24,12 +23,6 @@ class PribadiController extends Controller
     public function index()
     {
         $title = 'Alumni Dashboard';
-        /* $alumni = Pribadi::get();
-        foreach($alumni as $data){
-            foreach ($data->pekerjaan as $item) {
-                $item->nama_pekerjaan;
-            } 
-        } */
         $alumni = Pribadi::where('id_user', Auth::user()->id_user)->first();
         if ($alumni) {
             $pekerjaan = Pekerjaan::where('id_pribadi', $alumni->id_pribadi)->orderBy('created_at', 'DESC')->limit(3)->get();
@@ -113,7 +106,7 @@ class PribadiController extends Controller
     public function updateDataPribadi(DataPribadiUpdateRequest $request, $id)
     {
         $alumni = Pribadi::where('id_user', $id)->first();
-        // dd($alumni);
+
         /* Start Validasi */
         $validatedData = $request->validated();
         /* End Validasi */
@@ -319,6 +312,20 @@ class PribadiController extends Controller
         return $alumniCount;
     }
 
+    public static function alumniFreshGraduate()
+    {
+        $alumniCount = User::whereHas('roles', function ($query) {
+            $query->where('name', 'Alumni');
+        })->join(
+            'data_pribadi',
+            'users.id_user',
+            '=',
+            'data_pribadi.id_user'
+        )
+            ->where('data_pribadi.tamatan', Carbon::now()->year - 1);
+
+        return $alumniCount;
+    }
 
     public static function semuaAlumni()
     {

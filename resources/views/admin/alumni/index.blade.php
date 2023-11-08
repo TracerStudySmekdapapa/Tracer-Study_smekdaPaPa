@@ -61,6 +61,8 @@
                             <th>nisn</th>
                             <th>jurusan</th>
                             <th>jenis Kelamin</th>
+                            <th>bekerja</th>
+                            <th>pendidikan</th>
                             <th>tamatan</th>
                             <th>Detail</th>
                         </tr>
@@ -89,6 +91,8 @@
                                     @endphp
                                 </td>
                                 <td>{{ $item->jenis_kelamin }}</td>
+                                <td> {{ $item->hasJob == 'true' ? 'Ya' : 'Tidak' }}</td>
+                                <td> {{ $item->hasPendidikan == 'true' ? 'Ya' : 'Tidak' }}</td>
                                 <td>{{ $item->tamatan }}</td>
                                 <td>
                                     <div x-data="{
@@ -140,12 +144,14 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        {{-- @dd($item->id_pribadi) --}}
                                         <a x-ref="content" class="block w-full"
-                                            href="{{ route('adminDetailAlumni', $item->id_pribadi) }}"><img class="mx-auto"
-                                                src="{{ asset('assets/dot.svg') }}" alt="dot" /></a>
+                                            href="{{ route('adminDetailAlumni', $item->id_pribadi ?? '-') }}"><img
+                                                class="mx-auto" src="{{ asset('assets/dot.svg') }}" alt="dot" /></a>
                                     </div>
                                 </td>
                             </tr>
+
                         @empty
                             <tr class="bg-gray-50">
                                 <td colspan="6">TIDAK ADA DATA YANG DITEMUKAN</td>
@@ -163,8 +169,10 @@
                 </table>
             </div>
 
+            <div class="">
+                <h1>Jumlah : {{ $search || $status ? $countSearch : $alumniCount }}</h1>
+            </div>
 
-        </div>
         </div>
 
 
