@@ -25,7 +25,7 @@ class Pekerjaan extends Model
         'id_pribadi'
     ];
 
-    public function alumni()
+    public function pribadi()
     {
         return $this->belongsTo(Pribadi::class, 'id_pribadi');
     }

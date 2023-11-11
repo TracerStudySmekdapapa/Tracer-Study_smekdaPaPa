@@ -18,6 +18,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class PribadiController extends Controller
 {
@@ -91,18 +92,22 @@ class PribadiController extends Controller
     public function editDataPribadi($data)
     {
         $title = 'Edit Data Pribadi';
-        $id = EncryptionHelpers::decrypt($data);
-        $data = Pribadi::where('id_user', $id)->first();
-        $jurusan = Jurusan::get();
-        $agama = [
-            'Islam',
-            'Kristen',
-            'Hindu',
-            'Buddha',
-            'Konghucu',
-            'Lainnya'
-        ];
-        return view('alumni.datapribadi.edit', compact('data', 'title', 'jurusan', 'agama'));
+        try {
+            $id = EncryptionHelpers::decrypt($data);
+            $data = Pribadi::where('id_user', $id)->first();
+            $jurusan = Jurusan::get();
+            $agama = [
+                'Islam',
+                'Kristen',
+                'Hindu',
+                'Buddha',
+                'Konghucu',
+                'Lainnya'
+            ];
+            return view('alumni.datapribadi.edit', compact('data', 'title', 'jurusan', 'agama'));
+        } catch (\Illuminate\Contracts\Encryption\DecryptException $e) {
+            return redirect()->back()->with('error', 'Maaf');
+        }
     }
 
     public function updateDataPribadi(DataPribadiUpdateRequest $request, $id)
@@ -168,6 +173,7 @@ class PribadiController extends Controller
     {
         $title = 'Edit Data Pekerjaan';
         $data = Pekerjaan::where('id_pekerjaan', $id)->first();
+        $this->authorize('view', $data);
         return view('alumni.datapekerjaan.edit', compact('title', 'data'));
     }
 
