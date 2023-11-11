@@ -173,7 +173,7 @@ class PribadiController extends Controller
     {
         $title = 'Edit Data Pekerjaan';
         $data = Pekerjaan::where('id_pekerjaan', $id)->first();
-        $this->authorize('view', $data);
+        $this->authorize('edit', $data);
         return view('alumni.datapekerjaan.edit', compact('title', 'data'));
     }
 
@@ -203,7 +203,8 @@ class PribadiController extends Controller
 
     public function detailDataPekerjaan($id)
     {
-        $pekerjaan = Pekerjaan::get()->where('id_pribadi', $id);
+        $pekerjaan = Pekerjaan::with('pribadi')->where('id_pribadi', $id)->get();
+        $this->authorize('show', $pekerjaan->first());
         $title = 'data pekerjaan';
         return view('alumni.datapekerjaan.detail', compact('title', 'pekerjaan'));
     }
@@ -251,6 +252,7 @@ class PribadiController extends Controller
     {
         $title = 'Edit Data Pendidikan';
         $data = Pendidikan::where('id_pendidikan', $id)->first();
+        $this->authorize('edit', $data);
         return view('alumni.datapendidikan.edit', compact('title', 'data'));
     }
 
@@ -278,7 +280,8 @@ class PribadiController extends Controller
 
     public function detailDataPendidikan($id)
     {
-        $pendidikan = Pendidikan::get()->where('id_pribadi', $id);
+        $pendidikan = Pendidikan::where('id_pribadi', $id)->get();
+        $this->authorize('show', $pendidikan->first());
         $title = 'data pendidikan';
 
         return view('alumni.datapendidikan.detail', compact('title', 'pendidikan'));

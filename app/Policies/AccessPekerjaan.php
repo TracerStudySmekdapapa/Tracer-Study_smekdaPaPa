@@ -17,8 +17,13 @@ class AccessPekerjaan
      *
      * @return void
      */
-    public function view(User $pribadi, Pekerjaan $pekerjaan)
+    public function edit(User $pribadi, Pekerjaan $pekerjaan)
     {
         return $pribadi->id_user === $pekerjaan->pribadi->id_user ? Response::allow() : Response::denyWithStatus(404);
+    }
+
+    public function show(User $user, Pekerjaan $pekerjaan)
+    {
+        return $user->id_user === $pekerjaan->pribadi->id_user ? Response::allow() : Response::denyWithStatus(404);
     }
 }
