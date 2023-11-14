@@ -31,7 +31,8 @@
                     <div class="flex flex-col w-full space-y-5">
                         <!-- nama_pekerjaan -->
                         <label class="block text-sm">
-                            <span class="text-gray-700 dark:text-gray-400">Nama Pekerjaan</span>
+                            <span class="text-gray-700 dark:text-gray-400">Nama Pekerjaan <span
+                                    class="text-red-500">*</span></span>
                             <input type="text" name="nama_pekerjaan"
                                 class="block w-full px-5 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                 placeholder="Nama Pekerjaan" value="{{ old('nama_pekerjaan', $data->nama_pekerjaan) }}" />
@@ -45,7 +46,8 @@
 
                         <!-- nama_pekerjaan -->
                         <label class="block text-sm">
-                            <span class="text-gray-700 dark:text-gray-400">nama Instansi</span>
+                            <span class="text-gray-700 dark:text-gray-400">nama Instansi <span
+                                    class="text-red-500">*</span></span>
                             <input type="text" name="nama_instansi"
                                 class="block w-full px-5 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                 placeholder="Nama instansi" value="{{ old('nama_instansi', $data->nama_instansi) }}" />
@@ -67,7 +69,8 @@
 
                         <div class="grid w-full grid-cols-1 gap-5 md:grid-cols-2">
                             <label class="block text-sm">
-                                <span class="text-gray-700 dark:text-gray-400">Tahun Masuk </span>
+                                <span class="text-gray-700 dark:text-gray-400">Tahun Masuk <span
+                                        class="text-red-500">*</span></span>
                                 <input type="number" name="tahun_masuk"
                                     class="block w-full px-5 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                     placeholder="tahun masuk" value="{{ old('tahun_masuk', $data->thn_masuk) }}" />
@@ -94,10 +97,10 @@
 
                         <!-- alamat instansi -->
                         <label class="block mt-10 text-sm">
-                            <span class="text-gray-700 dark:text-gray-400">Alamat</span>
+                            <span class="text-gray-700 dark:text-gray-400">Alamat <span class="text-red-500">*</span></span>
                             <textarea name="alamat"
                                 class="block w-full px-3 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                                rows="3" placeholder="masukan alamat instansi.">{{ old('alamat', $data->alamat_instansi) }}</textarea>
+                                rows="3" placeholder="Masukan Alamat Instansi.">{{ old('alamat', $data->alamat_instansi) }}</textarea>
 
                             <!-- error -->
                             @error('alamat')

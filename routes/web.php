@@ -7,6 +7,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SurveiController;
 use App\Http\Middleware\IsAlumni;
 use Illuminate\Support\Facades\Route;
 
@@ -69,6 +70,13 @@ Route::middleware(['auth'])->group(function () {
         Route::patch('/admin/terimaPesan/{id}', [ContactController::class, 'terimaPesan'])->name('terimaPesan');
         Route::patch('/admin/hidePesan/{id}', [ContactController::class, 'hidePesan'])->name('hidePesan');
         Route::delete('/admin/deletePesan/{id}', [ContactController::class, 'deletePesan'])->name('deletePesan');
+
+        /* Export */
+        Route::get('/admin/download/fresh-graduate', [AdminController::class, 'exportFreshGraduate'])->name('exportFreshGraduate');
+
+        /* Survei */
+        Route::get('/admin/survei', [SurveiController::class, 'index'])->name('dataSurvei');
+        Route::get('/admin/survei/{id}/detail', [SurveiController::class, 'detail'])->name('detailUserSurvei');
     });
 
     // alumni
@@ -78,6 +86,9 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/data-pribadi/{id}', [PribadiController::class, 'simpanDataPribadi'])->name('simpanDataPribadi');
         Route::get('/data-pribadi/{id}/edit', [PribadiController::class, 'editDataPribadi'])->name('editDataPribadi');
         Route::patch('/data-pribadi/{id}', [PribadiController::class, 'updateDataPribadi'])->name('updateDataPribadi');
+
+        Route::get('/survei', [SurveiController::class, 'tambah'])->name('tambahSurvei');
+        Route::post('/survei', [SurveiController::class, 'simpan'])->name('simpanSurvei');
     });
 
     Route::middleware(IsAlumni::class)->group(function () {

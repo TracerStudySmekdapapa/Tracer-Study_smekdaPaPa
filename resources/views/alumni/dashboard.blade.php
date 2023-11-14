@@ -143,6 +143,13 @@
                                     </a>
                                 </button>
 
+                                <button
+                                    class=" w-[80%] mx-auto mt-5 rounded-lg bg-transparent border border-primary hover:bg-black hover:border-transparent hover:text-white capitalize">
+                                    <a href="{{ route('tambahSurvei') }}" class="block px-5 py-2 text-sm">
+                                        isi survei
+                                    </a>
+                                </button>
+
 
                             </div>
                             {{-- ! jika tidak ada data pribadi --}}

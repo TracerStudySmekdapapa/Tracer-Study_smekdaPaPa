@@ -27,7 +27,8 @@
                         @csrf
                         <!-- nisn -->
                         <label class="block text-sm">
-                            <span class="text-gray-700 dark:text-gray-400">NISN</span>
+                            <span class="text-gray-700 dark:text-gray-400">NISN <span
+                                    class="mx-2 text-gray-600">(opsional)</span> </span>
                             <input type="number" name="nisn"
                                 class="block w-full px-5 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                 placeholder="0123456789" value="{{ old('nisn') }}" />
@@ -42,11 +43,12 @@
                         <div class="grid w-full grid-cols-1 gap-5 md:grid-cols-2">
                             <!--  agama  -->
                             <label class="block text-sm">
-                                <span class="text-gray-700 dark:text-gray-400">Agama</span>
+                                <span class="text-gray-700 dark:text-gray-400">Agama <span
+                                        class="text-red-500">*</span></span>
 
                                 <select name="agama"
                                     class="block w-full px-10 py-2 mt-1 text-sm border border-gray-600 rounded-md appearance-none dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
-                                    <option disabled selected>agama</option>
+                                    <option disabled selected>Agama</option>
                                     @foreach ($agama as $item)
                                         <option value="{{ $item }}" {{ old('agama') == $item ? 'selected' : '' }}>
                                             {{ $item }}
@@ -63,7 +65,8 @@
 
                             <!--  tempat tgl lahit  -->
                             <label class="block text-sm">
-                                <span class="text-gray-700 dark:text-gray-400">No Telp</span>
+                                <span class="text-gray-700 dark:text-gray-400">No Telp <span class="text-red-500">*</span>
+                                </span>
                                 <input type="tel" name="no_telp"
                                     class="block w-full px-6 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                     placeholder="+00 xxx xxx xxx" value="{{ old('no_telp') }}" />
@@ -78,10 +81,11 @@
 
                         <!--  tempat tgl lahit  -->
                         <label class="block text-sm">
-                            <span class="text-gray-700 dark:text-gray-400">Tempat Lahir</span>
+                            <span class="text-gray-700 dark:text-gray-400">Tempat Lahir <span class="text-red-500">*</span>
+                            </span>
                             <input name="tmp_lahir"
                                 class="block w-full px-5 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                placeholder="tempat lahir anda" value="{{ old('tmp_lahir') }}" />
+                                placeholder="Tempat Lahir " value="{{ old('tmp_lahir') }}" />
                             <!-- error -->
                             @error('tmp_lahir')
                                 <p class="mt-1 text-rose-500">{{ $message }}</p>
@@ -90,7 +94,8 @@
                         </label>
                         <!--  tempat tgl lahit  -->
                         <label class="block text-sm">
-                            <span class="text-gray-700 dark:text-gray-400">Tanggal Lahir</span>
+                            <span class="text-gray-700 dark:text-gray-400">Tanggal Lahir <span
+                                    class="text-red-500">*</span></span>
                             <input name="tgl_lahir" type="date"
                                 class="block w-full px-5 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                 value="{{ old('tgl_lahir') }}" />
@@ -104,7 +109,7 @@
 
                         <div class="mt-4 text-sm">
                             <span class="text-gray-700 dark:text-gray-400">
-                                Jenis Kelamin
+                                Jenis Kelamin <span class="text-red-500">*</span>
                             </span>
                             <div class="mt-2">
                                 <label class="inline-flex items-center text-gray-600 dark:text-gray-400">
@@ -126,7 +131,7 @@
 
                         <div class="mt-4 text-sm">
                             <span class="text-gray-700 dark:text-gray-400">
-                                Jurusan
+                                Jurusan <span class="text-red-500">*</span>
                             </span>
                             <select name="jurusan"
                                 class="block w-full px-10 py-2 mt-1 text-sm border border-gray-600 rounded-md appearance-none dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
@@ -141,7 +146,7 @@
 
                         <div class="mt-4 text-sm">
                             <span class="text-gray-700 dark:text-gray-400">
-                                Tamatan
+                                Tamatan <span class="text-red-500">*</span>
                             </span>
                             <select name="tamatan" id=""
                                 class="block w-full px-10 py-2 mt-1 text-sm border border-gray-600 rounded-md appearance-none dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">

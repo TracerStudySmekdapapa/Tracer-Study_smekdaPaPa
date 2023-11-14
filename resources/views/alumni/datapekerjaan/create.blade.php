@@ -11,7 +11,7 @@
         </div>
 
         <section class="mt-10 mx-3 md:mx-6 lg:min-h-[55vh] ">
-            <div class="flex justify-between items-start flex-col md:flex-row">
+            <div class="flex flex-col items-start justify-between md:flex-row">
                 <div class="my-5 md:my-0">
                     <h1 class=" text-[35px] lg:text-[45px] font-bold">Profesianal Info</h1>
                     <p class="text-[14px] md:text-base md:max-w-[70%] lg:max-w-[60%]">
@@ -20,19 +20,20 @@
                     </p>
 
                     <a href="{{ route('dashboard') }}"
-                        class="text-blue-500 underline-offset-8 underline mt-3 hidden md:block">kembali
+                        class="hidden mt-3 text-blue-500 underline underline-offset-8 md:block">kembali
                         ke
                         Dashboard</a>
                 </div>
 
                 <form action="{{ route('simpanDataPekerjaan', Auth::user()->id_user) }}" method="post" class="w-full ">
                     @csrf
-                    <div class="flex flex-col space-y-5 w-full">
+                    <div class="flex flex-col w-full space-y-5">
                         <!-- nama_pekerjaan -->
                         <label class="block text-sm">
-                            <span class="text-gray-700 dark:text-gray-400">Nama Pekerjaan</span>
+                            <span class="text-gray-700 dark:text-gray-400">Nama Pekerjaan <span
+                                    class="text-red-500">*</span></span>
                             <input type="text" name="nama_pekerjaan"
-                                class="block w-full  mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                class="block w-full px-5 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                 placeholder="Nama Pekerjaan" value="{{ old('nama_pekerjaan') }}" />
 
                             <!-- error -->
@@ -44,9 +45,10 @@
 
                         <!-- nama_instansi -->
                         <label class="block text-sm">
-                            <span class="text-gray-700 dark:text-gray-400">Nama Instansi</span>
+                            <span class="text-gray-700 dark:text-gray-400">Nama Instansi <span
+                                    class="text-red-500">*</span></span>
                             <input type="text" name="nama_instansi"
-                                class="block w-full  mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                class="block w-full px-5 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                 placeholder="Nama instansi" value="{{ old('nama_instansi') }}" />
 
                             <!-- error -->
@@ -60,16 +62,17 @@
                         <label class="block text-sm">
                             <span class="text-gray-700 dark:text-gray-400">Jabatan (opsional)</span>
                             <input type="text" name="jabatan"
-                                class="block w-full  mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                class="block w-full px-5 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                 placeholder="jabatan anda" value="{{ old('jabatan') }}" />
                         </label>
 
                         <div class="grid w-full grid-cols-1 gap-5 lg:grid-cols-2">
                             <label class="block text-sm">
-                                <span class="text-gray-700 dark:text-gray-400">Tahun Masuk </span>
+                                <span class="text-gray-700 dark:text-gray-400">Tahun Masuk <span
+                                        class="text-red-500">*</span></span>
                                 <input type="number" name="tahun_masuk"
-                                    class="block w-full  mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                    placeholder="tahun masuk" value="{{ old('tahun_masuk') }}" />
+                                    class="block w-full px-5 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                    placeholder="Tahun Masuk" value="{{ old('tahun_masuk') }}" />
 
                                 <!-- error -->
                                 @error('tahun_masuk')
@@ -78,10 +81,10 @@
                                 <!-- error -->
                             </label>
                             <label class="block text-sm">
-                                <span class="text-gray-700 dark:text-gray-400">Tahun Keluar </span>
+                                <span class="text-gray-700 dark:text-gray-400">Tahun Keluar (opsional)</span>
                                 <input type="number" name="tahun_keluar"
-                                    class=" block w-full  mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                    placeholder="!opsional" value="{{ old('tahun_keluar') }}" />
+                                    class="block w-full px-5 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                    placeholder="Tahun Keluar" value="{{ old('tahun_keluar') }}" />
 
                                 <!-- error -->
                                 @error('tahun_keluar')
@@ -93,9 +96,9 @@
 
                         <!-- alamat instansi -->
                         <label class="block mt-10 text-sm">
-                            <span class="text-gray-700 dark:text-gray-400">Alamat</span>
+                            <span class="text-gray-700 dark:text-gray-400">Alamat <span class="text-red-500">*</span></span>
                             <textarea name="alamat"
-                                class="block border border-gray-600 px-3 py-2 rounded-md w-full  mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                                class="block w-full px-3 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
                                 rows="3" placeholder="masukan alamat instansi.">{{ old('alamat') }}</textarea>
 
                             <!-- error -->

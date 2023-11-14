@@ -25,7 +25,7 @@
                                 {{ Session::get('message') }}
                             </span>
                             <span class="text-[#252525]/70 -mt-1 text-sm">
-                                {{ Auth::user()->name }}
+                                {{ Auth::user()->name ?? 'user' }}
                             </span>
                         </div>
 

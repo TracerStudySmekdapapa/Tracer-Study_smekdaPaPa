@@ -21,7 +21,7 @@ class Unique
      *
      * @var string
      */
-    protected $idColumn = 'id_user';
+    protected $idColumn = 'id';
 
     /**
      * Ignore the given ID during the unique check.
@@ -37,7 +37,7 @@ class Unique
         }
 
         $this->ignore = $id;
-        $this->idColumn = $idColumn ?? 'id_user';
+        $this->idColumn = $idColumn ?? 'id';
 
         return $this;
     }
@@ -64,11 +64,10 @@ class Unique
      */
     public function __toString()
     {
-        return rtrim(sprintf(
-            'unique:%s,%s,%s,%s,%s',
+        return rtrim(sprintf('unique:%s,%s,%s,%s,%s',
             $this->table,
             $this->column,
-            $this->ignore ? '"' . addslashes($this->ignore) . '"' : 'NULL',
+            $this->ignore ? '"'.addslashes($this->ignore).'"' : 'NULL',
             $this->idColumn,
             $this->formatWheres()
         ), ',');
