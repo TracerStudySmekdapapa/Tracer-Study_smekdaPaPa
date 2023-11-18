@@ -53,6 +53,16 @@ class User extends Authenticatable
             ->orderBy('users.name', 'ASC');
     }
 
+    public function scopeSurvei($query)
+    {
+        $query = $query->whereHas('roles', fn ($q) => $q->where('name', 'Alumni'))
+            ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
+            ->leftJoin('jurusan', 'data_pribadi.id_jurusan', '=', 'jurusan.id_jurusan')
+            ->whereHas('jawaban', function ($query) {
+                $query->whereNotNull('id_user');
+            });
+    }
+
     public function scopeFilter($query, array $filters)
     {
 
@@ -174,6 +184,11 @@ class User extends Authenticatable
     public function alumni()
     {
         return $this->hasMany(Pribadi::class, 'id_pribadi');
+    }
+
+    public function jawaban()
+    {
+        return $this->hasMany(JawabanSurvei::class, 'id_user');
     }
 
     public function jurusan()

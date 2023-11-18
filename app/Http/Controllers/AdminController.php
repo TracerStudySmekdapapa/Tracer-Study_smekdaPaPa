@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\FreshGraduateClass;
 use App\Http\Requests\DataPekerjaanUpdateRequest;
 use App\Http\Requests\DataPendidikanUpdateRequest;
 use App\Http\Requests\DataPribadiUpdateRequest;
@@ -13,6 +14,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AdminController extends Controller
 {
@@ -34,9 +36,10 @@ class AdminController extends Controller
             'countAlumniMendaftar' => PribadiController::alumniMendaftar(),
             'countAlumniNganggur' => PribadiController::alumniTidakBekerjaDanTidakPendidikan(),
             'countAlumniFreshGraduate' => PribadiController::alumniFreshGraduate()->count(),
+            'countAlumniSurvei' => User::Survei()->count()
         ];
 
-        $freshGraduate = PribadiController::alumniFreshGraduate()->get();
+        $freshGraduate = PribadiController::alumniFreshGraduate()->paginate(5);
 
         return view('admin.dashboard', compact('tidakAlumni', 'title', 'title_page', 'alumniData', 'freshGraduate'));
     }
@@ -203,5 +206,10 @@ class AdminController extends Controller
 
 
         return redirect()->back()->with(['message' => 'Permintaan Verifikasi Berhasil Ditolak']);
+    }
+
+    public function exportFreshGraduate()
+    {
+        return Excel::download(new FreshGraduateClass, 'fresh_graduate.xlsx');
     }
 }

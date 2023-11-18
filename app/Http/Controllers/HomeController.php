@@ -57,7 +57,7 @@ class HomeController extends Controller
     public function moreDetailPekerjaan($id)
     {
         $pekerjaan = Pekerjaan::where('id_pribadi', $id)->get();
-        $name = $pekerjaan->first()->alumni->user;
+        $name = $pekerjaan->first()->pribadi->user;
         $title = 'Data Pekerjaan ' . Str::ucfirst($name->name);
         return view('pages.moreDetail.pekerjaan', compact('title', 'pekerjaan'));
     }

@@ -20,10 +20,11 @@
             }" x-show="bannerVisible" x-transition:enter="transition ease-out duration-500"
                 x-transition:enter-start="translate-x-40" x-transition:enter-end="translate-x-0"
                 x-transition:leave="transition ease-in duration-300" x-transition:leave-start="translate-x-0"
-                x-transition:leave-end="translate-x-40" x-init="setTimeout(() => { bannerVisible = true }, bannerVisibleAfter);" x-cloak
+                x-transition:leave-end="translate-x-40" x-init="setTimeout(() => { bannerVisible = true }, bannerVisibleAfter);
+                setTimeout(() => { bannerVisible = false }, 3000);" x-cloak
                 class="absolute top-7 right-28 p-4 z-[99999]">
-                <div class="px-3 py-2 bg-white  capitalize rounded-md  border border-gray-100">
-                    <div class="flex space-x-3 items-center">
+                <div class="px-3 py-2 capitalize bg-white border border-gray-100 rounded-md">
+                    <div class="flex items-center space-x-3">
 
                         <div class="bg-primary/80 w-[40px] aspect-square rounded-md grid place-items-center">
                             <img src="{{ asset('assets/validation.svg') }}" alt="svg" class="w-[25px]">
@@ -70,14 +71,14 @@
     <main>
         @include('template.utils.navbar')
 
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-x-4 capitalize mt-10 ">
+        <section class="grid grid-cols-1 mt-10 capitalize md:grid-cols-2 gap-x-4 ">
             <div class="w-full min-h-[500px]  justify-center items-start pt-5 flex">
-                <div class="flex flex-col space-y-5 justify-start items-center">
+                <div class="flex flex-col items-center justify-start space-y-5">
 
                     {{-- ! data pribadi seperti nama bio dan email --}}
                     <div class="rounded-full w-[200px] h-[200px] overflow-hidden border-2 border-black">
-                        <img src="{{ asset('assets/random/' . Auth::user()->profil_picture) }}" alt="gambar"
-                            class="w-full h-full object-cover " />
+                        <img src="{{ Auth::user()->profil_picture ? asset('assets/random/' . Auth::user()->profil_picture) : asset('assets/blank.jpg') }}"
+                            alt="gambar" class="object-cover w-full h-full " />
                     </div>
                     <div class="text-[#252525] mx-1 mb-6 ">
                         <h1 class=" text-[20px] text-center  sm:text-[25px] lg:text-[30px] font-semibold pb-4 capitalize">
@@ -93,47 +94,47 @@
                                 @endphp
                                 <tr class="divide-y">
                                     <td>nisn</td>
-                                    <td class="py-2 px-6">:</td>
+                                    <td class="px-6 py-2">:</td>
                                     <td>{{ $alumni->nisn ?? '-' }}</td>
                                 </tr>
                                 <!-- jenis_kelamin -->
                                 <tr class="divide-y">
                                     <td>jenis kelamin</td>
-                                    <td class="py-2 px-6">:</td>
+                                    <td class="px-6 py-2">:</td>
                                     <td>{{ $alumni->jenis_kelamin ?? '-' }}</td>
                                 </tr>
                                 <!-- agama -->
                                 <tr class="divide-y">
                                     <td>agama</td>
-                                    <td class="py-2 px-6">:</td>
+                                    <td class="px-6 py-2">:</td>
                                     <td>{{ $alumni->agama ?? '-' }}</td>
                                 </tr>
                                 <!-- tgl lair -->
                                 <tr class="divide-y">
                                     <td>tempat lahir</td>
-                                    <td class="py-2 px-6">:</td>
+                                    <td class="px-6 py-2">:</td>
                                     <td>{{ $alumni->tempat_lahir ?? '-' }}</td>
                                 </tr>
                                 <tr class="divide-y">
                                     <td>tangal lahir</td>
-                                    <td class="py-2 px-6">:</td>
+                                    <td class="px-6 py-2">:</td>
                                     <td>{{ $alumni->tanggal_lahir ? Carbon\Carbon::parse($alumni->tanggal_lahir)->isoFormat('dddd, D MMMM Y') : '-' }}
                                     </td>
                                 </tr>
 
                                 <tr class="divide-y">
                                     <td>jurusan</td>
-                                    <td class="py-2 px-6">:</td>
+                                    <td class="px-6 py-2">:</td>
                                     <td>{{ $alumni->jurusan->nama_jurusan ?? '-' }}</td>
                                 </tr>
 
                                 <tr class="divide-y">
                                     <td>tamatan</td>
-                                    <td class="py-2 px-6">:</td>
+                                    <td class="px-6 py-2">:</td>
                                     <td>{{ $alumni->tamatan ?? '-' }}</td>
                                 </tr>
                             </table>
-                            <div class="w-full  justify-end flex ">
+                            <div class="flex justify-end w-full ">
 
 
                                 <button
@@ -143,21 +144,28 @@
                                     </a>
                                 </button>
 
+                                <button
+                                    class=" w-[80%] mx-auto mt-5 rounded-lg bg-transparent border border-primary hover:bg-black hover:border-transparent hover:text-white capitalize">
+                                    <a href="{{ route('tambahSurvei') }}" class="block px-5 py-2 text-sm">
+                                        isi survei
+                                    </a>
+                                </button>
+
 
                             </div>
                             {{-- ! jika tidak ada data pribadi --}}
                         @else
-                            <table class="w-full text-black/70 -mt-2">
+                            <table class="w-full -mt-2 text-black/70">
                                 <tr class="">
                                     <td class="hidden lg:inline ">email</td>
-                                    <td class="py-2 px-6 hidden lg:inline">:</td>
-                                    <td class="text-center lg:text-left lowercase">{{ Auth::user()->email }}</td>
+                                    <td class="hidden px-6 py-2 lg:inline">:</td>
+                                    <td class="text-center lowercase lg:text-left">{{ Auth::user()->email }}</td>
                                 </tr>
                             </table>
-                            <div class="w-full  justify-end flex ">
+                            <div class="flex justify-end w-full ">
                                 <button
                                     class="w-[80%] mx-auto  text-sm mt-5 rounded-lg bg-transparent border border-primary hover:bg-black hover:border-transparent hover:text-white capitalize text-black/70">
-                                    <a href="{{ route('tambahDataPribadi') }}" class="block px-5 py-1 md:py-2 text-sm">
+                                    <a href="{{ route('tambahDataPribadi') }}" class="block px-5 py-1 text-sm md:py-2">
                                         + Data Pribadi
                                     </a>
                                 </button>
@@ -183,7 +191,7 @@
                                 <ul class="steps steps-vertical ">
                                     @forelse ($pekerjaan->take(3) as $item)
                                         <li class="step step-primary">
-                                            <div class="flex justify-start items-start flex-col">
+                                            <div class="flex flex-col items-start justify-start">
                                                 <h1 class="text-black/90 capitalize text-[20px]">
                                                     {{ $item->nama_pekerjaan }}
                                                 </h1>
@@ -198,13 +206,13 @@
                                 </ul>
                             </div>
                             <div
-                                class="flex mx-2 space-y-5 md:space-y-0 flex-col md:flex-row md:space-x-5 items-center justify-center lg:ml-32 ">
+                                class="flex flex-col items-center justify-center mx-2 space-y-5 md:space-y-0 md:flex-row md:space-x-5 lg:ml-32 ">
                                 <a href="{{ route('tambahDataPekerjaan') }}"
-                                    class="rounded-lg w-full mx-auto  py-2 border block text-center border-primary text-black/90 text-sm">+
+                                    class="block w-full py-2 mx-auto text-sm text-center border rounded-lg border-primary text-black/90">+
                                     Data
                                     Pekerjaan</a>
                                 <a href="{{ route('detailDataPekerjaan', $alumni->id_pribadi) }}"
-                                    class="block w-full text-center mx-auto py-2 rounded-lg text-white bg-primary active:bg-black active:text-white border text-sm">lihat
+                                    class="block w-full py-2 mx-auto text-sm text-center text-white border rounded-lg bg-primary active:bg-black active:text-white">lihat
                                     selengkapnya</a>
                             </div>
 
@@ -216,7 +224,7 @@
                                 <ul class="steps steps-vertical">
                                     @forelse ($pendidikan as $item)
                                         <li class="step step-primary">
-                                            <div class="flex justify-start items-start flex-col">
+                                            <div class="flex flex-col items-start justify-start">
                                                 <h1 class="text-black/90 capitalize text-[20px]">
                                                     {{ $item->nama_univ }}
                                                 </h1>
@@ -231,18 +239,18 @@
                                 </ul>
                             </div>
                             <div
-                                class="flex mx-2 space-y-5 md:space-y-0 flex-col md:flex-row md:space-x-5 items-center justify-center lg:ml-32 ">
+                                class="flex flex-col items-center justify-center mx-2 space-y-5 md:space-y-0 md:flex-row md:space-x-5 lg:ml-32 ">
                                 <a href="{{ route('tambahDataPendidikan') }}"
-                                    class="rounded-lg w-full mx-auto py-2 border block text-center border-primary text-black/90 text-sm">+
+                                    class="block w-full py-2 mx-auto text-sm text-center border rounded-lg border-primary text-black/90">+
                                     Data
                                     Pendidikan</a>
                                 <a href="{{ route('detailDataPendidikan', $alumni->id_pribadi) }}"
-                                    class="block w-full mx-auto text-center py-2 rounded-lg text-white bg-primary active:bg-black active:text-white border text-sm">lihat
+                                    class="block w-full py-2 mx-auto text-sm text-center text-white border rounded-lg bg-primary active:bg-black active:text-white">lihat
                                     selengkapnya</a>
                             </div>
                         </div>
                     @else
-                        <ul class="steps steps-vertical px-5 md:px-10 lg:px-28 mt-5 md:mt-0 lg:pt-20 h-full   ">
+                        <ul class="h-full px-5 mt-5 steps steps-vertical md:px-10 lg:px-28 md:mt-0 lg:pt-20 ">
                             <li data-content="✓" class="step step-primary">Register</li>
                             <li data-content="✓" class="step step-primary">login</li>
 
@@ -292,20 +300,20 @@
 
                         </ul>
                         @if (Auth::user()->hasRole('Alumni'))
-                            <div class="flex mt-5 space-x-5 justify-center">
+                            <div class="flex justify-center mt-5 space-x-5">
                                 <button
-                                    class=" rounded-lg bg-transparent border border-primary hover:bg-black hover:border-transparent  capitalize">
+                                    class="capitalize bg-transparent border rounded-lg border-primary hover:bg-black hover:border-transparent">
                                     <a href="{{ route('tambahDataPekerjaan') }}"
-                                        class="block px-5 py-2 text-black/70 hover:text-white text-sm">
+                                        class="block px-5 py-2 text-sm text-black/70 hover:text-white">
                                         +
                                         data
                                         pekerjaan
                                     </a>
                                 </button>
                                 <button
-                                    class=" rounded-lg bg-transparent border border-primary hover:bg-black hover:border-transparent capitalize">
+                                    class="capitalize bg-transparent border rounded-lg border-primary hover:bg-black hover:border-transparent">
                                     <a href="{{ route('tambahDataPendidikan') }}"
-                                        class="px-5 py-2 block text-black/70 hover:text-white text-sm ">
+                                        class="block px-5 py-2 text-sm text-black/70 hover:text-white ">
                                         +
                                         data
                                         Pendidikan

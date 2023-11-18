@@ -55,7 +55,7 @@ main {
   }
 
   .btn___signin {
-    @apply w-full px-6 py-2 mr-0 text-gray-700 md:px-3 md:mr-2 lg:mr-3 md:w-auto md:text-[13px] lg:text-base;
+    @apply w-full px-6 py-2 mr-0 my-2 md:my-0 text-gray-700 md:px-3 md:mr-2 lg:mr-3 md:w-auto md:text-[13px] lg:text-base;
   }
 
   .btn___signup {

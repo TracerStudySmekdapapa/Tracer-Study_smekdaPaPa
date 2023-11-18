@@ -1,6 +1,6 @@
 <div class="fixed">
 
-    <div class="flex flex-col justify-center items-center space-y-4">
+    <div class="flex flex-col items-center justify-center space-y-4">
         <div><svg xmlns="http://www.w3.org/2000/svg" width="37" height="9" viewBox="0 0 37 9" fill="none">
                 <circle cx="4.5" cy="4.5" r="4.5" fill="#FF0000" />
                 <circle cx="18.5" cy="4.5" r="4.5" fill="#05FF00" />
@@ -11,7 +11,7 @@
             <div class="h-[90vh] w-full   flex flex-col justify-between items-center py-10">
                 <div>
                     <h1 class="text-[14px] font-semibold">admin</h1>
-                    <div class="flex flex-col space-y-8 items-center justify-center mt-10">
+                    <div class="flex flex-col items-center justify-center mt-10 space-y-8">
                         <span>
                             @include('template.admin.components.dashboard')
                         </span>
@@ -25,7 +25,7 @@
                             @include('template.admin.components.jurusan')
                         </span>
                         <span>
-                            @include('template.admin.components.pesan')
+                            @include('template.admin.components.survei')
                         </span>
                     </div>
                 </div>

@@ -4,7 +4,7 @@
             <a href="{{ route('/') }}" class="navigation__title__link"> Tracer Study </a>
         </div>
 
-        <div class="top-0 left-0 items-start hidden w-full h-full p-4 text-sm bg-gray-900 bg-opacity-50 md:items-center md:w-3/4 md:absolute lg:text-base md:bg-transparent md:p-0 md:relative md:flex"
+        <div class="top-0 left-0 items-start hidden w-full h-full p-4 text-sm bg-gray-900 bg-opacity-50 md:items-center md:w-3/4  lg:text-base md:bg-transparent md:p-0 md:relative md:flex"
             :class="{ 'flex fixed': showMenu, 'hidden': !showMenu }">
             <div class="container__mobile__menu">
                 <a href="{{ route('/') }}" class="header__nav__mobile">
@@ -87,7 +87,8 @@
                             @include('template.utils.menu')
                         </a>
                     @else
-                        <a href="{{ route('login') }}" class="btn___signin font-medium  ">Login</a>
+                        <a href="{{ route('login') }}"
+                            class="btn___signin font-medium py-2 md:py-0 min-h-[30px] text-[16px] ">Login</a>
                         <a href="{{ route('register') }}"
                             class="btn___signup font-medium text-[15px] min-h-[30px]">Register</a>
                     @endif

@@ -2,10 +2,43 @@
 @section('content')
     @if (session('error'))
         <div class="absolute top-0 right-0 p-4">
-            <h1 class="px-4 py-2.5 bg-red-600 font-bold uppercase rounded-md text-white">
-                {{ session('error') }}
-            </h1>
-        </div>
+            <div x-data="{
+                bannerVisible: false,
+                bannerVisibleAfter: 300,
+            }" x-show="bannerVisible" x-transition:enter="transition ease-out duration-500"
+                x-transition:enter-start="translate-x-40" x-transition:enter-end="translate-x-0"
+                x-transition:leave="transition ease-in duration-300" x-transition:leave-start="translate-x-0"
+                x-transition:leave-end="translate-x-40" x-init="setTimeout(() => { bannerVisible = true }, bannerVisibleAfter);" x-cloak
+                class="absolute top-7 right-28 p-4 z-[99999]">
+                <div class="px-3 py-2 capitalize bg-white border border-gray-100 rounded-md">
+                    <div class="flex items-center space-x-3">
+
+                        <div class="bg-rose-500/80 w-[40px] aspect-square rounded-md grid place-items-center">
+                            <img src="{{ asset('assets/login.svg') }}" alt="svg" class="w-[25px]">
+                        </div>
+
+                        <div class="flex flex-col font-medium text-[15px] ">
+                            <span class="text-[#252525]/90">
+                                {{ Session::get('error') }}
+                            </span>
+                            <span class="text-[#252525]/70 -mt-1 text-sm">
+                                {{ Auth::user()->name ?? 'user' }}
+                            </span>
+                        </div>
+
+                        <div class="w-[100px] h-[50px] flex justify-end items-center ">
+                            <button @click="bannerVisible=false;"
+                                class=" bg-gray-200 rounded-full grid place-items-center min-h-[25px] max-h-[25px] min-w-[25px] max-w-[25px] text-black">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-[17px] h-[17px]">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
     @endif
     <div class="flex items-center min-h-screen p-6 bg-gray-50 dark:bg-gray-900">
         <div class="flex-1 h-full max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl dark:bg-gray-800">
@@ -26,11 +59,11 @@
                             <label class="block text-sm">
                                 <span class="text-gray-700 dark:text-gray-400">Email</span>
                                 <input name="email" type="email"
-                                    class="block w-full mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                    class="block w-full px-5 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                     placeholder="example@gmail.com" value="{{ old('email') }}" />
                                 <!-- error -->
                                 @error('email')
-                                    <p class="text-rose-500 mt-1">{{ $message }}</p>
+                                    <p class="mt-1 text-rose-500">{{ $message }}</p>
                                 @enderror
                                 <!-- error -->
                             </label>
@@ -39,44 +72,56 @@
                             <label class="block mt-4 text-sm">
                                 <span class="text-gray-700 dark:text-gray-400">Password</span>
                                 <input name="password"
-                                    class="block w-full mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                    class="block w-full px-5 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                     placeholder="***************" type="password" />
 
                                 <!-- error -->
                                 @error('password')
-                                    <p class="text-rose-500 mt-1">{{ $message }}</p>
+                                    <p class="mt-1 text-rose-500">{{ $message }}</p>
                                 @enderror
                                 <!-- error -->
                             </label>
 
 
-                             <div>
-                                <div class="my-5 h-full  flex justify-between items-center">
-                                    <div id="angkaPertama"
-                                        class="w-[150px]  border  border-gray-200 rounded-full grid place-items-center py-1.5">
-                                        32
-                                    </div>
-                                    <div id="jenisAritmatika" class="w-[100px]  grid place-items-center py-1.5">
-                                        +
-                                    </div>
-                                    <div id="angkaKedua"
-                                        class="w-[150px]  border  border-gray-200 rounded-full grid place-items-center py-1.5">
-                                        65
-                                    </div>
 
+                            {{-- <div class="flex justify-start items-start space-x-3 pt-3">
+                                <input type="checkbox" id="chaptcha" class="peer/chaptcha checked:hidden">
+                                <label for="chaptcha"
+                                    class=" text-red-800 peer-checked/chaptcha:hidden text-[13px] text-black/70 capitalize font-medium">butktikan
+                                    anda
+                                    bukan
+                                    robot</label>
+
+
+
+                                <div class=" hidden peer-checked/chaptcha:block  max-w-[350px]">
+                                    <div class="flex items-center justify-between h-full my-5 max-w-[350px]">
+                                        <div id="angkaPertama"
+                                            class="w-[150px]  border  border-gray-200 rounded-full grid place-items-center py-1.5">
+                                            32
+                                        </div>
+                                        <div id="jenisAritmatika" class="w-[100px]  grid place-items-center py-1.5">
+                                            +
+                                        </div>
+                                        <div id="angkaKedua"
+                                            class="w-[150px]  border  border-gray-200 rounded-full grid place-items-center py-1.5">
+                                            65
+                                        </div>
+
+
+                                    </div>
+                                    <div class="w-full flex-grow-1 min-h-3 ">
+                                        <input id="finalHasil" type="number"
+                                            class="block w-full h-full text-center py-1.5 border border-gray-200 rounded-full"
+                                            placeholder="hasil dari jawaban diatas ?">
+                                    </div>
 
                                 </div>
-                                <div class="flex-grow-1 w-full min-h-3  ">
-                                    <input id="finalHasil" type="number"
-                                        class="block w-full h-full text-center py-1.5 border border-gray-200 rounded-full"
-                                        placeholder="hasil dari jawaban diatas ?">
-                                </div>
-
-                            </div>
+                            </div> --}}
 
 
                             <!-- submit  -->
-                            <button id="tombolSubmit" type="submit" class="submit  ">
+                            <button id="tombolSubmit" type="submit" class="submit ">
                                 Log in
                             </button>
                         </form>
@@ -85,7 +130,7 @@
 
                         <!-- forgot password -->
                         <p class="mt-4">
-                            <a class="text-sm  font-medium text-purple-600 dark:text-purple-400 hover:underline"
+                            <a class="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline"
                                 href="{{ route('password.request') }}">
                                 Lupa password ?
                             </a>
@@ -116,8 +161,8 @@
 
             // medendapatkan random angka pertama
 
-            function getRandomData() {
-                return Math.floor(Math.random() * 100);
+            function getRandomData(param) {
+                return Math.floor(Math.random() * param);
             }
 
             function cekKondisiAritmatika(param = false) {
@@ -148,28 +193,24 @@
             }
 
 
-            let countFirst = getRandomData() + 10;
-            // medendapatkan random angka kedua
-            let countSecond = getRandomData() - 10;
-            // medendapatkan random operator aritmatika
-            // const aritmatikaOperator = ['+', '-', 'X', '/'];
+            let countFirst = getRandomData(100);
+            let countSecond = getRandomData(20);
             const aritmatikaOperator = ['+', '-'];
             const RandomAritmatikaOperator = Math.floor(Math.random() * aritmatikaOperator.length);
 
 
-            // operasi aritmatika dan penyimoanan hasil akhir
+
             let hasilAkhirTrue;
             hasilAkhirTrue = aritmatikaOperator[RandomAritmatikaOperator] == '+' ? countFirst + countSecond :
                 aritmatikaOperator[RandomAritmatikaOperator] == '-' ? countFirst - countSecond : '';
-            // aritmatikaOperator[RandomAritmatikaOperator] == '/' ? countFirst / countSecond : '';
             console.info(hasilAkhirTrue);
 
-            // memasukan ke tampilan
+
             angkaPertama.textContent = countFirst;
             jenisAritmatika.textContent = aritmatikaOperator[RandomAritmatikaOperator];
             angkaKedua.textContent = countSecond;
 
-            // mendapatkan hasil user
+
 
             finalHasil.addEventListener('keyup', (e) => {
                 if (e.target.value == hasilAkhirTrue) {

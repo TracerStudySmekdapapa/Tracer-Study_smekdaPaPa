@@ -67,6 +67,7 @@ class PribadiController extends Controller
         $validatedData = $request->validated();
         /* End Validasi */
 
+        $user = User::where('id_user', $id)->first();
         if ($validatedData) {
             Pribadi::create([
                 'nisn' => $request->nisn,
@@ -80,6 +81,17 @@ class PribadiController extends Controller
                 'id_user' => $id
             ]);
 
+            if ($request->jenis_kelamin == "Laki-Laki") {
+                $user->update([
+                    'profil_picture' => 'laki_' . random_int(5, 10) . '.webp'
+                ]);
+            }
+            if ($request->jenis_kelamin == "Perempuan") {
+                $user->update([
+                    'profil_picture' => 'cewe_' . random_int(1, 5) . '.webp'
+                ]);
+            }
+
             return redirect()->route('dashboard')->with(['message' => 'Data berhasil disimpan']);
         } else {
             return redirect()->back()->withErrors($validatedData)->withInput($request->all());
@@ -91,18 +103,22 @@ class PribadiController extends Controller
     public function editDataPribadi($data)
     {
         $title = 'Edit Data Pribadi';
-        $id = EncryptionHelpers::decrypt($data);
-        $data = Pribadi::where('id_user', $id)->first();
-        $jurusan = Jurusan::get();
-        $agama = [
-            'Islam',
-            'Kristen',
-            'Hindu',
-            'Buddha',
-            'Konghucu',
-            'Lainnya'
-        ];
-        return view('alumni.datapribadi.edit', compact('data', 'title', 'jurusan', 'agama'));
+        try {
+            $id = EncryptionHelpers::decrypt($data);
+            $data = Pribadi::where('id_user', $id)->first();
+            $jurusan = Jurusan::get();
+            $agama = [
+                'Islam',
+                'Kristen',
+                'Hindu',
+                'Buddha',
+                'Konghucu',
+                'Lainnya'
+            ];
+            return view('alumni.datapribadi.edit', compact('data', 'title', 'jurusan', 'agama'));
+        } catch (\Illuminate\Contracts\Encryption\DecryptException $e) {
+            return redirect()->back()->with('error', 'Maaf');
+        }
     }
 
     public function updateDataPribadi(DataPribadiUpdateRequest $request, $id)
@@ -125,6 +141,8 @@ class PribadiController extends Controller
                 'id_jurusan' => $request->jurusan,
                 'id_user' => $id
             ]);
+
+
             return redirect()->route('dashboard')->with(['message' => 'Data berhasil diubah']);
         } else {
             return redirect()->back()->withErrors($validatedData)->withInput($request->all());
@@ -168,6 +186,7 @@ class PribadiController extends Controller
     {
         $title = 'Edit Data Pekerjaan';
         $data = Pekerjaan::where('id_pekerjaan', $id)->first();
+        $this->authorize('edit', $data);
         return view('alumni.datapekerjaan.edit', compact('title', 'data'));
     }
 
@@ -197,7 +216,8 @@ class PribadiController extends Controller
 
     public function detailDataPekerjaan($id)
     {
-        $pekerjaan = Pekerjaan::get()->where('id_pribadi', $id);
+        $pekerjaan = Pekerjaan::with('pribadi')->where('id_pribadi', $id)->get();
+        $this->authorize('show', $pekerjaan->first());
         $title = 'data pekerjaan';
         return view('alumni.datapekerjaan.detail', compact('title', 'pekerjaan'));
     }
@@ -245,6 +265,7 @@ class PribadiController extends Controller
     {
         $title = 'Edit Data Pendidikan';
         $data = Pendidikan::where('id_pendidikan', $id)->first();
+        $this->authorize('edit', $data);
         return view('alumni.datapendidikan.edit', compact('title', 'data'));
     }
 
@@ -272,7 +293,8 @@ class PribadiController extends Controller
 
     public function detailDataPendidikan($id)
     {
-        $pendidikan = Pendidikan::get()->where('id_pribadi', $id);
+        $pendidikan = Pendidikan::where('id_pribadi', $id)->get();
+        $this->authorize('show', $pendidikan->first());
         $title = 'data pendidikan';
 
         return view('alumni.datapendidikan.detail', compact('title', 'pendidikan'));
