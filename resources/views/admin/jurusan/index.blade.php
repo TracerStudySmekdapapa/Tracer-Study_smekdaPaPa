@@ -37,14 +37,27 @@
                                     </td>
                                     <td></td>
 
-                                    <td class=" py-2 px">
+                                    <td class="py-2 px">
+                                        <div class="flex items-center space-x-2">
 
-                                        <a href="{{ route('jurusan.edit', $item->id_jurusan) }}"
-                                            class="inline-block  rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700">
-                                            <img src="{{ asset('assets/jurusan-edit.svg') }}" alt="edit icon">
-                                        </a>
+                                            <a href="{{ route('jurusan.edit', $item->id_jurusan) }}"
+                                                class="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700">
+                                                <img src="{{ asset('assets/jurusan-edit.svg') }}" alt="edit icon">
+                                            </a>
 
+                                            <form method="POST" action="{{ route('jurusan.destroy', $item->id_jurusan) }}"
+                                                class="inline">
+                                                @csrf
+                                                @method('DELETE')
+
+                                                <button type="submit" class="px-5 py-2 rounded bg-red-500 text-white">
+                                                    <img src="{{ asset('assets/delete.svg') }}" alt="hapus">
+                                                </button>
+                                            </form>
+
+                                        </div>
                                     </td>
+
                                 </tr>
                             @endforeach
                         </tbody>

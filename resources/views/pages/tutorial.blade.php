@@ -3,7 +3,7 @@
 @php
         $counting = [0,1,2,3,4,5];
         $img_icon = ['register' , 'add' , 'validasi', 'admin_bekerja', 'admin_pendidikan' , 'cari'];
-        $title_card_full = ['Registrasi' , 'Tambah Data Pribadi' , 'Menunggu Verifikasi' , 'Mengisi Data Pekerjaan' , 'Mengisi Data Pendidikan', 'meakukan pencarian data'];
+        $title_card_full = ['Registrasi' , 'Tambah Data Pribadi' , 'Menunggu Verifikasi' , 'Mengisi Data Pekerjaan' , 'Mengisi Data Pendidikan', 'melakukan pencarian data'];
     $desk_card_full = [
         'Melakukan registrasi terlebih dahulu agar terdaftar dan bisa melanjutkan proses selanjutnya',
         'Menambahkan data pribadi, agar admin dapat melakukan validasi dengan data yag diberikan tersebut',
