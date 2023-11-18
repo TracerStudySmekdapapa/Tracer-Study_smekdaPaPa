@@ -1,11 +1,12 @@
+{{-- @dd(Auth::user()->profil_picture) --}}
 <div class="max-w-[200px] px-3 mx-10  hidden md:block">
     <div x-data="{
         dropdownOpen: false,
     }" class="relative">
         <button @click="dropdownOpen=true"
             class="flex items-center justify-center text-base font-medium transition-colors p-px bg-white rounded-full  after:content-['']  after:bg-[#00F50A] after:absolute after:w-[11px] after:h-[11px] after:bottom-0 after:right-0 border border-primary after:rounded-full relative after:z-50">
-            <img src="{{ asset('assets/random/' . Auth::user()->profil_picture) }}"
-                class="object-cover w-9 h-9 border rounded-full" />
+            <img src="{{ Auth::user()->profil_picture ? asset('assets/random/' . Auth::user()->profil_picture) : asset('assets/blank.jpg') }}"
+                class="object-cover border rounded-full w-9 h-9" />
 
         </button>
         {{-- <img src="{{}}" /> --}}
@@ -50,8 +51,7 @@
                     class="relative  cursor-pointer select-none  lg:py-0.5  items-center rounded px-2  text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
                     <form action="{{ route('logout') }}" class="flex items-center space-x-1" method="POST">
                         @csrf
-                        <button type="submit" href="{{ route('logout') }}"
-                            class="flex  pr-5  py-2  items-center -mt-2">
+                        <button type="submit" href="{{ route('logout') }}" class="flex items-center py-2 pr-5 -mt-2">
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"

@@ -36,6 +36,7 @@ class AdminController extends Controller
             'countAlumniMendaftar' => PribadiController::alumniMendaftar(),
             'countAlumniNganggur' => PribadiController::alumniTidakBekerjaDanTidakPendidikan(),
             'countAlumniFreshGraduate' => PribadiController::alumniFreshGraduate()->count(),
+            'countAlumniSurvei' => User::Survei()->count()
         ];
 
         $freshGraduate = PribadiController::alumniFreshGraduate()->paginate(5);

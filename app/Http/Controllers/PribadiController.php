@@ -67,6 +67,7 @@ class PribadiController extends Controller
         $validatedData = $request->validated();
         /* End Validasi */
 
+        $user = User::where('id_user', $id)->first();
         if ($validatedData) {
             Pribadi::create([
                 'nisn' => $request->nisn,
@@ -79,6 +80,17 @@ class PribadiController extends Controller
                 'id_jurusan' => $request->jurusan,
                 'id_user' => $id
             ]);
+
+            if ($request->jenis_kelamin == "Laki-Laki") {
+                $user->update([
+                    'profil_picture' => 'laki_' . random_int(5, 10) . '.webp'
+                ]);
+            }
+            if ($request->jenis_kelamin == "Perempuan") {
+                $user->update([
+                    'profil_picture' => 'cewe_' . random_int(1, 5) . '.webp'
+                ]);
+            }
 
             return redirect()->route('dashboard')->with(['message' => 'Data berhasil disimpan']);
         } else {
@@ -129,6 +141,8 @@ class PribadiController extends Controller
                 'id_jurusan' => $request->jurusan,
                 'id_user' => $id
             ]);
+
+
             return redirect()->route('dashboard')->with(['message' => 'Data berhasil diubah']);
         } else {
             return redirect()->back()->withErrors($validatedData)->withInput($request->all());
