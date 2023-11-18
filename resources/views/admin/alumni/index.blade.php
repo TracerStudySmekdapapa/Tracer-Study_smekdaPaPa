@@ -160,7 +160,7 @@
 
                     <tfoot class="bg-primary/5">
                         <tr>
-                            <td class="py-0.5 px-5" colspan="8">{{ $search || $status ? $results : $alumni->links() }}
+                            <td class="py-1 px-5" colspan="8">{{ $search || $status ? $results : $alumni->links() }}
                             </td>
                         </tr>
                     </tfoot>

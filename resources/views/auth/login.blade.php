@@ -84,7 +84,7 @@
 
 
                             <div>
-                                <div class="flex items-center justify-between h-full my-5">
+                                <div class="my-5 h-full  flex justify-between items-center">
                                     <div id="angkaPertama"
                                         class="w-[150px]  border  border-gray-200 rounded-full grid place-items-center py-1.5">
                                         32
