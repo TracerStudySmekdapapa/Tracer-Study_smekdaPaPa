@@ -37,6 +37,8 @@ class SurveiController extends Controller
                 'jawaban' => $jawaban,
             ]);
         }
+
+        return redirect()->route('dashboard')->with('message', 'Survei Telah Diisi');
     }
 
     public function detail($id)
