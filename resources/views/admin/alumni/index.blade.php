@@ -12,30 +12,42 @@
         <div class="md:col-span-10 md:mr-10">
             @include('template.admin.header')
 
-            <div class="flex items-center justify-between mt-20 ">
-
-                <div class="relative">
-
-                </div>
-                <div class="w-[50%] ">
-                    <form action="{{ route('dataAlumni') }}" method="get" id="form_search" class="flex space-x-5">
+            <div class=" mt-20 flex justify-between items-center">
+                <div class="md:w-[50%] grid place-items-center ">
+                    <form action="{{ route('dataAlumni') }}" method="get" id="form_search"
+                        class="md:grid grid-flow-col-dense gap-x-2 ">
                         <input id="input_search"
-                            class="relative z-[23] block  mt-1 text-sm border border-gray-500 pl-5 w-full pr-12 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                            class="relative z-[23] block  min-w-[280px] max-w-[300px]  text-sm border border-gray-500 pl-5 w-full pr-12 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                             placeholder="cari berdasarkan nama / nisn" type="text" name="search"
                             value="{{ $search }}" />
 
                         <select name="status" id="status"
-                            class="tamatan max-w-[150px]  h-[45px] rounded-lg border-gray-600 text-gray-700 sm:text-sm [&::-webkit-calendar-picker-indicator]:opacity-0">
+                            class="tamatan max-w-[150px]  h-[40px] rounded-lg border-gray-600 text-gray-700 sm:text-sm [&::-webkit-calendar-picker-indicator]:opacity-0">
                             <option>semua</option>
                             <option value="bekerja" @selected($status == 'bekerja')>Bekerja
                             </option>
                             <option value="pendidikan" @selected($status == 'pendidikan')>Pendidikan
                             </option>
                         </select>
+
+
+                        <select name="status" id="tamatan"
+                            class="tamatan max-w-[150px]  h-[40px] rounded-lg border-gray-600 text-gray-700 sm:text-sm [&::-webkit-calendar-picker-indicator]:opacity-0">
+                            <option selected disabled>Tamatan</option>
+                            <option>2008</option>
+                            <option>2009</option>
+                            <option>2010</option>
+                            <option>2011</option>
+
+                        </select>
                     </form>
                 </div>
+                <div class="grid place-items-center">
+                    <a href="" class=" ml-auto px-4 py-1  bg-green-600 text-white rounded-md text-sm">Export to
+                        .xlsx</a>
+                </div>
             </div>
-            <div class="mt-10 overflow-x-auto lg:overflow-visible ">
+            <div class=" overflow-x-auto lg:overflow-visible ">
                 <table
                     class="relative z-20 rounded-lg bg-primary/5 min-w-[800px]  w-full  mt-6 overflow-x-scroll lg:overflow-x-hidden">
                     <thead class="relative overflow-hidden bg-transparent rounded-full">

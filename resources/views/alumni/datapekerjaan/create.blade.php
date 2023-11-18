@@ -13,14 +13,14 @@
         <section class="mt-10 mx-3 md:mx-6 lg:min-h-[55vh] ">
             <div class="flex flex-col items-start justify-between md:flex-row">
                 <div class="my-5 md:my-0">
-                    <h1 class=" text-[35px] lg:text-[45px] font-bold">Profesianal Info</h1>
+                    <h1 class=" text-[35px] lg:text-[45px] font-bold">Profesional Info</h1>
                     <p class="text-[14px] md:text-base md:max-w-[70%] lg:max-w-[60%]">
                         Lengkapi data pekerjaanmu, dan jadilah bagian dari jaringan profesional yang saling mendukung dan
                         berkembang bersama.
                     </p>
 
                     <a href="{{ route('dashboard') }}"
-                        class="hidden mt-3 text-blue-500 underline underline-offset-8 md:block">kembali
+                        class="hidden mt-3 text-blue-500 underline underline-offset-8 md:block">Kembali
                         ke
                         Dashboard</a>
                 </div>
@@ -49,7 +49,7 @@
                                     class="text-red-500">*</span></span>
                             <input type="text" name="nama_instansi"
                                 class="block w-full px-5 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                placeholder="Nama instansi" value="{{ old('nama_instansi') }}" />
+                                placeholder="Nama Instansi" value="{{ old('nama_instansi') }}" />
 
                             <!-- error -->
                             @error('nama_instansi')
@@ -63,7 +63,7 @@
                             <span class="text-gray-700 dark:text-gray-400">Jabatan (opsional)</span>
                             <input type="text" name="jabatan"
                                 class="block w-full px-5 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                placeholder="jabatan anda" value="{{ old('jabatan') }}" />
+                                placeholder="Jabatan Anda" value="{{ old('jabatan') }}" />
                         </label>
 
                         <div class="grid w-full grid-cols-1 gap-5 lg:grid-cols-2">
@@ -99,7 +99,7 @@
                             <span class="text-gray-700 dark:text-gray-400">Alamat <span class="text-red-500">*</span></span>
                             <textarea name="alamat"
                                 class="block w-full px-3 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                                rows="3" placeholder="masukan alamat instansi.">{{ old('alamat') }}</textarea>
+                                rows="3" placeholder="Masukan Alamat Instansi.">{{ old('alamat') }}</textarea>
 
                             <!-- error -->
                             @error('alamat')

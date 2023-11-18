@@ -63,10 +63,9 @@
         <section id="kontak" class="pt-[50px] mb-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-10 lg:gap-y-0">
                 <div class="flex flex-col w-full px-5 space-y-5">
-                    <h1 class="font-bold text-[30px] capitalize">get in touch</h1>
+                    <h1 class="font-bold text-[30px] capitalize">Hubungi Kami</h1>
                     <p class="font-normal text-black/70 leading-[25px] w-[70%]">
-                        Hubungi Kami jika anda punya saran atau keluhan ataupun keperluan
-                        yang lain
+                        Hubungi kami jika anda punya saran atau keluhan agar kami menjadi lebih baik kedepannya
                     </p>
 
                     <div class="flex flex-col w-full space-y-8">
@@ -108,7 +107,7 @@
                                 @csrf
                                 <label class="block text-sm">
                                     <span class="label__input focus:shadow-outline-purple form-input">Nama</span>
-                                    <input name="nama" class="input__contact" placeholder="masukan nama anda"
+                                    <input name="nama" class="input__contact" placeholder="Masukan Nama Anda"
                                         value="{{ old('nama') }}" />
 
                                     <!-- error -->
@@ -121,7 +120,7 @@
                                     <label class="block w-full text-sm">
                                         <span class="label__input focus:shadow-outline-purple form-input">Email</span>
                                         <input name="email" type="email" class="input__contact"
-                                            placeholder="masukan email anda" value="{{ old('email') }}" />
+                                            placeholder="Masukan Email Anda" value="{{ old('email') }}" />
 
                                         <!-- error -->
                                         @error('email')
@@ -130,8 +129,8 @@
                                         <!-- error -->
                                     </label>
                                     <label class="block w-full text-sm">
-                                        <span class="label__input focus:shadow-outline-purple form-input">subjek</span>
-                                        <input name="subjek" class="input__contact" placeholder="masukan subjek"
+                                        <span class="label__input focus:shadow-outline-purple form-input">Subjek</span>
+                                        <input name="subjek" class="input__contact" placeholder="Masukan Subjek"
                                             value="{{ old('subjek') }}" />
 
                                         <!-- error -->
@@ -145,7 +144,7 @@
                                     <span class="text-gray-700 dark:text-gray-400">Pesan</span>
                                     <textarea name="pesan"
                                         class="block w-full px-3 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                                        rows="3" placeholder="masukan pesan anda.">{{ old('pesan') }}</textarea>
+                                        rows="3" placeholder="Masukan Pesan Anda.">{{ old('pesan') }}</textarea>
 
                                     <!-- error -->
                                     @error('pesan')

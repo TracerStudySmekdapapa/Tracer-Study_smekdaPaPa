@@ -14,7 +14,7 @@
                     <div class="flex items-center space-x-3">
 
                         <div class="bg-rose-500/80 w-[40px] aspect-square rounded-md grid place-items-center">
-                            <img src="{{ asset('assets/keluar.svg') }}" alt="svg" class="w-[25px]">
+                            <img src="{{ asset('assets/login.svg') }}" alt="svg" class="w-[25px]">
                         </div>
 
                         <div class="flex flex-col font-medium text-[15px] ">
@@ -83,29 +83,41 @@
                             </label>
 
 
-                            <div>
-                                <div class="flex items-center justify-between h-full my-5">
-                                    <div id="angkaPertama"
-                                        class="w-[150px]  border  border-gray-200 rounded-full grid place-items-center py-1.5">
-                                        32
-                                    </div>
-                                    <div id="jenisAritmatika" class="w-[100px]  grid place-items-center py-1.5">
-                                        +
-                                    </div>
-                                    <div id="angkaKedua"
-                                        class="w-[150px]  border  border-gray-200 rounded-full grid place-items-center py-1.5">
-                                        65
-                                    </div>
 
+                            {{-- <div class="flex justify-start items-start space-x-3 pt-3">
+                                <input type="checkbox" id="chaptcha" class="peer/chaptcha checked:hidden">
+                                <label for="chaptcha"
+                                    class=" text-red-800 peer-checked/chaptcha:hidden text-[13px] text-black/70 capitalize font-medium">butktikan
+                                    anda
+                                    bukan
+                                    robot</label>
+
+
+
+                                <div class=" hidden peer-checked/chaptcha:block  max-w-[350px]">
+                                    <div class="flex items-center justify-between h-full my-5 max-w-[350px]">
+                                        <div id="angkaPertama"
+                                            class="w-[150px]  border  border-gray-200 rounded-full grid place-items-center py-1.5">
+                                            32
+                                        </div>
+                                        <div id="jenisAritmatika" class="w-[100px]  grid place-items-center py-1.5">
+                                            +
+                                        </div>
+                                        <div id="angkaKedua"
+                                            class="w-[150px]  border  border-gray-200 rounded-full grid place-items-center py-1.5">
+                                            65
+                                        </div>
+
+
+                                    </div>
+                                    <div class="w-full flex-grow-1 min-h-3 ">
+                                        <input id="finalHasil" type="number"
+                                            class="block w-full h-full text-center py-1.5 border border-gray-200 rounded-full"
+                                            placeholder="hasil dari jawaban diatas ?">
+                                    </div>
 
                                 </div>
-                                <div class="w-full flex-grow-1 min-h-3 ">
-                                    <input id="finalHasil" type="number"
-                                        class="block w-full h-full text-center py-1.5 border border-gray-200 rounded-full"
-                                        placeholder="hasil dari jawaban diatas ?">
-                                </div>
-
-                            </div>
+                            </div> --}}
 
 
                             <!-- submit  -->
@@ -214,6 +226,6 @@
 
 
         }
-        jalanKanScript();
+        // jalanKanScript();
     </script>
 @endsection
