@@ -77,8 +77,8 @@
 
                     {{-- ! data pribadi seperti nama bio dan email --}}
                     <div class="rounded-full w-[200px] h-[200px] overflow-hidden border-2 border-black">
-                        <img src="{{ asset('assets/random/' . Auth::user()->profil_picture) }}" alt="gambar"
-                            class="object-cover w-full h-full " />
+                        <img src="{{ Auth::user()->profil_picture ? asset('assets/random/' . Auth::user()->profil_picture) : asset('assets/blank.jpg') }}"
+                            alt="gambar" class="object-cover w-full h-full " />
                     </div>
                     <div class="text-[#252525] mx-1 mb-6 ">
                         <h1 class=" text-[20px] text-center  sm:text-[25px] lg:text-[30px] font-semibold pb-4 capitalize">

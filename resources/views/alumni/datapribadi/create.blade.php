@@ -19,7 +19,7 @@
                     </p>
 
                     <a href="{{ route('dashboard') }}"
-                        class="hidden mt-3 text-blue-500 underline underline-offset-8 md:block">kembali ke
+                        class="hidden mt-3 text-blue-500 underline underline-offset-8 md:block">Kembali ke
                         Dashboard</a>
                 </div>
                 <form action="{{ route('simpanDataPribadi', Auth::user()->id_user) }}" method="post" class="w-full">
@@ -117,14 +117,14 @@
                                         class="w-[22px] h-[22px] text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
                                         name="jenis_kelamin" value="Laki-Laki"
                                         {{ old('jenis_kelamin') == 'Laki-Laki' ? 'checked' : '' }} />
-                                    <span class="ml-2 text-[15px]">laki laki</span>
+                                    <span class="ml-2 text-[15px]">Laki-Laki</span>
                                 </label>
                                 <label class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400">
                                     <input type="radio"
                                         class="w-[22px] h-[22px] text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
                                         name="jenis_kelamin" value="Perempuan"
                                         {{ old('jenis_kelamin') == 'Perempuan' ? 'checked' : '' }} />
-                                    <span class="ml-2 text-[15px]">perempuan</span>
+                                    <span class="ml-2 text-[15px]">Perempuan</span>
                                 </label>
                             </div>
                         </div>
