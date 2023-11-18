@@ -10,7 +10,7 @@
         <div class="min-h-[90vh] w-[80px] bg-primary rounded-[20px] text-white  uppercase">
             <div class="h-[90vh] w-full   flex flex-col justify-between items-center py-10">
                 <div>
-                    <h1 class="text-[14px] font-semibold">admin</h1>
+                    <h1 class="text-[14px] font-semibold">Admin</h1>
                     <div class="flex flex-col items-center justify-center mt-10 space-y-8">
                         <span>
                             @include('template.admin.components.dashboard')

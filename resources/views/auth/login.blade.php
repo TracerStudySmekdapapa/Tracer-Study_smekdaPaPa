@@ -84,10 +84,10 @@
 
 
 
-                            {{-- <div class="flex justify-start items-start space-x-3 pt-3">
+                            <div class="flex justify-start items-start space-x-3 pt-3">
                                 <input type="checkbox" id="chaptcha" class="peer/chaptcha checked:hidden">
                                 <label for="chaptcha"
-                                    class=" text-red-800 peer-checked/chaptcha:hidden text-[13px] text-black/70 capitalize font-medium">butktikan
+                                    class="  peer-checked/chaptcha:hidden text-[13px] text-black/70 capitalize font-medium">butktikan
                                     anda
                                     bukan
                                     robot</label>
@@ -117,7 +117,7 @@
                                     </div>
 
                                 </div>
-                            </div> --}}
+                            </div>
 
 
                             <!-- submit  -->
