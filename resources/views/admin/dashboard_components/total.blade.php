@@ -6,11 +6,9 @@
     @endphp
 
 
-    <div
-        class="grid grid-cols-2 gap-8 lg:grid-cols-5 xl:grid-cols-5 md:place-items-center justify-stretch md:place-content-center ">
+    <div class="grid grid-cols-2 gap-8 lg:grid-cols-3   justify-stretch  ">
         @foreach ($data as $index => $item)
-            <div
-                class=" bg-white shadow-lg rounded-[10px] md:max-w-[207px] min-w-[200px] min-h-[125px] max-h-[128px]  flex flex-col px-5 py-2.5">
+            <div class=" bg-white shadow-lg rounded-[10px] min-h-[125px] max-h-[128px]  flex flex-col px-5 py-2.5">
                 <div class="flex flex-col space-y-3 ">
                     <div class="flex items-center justify-start ">
                         <img src="{{ asset('assets/' . $img[$index] . '.svg') }}" alt="">
