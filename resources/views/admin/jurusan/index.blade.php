@@ -13,15 +13,14 @@
                     <h1 class="my-5  underline-offset-4"> <a href="{{ route('jurusan.create') }}"
                             class="font-bold text-[20px] underline">[+] Tambah Jurusan</a></h1>
                     <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
-                        <thead class="ltr:text-left rtl:text-right">
-                            <tr>
-                                <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                        <thead class="text-center">
+                            <tr class="text-center ">
+                                <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                                     Name Jurusan
-                                </th>
-                                <th class="px-4 py-2"></th>
-                                <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                                </td>
+                                <td class="  px-4 py-2 font-medium text-gray-900">
                                     AKSI
-                                </th>
+                                </td>
 
                             </tr>
                         </thead>
@@ -31,13 +30,12 @@
 
 
                             @foreach ($jurusan as $index => $item)
-                                <tr>
+                                <tr >
                                     <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                                         {{ $item->nama_jurusan }}
                                     </td>
-                                    <td></td>
 
-                                    <td class="py-2 px">
+                                    <td class="py-2  grid place-items-center">
                                         <div class="flex items-center space-x-2">
 
                                             <a href="{{ route('jurusan.edit', $item->id_jurusan) }}"
@@ -45,16 +43,9 @@
                                                 <img src="{{ asset('assets/jurusan-edit.svg') }}" alt="edit icon">
                                             </a>
 
-                                            <form method="POST" action="{{ route('jurusan.destroy', $item->id_jurusan) }}"
-                                                class="inline">
-                                                @csrf
-                                                @method('DELETE')
-
-                                                <button type="submit" class="px-5 py-2 rounded bg-red-500 text-white">
-                                                    <img src="{{ asset('assets/delete.svg') }}" alt="hapus">
-                                                </button>
-                                            </form>
-
+                                          <div>
+                                            @include('admin.jurusan.deleteAlert.index')
+                                          </div>
                                         </div>
                                     </td>
 

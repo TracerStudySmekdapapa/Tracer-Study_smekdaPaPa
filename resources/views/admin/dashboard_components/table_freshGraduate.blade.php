@@ -1,7 +1,7 @@
 <div class="overflow-hidden overflow-x-auto">
-    <div class="flex justify-between items-center">
-        <h1 class="mt-2 mb-5 font-semibold text-[20px] capitalize">data fresh graduate</h1>
-        <div class="grid place-items-center">
+    <div class="flex justify-between items-center  mt-2 mb-5">
+        <h1 class=" font-semibold text-[20px] capitalize">data fresh graduate</h1>
+        <div class="flex justify-center items-start ">
             <a href="{{ route('exportFreshGraduate') }}"
                 class=" ml-auto px-4 py-1  bg-green-600 text-white rounded-md text-sm">Export to .xlsx</a>
         </div>
@@ -55,7 +55,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="6">{{ $freshGraduate->links() }}</td>
+                <td colspan="6" class="px-5 py-1">{{ $freshGraduate->links() }}</td>
             </tr>
         </tfoot>
     </table>
