@@ -65,7 +65,24 @@ class User extends Authenticatable
 
     public function scopeFilter($query, array $filters)
     {
-
+        $query->when(
+            isset($filters['status']) && !in_array($filters['status'], ['semua', 'bekerja', 'pendidikan']),
+            function ($query) {
+                $query->whereHas('roles', fn ($q) => $q->where('name', 'Alumni'))
+                    ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
+                    ->leftJoin('jurusan', 'data_pribadi.id_jurusan', '=', 'jurusan.id_jurusan')
+                    ->leftJoin(DB::raw("(SELECT id_pribadi, COUNT(DISTINCT id_pekerjaan) as total_pekerjaan FROM pekerjaan GROUP BY id_pribadi) as pekerjaan"), 'data_pribadi.id_pribadi', '=', 'pekerjaan.id_pribadi')
+                    ->leftJoin(DB::raw("(SELECT id_pribadi, COUNT(DISTINCT id_pendidikan) as total_pendidikan FROM pendidikan GROUP BY id_pribadi) as pendidikan"), 'data_pribadi.id_pribadi', '=', 'pendidikan.id_pribadi')
+                    ->select([
+                        'users.*',
+                        'data_pribadi.*',
+                        'jurusan.*',
+                        DB::raw("CASE WHEN pekerjaan.total_pekerjaan > 0 THEN 'true' ELSE 'false' END as hasJob"),
+                        DB::raw("CASE WHEN pendidikan.total_pendidikan > 0 THEN 'true' ELSE 'false' END as hasPendidikan")
+                    ])
+                    ->orderBy('users.name', 'ASC');
+            }
+        );
         $query->when(isset($filters['status']) && $filters['status'] == 'semua', function ($query) {
             $query->whereHas('roles', fn ($q) => $q->where('name', 'Alumni'))
                 ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')

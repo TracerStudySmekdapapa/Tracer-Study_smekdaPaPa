@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\DataAlumniClass;
+use App\Exports\DataAlumniExport;
 use App\Exports\FreshGraduateClass;
 use App\Http\Requests\DataPekerjaanUpdateRequest;
 use App\Http\Requests\DataPendidikanUpdateRequest;
@@ -54,9 +56,9 @@ class AdminController extends Controller
         $tidakAlumni = User::tidakAlumni()->limit(3)->get();
 
         if ($search || $status) {
-            $results = User::filter(request(['search', 'status']))
+            $results = User::filter(request(['search', 'status', 'tamatan']))
                 ->paginate(10);
-            $countSearch = User::filter(request(['search', 'status']))
+            $countSearch = User::filter(request(['search', 'status', 'tamatan']))
                 ->count();
             return view('admin.alumni.index', compact('tidakAlumni', 'results', 'search', 'status', 'title', 'title_page', 'countSearch'));
         }
@@ -211,5 +213,10 @@ class AdminController extends Controller
     public function exportFreshGraduate()
     {
         return Excel::download(new FreshGraduateClass, 'fresh_graduate.xlsx');
+    }
+
+    function exportDataAlumni()
+    {
+        return Excel::download(new DataAlumniClass, 'data_alumn.xlsx');
     }
 }
