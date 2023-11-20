@@ -40,8 +40,12 @@
                                 <td class=" py-4   max-w-[350px] ">
                                     <h1 class="">{{ $item->pertanyaan }}</h1>
                                 </td>
-                                <td><a href=""><img class="mx-auto" src="{{ asset('assets/dot.svg') }}"
-                                            alt="dot" /></a></td>
+                                <td> 
+                                    <a href="{{ route('editSurvei', $item->id) }}"
+                                    class="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700">
+                                    <img src="{{ asset('assets/jurusan-edit.svg') }}" alt="edit icon">
+                                    </a>
+                            </td>
                             </tr>
                         @empty
                             <tr>
