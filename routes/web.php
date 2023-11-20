@@ -73,10 +73,13 @@ Route::middleware(['auth'])->group(function () {
 
         /* Export */
         Route::get('/admin/download/fresh-graduate', [AdminController::class, 'exportFreshGraduate'])->name('exportFreshGraduate');
+        Route::get('/admin/download/data_alumni', [AdminController::class, 'exportDataAlumni'])->name('exportDataAlumni');
 
         /* Survei */
-        Route::get('/admin/survei', [SurveiController::class, 'index'])->name('dataSurvei');
-        Route::get('/admin/survei/{id}/detail', [SurveiController::class, 'detail'])->name('detailUserSurvei');
+        Route::get('/admin/survei', [SurveiController::class, 'index'])->name('survei');
+
+        Route::get('/admin/alumni/survei', [SurveiController::class, 'dataSurvei'])->name('dataSurvei');
+        Route::get('/admin/alumni/survei/{id}/detail', [SurveiController::class, 'detail'])->name('detailUserSurvei');
     });
 
     // alumni

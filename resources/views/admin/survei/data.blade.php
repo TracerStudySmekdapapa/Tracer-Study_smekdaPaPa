@@ -29,19 +29,27 @@
                         </tr>
                         <tr class="relative rounded-full overflow-hidden h-[50px] px-[50px] capitalize ">
                             <th class="pl-10 before:left-3 before:w-8">
-                                Pertanyaan
+                                profile
                             </th>
-                            <th>Edit</th>
+                            <th>nisn</th>
+                            <th>jurusan</th>
+                            <th>jenis Kelamin</th>
+                            <th>tamatan</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody class="text-center capitalize divide-x">
                         @forelse ($data as $item)
                             <tr class="divide-x bg-gray-50">
                                 <td class=" py-4   max-w-[350px] ">
-                                    <h1 class="">{{ $item->pertanyaan }}</h1>
+                                    <h1 class="">{{ $item->name }}</h1>
                                 </td>
-                                <td><a href=""><img class="mx-auto" src="{{ asset('assets/dot.svg') }}"
-                                            alt="dot" /></a></td>
+                                <td>{{ $item->nisn }}</td>
+                                <td>{{ $item->nama_jurusan }}</td>
+                                <td>{{ $item->jenis_kelamin }}</td>
+                                <td>{{ $item->tamatan }}</td>
+                                <td><a href="{{ route('detailUserSurvei', $item->id_user) }}"><img class="mx-auto"
+                                            src="{{ asset('assets/dot.svg') }}" alt="dot" /></a></td>
                             </tr>
                         @empty
                             <tr>

@@ -45,6 +45,6 @@ $refs.content.addEventListener('mouseleave', () => { tooltipVisible = false; });
             </div>
         </div>
     </div>
-    <a x-ref="content" class="block w-full" href="{{ route('survei') }}"><img class="mx-auto"
+    <a x-ref="content" class="block w-full" href="{{ route('dataSurvei') }}"><img class="mx-auto"
             src="{{ asset('assets/survey_sidebar.svg') }}" alt="sursey" /></a>
 </div>

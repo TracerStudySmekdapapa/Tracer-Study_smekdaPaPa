@@ -13,10 +13,10 @@
             @include('template.admin.header')
 
 
-            <div class=" mt-20 flex justify-between items-center">
-                <div class=" flex justify-center align-bottom  ">
+            <div class="flex items-center justify-between mt-20 ">
+                <div class="flex justify-center align-bottom ">
                     <form action="{{ route('dataAlumni') }}" method="get" id="form_search"
-                        class="md:grid grid-flow-col-dense mt-4 gap-x-2 ">
+                        class="grid-flow-col-dense mt-4 md:grid gap-x-2 ">
                         <input id="input_search"
                             class="relative z-[23] block  min-w-[290px] max-w-[300px]  text-sm border border-gray-500 pl-5 w-full pr-12 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                             placeholder="Cari Berdasarkan Nama / NISN" type="text" name="search"
@@ -24,10 +24,10 @@
 
                         <select name="status" id="status"
                             class="tamatan max-w-[150px]  h-[40px] rounded-lg border-gray-600 text-gray-700 sm:text-sm [&::-webkit-calendar-picker-indicator]:opacity-0">
-                            <option>Semua</option>
-                            <option  value="bekerja" @selected($status == 'bekerja')>Bekerja
+                            <option value="semua">Semua</option>
+                            <option value="bekerja" @selected($status == 'bekerja')>Bekerja
                             </option>
-                            <option  value="pendidikan" @selected($status == 'pendidikan')>Pendidikan
+                            <option value="pendidikan" @selected($status == 'pendidikan')>Pendidikan
                             </option>
                         </select>
 
@@ -37,26 +37,29 @@
                             <option selected disabled>Tamatan</option>
 
                             {{-- perbaiki ya habibie ganteng (GADANG TENG... ) author : syaid --}}
-                            <option value="2008" >2008</option>
-                            <option value="2009" >2009</option>
-                            <option value="2010" >2010</option>
-                            <option value="2011" >2011</option>
+                            @for ($tahun = Carbon\Carbon::now()->year; $tahun >= 2006; --$tahun)
+                                <option value="{{ $tahun }}" onclick="heandleClick()"
+                                    {{ request()->get('tamatan') == $tahun ? 'selected' : '' }}>
+                                    {{ $tahun }}
+                                </option>
+                            @endfor
                             {{-- perbaiki ya habibie ganteng (GADANG TENG... ) author : syaid --}}
 
                         </select>
 
-                        
+
                     </form>
                 </div>
-                <div class="grid place-items-center grid-cols-2 gap-x-5 ">
-                        <a href="" class=" ml-auto px-4 py-1.5  bg-green-600 text-white rounded-md text-sm">Export to
-                            .xlsx</a>
-                        <div>
-                            @include('admin.alumni.info.index')
-                        </div>
+                <div class="grid grid-cols-2 place-items-center gap-x-5 ">
+                    <a href="{{ route('exportDataAlumni') }}"
+                        class=" ml-auto px-4 py-1.5  bg-green-600 text-white rounded-md text-sm">Export to
+                        .xlsx</a>
+                    <div>
+                        @include('admin.alumni.info.index')
+                    </div>
                 </div>
             </div>
-            <div class=" overflow-x-auto lg:overflow-visible ">
+            <div class="overflow-x-auto lg:overflow-visible">
                 <table
                     class="relative z-20 rounded-lg bg-primary/5 min-w-[800px]  w-full  mt-6 overflow-x-scroll lg:overflow-x-hidden">
                     <thead class="relative overflow-hidden bg-transparent rounded-full">
@@ -181,7 +184,7 @@
 
                     <tfoot class="bg-primary/5">
                         <tr>
-                            <td class="py-1 px-5" colspan="8">{{ $search || $status ? $results : $alumni->links() }}
+                            <td class="px-5 py-1" colspan="8">{{ $search || $status ? $results : $alumni->links() }}
                             </td>
                         </tr>
                     </tfoot>

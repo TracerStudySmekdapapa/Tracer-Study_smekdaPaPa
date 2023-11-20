@@ -13,11 +13,20 @@ class SurveiController extends Controller
 
     public function index()
     {
+        $title = 'Survei';
+        $title_page = 'Survei';
+        $tidakAlumni = User::tidakAlumni()->limit(3)->get();
+        $data = Survei::get();
+        return view('admin.survei.index', compact('title', 'tidakAlumni', 'title_page', 'data'));
+    }
+
+    public function dataSurvei()
+    {
         $title = 'Data Survei';
         $title_page = 'Data Survei';
         $tidakAlumni = User::tidakAlumni()->limit(3)->get();
         $data = User::Survei()->get();
-        return view('admin.survei.index', compact('title', 'tidakAlumni', 'title_page', 'data'));
+        return view('admin.survei.data', compact('title', 'tidakAlumni', 'title_page', 'data'));
     }
 
     public function tambah()
