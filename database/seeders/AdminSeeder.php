@@ -19,8 +19,8 @@ class AdminSeeder extends Seeder
         $user = User::create([
             'name' => 'admin',
             'email' => 'admin@gmail.com',
-            'password' => bcrypt('123'),
-            'profil_picture' => random_int(1, 4) . '.jpg'
+            'password' => bcrypt('Tracer+Admin2023'),
+            'profil_picture' => 'blank.jpg'
         ]);
 
         $user->assignRole('Admin');
