@@ -1,6 +1,6 @@
 {{-- menu ini ditampilkan khusus ketika menampilkan halaman tambah data pekerjaan & pendidikan --}}
 
-<nav class="relative z-50  mx-2 md:-top-0 md:-mb-0 lg:-top-5  lg:-mb-5  select-none" x-data="{ showMenu: false }">
+<nav class="relative z-50 mx-2 select-none md:-top-0 md:-mb-0 lg:-top-5 lg:-mb-5" x-data="{ showMenu: false }">
     <div class="navigation__main">
         <div class="navigation__main__title">
             <a href="{{ route('/') }}" class="navigation__title__link"> Tracer Study </a>
@@ -22,7 +22,7 @@
                 <!-- !navigasi menu ===========================-->
 
                 <!-- ?navigasi menu login ===========================-->
-                <div class="navigation__menu__accout">
+                <div class="flex flex-col space-y-0">
                     @if (Auth::check())
                         {{-- ?profile --}}
                         <a href="{{ route('dashboard') }}"
@@ -40,7 +40,7 @@
 
                         {{-- ? setting --}}
                         <a href="{{ route('profile.edit') }}"
-                            class="cursor-pointer flex items-center space-x-1 text-base  btn___signin md:hidden"><svg
+                            class="flex items-center space-x-1 text-base cursor-pointer btn___signin md:hidden"><svg
                                 xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round" class="w-5 h-5 mr-2">
@@ -56,10 +56,10 @@
 
 
                         {{-- ? logout --}}
-                        <div class=" btn___signup md:hidden ">
+                        <div class=" btn___signup md:hidden">
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
-                                <button type="submit" class="text-base flex items-center space-x-2 "><img
+                                <button type="submit" class="flex items-center space-x-2 text-base "><img
                                         src="{{ asset('assets/logout.svg') }}" alt=""><span>Log
 
                                         Out</span></button>
@@ -70,8 +70,8 @@
                         @include('template.utils.menu')
                         </a>
                     @else
-                        <a href="{{ route('login') }}" class="btn___signin font-medium">Login</a>
-                        <a href="{{ route('register') }}" class="btn___signup font-medium">Register</a>
+                        <a href="{{ route('login') }}" class="font-medium btn___signin">Login</a>
+                        <a href="{{ route('register') }}" class="font-medium btn___signup">Register</a>
                     @endif
                 </div>
                 <!-- !navigasi menu login ===========================-->

@@ -14,7 +14,7 @@
                 <!-- ?navigasi menu ===========================-->
                 <div class="navigation__content">
                     <a href="{{ route('/') }}#home"
-                        class="py-1 ml-6 text-base text-black navigation__content__link md:ml-0 lg:mr-3">Berandaa </a>
+                        class="py-1 ml-6 text-base text-black navigation__content__link md:ml-0 lg:mr-3">Beranda</a>
                     <a href="{{ route('/') }}#about"
                         class="py-1 ml-6 text-base text-gray-700 navigation__content__link hover:text-black lg:mr-3">Tentang
                     </a>
@@ -22,6 +22,13 @@
                         class="py-1 ml-6 text-base text-gray-700 navigation__content__link md:w-auto md:px-0 md:mx-2 hover:text-black lg:mr-3">Tutorial</a>
                     <a href="{{ route('tambahContact') }}"
                         class="py-1 ml-6 text-base text-gray-700 navigation__content__link md:w-auto md:px-0 md:mx-2 hover:text-black lg:mr-3">Kontak</a>
+
+                    @auth
+                        <a href="{{ route('tambahSurvei') }}"
+                            class="py-1 ml-6 text-base text-gray-800 navigation__content__link md:w-auto md:px-0 md:mx-2 hover:text-black lg:mr-3">Survei</a>
+                    @endauth
+
+
                     <a href="{{ route('search') }}" class="navigation___search">
                         <!-- search -->
                         <svg class="inline w-6 h-6" fill="none" stroke-linecap="round" stroke-linejoin="round"
@@ -34,7 +41,7 @@
                 <!-- !navigasi menu ===========================-->
 
                 <!-- ?navigasi menu login ===========================-->
-                <div class="navigation__menu__accou ">
+                <div class="flex flex-col items-center justify-between space-y-0 md:flex-row">
                     @if (Auth::check())
                         {{-- ?profile --}}
                         <a href=""
@@ -88,7 +95,7 @@
                         </a>
                     @else
                         <a href="{{ route('login') }}"
-                            class="btn___signin font-medium py-2 md:py-0 min-h-[30px] text-[16px] ">Login</a>
+                            class="btn___signin font-medium py-1 md:py-0 text-[16px] pr-2">Login</a>
                         <a href="{{ route('register') }}"
                             class="btn___signup font-medium text-[15px] min-h-[30px]">Register</a>
                     @endif

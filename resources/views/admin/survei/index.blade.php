@@ -10,6 +10,12 @@
 
 
             <div class="mt-20 overflow-x-auto lg:overflow-visible ">
+                <div class="flex justify-end">
+                    <div>
+                        @include('admin.survei.info.index')
+                    </div>
+                </div>
+
                 <table
                     class="relative z-20 rounded-lg bg-primary/5 min-w-[800px]  w-full  mt-6 overflow-x-scroll lg:overflow-x-hidden">
                     <thead class="relative overflow-hidden bg-transparent rounded-full">
@@ -40,12 +46,12 @@
                                 <td class=" py-4   max-w-[350px] ">
                                     <h1 class="">{{ $item->pertanyaan }}</h1>
                                 </td>
-                                <td> 
+                                <td>
                                     <a href="{{ route('editSurvei', $item->id) }}"
-                                    class="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700">
-                                    <img src="{{ asset('assets/jurusan-edit.svg') }}" alt="edit icon">
+                                        class="inline-block px-4 py-2 text-xs font-medium text-white bg-indigo-600 rounded hover:bg-indigo-700">
+                                        <img src="{{ asset('assets/jurusan-edit.svg') }}" alt="edit icon">
                                     </a>
-                            </td>
+                                </td>
                             </tr>
                         @empty
                             <tr>

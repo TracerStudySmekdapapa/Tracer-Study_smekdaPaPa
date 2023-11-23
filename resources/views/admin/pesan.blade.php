@@ -60,23 +60,23 @@
                                         <h1
                                             class="px-6 py-2 rounded-md my-1 cursor-no-drop bg-rose-500 text-white max-w-[100px]">
                                             Tolak</h1>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum excepturi et est.
-                                            Rerum repellat temporibus veritatis ullam numquam, eius debitis?</p>
+                                        <p>Saat anda melakukan tolak , pesan yang itu akan ditolak untuk dijadikan
+                                            testimonial pada halaman home page </p>
                                     </div>
                                     <div class="my-4">
                                         <h1
                                             class="px-6 py-2 rounded-md my-1 cursor-no-drop bg-blue-500 text-white max-w-[100px]">
                                             Terima
                                         </h1>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum excepturi et est.
-                                            Rerum repellat temporibus veritatis ullam numquam, eius debitis?</p>
+                                        <p>Saat anda menerima , pesan tersebut akan ditampilkan pada halaman home page ,
+                                            terima pesan yang kosa katanya baik </p>
                                     </div>
                                     <div class="my-4">
                                         <h1
                                             class="px-6 py-2 rounded-md my-1 cursor-no-drop bg-red-500 text-white max-w-[100px]">
                                             Hapus</h1>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum excepturi et est.
-                                            Rerum repellat temporibus veritatis ullam numquam, eius debitis?</p>
+                                        <p>Anda dapat melakukan hapus pada pesan jika pesan yang tampil adalah pesan yang
+                                            mengandung unsur jkata yang tidak baik</p>
                                     </div>
 
                                     <div class="py-2 border-t-2">

@@ -24,15 +24,18 @@
 
              <div
                  class="flex mt-[70px] lg:mt-[72px] space-x-10 md:space-x-[25px] justify-center md:justify-start items-center">
-                 <a href="instagram"><img src=" {{ asset('assets/instagram.svg') }}" alt="instagram" /></a>
-                 <a href="facebook"><img src=" {{ asset('assets/facebook.svg') }}" alt="facebook" /></a>
-                 <a href="youtube"><img src=" {{ asset('assets/youtube.svg') }}" alt="youtube" /></a>
+                 <a href="https://www.instagram.com/smkn2padangpanjang/"><img src=" {{ asset('assets/instagram.svg') }}"
+                         alt="instagram" /></a>
+                 <a href="https://www.facebook.com/smkn2papa"><img src=" {{ asset('assets/facebook.svg') }}"
+                         alt="facebook" /></a>
+                 <a href="https://www.youtube.com/@smknegeri2padangpanjang938"><img
+                         src=" {{ asset('assets/youtube.svg') }}" alt="youtube" /></a>
              </div>
          </div>
 
          <!-- right -->
          <div class="right__item">
-             <img src="{{ asset('assets/hero.png') }}" alt="hero" class="hero__image" />
+             <img src="{{ asset('assets/hero.png') }}" alt="hero" class="mt-2 hero__image lg:mt-0" />
          </div>
      </div>
  </section>

@@ -1,4 +1,4 @@
-<section id="about" class="w-full pt-[120px] md:px-5 lg:px-0">
+<section id="about" class="w-full pt-[50px] md:pt-[120px] md:px-5 lg:px-0">
     <div class="main__about">
         <!--  ?eft -->
         <div class="left__item">
@@ -16,8 +16,7 @@
                 langsung ...
             </p>
 
-            <div x-data="{ modalOpen: false }" @keydown.escape.window="modalOpen=false"
-                class="relative z-50 w-auto h-auto">
+            <div x-data="{ modalOpen: false }" @keydown.escape.window="modalOpen=false" class="relative z-50 w-auto h-auto">
                 <button @click="modalOpen=true"
                     class="px-5 py-2 font-semibold text-white rounded-lg bg-primary btn___signup">
                     Baca Selengkapnya
@@ -26,8 +25,7 @@
                 <!-- todo modal___content -->
                 <template x-teleport="main">
                     <div x-show="modalOpen"
-                        class="fixed top-0 left-0 z-[99] flex items-center justify-center w-screen h-screen"
-                        x-cloak>
+                        class="fixed top-0 left-0 z-[99] flex items-center justify-center w-screen h-screen" x-cloak>
                         <div x-show="modalOpen" x-transition:enter="ease-out duration-300"
                             x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
                             x-transition:leave="ease-in duration-300" x-transition:leave-start="opacity-100"
@@ -47,8 +45,7 @@
                                     class="absolute top-0 right-0 flex items-center justify-center w-8 h-8 mt-5 mr-5 text-gray-600 rounded-full hover:text-gray-800 hover:bg-gray-50">
                                     <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none"
                                         viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M6 18L18 6M6 6l12 12" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                                     </svg>
                                 </button>
                             </div>
@@ -73,7 +70,7 @@
                                     </li>
                                 </ul>
                                 <p class="text-lg font-semibold">
-                                    Tracer study dapat dilakukan dengan metode : 
+                                    Tracer study dapat dilakukan dengan metode :
                                 </p>
                                 <ul class="list-disc text-black/60 text-[15px]">
                                     <li>Survei alumni</li>

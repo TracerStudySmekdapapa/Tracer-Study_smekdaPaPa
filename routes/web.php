@@ -11,6 +11,10 @@ use App\Http\Controllers\SurveiController;
 use App\Http\Middleware\IsAlumni;
 use Illuminate\Support\Facades\Route;
 
+Route::fallback(function () {
+    return view('pages.notFound');
+});
+
 Route::get('/', [HomeController::class, 'index'])->name('/');
 Route::get('/tutorial', [HomeController::class, 'tutorial'])->name('tutorial');
 Route::get('contact', [ContactController::class, 'create'])->name('tambahContact');
