@@ -27,9 +27,9 @@
                         <span>
                             @include('template.admin.components.survei')
                         </span>
-                        <span>
+                        {{-- <span>
                             @include('template.admin.components.data_survei')
-                        </span>
+                        </span> --}}
                     </div>
                 </div>
                 <div>

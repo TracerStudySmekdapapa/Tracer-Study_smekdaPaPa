@@ -45,33 +45,62 @@
                             </label>
 
                             <!-- password -->
-                            <label class="block mt-4 text-sm">
-                                <span class="text-gray-700 dark:text-gray-400">Password</span>
-                                <input required name="password"
-                                    class="block w-full mt-1 border border-gray-600 rounded-md px-5 py-2 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                    placeholder="***************" type="password" />
+                            <div class="block mt-4 relative">
+                                <label class=" text-sm">
+                                    <span class="text-gray-700 dark:text-gray-400">Password</span>
+                                    <input required name="password" id="password1"
+                                        class="block w-full mt-1 border border-gray-600 rounded-md px-5 py-2 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                        placeholder="***************" type="password" />
 
-                                @error('password')
-                                    <!-- error -->
-                                    <p class="text-rose-500 mt-1">{{ $message }}</p>
-                                    <!-- error -->
-                                @enderror
-                            </label>
+                                    @error('password')
+                                        <!-- error -->
+                                        <p class="text-rose-500 mt-1">{{ $message }}</p>
+                                        <!-- error -->
+                                    @enderror
+                                </label>
 
-                            <!-- confirm password -->
-                            <label class="block mt-4 text-sm">
-                                <span class="text-gray-700 dark:text-gray-400">
-                                    Konfirmasi Password
+
+                                <span
+                                    class="w-7 h-7  absolute top-8 right-2 z-50 hover:cursor-pointer grid place-items-center"
+                                    id="showPassword1">
+                                    <span><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"
+                                            viewBox="0 0 24 24">
+                                            <path fill="currentColor"
+                                                d="M12 9a3 3 0 0 1 3 3a3 3 0 0 1-3 3a3 3 0 0 1-3-3a3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5c-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.821 9.821 0 0 0 17.64 0a9.821 9.821 0 0 0-17.64 0Z" />
+                                        </svg></span>
                                 </span>
-                                <input required name="password_confirmation"
-                                    class="block w-full mt-1 border border-gray-600 rounded-md px-5 py-2 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                    placeholder="***************" type="password" />
-                                @error('password_confirmation')
-                                    <!-- error -->
-                                    <p class="text-rose-500 mt-1">{{ $message }}</p>
-                                    <!-- error -->
-                                @enderror
-                            </label>
+                            </div>
+
+
+
+                            <div class="block mt-4 relative">
+                                <!-- confirm password -->
+                                <label class=" text-sm">
+                                    <span class="text-gray-700 dark:text-gray-400">
+                                        Konfirmasi Password
+                                    </span>
+                                    <input required name="password_confirmation" id="password2"
+                                        class="block w-full mt-1 border border-gray-600 rounded-md px-5 py-2 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                        placeholder="***************" type="password" />
+                                    @error('password_confirmation')
+                                        <!-- error -->
+                                        <p class="text-rose-500 mt-1">{{ $message }}</p>
+                                        <!-- error -->
+                                    @enderror
+                                </label>
+
+                                <span
+                                    class="w-7 h-7  absolute top-8 right-2 z-50 hover:cursor-pointer grid place-items-center"
+                                    id="showPassword2">
+                                    <span><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"
+                                            viewBox="0 0 24 24">
+                                            <path fill="currentColor"
+                                                d="M12 9a3 3 0 0 1 3 3a3 3 0 0 1-3 3a3 3 0 0 1-3-3a3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5c-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.821 9.821 0 0 0 17.64 0a9.821 9.821 0 0 0-17.64 0Z" />
+                                        </svg></span>
+                                </span>
+
+                            </div>
+
 
                             <!-- btn submit  -->
                             <button
@@ -93,6 +122,25 @@
     </div>
 
     <script>
+        const showPassword1 = document.querySelector('#showPassword1');
+        const showPassword2 = document.querySelector('#showPassword2');
+        const password1 = document.querySelector('#password1');
+        const password2 = document.querySelector('#password2');
+
+        let kondisi1 = false;
+        showPassword1.addEventListener('click', () => {
+            kondisi1 = !kondisi1;
+            password1.type = kondisi1 ? "text" : 'password'
+        });
+
+
+        let kondisi2 = false;
+        showPassword2.addEventListener('click', () => {
+            kondisi2 = !kondisi2;
+            password2.type = kondisi2 ? "text" : 'password'
+        })
+
+
         function data() {
             function getThemeFromLocalStorage() {
                 // if user already changed the theme, use it

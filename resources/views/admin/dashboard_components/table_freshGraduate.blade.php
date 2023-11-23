@@ -1,6 +1,6 @@
 <div class="overflow-hidden overflow-x-auto">
     <div class="flex justify-between items-center  mt-2 mb-5">
-        <h1 class=" font-semibold text-[20px] capitalize">data fresh graduate</h1>
+        <h1 class=" font-semibold text-[20px] capitalize">Data fresh graduate</h1>
         <div class="flex justify-center items-start ">
             <a href="{{ route('exportFreshGraduate') }}"
                 class=" ml-auto px-4 py-1  bg-green-600 text-white rounded-md text-sm">Export to .xlsx</a>
@@ -19,10 +19,10 @@
                     Jurusan
                 </th>
                 <th class="px-4 py-2 font-medium text-gray-900 capitalize whitespace-nowrap">
-                    jenis Kelamin
+                    Jenis Kelamin
                 </th>
                 <th class="px-4 py-2 font-medium text-gray-900 capitalize whitespace-nowrap">
-                    phone
+                    Phone
                 </th>
             </tr>
         </thead>

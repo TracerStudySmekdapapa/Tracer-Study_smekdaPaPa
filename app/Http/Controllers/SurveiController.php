@@ -20,6 +20,26 @@ class SurveiController extends Controller
         return view('admin.survei.index', compact('title', 'tidakAlumni', 'title_page', 'data'));
     }
 
+    
+    public function editSurvei($id)
+    {
+        $survei = Survei::find($id);
+        $title = 'Edit Survei';
+        $title_page = 'Edit Survei';
+        $tidakAlumni = User::tidakAlumni()->limit(3)->get();
+        // $survei = Survei::get();
+        return view('admin.survei.edit', compact('survei', 'title', 'title_page', 'tidakAlumni'));
+    }
+
+    
+    public function updateSurvei(Request $request, $id)
+    {
+        $survei = Survei::find($id);
+        $survei->update($request->all());
+        
+        return redirect()->route('survei', compact('survei'));
+    }
+    
     public function dataSurvei()
     {
         $title = 'Data Survei';

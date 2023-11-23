@@ -77,6 +77,8 @@ Route::middleware(['auth'])->group(function () {
 
         /* Survei */
         Route::get('/admin/survei', [SurveiController::class, 'index'])->name('survei');
+        Route::get('/admin/survei/edit/{id}', [SurveiController::class, 'editSurvei'])->name('editSurvei');
+        Route::patch('/admin/survei/{id}', [SurveiController::class, 'updateSurvei'])->name('updateSurvei');
 
         Route::get('/admin/alumni/survei', [SurveiController::class, 'dataSurvei'])->name('dataSurvei');
         Route::get('/admin/alumni/survei/{id}/detail', [SurveiController::class, 'detail'])->name('detailUserSurvei');
