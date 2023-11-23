@@ -23,7 +23,7 @@ class PribadiController extends Controller
 {
     public function index()
     {
-        $title = 'Alumni Dashboard';
+        $title = auth()->user()->hasRole('Alumni') ? 'Dashboard Alumni' : 'Dashboard';
         $alumni = Pribadi::where('id_user', Auth::user()->id_user)->first();
         if ($alumni) {
             $pekerjaan = Pekerjaan::where('id_pribadi', $alumni->id_pribadi)->orderBy('created_at', 'DESC')->limit(3)->get();
@@ -50,14 +50,7 @@ class PribadiController extends Controller
     {
         $title = 'Tambah Data Pribadi';
         $jurusan = Jurusan::get();
-        $agama = [
-            'Islam',
-            'Kristen',
-            'Hindu',
-            'Buddha',
-            'Konghucu',
-            'Lainnya'
-        ];
+        $agama = ['Islam', 'Kristen', 'Hindu', 'Buddha', 'Konghucu', 'Lainnya'];
         return view('alumni.datapribadi.create', compact('title', 'jurusan', 'agama'));
     }
 

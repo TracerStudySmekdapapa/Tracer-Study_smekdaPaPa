@@ -9,7 +9,6 @@ class Survei extends Model
 {
     use HasFactory;
     protected $table = 'survei';
-
     protected $fillable = [
         'pertanyaan'
     ];

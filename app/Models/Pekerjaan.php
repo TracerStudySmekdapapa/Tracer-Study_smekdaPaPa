@@ -16,13 +16,9 @@ class Pekerjaan extends Model
     public $incrementing = false;
 
     protected $fillable = [
-        'nama_pekerjaan',
-        'nama_instansi',
-        'alamat_instansi',
-        'jabatan',
-        'thn_masuk',
-        'thn_keluar',
-        'id_pribadi'
+        'nama_pekerjaan', 'nama_instansi',
+        'alamat_instansi', 'jabatan',
+        'thn_masuk', 'thn_keluar', 'id_pribadi'
     ];
 
     public function pribadi()

@@ -1,10 +1,10 @@
-<nav class="relative z-50  mb-5   mx-5  select-none" x-data="{ showMenu: false }">
+<nav class="relative z-50 mx-5 mb-5 select-none" x-data="{ showMenu: false }">
     <div class="navigation__main">
         <div class="navigation__main__title">
             <a href="{{ route('/') }}" class="navigation__title__link"> Tracer Study </a>
         </div>
 
-        <div class="top-0 left-0 items-start hidden w-full h-full p-4 text-sm bg-gray-900 bg-opacity-50 md:items-center md:w-3/4  lg:text-base md:bg-transparent md:p-0 md:relative md:flex"
+        <div class="top-0 left-0 items-start hidden w-full h-full p-4 text-sm bg-gray-900 bg-opacity-50 md:items-center md:w-3/4 lg:text-base md:bg-transparent md:p-0 md:relative md:flex"
             :class="{ 'flex fixed': showMenu, 'hidden': !showMenu }">
             <div class="container__mobile__menu">
                 <a href="{{ route('/') }}" class="header__nav__mobile">
@@ -14,14 +14,14 @@
                 <!-- ?navigasi menu ===========================-->
                 <div class="navigation__content">
                     <a href="{{ route('/') }}#home"
-                        class="ml-6 text-black navigation__content__link text-base py-1 md:ml-0 lg:mr-3">Beranda </a>
+                        class="py-1 ml-6 text-base text-black navigation__content__link md:ml-0 lg:mr-3">Berandaa </a>
                     <a href="{{ route('/') }}#about"
-                        class="ml-6 text-gray-700 navigation__content__link text-base py-1 hover:text-black lg:mr-3">Tentang
+                        class="py-1 ml-6 text-base text-gray-700 navigation__content__link hover:text-black lg:mr-3">Tentang
                     </a>
                     <a href="{{ route('tutorial') }}"
-                        class="ml-6 text-gray-700 navigation__content__link text-base py-1 md:w-auto md:px-0 md:mx-2 hover:text-black lg:mr-3">Tutorial</a>
+                        class="py-1 ml-6 text-base text-gray-700 navigation__content__link md:w-auto md:px-0 md:mx-2 hover:text-black lg:mr-3">Tutorial</a>
                     <a href="{{ route('tambahContact') }}"
-                        class="ml-6 text-gray-700 navigation__content__link text-base py-1 md:w-auto md:px-0 md:mx-2 hover:text-black lg:mr-3">Kontak</a>
+                        class="py-1 ml-6 text-base text-gray-700 navigation__content__link md:w-auto md:px-0 md:mx-2 hover:text-black lg:mr-3">Kontak</a>
                     <a href="{{ route('search') }}" class="navigation___search">
                         <!-- search -->
                         <svg class="inline w-6 h-6" fill="none" stroke-linecap="round" stroke-linejoin="round"
@@ -101,13 +101,13 @@
         <!-- menu  mobile-->
         <div @click="showMenu = !showMenu" class="navigation___mobile ">
             <!-- hamburger menu -->
-            <svg class="w-6 h-6 text-gray-800 -translate-x-6" x-show="!showMenu" fill="none" stroke-linecap="round"
+            <svg class="w-6 h-6 text-gray-800 " x-show="!showMenu" fill="none" stroke-linecap="round"
                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                 <path d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
             <!-- close menu -->
-            <svg class="w-6 h-6 text-gray-700  -translate-y-2 -translate-x-6 fixed" x-show="showMenu" fill="none"
-                stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display: none">
+            <svg class="fixed w-6 h-6 text-gray-700 " x-show="showMenu" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display: none">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
                 </path>
             </svg>

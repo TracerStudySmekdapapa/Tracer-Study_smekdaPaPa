@@ -13,7 +13,6 @@ class JawabanSurvei extends Model
         'jawaban', 'id_pertanyaan', 'id_user'
     ];
 
-
     public function survei()
     {
         return $this->belongsTo(Survei::class, 'id_pertanyaan');

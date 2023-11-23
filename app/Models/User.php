@@ -28,6 +28,12 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function pribadi()
+    {
+        return $this->hasMany(Pribadi::class, 'id_pribadi');
+    }
+
+
     public function getFirstNameAttribute()
     {
         $fullName = $this->attributes['name'];
@@ -198,10 +204,6 @@ class User extends Authenticatable
             ->orderBy('users.name', 'ASC');
     }
 
-    public function alumni()
-    {
-        return $this->hasMany(Pribadi::class, 'id_pribadi');
-    }
 
     public function jawaban()
     {

@@ -12,7 +12,6 @@ class Jurusan extends Model
     protected $table = "jurusan";
     protected $primaryKey = "id_jurusan";
 
-
     public function data_pribadi()
     {
         return $this->hasMany(Pribadi::class, 'id_jurusan');

@@ -15,15 +15,8 @@ class Pribadi extends Model
     public $incrementing = false;
 
     protected $fillable = [
-        'nisn',
-        'no_telp',
-        'tempat_lahir',
-        'tanggal_lahir',
-        'agama',
-        'jenis_kelamin',
-        'tamatan',
-        'id_jurusan',
-        'id_user'
+        'nisn', 'no_telp', 'tempat_lahir', 'tanggal_lahir', 'agama',
+        'jenis_kelamin', 'tamatan', 'id_jurusan', 'id_user'
     ];
 
     public function user()
