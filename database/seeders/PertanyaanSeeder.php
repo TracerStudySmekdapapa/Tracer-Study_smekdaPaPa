@@ -15,7 +15,7 @@ class PertanyaanSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 1; $i <= 5; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
             Survei::create(['pertanyaan' => 'Pertanyaan' . $i]);
         }
     }

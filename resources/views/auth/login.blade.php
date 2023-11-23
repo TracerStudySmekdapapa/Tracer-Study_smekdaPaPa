@@ -69,33 +69,46 @@
                             </label>
 
                             <!--  password  -->
-                            <label class="block mt-4 text-sm">
-                                <span class="text-gray-700 dark:text-gray-400">Password</span>
-                                <input name="password"
-                                    class="block w-full px-5 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                    placeholder="***************" type="password" />
+                            <div class="relative  mt-4">
 
-                                <!-- error -->
-                                @error('password')
-                                    <p class="mt-1 text-rose-500">{{ $message }}</p>
-                                @enderror
-                                <!-- error -->
-                            </label>
+                                <label class=" text-sm ">
+                                    <span class="text-gray-700 dark:text-gray-400">Password</span>
+                                    <input name="password" id="password"
+                                        class="block w-full px-5 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                        placeholder="***************" type="password" />
+
+                                    <!-- error -->
+                                    @error('password')
+                                        <p class="mt-1 text-rose-500">{{ $message }}</p>
+                                    @enderror
+                                    <!-- error -->
+
+                                    <span
+                                        class="w-7 h-7  absolute top-8 right-2 z-50 hover:cursor-pointer grid place-items-center"
+                                        id="showPassword">
+                                        <span><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"
+                                                viewBox="0 0 24 24">
+                                                <path fill="currentColor"
+                                                    d="M12 9a3 3 0 0 1 3 3a3 3 0 0 1-3 3a3 3 0 0 1-3-3a3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5c-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.821 9.821 0 0 0 17.64 0a9.821 9.821 0 0 0-17.64 0Z" />
+                                            </svg></span>
+                                    </span>
+                                </label>
+                            </div>
 
 
 
                             <div class="flex justify-start items-start space-x-3 pt-3">
                                 <input type="checkbox" id="chaptcha" class="peer/chaptcha checked:hidden">
                                 <label for="chaptcha"
-                                    class="  peer-checked/chaptcha:hidden text-[13px] text-black/70 capitalize font-medium">butktikan
+                                    class="  peer-checked/chaptcha:hidden text-[13px] text-black/70 capitalize font-medium">buktikan
                                     anda
                                     bukan
                                     robot</label>
 
 
 
-                                <div class=" hidden peer-checked/chaptcha:block  max-w-[350px]">
-                                    <div class="flex items-center justify-between h-full my-5 max-w-[350px]">
+                                <div class=" hidden peer-checked/chaptcha:block min-w-[29px] -translate-x-3  max-w-[350px]">
+                                    <div class="flex items-center justify-between h-full my-5 ">
                                         <div id="angkaPertama"
                                             class="w-[150px]  border  border-gray-200 rounded-full grid place-items-center py-1.5">
                                             32
@@ -150,8 +163,16 @@
     </div>
 
     <script>
-        // for debugging 
+        const showPassword = document.querySelector('#showPassword');
+        const password = document.querySelector('#password');
+
+        let kondisi = false
+        showPassword.addEventListener('click', () => {
+            kondisi = !kondisi;
+            password.type = kondisi ? "text" : 'password'
+        })
         function jalanKanScript() {
+
 
             const angkaPertama = document.getElementById('angkaPertama');
             const jenisAritmatika = document.getElementById('jenisAritmatika');
@@ -193,8 +214,8 @@
             }
 
 
-            let countFirst = getRandomData(100);
-            let countSecond = getRandomData(20);
+            let countFirst = getRandomData(30);
+            let countSecond = getRandomData(10);
             const aritmatikaOperator = ['+', '-'];
             const RandomAritmatikaOperator = Math.floor(Math.random() * aritmatikaOperator.length);
 
