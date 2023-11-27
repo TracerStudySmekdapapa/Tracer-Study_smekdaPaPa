@@ -1,14 +1,14 @@
 <div class="overflow-hidden overflow-x-auto">
-    <div class="flex justify-between items-center  mt-2 mb-5">
+    <div class="flex items-center justify-between mt-2 mb-5">
         <h1 class=" font-semibold text-[20px] capitalize">Data fresh graduate</h1>
-        <div class="flex justify-center items-start ">
+        <div class="flex items-start justify-center ">
             <a href="{{ route('exportFreshGraduate') }}"
-                class=" ml-auto px-4 py-1  bg-green-600 text-white rounded-md text-sm">Export to .xlsx</a>
+                class="px-4 py-1 ml-auto text-sm text-white bg-green-600 rounded-md ">Export to .xlsx</a>
         </div>
     </div>
-    <table class="min-w-full text-sm bg-white divide-y-2 divide-gray-200">
-        <thead>
-            <tr>
+    <table class="min-w-full overflow-hidden text-sm bg-white divide-y-2 divide-gray-200 rounded-lg">
+        <thead class="rounded-xl">
+            <tr class="bg-gray-100">
                 <th class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap">
                     Nama
                 </th>
@@ -54,7 +54,7 @@
             @endforeach
         </tbody>
         <tfoot>
-            <tr>
+            <tr class="bg-gray-100">
                 <td colspan="6" class="px-5 py-1">{{ $freshGraduate->links() }}</td>
             </tr>
         </tfoot>

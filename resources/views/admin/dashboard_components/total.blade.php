@@ -6,16 +6,18 @@
     @endphp
 
 
-    <div class="grid grid-cols-2 gap-8 lg:grid-cols-3   justify-stretch  ">
+    <div class="grid grid-cols-2 gap-8 lg:grid-cols-3 justify-stretch ">
         @foreach ($data as $index => $item)
-            <div class=" bg-white shadow-lg rounded-[10px] min-h-[125px] max-h-[128px]  flex flex-col px-5 py-2.5">
-                <div class="flex flex-col space-y-3 ">
-                    <div class="flex items-center justify-start ">
-                        <img src="{{ asset('assets/' . $img[$index] . '.svg') }}" alt="">
-                        <h1 class="ml-4 font-bold text-[30px] mt-1 font-montserrat">{{ $total[$index] }}</h1>
+            <div class=" bg-white shadow-lg rounded-[5px] min-h-[100px] max-h-[120px]  flex flex-col px-5 py-2.5">
+
+                <div class="flex items-center justify-start ">
+                    <img src="{{ asset('assets/' . $img[$index] . '.svg') }}" alt="" class="p-5 ">
+                    <div class="flex flex-col justify-center mx-4 -mt-1 space-y-0">
+                        <h1 class=" font-bold text-[30px]  font-montserrat">{{ $total[$index] }}</h1>
+                        <p class="text-[14px] text-black/60 font-normal">{{ $text[$index] }}</p>
                     </div>
-                    <p class="text-[14px] text-black/60 font-normal">{{ $text[$index] }}</p>
                 </div>
+
             </div>
         @endforeach
 
