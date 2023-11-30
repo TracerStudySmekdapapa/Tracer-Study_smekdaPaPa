@@ -117,11 +117,9 @@ class PribadiController extends Controller
     public function updateDataPribadi(DataPribadiUpdateRequest $request, $id)
     {
         $alumni = Pribadi::where('id_user', $id)->first();
-
         /* Start Validasi */
         $validatedData = $request->validated();
         /* End Validasi */
-
         if ($validatedData) {
             $alumni->update([
                 'nisn' => $request->nisn,

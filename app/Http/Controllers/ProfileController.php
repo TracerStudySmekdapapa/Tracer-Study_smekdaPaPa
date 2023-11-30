@@ -40,12 +40,7 @@ class ProfileController extends Controller
             $request->user()->email_verified_at = null;
         }
 
-        if ($request->file('profil_picture')) {
-            $this->uploadImage($request, 'public/foto/');
-            $request->user()->save();
-        } else {
-            $request->user()->save();
-        }
+        $request->user()->save();
 
         if (Auth::user()->hasRole('Admin')) {
             return Redirect::route('adminDashboard')->with('status', 'profile-updated');
