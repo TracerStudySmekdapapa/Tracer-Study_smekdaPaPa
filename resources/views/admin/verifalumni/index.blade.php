@@ -50,18 +50,30 @@
                                     <h1 class="">{{ $item->name }}</h1>
                                 </td>
                                 <td>{{ $item->nisn }}</td>
-                                <td>{{ $item->nama_jurusan }}</td>
+                                <td>
+                                    @php
+                                        if ($jurusan = $item->nama_jurusan) {
+                                            $words = explode(' ', $jurusan);
+
+                                            $abbreviation = '';
+                                            foreach ($words as $word) {
+                                                $abbreviation .= str($word[0]);
+                                            }
+                                            echo $abbreviation;
+                                        } else {
+                                            echo '-';
+                                        }
+                                    @endphp
+                                </td>
                                 <td>{{ $item->jenis_kelamin }}</td>
                                 <td>{{ $item->tamatan }}</td>
-                                <td>
+                                <td class="p-1">
                                     <form action="{{ route('verifalumniStore', $item->id_user) }}" method="POST">
                                         @csrf
                                         <div
                                             class="w-full min-h-[20px] grid grid-cols-5 min-w-[100px] gap-x-1 text-white font-medium">
                                             <div class="col-span-2">
-                                                <button formaction="{{ route('tolakVerifAlumni', $item->id_user) }}"
-                                                    class="py-1.5
-                                                    bg-rose-500 w-full rounded-md block ">Tolak</button>
+                                                @include('admin.verifalumni.tolak')
                                             </div>
                                             <div class="col-span-3">
                                                 <button type="submit"

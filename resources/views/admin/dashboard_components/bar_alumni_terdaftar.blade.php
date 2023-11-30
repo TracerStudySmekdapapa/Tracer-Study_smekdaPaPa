@@ -24,7 +24,7 @@
             enabled: false
         },
         xaxis: {
-            categories: ['Terverif', 'Pekerjaan', 'Pendidikan', 'Nganggur'],
+            categories: ['Terverif', 'Pekerjaan', 'Pendidikan', 'Tanpa Data'],
         }
     };
 

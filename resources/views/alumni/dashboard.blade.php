@@ -159,8 +159,14 @@
                             <div class="flex justify-end w-full ">
                                 <button
                                     class="w-[80%] mx-auto  text-sm mt-5 rounded-lg bg-transparent border border-primary hover:bg-black hover:border-transparent hover:text-white capitalize text-black/70">
-                                    <a href="{{ route('tambahDataPribadi') }}" class="block px-5 py-1 text-sm md:py-2">
-                                        + Data Pribadi
+                                    <a href="{{ route('tambahDataPribadi') }}"
+                                        class=" px-5 max-h-[40px]  md:py-2 font-semibold text-[15px] flex justify-center items-center space-x-2">
+                                        <span class="font-normal text-2xl m-0">
+                                            +
+                                        </span>
+                                        <span class="m-0">
+                                            Data Pribadi
+                                        </span>
                                     </a>
                                 </button>
 

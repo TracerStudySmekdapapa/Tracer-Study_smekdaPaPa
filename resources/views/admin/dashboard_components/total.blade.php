@@ -1,12 +1,14 @@
     @php
         $data = [1, 2, 3, 4, 5, 6];
         $total = [$alumniData['countAlumniMendaftar'], $alumniData['countAlumni'], $alumniData['countPekerjaan'], $alumniData['countPendidikan'], $alumniData['countAlumniFreshGraduate'], $alumniData['countAlumniSurvei']];
-        $text = ['Alumni Yang Telah Mendaftar', 'Alumni  Yang Telah Deferivikasi', 'Alumni yang telah bekerja ', 'Alumni melanjutkan pendidikan', 'Fresh Graduate', 'Alumni mengisi survei'];
+        $text = ['Total  Mendaftar', 'Telah Deferivikasi', 'Telah Bekerja', 'Melanjutkan Pendidikan', 'Fresh Graduate', 'Alumni mengisi survei'];
         $img = ['admin_re', 'admin_verif', 'admin_bekerja', 'admin_book', 'admin_pendidikan', 'admin_pendidikan'];
     @endphp
 
 
-    <div class="grid grid-cols-2 gap-8 lg:grid-cols-3 justify-stretch ">
+    <h1 class=" relative font-semibold text-[20px] capitalize my-2">
+        Data Alumni</h1>
+    <div class="grid grid-cols-2 gap-2 lg:gap-8 lg:grid-cols-3 justify-stretch ">
         @foreach ($data as $index => $item)
             <div class=" bg-white shadow-lg rounded-[5px] min-h-[100px] max-h-[120px]  flex flex-col px-5 py-2.5">
 

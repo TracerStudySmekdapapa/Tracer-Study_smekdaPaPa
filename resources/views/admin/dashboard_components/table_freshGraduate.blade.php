@@ -7,33 +7,43 @@
         </div>
     </div>
     <table class="min-w-full overflow-hidden text-sm bg-white divide-y-2 divide-gray-200 rounded-lg">
-        <thead class="rounded-xl">
-            <tr class="bg-gray-100">
-                <th class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap">
+
+        <thead class="overflow-hidden bg-transparent rounded-full relative">
+            <tr>
+
+                <td class="absolute left-5 top-5">
+                    <svg width="37" height="10" viewBox="0 0 37 10" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <g id="Group 27">
+                            <circle id="Ellipse 19" cx="5" cy="5" r="5" fill="#FF0000" />
+                            <circle id="Ellipse 20" cx="18" cy="5" r="5" fill="#FFE500" />
+                            <circle id="Ellipse 21" cx="32" cy="5" r="5" fill="#05FF00" />
+                        </g>
+                    </svg>
+
+                </td>
+            </tr>
+            <tr class="relative rounded-full overflow-hidden h-[50px] px-[50px] capitalize ">
+                <th class="before:left-3 before:w-8 pl-10">
                     Nama
                 </th>
-                <th class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap">
-                    NISN
-                </th>
-                <th class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap">
-                    Jurusan
-                </th>
-                <th class="px-4 py-2 font-medium text-gray-900 capitalize whitespace-nowrap">
-                    Jenis Kelamin
-                </th>
-                <th class="px-4 py-2 font-medium text-gray-900 capitalize whitespace-nowrap">
-                    Phone
-                </th>
+                <th>Nisn</th>
+                <th>Jurusan</th>
+                <th>Jenis Kelamin</th>
+                <th>tamatan</th>
+                <th>Phone</th>
             </tr>
         </thead>
 
-        <tbody class="text-center divide-y divide-gray-200">
+
+
+        <tbody class="text-center divide-x capitalize">
             @foreach ($freshGraduate as $item)
-                <tr>
-                    <td class="px-4 py-2 font-medium text-gray-900 capitalize whitespace-nowrap">
-                        {{ $item->name }}
+                <tr class="divide-x bg-gray-50">
+                    <td class=" py-4   max-w-[350px] ">
+                        <h1 class="">{{ $item->name }}</h1>
                     </td>
-                    <td class="px-4 py-2 text-gray-700 whitespace-nowrap">{{ $item->nisn }}</td>
+                    <td>{{ $item->nisn }}</td>
                     <td class="px-4 py-2 text-gray-700 whitespace-nowrap">
                         @php
                             if ($jurusan = $item->nama_jurusan) {
@@ -48,8 +58,9 @@
                                 echo '-';
                             }
                         @endphp</td>
-                    <td class="px-4 py-2 text-gray-700 capitalize whitespace-nowrap">{{ $item->jenis_kelamin }}</td>
-                    <td class="px-4 py-2 text-gray-700 whitespace-nowrap">{{ $item->no_telp }}</td>
+                    <td>{{ $item->jenis_kelamin }}</td>
+                    <td>{{ $item->tamatan }}</td>
+                    <td>{{ $item->no_telp }}</td>
                 </tr>
             @endforeach
         </tbody>
@@ -59,7 +70,4 @@
             </tr>
         </tfoot>
     </table>
-
-
-
 </div>

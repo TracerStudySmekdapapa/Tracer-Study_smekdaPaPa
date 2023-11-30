@@ -45,6 +45,6 @@ $refs.content.addEventListener('mouseleave', () => { tooltipVisible = false; });
             </div>
         </div>
     </div>
-    <a x-ref="content" class="block w-full" href="{{ route('adminDashboard') }}"><img class="mx-auto"
+    <a x-ref="content" class="block w-full opacity-95" href="{{ route('adminDashboard') }}"><img class="mx-auto"
             src="{{ asset('assets/jam_home.svg') }}" alt="jamHome" /></a>
 </div>

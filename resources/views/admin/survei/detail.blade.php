@@ -9,18 +9,22 @@
             @include('template.admin.sidebar')
         </div>
         <div class="md:col-span-10 md:mr-10">
-            <section class="grid grid-cols-1 mt-10 capitalize md:grid-cols-2 gap-x-4 ">
-                <div class="">
-                    <h1 class="font-bold">Hasil Survei <span class="text-green-500"> {{ $data->first()->user->name }}
-                        </span></h1>
-                    @foreach ($data as $index => $item)
-                        <div class="flex space-x-5">
+            <section class="">
+                <div class=" capitalize  ">
+                    <h1 class="font-bold text-2xl">Hasil Survei <span class="ml-2 text-">
+                            {{ $data->first()->user->name }}
+                        </span>
+                    </h1>
 
+                    @foreach ($data as $index => $item)
+                        <div class="flex space-x-5 flex-col mt-10 ">
+                            <hr>
                             <h1 class="min-w-[600px] mt-5">{{ $index + 1 }} . {{ $item->survei->pertanyaan }}</h1>
-                            <div class="flex mt-5 space-x-10">
+                            <div class="mt-6 grid grid-cols-1 place-items-start lg:grid-cols-5">
                                 @foreach (['SB' => 'Sangat Bagus', 'B' => 'Bagus', 'C' => 'Cukup', 'K' => 'Kurang', 'SK' => 'Sangat Kurang'] as $value => $label)
-                                    <div class="flex justify-center space-x-2 items-center min-w-[150px]">
-                                        <input type="radio" {{ $item->jawaban == $value ? 'checked' : '' }} required>
+                                    <div class="flex justify-start lg:justify-center space-x-2 items-center min-w-[150px]">
+                                        <input type="radio" {{ $item->jawaban == $value ? 'checked' : '' }} required
+                                            disabled @readonly(true)>
                                         <label>{{ $label }}</label>
                                     </div>
                                 @endforeach
