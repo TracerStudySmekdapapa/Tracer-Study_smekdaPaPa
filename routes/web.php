@@ -82,6 +82,8 @@ Route::middleware(['auth'])->group(function () {
 
         /* Survei */
         Route::get('/admin/survei', [SurveiController::class, 'index'])->name('survei');
+        Route::get('/admin/survei/create', [SurveiController::class, 'createSurvei'])->name('createSurvei');
+        Route::post('/admin/survei/store', [SurveiController::class, 'simpanSurvei'])->name('simpanPertanyaanSurvei');
         Route::get('/admin/survei/edit/{id}', [SurveiController::class, 'editSurvei'])->name('editSurvei');
         Route::patch('/admin/survei/{id}', [SurveiController::class, 'updateSurvei'])->name('updateSurvei');
 
