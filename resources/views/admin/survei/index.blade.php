@@ -15,7 +15,8 @@
                         @include('admin.survei.info.index')
                     </div>
                 </div>
-
+                <h1 class="my-5 underline-offset-4"> <a href="{{ route('createSurvei') }}"
+                        class="font-bold text-[20px] underline">[+] Tambah Survei</a></h1>
                 <table
                     class="relative z-20 rounded-lg bg-primary/5 min-w-[800px]  w-full  mt-6 overflow-x-scroll lg:overflow-x-hidden">
                     <thead class="relative overflow-hidden bg-transparent rounded-full">
