@@ -36,29 +36,32 @@
                         </tr>
                         <tr class="relative rounded-full overflow-hidden h-[50px] px-[50px] capitalize ">
                             <th class="pl-10 before:left-3 before:w-8">
-                                Pertanyaan
+                                Pertanyaan Survei
                             </th>
-                            <th>Edit</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
-                    <tbody class="text-center capitalize divide-x">
-                        @forelse ($data as $item)
-                            <tr class="divide-x bg-gray-50">
-                                <td class=" py-4   max-w-[350px] ">
-                                    <h1 class="">{{ $item->pertanyaan }}</h1>
+                    <tbody class=" capitalize divide-x">
+                        @foreach ($data as $index => $item)
+                            <tr class="divide-x bg-gray-50 ">
+                                <td class=" py-4   max-w-[350px] px-5">
+                                    <h1 class="">
+                                        <span class="ml-5 mr-10 -translate-x-4">
+                                            {{ $index + 1 }}
+                                        </span>
+                                        <span>
+                                            {{ $item->pertanyaan }}
+                                    </h1>
+                                    </span>
                                 </td>
-                                <td>
+                                <td class="grid place-items-center py-2">
                                     <a href="{{ route('editSurvei', $item->id) }}"
                                         class="inline-block px-4 py-2 text-xs font-medium text-white bg-indigo-600 rounded hover:bg-indigo-700">
                                         <img src="{{ asset('assets/jurusan-edit.svg') }}" alt="edit icon">
                                     </a>
                                 </td>
                             </tr>
-                        @empty
-                            <tr>
-                                <td colspan="6" class="text-red-600">Tidak ada data</td>
-                            </tr>
-                        @endforelse
+                        @endforeach
                     </tbody>
 
                 </table>

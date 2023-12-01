@@ -12,7 +12,8 @@ use App\Http\Middleware\IsAlumni;
 use Illuminate\Support\Facades\Route;
 
 Route::fallback(function () {
-    return view('pages.notFound');
+    $title = 'Not Found';
+    return view('pages.notFound')->with('title', $title);
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('/');

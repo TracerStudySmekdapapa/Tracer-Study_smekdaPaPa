@@ -9,16 +9,12 @@
             @include('template.admin.header')
 
 
+
             <div class="mt-20 overflow-x-auto lg:overflow-visible ">
-                <div class="flex items-center justify-end space-x-2 ">
-                    <a href="" class=" ml-auto px-4 py-1.5  bg-green-600 text-white rounded-md text-sm">Export to
-                        .xlsx</a>
-                    <div>
-                        @include('admin.survei.info.index')
-                    </div>
-                </div>
+                <h1 class=" relative font-semibold text-[20px] capitalize my-2">
+                    Data Alumni mengisi survey</h1>
                 <table
-                    class="relative z-20 rounded-lg bg-primary/5 min-w-[800px]  w-full  mt-6 overflow-x-scroll lg:overflow-x-hidden">
+                    class="relative z-20 rounded-lg bg-primary/5 min-w-[800px]  w-full  mt-2 overflow-x-scroll lg:overflow-x-hidden">
                     <thead class="relative overflow-hidden bg-transparent rounded-full">
                         <tr>
 

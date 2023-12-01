@@ -7,7 +7,7 @@
         </div>
 
 
-        <div class="md:col-span-11 md:mr-2 px-12 ">
+        <div class="md:col-span-11 md:mr-2 px-3 md:px-12 ">
             @include('template.admin.header')
             <div class="mt-20 ">
                 @include('admin.dashboard_components.total')
