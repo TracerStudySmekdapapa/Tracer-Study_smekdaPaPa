@@ -55,10 +55,15 @@
                                     </span>
                                 </td>
                                 <td class="grid place-items-center py-2">
+                                    <div class="flex items-center space-x-2">
                                     <a href="{{ route('editSurvei', $item->id) }}"
                                         class="inline-block px-4 py-2 text-xs font-medium text-white bg-indigo-600 rounded hover:bg-indigo-700">
                                         <img src="{{ asset('assets/jurusan-edit.svg') }}" alt="edit icon">
                                     </a>
+                                    <div>
+                                        @include('admin.survei.deleteAlert.index')
+                                    </div>
+                                </div>
                                 </td>
                             </tr>
                         @endforeach

@@ -64,6 +64,13 @@ class SurveiController extends Controller
         return redirect()->route('survei', compact('survei'));
     }
 
+    public function destroySurvei($id){
+        $survei = Survei::find($id);
+        $survei->delete();
+
+        return redirect()->route('survei',compact('survei'));
+    }
+
     public function dataSurvei()
     {
         $title = 'Data Survei';
