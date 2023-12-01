@@ -48,7 +48,21 @@
                                     <h1 class="">{{ $item->name }}</h1>
                                 </td>
                                 <td>{{ $item->nisn }}</td>
-                                <td>{{ $item->nama_jurusan }}</td>
+                                <td>
+                                    @php
+                                    if ($jurusan = $item->nama_jurusan) {
+                                        $words = explode(' ', $jurusan);
+    
+                                        $abbreviation = '';
+                                        foreach ($words as $word) {
+                                            $abbreviation .= str($word[0]);
+                                        }
+                                        echo $abbreviation;
+                                    } else {
+                                        echo '-';
+                                    }
+                                @endphp
+                                </td>
                                 <td>{{ $item->jenis_kelamin }}</td>
                                 <td>{{ $item->tamatan }}</td>
                                 <td><a href="{{ route('detailUserSurvei', $item->id_user) }}"><img class="mx-auto"
