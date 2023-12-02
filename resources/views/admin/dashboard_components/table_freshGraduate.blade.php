@@ -3,7 +3,10 @@
         <h1 class=" font-semibold text-[20px] capitalize">Data fresh graduate</h1>
         <div class="flex items-start justify-center ">
             <a href="{{ route('exportFreshGraduate') }}"
-                class="px-4 py-1 ml-auto text-sm text-white bg-green-600 rounded-md ">Export to .xlsx</a>
+                class="px-4 py-1 ml-auto text-sm text-white bg-green-600 rounded-md flex space-x-2">
+                <img src="{{ asset('assets/file-exel.svg') }}" alt="exel" class="w-[20px]">
+                <span>Export to exel </span>
+            </a>
         </div>
     </div>
     <table class="min-w-full overflow-hidden text-sm bg-white divide-y-2 divide-gray-200 rounded-lg">
@@ -11,7 +14,7 @@
         <thead class="overflow-hidden bg-transparent rounded-full relative ">
             <tr>
 
-                <td class="absolute left-5 top-5 bg-primary z-50">
+                <td class="absolute left-5 top-5 bg-gray-200 z-50">
                     <svg width="37" height="10" viewBox="0 0 37 10" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <g id="Group 27">
@@ -23,7 +26,7 @@
 
                 </td>
             </tr>
-            <tr class="text-white bg-primary relative rounded-full overflow-hidden h-[50px] px-[50px] capitalize ">
+            <tr class="text-[#444444] bg-gray-200 relative rounded-full overflow-hidden h-[50px] px-[50px] capitalize ">
                 <th class="before:left-3 before:w-8 pl-10 ">
                     Nama
                 </th>
@@ -39,7 +42,7 @@
 
         <tbody class="text-center divide-x capitalize">
             @foreach ($freshGraduate as $item)
-                <tr class="divide-x ">
+                <tr class="divide-x hover:bg-gray-100 ">
                     <td class=" py-4   max-w-[350px] ">
                         <h1 class="">{{ $item->name }}</h1>
                     </td>

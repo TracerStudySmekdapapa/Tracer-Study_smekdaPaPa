@@ -12,7 +12,7 @@
                 </a>
 
                 <!-- ?navigasi menu ===========================-->
-                <div class="navigation__content overflow-y-auto">
+                <div class="navigation__content overflow-y-auto overflow-x-hidden">
                     <a href="{{ route('/') }}"
                         class="py-1 ml-6 text-base text-black navigation__content__link md:ml-0 lg:mr-3">Beranda</a>
                     <a href="{{ route('/') }}#about"

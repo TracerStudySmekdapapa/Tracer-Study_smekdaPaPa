@@ -1,6 +1,6 @@
 @php
     $counting = [0, 1, 2, 3, 4, 5, 6];
-    $img_icon = ['register', 'add', 'validasi', 'admin_bekerja', 'admin_pendidikan', 'cari', 'survey_sidebar_black'];
+    $img_icon = ['register', 'add', 'validasi', 'bekerja_black', 'pendidikan_black', 'cari', 'survey_sidebar_black'];
     $title_card_full = ['Registrasi', 'Tambah Data Pribadi', 'Menunggu Verifikasi', 'Mengisi Data Pekerjaan', 'Mengisi Data Pendidikan', 'Melakukan pencarian data', 'Mengisi survey'];
     $desk_card_full = [
         'Melakukan registrasi terlebih dahulu agar terdaftar dan bisa melanjutkan selanjutnya',
@@ -47,7 +47,8 @@
                     </div>
                     <div class="card__header">
                         <div class="card___icon">
-                            <img src="{{ asset('assets/' . $img_icon[$item] . '.svg') }}" alt="" />
+                            <img src="{{ asset('assets/' . $img_icon[$item] . '.svg') }}" alt="gagal"
+                                class="relative z-50 w-[50px]" />
                         </div>
                         <h1 class="card__title capitalize">{{ $title_card_full[$item] }}</h1>
                     </div>

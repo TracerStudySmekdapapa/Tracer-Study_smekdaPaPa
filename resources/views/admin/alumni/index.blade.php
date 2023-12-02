@@ -51,9 +51,12 @@
                     </form>
                 </div>
                 <div class="grid grid-cols-2 place-items-center gap-x-5 ">
+
                     <a href="{{ route('exportDataAlumni') }}"
-                        class=" ml-auto px-4 py-1.5  bg-green-600 text-white rounded-md text-sm">Export to
-                        .xlsx</a>
+                        class="px-4 py-1 ml-auto text-sm text-white bg-green-600 rounded-md flex space-x-2">
+                        <img src="{{ asset('assets/file-exel.svg') }}" alt="exel" class="w-[20px]">
+                        <span>Export to exel </span>
+                    </a>
                     <div>
                         @include('admin.alumni.info.index')
                     </div>

@@ -21,6 +21,7 @@
                                     </div>
                                 @endforeach
                             </div>
+                            <hr class="mt-5 -mb-1">
                         </div>
                     @endforeach
                     <div class="mt-10 flex flex-col md:flex-row md:space-x-3 md:space-y-0 space-y-3">
