@@ -72,7 +72,7 @@ class User extends Authenticatable
     public function scopeFilter($query, array $filters)
     {
         $query->when(
-            isset($filters['status']) && !in_array($filters['status'], ['semua', 'bekerja', 'pendidikan']),
+            isset($filters['status']) && !in_array($filters['status'], ['semua', 'bekerja', 'pendidikan', 'tamatan']),
             function ($query) {
                 $query->whereHas('roles', fn ($q) => $q->where('name', 'Alumni'))
                     ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')

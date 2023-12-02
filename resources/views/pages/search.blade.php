@@ -28,6 +28,12 @@
                         {{--  --}}
                         <div class="relative min-w-[85vw] md:min-w-[10%]">
                             <div class="relative mt-3 md:mt-1.5">
+                                <!-- error -->
+                                @error('search')
+                                    <p class="mt-1 text-rose-500">{{ $message }}</p>
+                                @enderror
+                                <!-- error -->
+
                                 <input type="text" list="HeadlineActArtist" id="HeadlineAct"
                                     class="tamatan w-full rounded-lg border-gray-600 text-gray-700 sm:text-sm [&::-webkit-calendar-picker-indicator]:opacity-0"
                                     placeholder="Tamatan" name="tamatan" value="{{ old('tamatan', $tamatan) }}" />

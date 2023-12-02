@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SimpanSurveiRequest;
 use App\Models\JawabanSurvei;
 use App\Models\Survei;
 use App\Models\User;
@@ -13,33 +14,63 @@ class SurveiController extends Controller
 
     public function index()
     {
-        $title = 'Survei';
-        $title_page = 'Survei';
+        $title = 'Pertanyaan Survei';
+        $title_page = 'Pertanyaan Survei';
         $tidakAlumni = User::tidakAlumni()->limit(3)->get();
         $data = Survei::get();
         return view('admin.survei.index', compact('title', 'tidakAlumni', 'title_page', 'data'));
     }
 
-    
+    public function createSurvei()
+    {
+        $title = 'Tambah Pertanyaan Survei';
+        $title_page = 'Tambah Pertanyaan Survei';
+        $tidakAlumni = User::tidakAlumni()->limit(3)->get();
+        return view('admin.survei.create', compact('title', 'tidakAlumni', 'title_page'));
+    }
+
+    public function simpanSurvei(SimpanSurveiRequest $request)
+    {
+        /* Start Validasi */
+        $validatedData = $request->validated();
+        /* End Validasi */
+
+        if ($validatedData) {
+            Survei::create([
+                'pertanyaan' => $request->nama_pertanyaan
+            ]);
+            return redirect()->route('survei')->with(['message' => 'Data berhasil disimpan']);
+        } else {
+            return redirect()->back()->withErrors($validatedData)->withInput($request->all());
+        }
+    }
+
     public function editSurvei($id)
     {
         $survei = Survei::find($id);
-        $title = 'Edit Survei';
-        $title_page = 'Edit Survei';
+        $title = 'Edit Pertanyaan Survei';
+        $title_page = 'Edit Pertanyaan Survei';
         $tidakAlumni = User::tidakAlumni()->limit(3)->get();
         // $survei = Survei::get();
         return view('admin.survei.edit', compact('survei', 'title', 'title_page', 'tidakAlumni'));
     }
 
-    
+
     public function updateSurvei(Request $request, $id)
     {
         $survei = Survei::find($id);
         $survei->update($request->all());
-        
+
         return redirect()->route('survei', compact('survei'));
     }
-    
+
+    public function destroySurvei($id){
+        $survei = Survei::find($id);
+        $survei->delete();
+
+        return redirect()->route('survei',compact('survei'));
+    }
+
     public function dataSurvei()
     {
         $title = 'Data Survei';
