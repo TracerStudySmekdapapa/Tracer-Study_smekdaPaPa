@@ -34,7 +34,7 @@
 
                         <select name="tamatan" id="tamatan"
                             class="tamatan max-w-[150px]  h-[40px] rounded-lg border-gray-600 text-gray-700 sm:text-sm [&::-webkit-calendar-picker-indicator]:opacity-0">
-                            <option selected disabled>Tamatan</option>
+                            <option onclick="handleClick()" value="">Tamatan</option>
 
                             {{-- perbaiki ya habibie ganteng (GADANG TENG... ) author : syaid --}}
                             @for ($tahun = Carbon\Carbon::now()->year; $tahun >= 2006; --$tahun)

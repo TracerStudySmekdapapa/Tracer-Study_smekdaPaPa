@@ -20,7 +20,11 @@
                                 <img src="{{ asset('assets/cari.svg') }}" alt="cari" class="scale-90" />
                             </button>
                         </div>
-                        {{--  --}}
+                        <!-- error -->
+                        @error('search')
+                            <p class="mt-1 text-rose-500">{{ $message }}</p>
+                        @enderror
+                        <!-- error -->
                         <div class="relative">
                             <div class="relative mt-1.5">
                                 <input type="text" list="HeadlineActArtist" id="HeadlineAct"
