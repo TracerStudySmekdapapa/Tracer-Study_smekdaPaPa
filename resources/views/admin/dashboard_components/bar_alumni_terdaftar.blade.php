@@ -3,6 +3,7 @@
 <script>
     var bar_option = {
         series: [{
+            name: 'Total Data ',
             data: [{{ $alumniData['countAlumni'] }}, {{ $alumniData['countPekerjaan'] }},
                 {{ $alumniData['countPendidikan'] }},
                 {{ $alumniData['countAlumniNganggur'] }}
@@ -21,7 +22,7 @@
             }
         },
         dataLabels: {
-            enabled: false
+            enabled: true
         },
         xaxis: {
             categories: ['Terverif', 'Pekerjaan', 'Pendidikan', 'Tanpa Data'],

@@ -2,7 +2,7 @@
     <div class="main__CTA">
         <div>
             <h1>Ayo mulai melakukan pencarian data !!</h1>
-            <p>cari data alumni berdasarkan nama ataun nisn</p>
+            <p>Cari data alumni berdasarkan nama ataun nisn</p>
         </div>
 
         <div>

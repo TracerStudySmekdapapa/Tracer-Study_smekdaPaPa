@@ -7,7 +7,9 @@
                 <h2
                     class="text-4xl font-extrabold leading-10 tracking-tight text-gray-900 sm:text-5xl sm:leading-none md:text-6xl lg:text-5xl xl:text-6xl">
                     Testimonials</h2>
-                <p class="my-6 text-lg text-gray-600">Jangan hanya percaya begitu saja, bacalah daftar lengkap studi
+                <p class="my-3 md:my-6  text-base  md:text-lg text-gray-600">Jangan hanya percaya begitu saja, bacalah
+                    daftar
+                    lengkap studi
                     kasus dan testimoni pelanggan kami.</p>
             </div>
             <div

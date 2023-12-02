@@ -21,8 +21,6 @@
 
 
     {{-- ! =======JS LIBRARY ============= --}}
-    {{-- ? alpine --}}
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     {{-- ? chart --}}
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
@@ -35,5 +33,6 @@
 <body style="padding: 0; margin: 0; box-sizing: border-box;">
     @yield('konten')
 </body>
+@vite('resources/js/app.js')
 
 </html>

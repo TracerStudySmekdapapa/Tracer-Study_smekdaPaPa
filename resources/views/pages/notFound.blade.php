@@ -22,7 +22,7 @@
 
 
 
-    <title>Tracer Study Smekda - {{ $title }}</title>
+    <title>{{ $title }}</title>
     <link rel="shortcut icon" href="{{ asset('assets/smknicon.png') }}" type="image/x-icon">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,11 +51,11 @@
 
 </head>
 
-<body x-data class="relative overflow-hidden ">
+<body x-data class="relative overflow-hidden max-h-screen min-w-full" style="overflow: hidden">
     <!--?  navigasi ==========-->
     <main class="relative">
         <div class="w-[130px] h-[130px] bg-primary blur-[130px] absolute top-20 -left-32 z-0"></div>
-        <div class="w-[130px] h-[130px] bg-orange-500 blur-[130px] absolute top-80 -right-52 z-0"></div>
+        <div class="hidden lg:block w-[130px] h-[130px] bg-orange-500 blur-[130px] absolute top-80 -right-52 z-0"></div>
 
         @include('template.utils.navbar')
         <!--!  navigasi ==========-->
@@ -63,17 +63,16 @@
             <h1 class="relative font-extrabold text-[35px] lg:text-[50px] flex space-x-5 items-center">
                 <span>Halaman <span class="bg-gray-200 md:bg-transparent ">Tidak Ditemukan</span> </span>
                 <span><img src="{{ asset('assets/bingung.svg') }}" alt=""
-                        class="absolute lg:relative lg:right-2 lg:right-0"></span>
+                        class="absolute z-50 lg:relative right-16 lg:right-0"></span>
                 <span class="absolute -top-5 right-16"> <img src="{{ asset('assets/random-line.svg') }}"
                         alt="random line">
                 </span>
             </h1>
             <div class="mt-16 relative grid place-items-center">
-                <h1 class="font-bold text-base text-slate-500 absolute top-1 left-5 lg:left-3 lg:top-2  z-10">Error</h1>
                 <img src="{{ asset('assets/404.svg') }}" alt="404" class="z-50 relative w-[75%] lg:w-full">
             </div>
             <div class="flex space-x-10 justify-around items-center mt-20 w-[80%]">
-                <a href=""
+                <a href="" onclick="goBack()"
                     class="font-semibold underline underline-offset-8 text-primary  flex space-x-3 items-center">
                     <span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512">
                             <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -97,6 +96,13 @@
     </div>
     </div>
 </body>
+
+
+<script>
+    function goBack() {
+        window.history.back(-1)
+    }
+</script>
 
 
 </html>

@@ -1,4 +1,4 @@
-<nav class="relative z-50 mx-5 mb-5 select-none" x-data="{ showMenu: false }">
+<nav class="relative z-[999] lg:mx-5 mb-5 select-none" x-data="{ showMenu: false }">
     <div class="navigation__main">
         <div class="navigation__main__title">
             <a href="{{ route('/') }}" class="navigation__title__link"> Tracer Study </a>
@@ -12,8 +12,8 @@
                 </a>
 
                 <!-- ?navigasi menu ===========================-->
-                <div class="navigation__content">
-                    <a href="{{ route('/') }}#home"
+                <div class="navigation__content overflow-y-auto">
+                    <a href="{{ route('/') }}"
                         class="py-1 ml-6 text-base text-black navigation__content__link md:ml-0 lg:mr-3">Beranda</a>
                     <a href="{{ route('/') }}#about"
                         class="py-1 ml-6 text-base text-gray-700 navigation__content__link hover:text-black lg:mr-3">Tentang
@@ -40,8 +40,11 @@
                 </div>
                 <!-- !navigasi menu ===========================-->
 
+
+                <hr class="md:hidden mt-5">
+
                 <!-- ?navigasi menu login ===========================-->
-                <div class="flex flex-col items-center justify-between space-y-0 md:flex-row">
+                <div class="flex flex-col items-center justify-between -space-y-0 md:flex-row">
                     @if (Auth::check())
                         {{-- ?profile --}}
                         <a href=""
@@ -83,7 +86,7 @@
                             <div class=" btn___signup md:hidden">
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
-                                    <button type="submit" class="flex items-center space-x-2 "><img
+                                    <button type="submit" class="flex items-center  -mt-1 space-x-2 "><img
                                             src="{{ asset('assets/logout.svg') }}" alt=""><span
                                             class="text-base">Log
                                             Out</span></button>

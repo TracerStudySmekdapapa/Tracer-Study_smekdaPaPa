@@ -33,7 +33,7 @@
                             <span class="text-gray-700 dark:text-gray-400">Nama Universitas</span>
                             <input type="text" name="nama_univ"
                                 class="block w-full  mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                placeholder="nama univ" value="{{ old('nama_univ') }}" />
+                                placeholder="Nama Universitas" value="{{ old('nama_univ') }}" />
 
                             <!-- error -->
                             @error('nama_univ')
@@ -61,7 +61,7 @@
                             <span class="text-gray-700 dark:text-gray-400">Prodi</span>
                             <input type="text" name="prodi"
                                 class="block w-full  mt-1 text-sm border border-gray-600 px-5 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                placeholder="Prodi anda" value="{{ old('prodi') }}" />
+                                placeholder="Prodi Anda" value="{{ old('prodi') }}" />
 
                             <!-- error -->
                             @error('prodi')
@@ -75,7 +75,7 @@
                             <span class="text-gray-700 dark:text-gray-400">Alamat</span>
                             <textarea name="alamat_univ"
                                 class="block border border-gray-600 px-3 py-2 rounded-md w-full  mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                                rows="3" placeholder="masukan alamat universitas.">{{ old('alamat_univ') }}</textarea>
+                                rows="3" placeholder="Masukan Alamat Universitas.">{{ old('alamat_univ') }}</textarea>
 
                             <!-- error -->
                             @error('alamat_univ')

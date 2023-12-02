@@ -3,10 +3,10 @@
      <div class="main__hero">
          <!-- left -->
          <div class="left__item">
-             <h1 class="title">Penelusuran Alumni</h1>
+             <h1 class="title font">Penelusuran Alumni</h1>
              <h2 class="subTitle">SMK NEGERI 2 PADANG PANJANG</h2>
              <p class="deskripsi">
-                 Bantu kami meningkatkan kualitas pendidikan. Tracer study,
+                 Bantu kami meningkatkan kualitas pendidikan. Tracer study ,
                  kontribusimu untuk pendidikan dan jendela untuk masa depanmu.
              </p>
 
@@ -23,13 +23,23 @@
              </div>
 
              <div
-                 class="flex mt-[70px] lg:mt-[72px] space-x-10 md:space-x-[25px] justify-center md:justify-start items-center">
-                 <a href="https://www.instagram.com/smkn2padangpanjang/"><img src=" {{ asset('assets/instagram.svg') }}"
-                         alt="instagram" /></a>
-                 <a href="https://www.facebook.com/smkn2papa"><img src=" {{ asset('assets/facebook.svg') }}"
-                         alt="facebook" /></a>
-                 <a href="https://www.youtube.com/@smknegeri2padangpanjang938"><img
-                         src=" {{ asset('assets/youtube.svg') }}" alt="youtube" /></a>
+                 class=" flex mt-[60px] md:mt-[80px] lg:mt-[130px]     space-x-10 md:space-x-[25px] justify-center md:justify-between lg:pr-20    items-center">
+
+
+                 <div class="flex space-x-10 items-center justify-center">
+
+                     <a href="https://www.instagram.com/smkn2padangpanjang/"><img
+                             src=" {{ asset('assets/instagram.svg') }}" alt="instagram" /></a>
+                     <a href="https://www.facebook.com/smkn2papa"><img src=" {{ asset('assets/facebook.svg') }}"
+                             alt="facebook" /></a>
+                     <a href="https://www.youtube.com/@smknegeri2padangpanjang938"><img
+                             src=" {{ asset('assets/youtube.svg') }}" alt="youtube" /></a>
+                 </div>
+
+
+                 <div class="hidden lg:block scale-90">
+                     <img src="{{ asset('assets/scrolldown.svg') }}" alt="scroll ">
+                 </div>
              </div>
          </div>
 

@@ -1,5 +1,5 @@
 {{-- @dd(Auth::user()->profil_picture) --}}
-<div class="max-w-[200px] px-3 mx-10  hidden md:block">
+<div class="max-w-[250px] px-3 mx-10  hidden md:block">
     <div x-data="{
         dropdownOpen: false,
     }" class="relative">
@@ -13,7 +13,7 @@
         <div x-show="dropdownOpen" @click.away="dropdownOpen=false"
             class="absolute top-0 z-[99999] w-56 mt-12 -translate-x-1/2 left-1/2" x-cloak>
             <div
-                class="p-1 mt-1  bg-white max-h-[180px] md:max-h-[150px] min-h-[170px] md:min-h-[150px] pb-1 overflow-hidden border rounded-md shadow-lg border-neutral-200/70 text-neutral-700">
+                class="p-1 mt-1  bg-white h-full pb-1 overflow-hidden border rounded-md shadow-lg border-neutral-200/70 text-neutral-700">
                 <div class="px-2 py-1.5 text-sm font-semibold">{{ Str::ucfirst(Auth::user()->name) }}</div>
 
 
@@ -48,10 +48,10 @@
                 <div class="h-px my-1 -mx-1 bg-neutral-200"></div>
 
                 <div
-                    class="relative hover:bg-neutral-100  cursor-pointer select-none  lg:py-0.5  items-center rounded px-2  text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
-                    <form action="{{ route('logout') }}" class="flex items-center space-x-1" method="POST">
+                    class="relative hover:bg-neutral-100 py-1   cursor-pointer select-none    items-center rounded px-2  text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                    <form action="{{ route('logout') }}" method="POST">
                         @csrf
-                        <button type="submit" href="{{ route('logout') }}" class="flex items-center py-2 pr-5 -mt-2 ">
+                        <button type="submit" href="{{ route('logout') }}" class="flex items-center  pr-5  ">
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"

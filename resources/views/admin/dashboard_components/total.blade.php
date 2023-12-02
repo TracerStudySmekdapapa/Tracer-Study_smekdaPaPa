@@ -8,19 +8,25 @@
 
     <h1 class=" relative font-semibold text-[20px] capitalize my-2">
         Data Alumni</h1>
-    <div class="grid grid-cols-2 gap-2 lg:gap-8 lg:grid-cols-3 justify-stretch ">
-        @foreach ($data as $index => $item)
-            <div class=" bg-white shadow-lg rounded-[5px] min-h-[100px] max-h-[120px]  flex flex-col px-5 py-2.5">
+    <div class="grid grid-cols-2 gap-2 ">
+        <div class="w-full h-full bg-red-500">
 
-                <div class="flex items-center justify-start ">
-                    <img src="{{ asset('assets/' . $img[$index] . '.svg') }}" alt="" class="p-5 ">
-                    <div class="flex flex-col justify-center mx-4 -mt-1 space-y-0">
-                        <h1 class=" font-bold text-[30px]  font-montserrat">{{ $total[$index] }}</h1>
-                        <p class="text-[14px] text-black/60 font-normal">{{ $text[$index] }}</p>
+        </div>
+        <div class="grid grid-cols-2 gap-2 lg:gap-8 lg:grid-cols-3 justify-stretch ">
+
+            @foreach ($data as $index => $item)
+                <div class=" bg-white shadow-lg rounded-[5px] min-h-[100px] max-h-[120px]  flex flex-col px-5 py-2.5">
+
+                    <div class="flex  flex-col justify-center items-center">
+                        {{-- <img src="{{ asset('assets/' . $img[$index] . '.svg') }}" alt="" class="p-5 "> --}}
+                        <div class="flex flex-col justify-center mx-4 -mt-1 space-y-0">
+                            <h1 class=" font-bold text-[30px]  font-montserrat">{{ $total[$index] }}</h1>
+                            <p class="text-[14px] text-black/60 font-normal">{{ $text[$index] }}</p>
+                        </div>
                     </div>
-                </div>
 
-            </div>
-        @endforeach
+                </div>
+            @endforeach
+        </div>
 
     </div>

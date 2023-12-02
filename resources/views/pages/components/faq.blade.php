@@ -14,7 +14,7 @@
         class="duration-200 ease-out bg-white border rounded-md cursor-pointer group" x-cloak>
         <button @click="setActiveAccordion(id)"
             class="flex items-center justify-between w-full px-5 py-4 font-semibold text-left select-none">
-            <span>Apa itu Tracer Studi ?</span>
+            <span>Apa itu Tracer Study ?</span>
             <div :class="{ 'rotate-90': activeAccordion == id }"
                 class="relative flex items-center justify-center w-2.5 h-2.5 duration-300 ease-out">
                 <div class="absolute w-0.5 h-full bg-neutral-500 group-hover:bg-neutral-800 rounded-full"></div>

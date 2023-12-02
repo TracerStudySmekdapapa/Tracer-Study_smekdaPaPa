@@ -2,13 +2,13 @@
     <div class="main__about">
         <!--  ?eft -->
         <div class="left__item">
-            <img src="{{ asset('assets/about.jpg') }}" alt="about" />
+            <img src="{{ asset('assets/about.jpg') }}" alt="about" class="w-[90%] md:w-full" />
         </div>
 
         <!--  right -->
         <div class="right__item">
-            <h1 class="text-[35px] font-semibold">Tentang Tracer Study</h1>
-            <p class="leading-[27px] text-black/80 relative -z-50">
+            <h1 class="text-[30px] md:text-[35px] font-semibold">Tentang Tracer Study</h1>
+            <p class="leading-[27px] text-black/80 relative -z-50 text-[15px] md:text-base">
                 Tracer study adalah studi pelacakan jejak lulusan perguruan tinggi
                 yang dilakukan untuk mengetahui hasil pendidikan yang telah
                 diterima oleh lulusan. Studi ini dilakukan dengan mengumpulkan
@@ -25,7 +25,7 @@
                 <!-- todo modal___content -->
                 <template x-teleport="main">
                     <div x-show="modalOpen"
-                        class="fixed top-0 left-0 z-[99] flex items-center justify-center w-screen h-screen overflow-y-auto"
+                        class="fixed top-0 left-0 z-[99] flex items-center justify-center w-screen min-h-screen overflow-y-auto"
                         x-cloak>
                         <div x-show="modalOpen" x-transition:enter="ease-out duration-300"
                             x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
@@ -49,9 +49,9 @@
                                     </svg>
                                 </button>
                             </div>
-                            <div class="relative w-auto font-normal text-black/80">
+                            <div @click="modalOpen=false" class="relative w-auto font-normal text-black/80">
                                 <p class="text-lg font-semibold">Tujuan tracer study adalah untuk : </p>
-                                <ol class="list-disc  text-black/60 text-[15px] max-w-[80%] lg:max-w-full">
+                                <ol class="list-disc  text-black/60 text-[14px] max-w-[95%] ">
                                     <li>
                                         Melacak Jejak Alumni: Memantau keberhasilan karier alumni setelah lulus.
                                     </li>
@@ -63,27 +63,19 @@
                                         Feedback untuk Peningkatan Kurikulum: Mendapatkan umpan balik langsung dari
                                         alumni untuk meningkatkan relevansi kurikulum.
                                     </li>
-                                    <li>
-                                        Feedback untuk Peningkatan Kurikulum: Mendapatkan umpan balik langsung dari
-                                        alumni untuk meningkatkan relevansi kurikulum.
-                                    </li>
-                                    <li>Pengembangan Koneksi Industri: Membangun hubungan lebih erat antara perguruan
-                                        tinggi dan industri. </li>
+
                                 </ol>
                                 <p class="text-lg font-semibold mt-3">
                                     Manfaat Tracer Study:
                                 </p>
-                                <ul class="list-disc text-black/60 text-[15px] max-w-[80%] lg:max-w-full">
+                                <ul class="list-disc text-black/60 text-[14px] max-w-[95%] ">
                                     <li>Perbaikan Kurikulum: Meningkatkan kurikulum berdasarkan kebutuhan aktual pasar
                                         kerja.</li>
                                     <li>Penyempurnaan Proses Pembelajaran: Menyesuaikan metode pengajaran agar lebih
                                         sesuai dengan tuntutan industri.</li>
                                     <li>Meningkatkan Kualitas Alumni: : Memastikan bahwa alumni memiliki keterampilan
                                         dan pengetahuan yang diperlukan.</li>
-                                    <li>Penyelarasan dengan Kebutuhan Industri: Memastikan bahwa pendidikan yang
-                                        diberikan sesuai dengan tuntutan industri terkini.</li>
-                                    <li>Mengukur ROI Pendidikan: Menilai nilai investasi pendidikan dari sudut pandang
-                                        hasil karier.</li>
+
                                 </ul>
 
                             </div>
