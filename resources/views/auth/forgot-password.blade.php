@@ -39,6 +39,7 @@
                                     class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 rounded-md focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                     placeholder="masukan email anda yang aktif" />
                                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                                    <x-input-success :messages="session('status')" class="mt-2" />
                             </label>
 
                             <!-- You should use a button here, as the anchor is only used for the example  -->
