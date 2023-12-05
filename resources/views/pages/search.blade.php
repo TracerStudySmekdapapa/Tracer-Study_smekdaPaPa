@@ -10,7 +10,7 @@
         <div class="w-[90%] mx-auto flex justify-end items-center mt-10">
             <div class="relative">
                 <form action="{{ route('search') }}" method="get" id="form_search">
-                    <div class="flex flex-col justify-center  items-center md:flex-row md:w-screen ">
+                    <div class="flex flex-col justify-end  items-center md:flex-row md:w-screen ">
 
                         <div class="flex flex-col justify-end ">
 
@@ -28,15 +28,13 @@
                             </div>
                             {{--  --}}
                             <!-- error -->
-                            {{-- @error('search') --}}
-                            {{-- <p class="mt-1 text-rose-500">{{ $message }}</p> --}}
-                            <p class="mt-1 text-rose-500  translate-y-5">Lorem, ipsum dolor.</p>
-                            {{-- @enderror --}}
+                            @error('search')
+                                <p class="-mb-6 text-rose-500">{{ $message }}</p>
+                            @enderror
+                            <!-- error -->
                         </div>
-                        <!-- error -->
                         <div class="relative min-w-[85vw] md:min-w-[10%]">
-                            <div class="relative mt-3 md:mt-1.5">
-
+                            <div class="relative mt-8 md:mt-1.5">
 
                                 <input type="text" list="HeadlineActArtist" id="HeadlineAct"
                                     class="tamatan w-full rounded-lg border-gray-600 text-gray-700 sm:text-sm [&::-webkit-calendar-picker-indicator]:opacity-0"
@@ -68,9 +66,9 @@
             </div>
         </div>
 
-        <div class="overflow-x-auto lg:overflow-visible ">
+        <div class="overflow-x-auto lg:overflow-visible  ">
             <table
-                class="relative z-20 rounded-lg bg-primary/5 min-w-[800px] lg:w-[90%] mx-auto  mt-6 overflow-x-scroll lg:overflow-x-hidden">
+                class="relative z-20 rounded-lg bg-primary/5 min-w-[800px] lg:w-[90%] mx-auto  mt-10 overflow-x-scroll lg:overflow-x-hidden">
                 <thead class="relative overflow-hidden bg-transparent rounded-full">
                     <tr>
 
