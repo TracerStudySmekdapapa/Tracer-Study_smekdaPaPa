@@ -1,6 +1,6 @@
  <!-- ? section-hero ======== -->
  <section class="w-full mt-[30px] mb-[30px]">
-     <div class="main__hero">
+     <div class="main__hero px-3 md:px-0">
          <!-- left -->
          <div class="left__item">
              <h1 class="title font">Penelusuran Alumni</h1>

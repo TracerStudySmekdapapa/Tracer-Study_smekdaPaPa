@@ -100,7 +100,7 @@ main {
   }
 
   .main__hero .deskripsi {
-    @apply max-w-[325px] xl:max-w-[400px]  leading-6 md:leading-[27px] text-black/70 my-[17px] text-sm text-justify lg:text-left xl:text-base md:max-w-[300px];
+    @apply max-w-[325px] xl:max-w-[400px]  leading-6 md:leading-[27px] text-black/70 my-[17px]  lg:text-left xl:text-base md:max-w-[300px];
   }
 
   .main__hero .hero___register {
