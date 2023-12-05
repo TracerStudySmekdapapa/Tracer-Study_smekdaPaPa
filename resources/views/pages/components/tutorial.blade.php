@@ -35,6 +35,6 @@
     </section>
 </div>
 <a href="/tutorial"
-    class="text-center block mt-11 mx-auto capitalize font-normal text-blue-600 border-b w-[200px] pb-2 border-blue-600">baca
+    class="text-center block mt-11 mx-auto capitalize font-normal text-indigo-700 border-b w-[200px] pb-1 border-blue-600">baca
     selengkapnya
 </a>

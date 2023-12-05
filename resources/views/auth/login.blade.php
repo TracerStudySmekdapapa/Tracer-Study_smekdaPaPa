@@ -1,45 +1,53 @@
 @extends('template.master')
 @section('content')
     @if (session('error'))
-        <div class="absolute top-0 right-0 p-4">
-            <div x-data="{
-                bannerVisible: false,
-                bannerVisibleAfter: 300,
-            }" x-show="bannerVisible" x-transition:enter="transition ease-out duration-500"
-                x-transition:enter-start="translate-x-40" x-transition:enter-end="translate-x-0"
-                x-transition:leave="transition ease-in duration-300" x-transition:leave-start="translate-x-0"
-                x-transition:leave-end="translate-x-40" x-init="setTimeout(() => { bannerVisible = true }, bannerVisibleAfter);" x-cloak
-                class="absolute top-7 right-28 p-4 z-[99999]">
-                <div class="px-3 py-2 capitalize bg-white border border-gray-100 rounded-md">
-                    <div class="flex items-center space-x-3">
+        <div x-data="{
+            bannerVisible: false,
+            bannerVisibleAfter: 300,
+        }" x-show="bannerVisible" x-transition:enter="transition ease-out duration-500"
+            x-transition:enter-start="translate-x-40" x-transition:enter-end="-translate-x-0 lg:-translate-x-0"
+            x-transition:leave="transition ease-in duration-300" x-transition:leave-start="translate-x-0"
+            x-transition:leave-end="translate-x-40" x-init="setTimeout(() => { bannerVisible = true }, bannerVisibleAfter);
+            setTimeout(() => { bannerVisible = false }, 3000);" x-cloak
+            class="absolute top-7 right-0   lg:right-28 p-4 z-[99999]">
+            <div class="px-3 py-2 capitalize bg-white border border-gray-100 rounded-md">
+                <div class="flex items-center space-x-3">
 
-                        <div class="bg-rose-500/80 w-[40px] aspect-square rounded-md grid place-items-center">
-                            <img src="{{ asset('assets/login.svg') }}" alt="svg" class="w-[25px]">
-                        </div>
+                    <div class="bg-rose-500/80 w-[40px] aspect-square rounded-md grid place-items-center">
+                        <img src="{{ asset('assets/login.svg') }}" alt="svg" class="w-[25px]">
+                    </div>
 
-                        <div class="flex flex-col font-medium text-[15px] ">
-                            <span class="text-[#252525]/90">
-                                {{ Session::get('error') }}
-                            </span>
-                            <span class="text-[#252525]/70 -mt-1 text-sm">
-                                {{ Auth::user()->name ?? 'user' }}
-                            </span>
-                        </div>
+                    <div class="flex flex-col font-medium text-[15px] ">
+                        <span class="text-[#252525]/90">
+                            {{ Session::get('error') }}
+                        </span>
+                        <span class="text-[#252525]/70 -mt-1 text-sm">
+                            {{ Auth::user()->name ?? 'user' }}
+                        </span>
+                    </div>
 
-                        <div class="w-[100px] h-[50px] flex justify-end items-center ">
-                            <button @click="bannerVisible=false;"
-                                class=" bg-gray-200 rounded-full grid place-items-center min-h-[25px] max-h-[25px] min-w-[25px] max-w-[25px] text-black">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="w-[17px] h-[17px]">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                </svg>
-                            </button>
+                    <div class="w-[100px] h-[50px] flex justify-end items-center ">
+                        <button @click="bannerVisible=false;"
+                            class=" bg-gray-200 rounded-full grid place-items-center min-h-[25px] max-h-[25px] min-w-[25px] max-w-[25px] text-black">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-[17px] h-[17px]">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
 
-                        </div>
                     </div>
                 </div>
             </div>
+        </div>
     @endif
+
+
+
+
+
+
+
+
     <div class="flex items-center min-h-screen p-6 bg-gray-50 dark:bg-gray-900">
         <div class="flex-1 h-full max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl dark:bg-gray-800">
             <div class="flex flex-col overflow-y-auto md:flex-row">
@@ -69,9 +77,9 @@
                             </label>
 
                             <!--  password  -->
-                            <div class="relative  mt-4">
+                            <div class="relative mt-4">
 
-                                <label class=" text-sm ">
+                                <label class="text-sm ">
                                     <span class="text-gray-700 dark:text-gray-400">Password</span>
                                     <input name="password" id="password"
                                         class="block w-full px-5 py-2 mt-1 text-sm border border-gray-600 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
@@ -84,7 +92,7 @@
                                     <!-- error -->
 
                                     <span
-                                        class="w-7 h-7  absolute top-8 right-2 z-50 hover:cursor-pointer grid place-items-center"
+                                        class="absolute z-50 grid w-7 h-7 top-8 right-2 hover:cursor-pointer place-items-center"
                                         id="showPassword">
                                         <span><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"
                                                 viewBox="0 0 24 24">
@@ -97,7 +105,7 @@
 
 
 
-                            <div class="flex justify-start items-start space-x-3 pt-3">
+                            <div class="flex items-start justify-start pt-3 space-x-3">
                                 <input type="checkbox" id="chaptcha" class="peer/chaptcha checked:hidden">
                                 <label for="chaptcha"
                                     class="  peer-checked/chaptcha:hidden text-[13px] text-black/70 capitalize font-medium">buktikan
@@ -171,6 +179,7 @@
             kondisi = !kondisi;
             password.type = kondisi ? "text" : 'password'
         })
+
         function jalanKanScript() {
 
 

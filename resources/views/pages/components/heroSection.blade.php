@@ -37,15 +37,12 @@
                  </div>
 
 
-                 <div class="hidden lg:block scale-90">
-                     <img src="{{ asset('assets/scrolldown.svg') }}" alt="scroll ">
-                 </div>
              </div>
          </div>
 
          <!-- right -->
          <div class="right__item">
-             <img src="{{ asset('assets/hero.png') }}" alt="hero" class="mt-2 hero__image lg:mt-0" />
+             <img src="{{ asset('assets/hero.png') }}" alt="hero" class="mt-2 hero__image lg:mt-0" loading="lazy" />
          </div>
      </div>
  </section>

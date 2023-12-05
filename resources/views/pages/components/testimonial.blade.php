@@ -2,7 +2,7 @@
     <div class="max-w-6xl px-12 mx-auto md:px-16 xl:px-10">
         <div class="flex flex-col items-center lg:flex-row">
             <div class="flex flex-col items-start justify-center w-full h-full pr-8 mb-10 lg:mb-0 lg:w-1/2">
-                <p class="mb-2 text-base font-medium tracking-tight text-indigo-500 capitalize" data-primary="indigo-500">
+                <p class="mb-2 text-base font-medium tracking-tight text-indigo-700 capitalize" data-primary="indigo-500">
                     Review dari pengguna kami</p>
                 <h2
                     class="text-4xl font-extrabold leading-10 tracking-tight text-gray-900 sm:text-5xl sm:leading-none md:text-6xl lg:text-5xl xl:text-6xl">

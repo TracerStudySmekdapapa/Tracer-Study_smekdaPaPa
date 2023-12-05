@@ -252,6 +252,6 @@ main {
   }
 
   .counter_desk {
-    @apply text-[15px] text-black/50 capitalize;
+    @apply text-[15px] text-black/80 capitalize;
   }
 }

@@ -12,27 +12,31 @@
                 <form action="{{ route('search') }}" method="get" id="form_search">
                     <div class="flex flex-col justify-center  items-center md:flex-row md:w-screen ">
 
+                        <div class="flex flex-col justify-end ">
 
-                        <div class="relative min-w-[85vw] md:min-w-[150px] md:max-w-[500px] mx-auto  md:mr-5 ">
-                            <input id="input_search"
-                                class="relative z-[23] block  mt-1 text-sm border border-gray-500 md:min-w-[300px] pl-5 w-full pr-12 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                placeholder="Cari Berdasarkan Nama / NISN" type="text" required name="search"
-                                value="{{ $search }}" />
+                            <div class="relative min-w-[85vw] md:min-w-[150px] md:max-w-[500px] mx-auto  md:mr-5 ">
+                                <input id="input_search"
+                                    class="relative z-[23] block  mt-1 text-sm border border-gray-500 md:min-w-[300px] pl-5 w-full pr-12 py-2 rounded-md dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                    placeholder="Cari Berdasarkan Nama / NISN" type="text" required name="search"
+                                    value="{{ $search }}" />
 
 
-                            <button type="submit" class="absolute top-0 z-30 py-2 right-2">
-                                <img src="{{ asset('assets/cari.svg') }}" alt="cari" class="scale-90" />
-                            </button>
+                                <button type="submit" class="absolute top-0 z-30 py-2 right-2">
+                                    <img src="{{ asset('assets/cari.svg') }}" alt="cari" class="scale-90" />
+                                </button>
 
+                            </div>
+                            {{--  --}}
+                            <!-- error -->
+                            {{-- @error('search') --}}
+                            {{-- <p class="mt-1 text-rose-500">{{ $message }}</p> --}}
+                            <p class="mt-1 text-rose-500  translate-y-5">Lorem, ipsum dolor.</p>
+                            {{-- @enderror --}}
                         </div>
-                        {{--  --}}
+                        <!-- error -->
                         <div class="relative min-w-[85vw] md:min-w-[10%]">
                             <div class="relative mt-3 md:mt-1.5">
-                                <!-- error -->
-                                @error('search')
-                                    <p class="mt-1 text-rose-500">{{ $message }}</p>
-                                @enderror
-                                <!-- error -->
+
 
                                 <input type="text" list="HeadlineActArtist" id="HeadlineAct"
                                     class="tamatan w-full rounded-lg border-gray-600 text-gray-700 sm:text-sm [&::-webkit-calendar-picker-indicator]:opacity-0"

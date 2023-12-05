@@ -2,7 +2,7 @@
     <div class="main__about">
         <!--  ?eft -->
         <div class="left__item">
-            <img src="{{ asset('assets/about.jpg') }}" alt="about" class="w-[90%] md:w-full" />
+            <img  src="{{ asset('assets/about.jpg') }}" alt="about" class="w-[90%] md:w-full" loading="lazy"/>
         </div>
 
         <!--  right -->

@@ -24,9 +24,9 @@
 
 
                         <div @click="modalOpen=true"
-                            class="max-w-[100px] bg-sky-600 cursor-pointer py-1 rounded-md ml-auto mr-10 my-10  flex items-center justify-center space-x-2">
+                            class="max-w-[100px] bg-sky-600 hover:bg-sky-800 transition-colors duration-200 cursor-pointer py-1 rounded-md ml-auto mr-10 my-10  flex items-center justify-center space-x-2">
                             <img src="{{ asset('assets/info.svg') }}" alt="info" class="w-[20px]">
-                            <span class="font-semibold capitalize text-white">
+                            <span class="font-semibold text-white capitalize">
                                 Info
                             </span>
                         </div>
@@ -72,7 +72,7 @@
                                                 Terima
                                             </h1>
                                             <p>Saat anda menerima , pesan tersebut akan ditampilkan pada halaman home page ,
-                                                terima pesan yang kosa katanya baik </p>
+                                                terima pesan yang mengandung kosa katanya baik dan positif </p>
                                         </div>
                                         <div class="my-4">
                                             <h1
@@ -106,7 +106,7 @@
 
 
                     <h1 class="mb-3 font-semibold capitalize">semua pesan</h1>
-                    <table class="min-w-full mb-10 text-sm bg-white divide-y-2 divide-gray-200 rounded-md overflow-hidden">
+                    <table class="min-w-full mb-10 overflow-hidden text-sm bg-white divide-y-2 divide-gray-200 rounded-md">
                         <thead class="ltr:text-left rtl:text-right">
                             <tr class="bg-gray-200">
                                 <th class="px-4 py-2 text-gray-900 whitespace-nowrap">
@@ -176,7 +176,7 @@
 
 
                     <h1 class="mt-10 mb-3 font-semibold capitalize">pesan jadi testimoni</h1>
-                    <table class="min-w-full mt-10 text-sm bg-white divide-y-2 divide-gray-200 rounded-md overflow-hidden">
+                    <table class="min-w-full mt-10 overflow-hidden text-sm bg-white divide-y-2 divide-gray-200 rounded-md">
                         <thead class="ltr:text-left rtl:text-right">
                             <tr class="bg-gray-200">
                                 <th class="px-4 py-2 text-gray-900 whitespace-nowrap">

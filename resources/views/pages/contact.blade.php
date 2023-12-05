@@ -4,16 +4,17 @@
 
 
 
+
         @if (session('message'))
             <div x-data="{
                 bannerVisible: false,
                 bannerVisibleAfter: 300,
             }" x-show="bannerVisible" x-transition:enter="transition ease-out duration-500"
-                x-transition:enter-start="translate-x-40" x-transition:enter-end="translate-x-0"
+                x-transition:enter-start="translate-x-40" x-transition:enter-end="-translate-x-0 lg:-translate-x-0"
                 x-transition:leave="transition ease-in duration-300" x-transition:leave-start="translate-x-0"
                 x-transition:leave-end="translate-x-40" x-init="setTimeout(() => { bannerVisible = true }, bannerVisibleAfter);
                 setTimeout(() => { bannerVisible = false }, 3000);" x-cloak
-                class="absolute top-7 right-28 p-4 z-[99999]">
+                class="absolute top-7 right-0   lg:right-28 p-4 z-[99999]">
                 <div class="px-3 py-2 capitalize bg-white border border-gray-100 rounded-md">
                     <div class="flex items-center space-x-3">
 
@@ -21,12 +22,12 @@
                             <img src="{{ asset('assets/validation.svg') }}" alt="svg" class="w-[25px]">
                         </div>
 
-                        <div class="flex flex-col font-medium text-[15px] ">
+                        <div class="flex flex-col font-medium text-[14px] ">
                             <span class="text-[#252525]/90">
                                 {{ Session::get('message') }}
                             </span>
                             <span class="text-[#252525]/70 -mt-1 text-sm">
-                                {{ Auth::user()->name ?? 'user' }}
+                                {{ Auth::user()->name }}
                             </span>
                         </div>
 

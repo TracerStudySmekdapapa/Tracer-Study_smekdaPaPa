@@ -136,13 +136,13 @@
                 <p class="text-sm text-gray-500">
                     <span class="block sm:inline">All rights reserved.</span>
 
-                    <a class="inline-block text-teal-600 underline transition hover:text-teal-600/75" href="/">
+                    <a class="inline-block text-blue-700 underline transition hover:text-teal-600/75" href="/">
                         Terms & Conditions
                     </a>
 
                     <span>&middot;</span>
 
-                    <a class="inline-block text-teal-600 underline transition hover:text-teal-600/75" href="/">
+                    <a class="inline-block text-blue-700 underline transition hover:text-teal-600/75" href="/">
                         Privacy Policy
                     </a>
                 </p>
