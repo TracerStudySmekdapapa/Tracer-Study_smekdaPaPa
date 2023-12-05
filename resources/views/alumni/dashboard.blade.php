@@ -1,7 +1,6 @@
 @extends('template.master')
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/daisyui@3.8.2/dist/full.css" rel="stylesheet" type="text/css" />
-<script src="https://cdn.tailwindcss.com"></script>
 
 
 
@@ -68,7 +67,7 @@
 
     <!--link font -->
     <div class="w-[130px] h-[130px] bg-primary hidden  blur-[100px] absolute top-20 -left-32 z-0 lg:block"></div>
-    <main>
+    <main class="relative">
         @include('template.utils.navbar')
 
         <section class="grid grid-cols-1 mt-10 capitalize md:grid-cols-2 gap-x-4 ">
@@ -161,7 +160,7 @@
                                     class="w-[80%] mx-auto  text-sm mt-5 rounded-lg bg-transparent border border-primary hover:bg-black hover:border-transparent hover:text-white capitalize text-black/70">
                                     <a href="{{ route('tambahDataPribadi') }}"
                                         class=" px-5 max-h-[40px]  md:py-2 font-semibold text-[15px] flex justify-center items-center space-x-2">
-                                        <span class="font-normal text-2xl m-0">
+                                        <span class="m-0 text-2xl font-normal">
                                             +
                                         </span>
                                         <span class="m-0">
@@ -195,7 +194,7 @@
                                                 <h1 class="text-black/90 capitalize text-[20px]">
                                                     {{ $item->nama_pekerjaan }}
                                                 </h1>
-                                                <p>{{ $item->nama_instansi }}</p>
+                                                <p class="text-[15px] text-slate-700/90">{{ $item->nama_instansi }}</p>
                                             </div>
                                         </li>
                                     @empty
@@ -228,7 +227,7 @@
                                                 <h1 class="text-black/90 capitalize text-[20px]">
                                                     {{ $item->nama_univ }}
                                                 </h1>
-                                                <p>{{ $item->fakultas }}</p>
+                                                <p class="text-slate-700/90 text-[15px]">{{ $item->fakultas }}</p>
                                             </div>
                                         </li>
                                         <!-- end looping herre -->
@@ -360,6 +359,50 @@
                 @endif
             </div>
         </section>
+
+
+
+
+
+        <div x-data>
+
+            <div x-data="{
+                open: false,
+                openAfter: 300,
+            }" x-show="open" x-transition:enter="transition ease-out duration-500"
+                x-transition:enter-start="translate-x-40" x-transition:enter-end=" -translate-x-0 lg:-translate-x-0"
+                x-transition:leave="transition ease-in duration-300" x-transition:leave-start="translate-x-0"
+                x-transition:leave-end="translate-x-40" x-init="setTimeout(() => { open = true }, openAfter);" x-cloak
+                class="fixed z-10 p-4 scale-75 -right-5 bottom-10 md:scale-90">
+                <div class="p-0 m-0 ">
+                    <div class="flex items-center space-x-3">
+                        <a href="{{ route('tambahSurvei') }}" x-show="open"
+                            class="inline-block px-6 py-6 bg-gray-100 border-l-4 border-red-500 ">
+                            <div class="relative">
+                                <div class="text-black">
+                                    <h1 class="text-base font-semibold">Ayo Isi Survey</h1>
+                                    <p class="text-sm font-light">Luangkan waktumu demi <br> kemajuan pendidikan</p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <div class="w-[10px] h-[50px] flex justify-end items-start -translate-x-6 -translate-y-5"
+                            x-show="open">
+                            <button @click="open=false;"
+                                class="  rounded-full grid place-items-center min-h-[25px] max-h-[25px] min-w-[25px] max-w-[25px] text-black">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-[17px] h-[17px]">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
     </main>
 
     @if ($alumni)

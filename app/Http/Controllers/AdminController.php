@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exports\DataAlumniClass;
 use App\Exports\DataAlumniExport;
 use App\Exports\FreshGraduateClass;
+use App\Exports\PertanyaanSurveiClass;
 use App\Http\Requests\DataPekerjaanUpdateRequest;
 use App\Http\Requests\DataPendidikanUpdateRequest;
 use App\Http\Requests\DataPribadiUpdateRequest;
@@ -12,6 +13,7 @@ use App\Models\Jurusan;
 use App\Models\Pekerjaan;
 use App\Models\Pendidikan;
 use App\Models\Pribadi;
+use App\Models\Survei;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -215,8 +217,22 @@ class AdminController extends Controller
         return Excel::download(new FreshGraduateClass, 'fresh_graduate.xlsx');
     }
 
-    function exportDataAlumni()
+    public function exportDataAlumni()
     {
         return Excel::download(new DataAlumniClass, 'data_alumn.xlsx');
+    }
+
+    public function exportPertanyaanSurvei()
+    {
+        // $data = Survei::get();
+        // return view('tabel.survei', compact('data'));
+        return Excel::download(new PertanyaanSurveiClass, 'pertanyaan_survei.xlsx');
+    }
+
+    public function exportDataSurvei()
+    {
+        // $data = Survei::get();
+        // return view('tabel.survei', compact('data'));
+        return Excel::download(new PertanyaanSurveiClass, 'pertanyaan_survei.xlsx');
     }
 }

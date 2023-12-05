@@ -1,4 +1,4 @@
-<nav class="relative z-[999] lg:mx-5 mb-5 select-none" x-data="{ showMenu: false }">
+<nav class="relative z-50 mb-5 select-none lg:mx-5" x-data="{ showMenu: false }">
     <div class="navigation__main">
         <div class="navigation__main__title">
             <a href="{{ route('/') }}" class="navigation__title__link"> Tracer Study </a>
@@ -12,7 +12,7 @@
                 </a>
 
                 <!-- ?navigasi menu ===========================-->
-                <div class="navigation__content overflow-y-auto overflow-x-hidden">
+                <div class="overflow-x-hidden overflow-y-auto navigation__content">
                     <a href="{{ route('/') }}"
                         class="py-1 ml-6 text-base text-black navigation__content__link md:ml-0 lg:mr-3">Beranda</a>
                     <a href="{{ route('/') }}#about"
@@ -23,13 +23,7 @@
                     <a href="{{ route('tambahContact') }}"
                         class="py-1 ml-6 text-base text-gray-700 navigation__content__link md:w-auto md:px-0 md:mx-2 hover:text-black lg:mr-3">Kontak</a>
 
-                    @auth
-                        <a href="{{ route('tambahSurvei') }}"
-                            class="py-1 ml-6 text-base text-gray-800 navigation__content__link md:w-auto md:px-0 md:mx-2 hover:text-black lg:mr-3">Survei</a>
-                    @endauth
-
-
-                    <a href="{{ route('search') }}" class="navigation___search">
+                    <a href="{{ route('search') }}" class="navigation___search" aria-label="cari alumni">
                         <!-- search -->
                         <svg class="inline w-6 h-6" fill="none" stroke-linecap="round" stroke-linejoin="round"
                             stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -41,7 +35,7 @@
                 <!-- !navigasi menu ===========================-->
 
 
-                <hr class="md:hidden mt-5">
+                <hr class="mt-5 md:hidden">
 
                 <!-- ?navigasi menu login ===========================-->
                 <div class="flex flex-col items-center justify-between -space-y-0 md:flex-row">
@@ -86,7 +80,7 @@
                             <div class=" btn___signup md:hidden">
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
-                                    <button type="submit" class="flex items-center  -mt-1 space-x-2 "><img
+                                    <button type="submit" class="flex items-center -mt-1 space-x-2 "><img
                                             src="{{ asset('assets/logout.svg') }}" alt=""><span
                                             class="text-base">Log
                                             Out</span></button>
@@ -116,8 +110,8 @@
                 <path d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
             <!-- close menu -->
-            <svg class="fixed w-6 h-6 text-gray-700 " x-show="showMenu" fill="none" stroke="currentColor"
-                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display: none">
+            <svg class="fixed w-6 h-6 text-gray-700 -translate-x-2" x-show="showMenu" fill="none"
+                stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display: none">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
                 </path>
             </svg>

@@ -7,7 +7,7 @@
         </div>
 
 
-        <div class="md:col-span-11 md:mr-2 px-3 md:px-12 ">
+        <div class="px-3 md:col-span-11 md:mr-2 md:px-12 ">
             @include('template.admin.header')
             <div class="mt-20 ">
                 @include('admin.dashboard_components.total')
@@ -54,6 +54,13 @@
 
 
 
+
+            {{-- footer --}}
+            <div class="flex items-center justify-center w-full mt-20 space-x-5 ">
+                <p class="text-sm text-black/70">&copy; copyright by smkn 2 padang panajang 2023</p>
+                <img src="{{ asset('assets/smkn2papa.png') }}" alt="smkn 2 padang panajang" class="max-w-[40px] ">
+            </div>
+            {{-- footer --}}
 
         </div>
 

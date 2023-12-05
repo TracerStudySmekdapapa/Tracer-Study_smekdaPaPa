@@ -79,6 +79,8 @@ Route::middleware(['auth'])->group(function () {
         /* Export */
         Route::get('/admin/download/fresh-graduate', [AdminController::class, 'exportFreshGraduate'])->name('exportFreshGraduate');
         Route::get('/admin/download/data_alumni', [AdminController::class, 'exportDataAlumni'])->name('exportDataAlumni');
+        Route::get('/admin/download/pertanyaan_survei', [AdminController::class, 'exportPertanyaanSurvei'])->name('exportPertanyaanSurvei');
+        Route::get('/admin/download/data_survei', [AdminController::class, 'exportDataSurvei'])->name('exportDataSurvei');
 
         /* Survei */
         Route::get('/admin/survei', [SurveiController::class, 'index'])->name('survei');

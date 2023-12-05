@@ -22,7 +22,7 @@
             }
         },
         dataLabels: {
-            enabled: true
+            enabled: false
         },
         xaxis: {
             categories: ['Terverif', 'Pekerjaan', 'Pendidikan', 'Tanpa Data'],

@@ -29,15 +29,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+
+
     @vite('resources/css/app.css')
-
-
-    <!-- Include the Alpine library on your page -->
-    <!-- Alpine Plugins -->
-    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
-
-    <!-- Alpine Core -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 
 
@@ -72,7 +66,7 @@
                 <img src="{{ asset('assets/404.svg') }}" alt="404" class="z-50 relative w-[75%] lg:w-full">
             </div>
             <div class="flex space-x-10 justify-around items-center mt-20 w-[80%]">
-                <a href="" onclick="goBack()"
+                <a href="" id="tautan"
                     class="font-semibold underline underline-offset-8 text-primary  flex space-x-3 items-center">
                     <span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512">
                             <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -99,9 +93,12 @@
 
 
 <script>
-    function goBack() {
-        window.history.back(-1)
-    }
+    document.getElementById('tautan').addEventListener('click', function(event) {
+
+        event.preventDefault();
+
+        window.history.back();
+    });
 </script>
 
 

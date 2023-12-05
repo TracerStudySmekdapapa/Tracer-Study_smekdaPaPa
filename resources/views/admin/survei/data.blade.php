@@ -11,8 +11,18 @@
 
 
             <div class="mt-20 overflow-x-auto lg:overflow-visible ">
-                <h1 class=" relative font-semibold text-[20px] capitalize my-2">
-                    Data Alumni mengisi survey</h1>
+                <div class="flex items-center justify-between my-5">
+                    <h1 class=" relative font-semibold text-[20px] capitalize ">
+                        Data Alumni mengisi survey</h1>
+
+                    <div class="flex items-center space-x-4">
+                        <a href=""
+                            class="flex px-4 py-1 ml-auto space-x-2 text-sm text-white transition-colors duration-200 bg-green-600 rounded-md hover:bg-green-800">
+                            <img src="{{ asset('assets/file-exel.svg') }}" alt="exel" class="w-[20px]">
+                            <span>Export to exel </span>
+                        </a>
+                    </div>
+                </div>
                 <table
                     class="relative z-20 rounded-lg bg-primary/5 min-w-[800px]  w-full  mt-2 overflow-x-scroll lg:overflow-x-hidden">
                     <thead class="relative overflow-hidden bg-transparent rounded-full">
@@ -50,18 +60,18 @@
                                 <td>{{ $item->nisn }}</td>
                                 <td>
                                     @php
-                                    if ($jurusan = $item->nama_jurusan) {
-                                        $words = explode(' ', $jurusan);
-    
-                                        $abbreviation = '';
-                                        foreach ($words as $word) {
-                                            $abbreviation .= str($word[0]);
+                                        if ($jurusan = $item->nama_jurusan) {
+                                            $words = explode(' ', $jurusan);
+
+                                            $abbreviation = '';
+                                            foreach ($words as $word) {
+                                                $abbreviation .= str($word[0]);
+                                            }
+                                            echo $abbreviation;
+                                        } else {
+                                            echo '-';
                                         }
-                                        echo $abbreviation;
-                                    } else {
-                                        echo '-';
-                                    }
-                                @endphp
+                                    @endphp
                                 </td>
                                 <td>{{ $item->jenis_kelamin }}</td>
                                 <td>{{ $item->tamatan }}</td>

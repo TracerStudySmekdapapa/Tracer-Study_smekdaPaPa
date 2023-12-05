@@ -22,7 +22,7 @@ class ContactController extends Controller
 
     public function create()
     {
-        $title = 'Contact';
+        $title = 'Kontak Kami';
         return view('pages.contact', compact('title'));
     }
 

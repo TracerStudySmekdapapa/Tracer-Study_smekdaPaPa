@@ -3,7 +3,7 @@
         <h1 class=" font-semibold text-[20px] capitalize">Data fresh graduate</h1>
         <div class="flex items-start justify-center ">
             <a href="{{ route('exportFreshGraduate') }}"
-                class="px-4 py-1 ml-auto text-sm text-white bg-green-600 rounded-md flex space-x-2">
+                class="flex px-4 py-1 ml-auto space-x-2 text-sm text-white transition-colors duration-200 bg-green-600 rounded-md hover:bg-green-800">
                 <img src="{{ asset('assets/file-exel.svg') }}" alt="exel" class="w-[20px]">
                 <span>Export to exel </span>
             </a>
@@ -11,10 +11,10 @@
     </div>
     <table class="min-w-full overflow-hidden text-sm bg-white divide-y-2 divide-gray-200 rounded-lg">
 
-        <thead class="overflow-hidden bg-transparent rounded-full relative ">
+        <thead class="relative overflow-hidden bg-transparent rounded-full ">
             <tr>
 
-                <td class="absolute left-5 top-5 bg-gray-200 z-50">
+                <td class="absolute z-50 bg-gray-200 left-5 top-5">
                     <svg width="37" height="10" viewBox="0 0 37 10" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <g id="Group 27">
@@ -27,7 +27,7 @@
                 </td>
             </tr>
             <tr class="text-[#444444] bg-gray-200 relative rounded-full overflow-hidden h-[50px] px-[50px] capitalize ">
-                <th class="before:left-3 before:w-8 pl-10 ">
+                <th class="pl-10 before:left-3 before:w-8 ">
                     Nama
                 </th>
                 <th>Nisn</th>
@@ -40,7 +40,7 @@
 
 
 
-        <tbody class="text-center divide-x capitalize">
+        <tbody class="text-center capitalize divide-x">
             @foreach ($freshGraduate as $item)
                 <tr class="divide-x hover:bg-gray-100 ">
                     <td class=" py-4   max-w-[350px] ">

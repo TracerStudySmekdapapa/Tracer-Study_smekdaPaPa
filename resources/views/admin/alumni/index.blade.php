@@ -34,16 +34,15 @@
 
                         <select name="tamatan" id="tamatan"
                             class="tamatan max-w-[150px]  h-[40px] rounded-lg border-gray-600 text-gray-700 sm:text-sm [&::-webkit-calendar-picker-indicator]:opacity-0">
-                            <option onclick="handleClick()" value="">Tamatan</option>
+                            <option disabled selected>Tamatan</option>
+                            <option onclick="handleClick()" value="">Semua</option>
 
-                            {{-- perbaiki ya habibie ganteng (GADANG TENG... ) author : syaid --}}
                             @for ($tahun = Carbon\Carbon::now()->year; $tahun >= 2006; --$tahun)
                                 <option value="{{ $tahun }}" onclick="heandleClick()"
                                     {{ request()->get('tamatan') == $tahun ? 'selected' : '' }}>
                                     {{ $tahun }}
                                 </option>
                             @endfor
-                            {{-- perbaiki ya habibie ganteng (GADANG TENG... ) author : syaid --}}
 
                         </select>
 
@@ -53,7 +52,7 @@
                 <div class="grid grid-cols-2 place-items-center gap-x-5 ">
 
                     <a href="{{ route('exportDataAlumni') }}"
-                        class="px-4 py-1 ml-auto text-sm text-white bg-green-600 rounded-md flex space-x-2">
+                        class="flex px-4 py-1 ml-auto space-x-2 text-sm text-white transition-colors duration-200 bg-green-600 rounded-md hover:bg-green-800">
                         <img src="{{ asset('assets/file-exel.svg') }}" alt="exel" class="w-[20px]">
                         <span>Export to exel </span>
                     </a>
