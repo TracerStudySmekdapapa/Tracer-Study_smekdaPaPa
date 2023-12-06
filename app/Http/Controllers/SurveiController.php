@@ -17,8 +17,9 @@ class SurveiController extends Controller
         $title = 'Pertanyaan Survei';
         $title_page = 'Pertanyaan Survei';
         $tidakAlumni = User::tidakAlumni()->limit(3)->get();
+        $tolakAlumni = User::tolakAlumni()->limit(3)->get();
         $data = Survei::get();
-        return view('admin.survei.index', compact('title', 'tidakAlumni', 'title_page', 'data'));
+        return view('admin.survei.index', compact('title', 'tidakAlumni', 'title_page', 'data', 'tolakAlumni'));
     }
 
     public function createSurvei()
@@ -26,7 +27,8 @@ class SurveiController extends Controller
         $title = 'Tambah Pertanyaan Survei';
         $title_page = 'Tambah Pertanyaan Survei';
         $tidakAlumni = User::tidakAlumni()->limit(3)->get();
-        return view('admin.survei.create', compact('title', 'tidakAlumni', 'title_page'));
+        $tolakAlumni = User::tolakAlumni()->limit(3)->get();
+        return view('admin.survei.create', compact('title', 'tidakAlumni', 'title_page', 'tolakAlumni'));
     }
 
     public function simpanSurvei(SimpanSurveiRequest $request)
@@ -51,8 +53,8 @@ class SurveiController extends Controller
         $title = 'Edit Pertanyaan Survei';
         $title_page = 'Edit Pertanyaan Survei';
         $tidakAlumni = User::tidakAlumni()->limit(3)->get();
-        // $survei = Survei::get();
-        return view('admin.survei.edit', compact('survei', 'title', 'title_page', 'tidakAlumni'));
+        $tolakAlumni = User::tolakAlumni()->limit(3)->get();
+        return view('admin.survei.edit', compact('survei', 'title', 'title_page', 'tidakAlumni', 'tolakAlumni'));
     }
 
 
@@ -64,11 +66,12 @@ class SurveiController extends Controller
         return redirect()->route('survei', compact('survei'));
     }
 
-    public function destroySurvei($id){
+    public function destroySurvei($id)
+    {
         $survei = Survei::find($id);
         $survei->delete();
 
-        return redirect()->route('survei',compact('survei'));
+        return redirect()->route('survei', compact('survei'));
     }
 
     public function dataSurvei()
@@ -76,8 +79,9 @@ class SurveiController extends Controller
         $title = 'Data Survei';
         $title_page = 'Data Survei';
         $tidakAlumni = User::tidakAlumni()->limit(3)->get();
+        $tolakAlumni = User::tolakAlumni()->limit(3)->get();
         $data = User::Survei()->get();
-        return view('admin.survei.data', compact('title', 'tidakAlumni', 'title_page', 'data'));
+        return view('admin.survei.data', compact('title', 'tidakAlumni', 'title_page', 'data', 'tolakAlumni'));
     }
 
     public function tambah()

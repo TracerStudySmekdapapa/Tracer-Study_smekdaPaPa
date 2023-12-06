@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Exports\DataAlumniClass;
 use App\Exports\DataAlumniExport;
+use App\Exports\DataSurveiClass;
 use App\Exports\FreshGraduateClass;
 use App\Exports\PertanyaanSurveiClass;
 use App\Http\Requests\DataPekerjaanUpdateRequest;
 use App\Http\Requests\DataPendidikanUpdateRequest;
 use App\Http\Requests\DataPribadiUpdateRequest;
+use App\Models\JawabanSurvei;
 use App\Models\Jurusan;
 use App\Models\Pekerjaan;
 use App\Models\Pendidikan;
@@ -27,6 +29,7 @@ class AdminController extends Controller
     {
         $title = 'Dashboard Admin';
         $tidakAlumni = User::tidakAlumni()->limit(3)->get();
+        $tolakAlumni = User::tolakAlumni()->limit(3)->get();
         $title_page = 'Selamat Datang, Admin';
 
 
@@ -45,7 +48,7 @@ class AdminController extends Controller
 
         $freshGraduate = PribadiController::alumniFreshGraduate()->paginate(5);
 
-        return view('admin.dashboard', compact('tidakAlumni', 'title', 'title_page', 'alumniData', 'freshGraduate'));
+        return view('admin.dashboard', compact('tidakAlumni', 'title', 'title_page', 'alumniData', 'freshGraduate', 'tolakAlumni'));
     }
 
     /* Start Data Alumni */
@@ -56,19 +59,20 @@ class AdminController extends Controller
         $title = 'Data Alumni';
         $title_page = 'Lihat Data Alumni';
         $tidakAlumni = User::tidakAlumni()->limit(3)->get();
+        $tolakAlumni = User::tolakAlumni()->limit(3)->get();
 
         if ($search || $status) {
             $results = User::filter(request(['search', 'status', 'tamatan']))
                 ->paginate(10);
             $countSearch = User::filter(request(['search', 'status', 'tamatan']))
                 ->count();
-            return view('admin.alumni.index', compact('tidakAlumni', 'results', 'search', 'status', 'title', 'title_page', 'countSearch'));
+            return view('admin.alumni.index', compact('tidakAlumni', 'results', 'search', 'status', 'title', 'title_page', 'countSearch', 'tolakAlumni'));
         }
 
         // dd(User::DataAlumni()->get());
         $alumni = User::DataAlumni()->paginate(10)->withQueryString();
         $alumniCount = User::DataAlumni()->get()->count();
-        return view('admin.alumni.index', compact('alumni', 'tidakAlumni', 'search', 'status', 'title', 'title_page', 'alumniCount'));
+        return view('admin.alumni.index', compact('alumni', 'tidakAlumni', 'search', 'status', 'title', 'title_page', 'alumniCount', 'tolakAlumni'));
     }
 
     public function detailAlumni($id)
@@ -184,20 +188,42 @@ class AdminController extends Controller
 
     /* End Data Alumni */
 
+    /* Start Users */
+
+    public function users()
+    {
+        $title = 'Data Users';
+        $tidakAlumni = User::tidakAlumni()->limit(3)->get();
+        $tolakAlumni = User::tolakAlumni()->limit(3)->get();
+        $title_page = 'Data Users';
+
+        $data = User::paginate(10);
+        $dataCount = User::get()->count();
+
+        return view('admin.users.index', compact('tidakAlumni', 'title', 'title_page', 'tolakAlumni', 'data', 'dataCount'));
+    }
+
+    /* End Users */
+
 
     public function verifAlumni()
     {
         $tidakAlumni = User::tidakAlumni()->leftJoin('jurusan', 'data_pribadi.id_jurusan', '=', 'jurusan.id_jurusan')
             ->get();
+        $tolakAlumni = User::tolakAlumni()->limit(3)->get();
 
         $title = "Verifikasi Data Alumni";
         $title_page = "Verifikasi Data Alumni";
-        return view('admin.verifalumni.index', compact('tidakAlumni', 'title', 'title_page'));
+        return view('admin.verifalumni.index', compact('tidakAlumni', 'title', 'title_page', 'tolakAlumni'));
     }
 
     public function verifAlumniAksi($id_user)
     {
         $user = User::where('id_user', $id_user)->first();
+        if ($user->hasRole('TolakAlumni')) {
+            DB::table('model_has_roles')->where('model_id', $id_user)->delete();
+            $user->assignRole('Alumni');
+        }
         $user->assignRole('Alumni');
 
         return redirect()->back()->with(['message' => 'Permintaan Verifikasi Berhasil']);
@@ -205,9 +231,17 @@ class AdminController extends Controller
 
     public function tolakVerifAlumniAksi($id_user)
     {
-        $user = Pribadi::where('id_user', $id_user)->first();
-        $user->delete();
+        $user = User::where('id_user', $id_user)->first();
+        $user->assignRole('TolakAlumni');
 
+
+        return redirect()->back()->with(['message' => 'Permintaan Verifikasi Berhasil Ditolak']);
+    }
+
+    public function hapusVerifAlumniAksi($id_user)
+    {
+        $user = User::where('id_user', $id_user)->first();
+        $user->delete();
 
         return redirect()->back()->with(['message' => 'Permintaan Verifikasi Berhasil Ditolak']);
     }
@@ -231,8 +265,6 @@ class AdminController extends Controller
 
     public function exportDataSurvei()
     {
-        // $data = Survei::get();
-        // return view('tabel.survei', compact('data'));
-        return Excel::download(new PertanyaanSurveiClass, 'pertanyaan_survei.xlsx');
+        return Excel::download(new DataSurveiClass, 'data_survei.xlsx');
     }
 }

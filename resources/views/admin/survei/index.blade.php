@@ -18,7 +18,7 @@
                     <div class="flex items-center space-x-3">
 
                         @include('admin.survei.reset.index')
-                        <a href=""
+                        <a href="{{ route('exportPertanyaanSurvei') }}"
                             class="flex px-4 py-1 ml-auto space-x-2 text-sm text-white transition-colors duration-200 bg-green-600 rounded-md hover:bg-green-800">
                             <img src="{{ asset('assets/file-exel.svg') }}" alt="exel" class="w-[20px]">
                             <span class="text-sm font-semibold">Export to exel </span>

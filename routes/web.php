@@ -60,6 +60,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/alumni/verify', [AdminController::class, 'verifAlumni'])->name('verifyDataAlumni');
         Route::post('/admin/alumni/{id_user}/verify', [AdminController::class, 'verifAlumniAksi'])->name('verifalumniStore');
         Route::post('/admin/alumni/{id_user}/tolakverify', [AdminController::class, 'tolakVerifAlumniAksi'])->name('tolakVerifAlumni');
+        Route::post('/admin/alumni/{id_user}/hapusverify', [AdminController::class, 'hapusVerifAlumniAksi'])->name('hapusVerifAlumni');
 
         /* Jurusan */
         Route::get('/admin/jurusan', [JurusanController::class, 'index'])->name('jurusan');
@@ -92,6 +93,8 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('/admin/alumni/survei', [SurveiController::class, 'dataSurvei'])->name('dataSurvei');
         Route::get('/admin/alumni/survei/{id}/detail', [SurveiController::class, 'detail'])->name('detailUserSurvei');
+
+        Route::get('/admin/users', [AdminController::class, 'users'])->name('users');
     });
 
     // alumni

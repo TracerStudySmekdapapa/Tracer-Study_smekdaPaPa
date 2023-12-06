@@ -30,10 +30,13 @@ class User extends Authenticatable
 
     public function pribadi()
     {
-        return $this->hasMany(Pribadi::class, 'id_pribadi');
+        return $this->hasMany(Pribadi::class, 'id_user');
     }
 
-
+    public function pribadie()
+    {
+        return $this->hasOne(Pribadi::class, 'id_user');
+    }
     public function getFirstNameAttribute()
     {
         $fullName = $this->attributes['name'];
@@ -198,11 +201,21 @@ class User extends Authenticatable
     public function scopeTidakAlumni($query)
     {
         return $query->whereDoesntHave('roles', function ($query) {
-            $query->whereIn('name', ['Alumni', 'Admin']);
+            $query->whereIn('name', ['Alumni', 'Admin', 'TolakAlumni']);
         })
             ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
             ->orderBy('users.name', 'ASC');
     }
+
+    public function scopeTolakAlumni($query)
+    {
+        return $query->whereHas('roles', function ($query) {
+            $query->where('name', 'TolakAlumni');
+        })
+            ->join('data_pribadi', 'users.id_user', '=', 'data_pribadi.id_user')
+            ->orderBy('users.name', 'ASC');
+    }
+
 
 
     public function jawaban()
