@@ -95,6 +95,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/alumni/survei/{id}/detail', [SurveiController::class, 'detail'])->name('detailUserSurvei');
 
         Route::get('/admin/users', [AdminController::class, 'users'])->name('users');
+        Route::get('/admin/users/edit/{id}', [AdminController::class, 'editUsers'])->name('editUsers');
+        Route::patch('/admin/users/{id}', [AdminController::class, 'updateUsers'])->name('updateUsers');
+        Route::delete('/admin/users/destroy/{id', [AdminController::class, 'destroyUsers'])->name('destroyUsers');
     });
 
     // alumni

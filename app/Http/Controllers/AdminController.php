@@ -20,7 +20,9 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
+use Spatie\Permission\Models\Role;
 
 class AdminController extends Controller
 {
@@ -201,6 +203,54 @@ class AdminController extends Controller
         $dataCount = User::get()->count();
 
         return view('admin.users.index', compact('tidakAlumni', 'title', 'title_page', 'tolakAlumni', 'data', 'dataCount'));
+    }
+
+    public function editUsers($id)  {
+        $title = 'Edit Data Users';
+        $title_page = 'Edit Data Users';
+        $tidakAlumni = User::tidakAlumni()->limit(3)->get();
+        $tolakAlumni = User::tolakAlumni()->limit(3)->get();
+        $data = User::find($id);
+        $roles = Role::pluck('name','name')->all();
+        $userRole = $data->roles->pluck('name','name')->all();
+
+        return view('admin.users.edit', compact('title', 'title_page', 'data', 'tidakAlumni', 'tolakAlumni', 'roles', 'userRole'));
+        
+    }
+
+    public function updateUsers(Request $request, $id_user)  {
+        $user = User::find($id_user);
+        $data = User::where('id_user', $id_user)->first();
+
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'nullable'
+        ]);
+
+        if ($validatedData) {
+            $data->update([
+                'name' => $request->name,
+                'email' => $request->email,
+            ]);
+
+            if ($request->filled('password')){
+                // Encrypt new password
+                $data->password = Hash::make($request->password);
+                $data->save();
+            }
+
+            return redirect()->route('users', $id_user)->with(['message' => 'Data berhasil diubah']);
+        } else {
+            return redirect()->back()->withErrors($validatedData)->withInput($request->all());
+        }
+    }
+
+    public function destroyUsers($id_user)  {
+        $user = User::where('id_user', $id_user)->first();
+        $user->delete();
+
+        return redirect()->route('users', compact('user'));
     }
 
     /* End Users */
