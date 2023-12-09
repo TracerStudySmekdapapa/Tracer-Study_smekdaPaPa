@@ -16,7 +16,7 @@
                         Data Alumni mengisi survey</h1>
 
                     <div class="flex items-center space-x-4">
-                        <a href=""
+                        <a href="{{ route('exportDataSurvei') }}"
                             class="flex px-4 py-1 ml-auto space-x-2 text-sm text-white transition-colors duration-200 bg-green-600 rounded-md hover:bg-green-800">
                             <img src="{{ asset('assets/file-exel.svg') }}" alt="exel" class="w-[20px]">
                             <span>Export to exel </span>

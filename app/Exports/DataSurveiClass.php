@@ -3,6 +3,7 @@
 namespace App\Exports;
 
 use App\Models\Survei;
+use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 
@@ -13,7 +14,11 @@ class DataSurveiClass implements FromView
      */
     public function view(): View
     {
-        $data = Survei::get();
-        return view('tabel.survei', compact('data'));
+        $data = User::with('jawaban', 'pribadie')->whereHas('jawaban', function ($q) {
+            $q->whereNotNull('id_user');
+        })->get();
+        $survei = Survei::get();
+
+        return view('tabel.data_survei', compact('data', 'survei'));
     }
 }
