@@ -16,4 +16,8 @@ class Jurusan extends Model
     {
         return $this->hasMany(Pribadi::class, 'id_jurusan');
     }
+    public function data_pribadie()
+    {
+        return $this->hasOne(Pribadi::class, 'id_jurusan');
+    }
 }

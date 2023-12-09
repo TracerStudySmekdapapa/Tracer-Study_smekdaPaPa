@@ -7,7 +7,6 @@
 
 @section('content')
 
-
     <div x-data>
 
 
@@ -273,7 +272,7 @@
 
 
                             {{-- if user ini tidak punya role has role --}}
-                            @if (Auth::user()->hasRole('Alumni'))
+                            @if (Auth::user()->hasRole('Alumni') || Auth::user()->hasRole('TolakAlumni'))
                                 <li data-content="✓" class="step step-primary">
                                     <p class="text-left">
                                         menunggu verifikasi admin untuk melanjutkan

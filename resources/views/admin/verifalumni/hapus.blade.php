@@ -1,7 +1,7 @@
 <div x-data="{ modalOpen: false }" @keydown.escape.window="modalOpen=false" class="relative z-50 w-auto h-auto">
 
     <div @click="modalOpen=true" class="py-1.5
-    bg-rose-500 w-full rounded-md block cursor-pointer ">Tolak</div>
+    bg-rose-500 w-full rounded-md block cursor-pointer ">Hapus</div>
 
     <template x-teleport="body">
         <div x-show="modalOpen" class="fixed top-0 left-0 z-[99] flex items-center justify-center w-screen h-screen"
@@ -30,7 +30,7 @@
                 <div class="relative ">
                     <div class="">
 
-                        <p>tolak alumni dengan nama <span class="font-semibold text-rose-500">
+                        <p>hapus alumni dengan nama <span class="font-semibold text-rose-500">
                                 {{ $item->name }}</span> ?</p>
 
 
@@ -38,11 +38,11 @@
                         <div class="grid w-full grid-cols-3 mt-3 place-items-center gap-x-3 ">
                             <button type="button" @click="modalOpen=false"
                                 class="block w-full col-span-2 py-2 font-semibold text-center text-white bg-gray-500 rounded-sm">Batal</button>
-                            <form action="{{ route('tolakVerifAlumni', $item->id_user) }}" method="POST"
+                            <form action="{{ route('hapusVerifAlumni', $item->id_user) }}" method="POST"
                                 class=" bg-rose-500 grid place-items-center w-full h-full mt-3.5 max-h-[40px] overflow-hidden rounded-sm">
                                 @csrf
                                 <button type="submit"
-                                    class="block w-full font-semibold text-center text-white rounded-sm  bg-rose-500">Tolak</button>
+                                    class="block w-full font-semibold text-center text-white rounded-sm bg-rose-500">Hapus</button>
                             </form>
                         </div>
 
