@@ -225,7 +225,8 @@ class AdminController extends Controller
         $validatedData = $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'password' => 'nullable'
+            'password' => 'nullable',
+            'roles' => 'required'
         ]);
 
         if ($validatedData) {
@@ -239,6 +240,9 @@ class AdminController extends Controller
                 $data->password = Hash::make($request->password);
                 $data->save();
             }
+            DB::table('model_has_roles')->where('model_id',$id_user)->delete();
+    
+            $user->assignRole($request->input('roles'));
 
             return redirect()->route('users', $id_user)->with(['message' => 'Data berhasil diubah']);
         } else {
