@@ -205,27 +205,28 @@ class AdminController extends Controller
         return view('admin.users.index', compact('tidakAlumni', 'title', 'title_page', 'tolakAlumni', 'data', 'dataCount'));
     }
 
-    public function editUsers($id)  {
+    public function editUsers($id)
+    {
         $title = 'Edit Data Users';
         $title_page = 'Edit Data Users';
         $tidakAlumni = User::tidakAlumni()->limit(3)->get();
         $tolakAlumni = User::tolakAlumni()->limit(3)->get();
         $data = User::find($id);
-        $roles = Role::pluck('name','name')->all();
-        $userRole = $data->roles->pluck('name','name')->all();
+        $roles = Role::pluck('name', 'name')->all();
+        $userRole = $data->roles->pluck('name', 'name')->all();
 
         return view('admin.users.edit', compact('title', 'title_page', 'data', 'tidakAlumni', 'tolakAlumni', 'roles', 'userRole'));
-        
     }
 
-    public function updateUsers(Request $request, $id_user)  {
-        $user = User::find($id_user);
+    public function updateUsers(Request $request, $id_user)
+    {
         $data = User::where('id_user', $id_user)->first();
 
         $validatedData = $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'password' => 'nullable'
+            'password' => 'nullable',
+            'roles' => 'required'
         ]);
 
         if ($validatedData) {
@@ -234,11 +235,14 @@ class AdminController extends Controller
                 'email' => $request->email,
             ]);
 
-            if ($request->filled('password')){
+            if ($request->filled('password')) {
                 // Encrypt new password
                 $data->password = Hash::make($request->password);
                 $data->save();
             }
+            DB::table('model_has_roles')->where('model_id',$id_user)->delete();
+    
+            $user->assignRole($request->input('roles'));
 
             return redirect()->route('users', $id_user)->with(['message' => 'Data berhasil diubah']);
         } else {
@@ -246,7 +250,8 @@ class AdminController extends Controller
         }
     }
 
-    public function destroyUsers($id_user)  {
+    public function destroyUsers($id_user)
+    {
         $user = User::where('id_user', $id_user)->first();
         $user->delete();
 
