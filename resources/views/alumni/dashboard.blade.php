@@ -1,5 +1,4 @@
 @extends('template.master')
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/daisyui@3.8.2/dist/full.css" rel="stylesheet" type="text/css" />
 
 
@@ -178,7 +177,7 @@
 
 
             {{-- ! belum di verif dan isi data --}}
-            <div class="w-full   min-h-[400px] max-h-[500px]   ">
+            <div class="w-full   min-h-[400px] max-h-[550px]   ">
                 {{-- ? jika alumni punya data pribadi --}}
                 @if ($alumni)
                     @if ($pekerjaan->count() > 0 || $pendidikan->count() > 0)
@@ -287,6 +286,15 @@
                             @endif
                             {{-- else --}}
 
+                            @if (Auth::user()->hasRole('TolakAlumni'))
+                                {{-- ditolak --}}
+                                <li data-content="x" class="step step-error">
+                                    <p class="text-left">anda ditolak , update data pribadi
+                                    </p>
+                                </li>
+                            @endif
+
+
                             {{--  tidak diubah --}}
                             <li data-content="?" class="step step-neutral">
                                 <p class="text-left">mengisi data pekerjaan
@@ -362,43 +370,45 @@
 
 
 
+        @if (Auth::user()->hasRole('Alumni'))
+            <div x-data>
 
-        <div x-data>
-
-            <div x-data="{
-                open: false,
-                openAfter: 300,
-            }" x-show="open" x-transition:enter="transition ease-out duration-500"
-                x-transition:enter-start="translate-x-40" x-transition:enter-end=" -translate-x-0 lg:-translate-x-0"
-                x-transition:leave="transition ease-in duration-300" x-transition:leave-start="translate-x-0"
-                x-transition:leave-end="translate-x-40" x-init="setTimeout(() => { open = true }, openAfter);" x-cloak
-                class="fixed z-10 p-4 scale-75 -right-5 bottom-10 md:scale-90">
-                <div class="p-0 m-0 ">
-                    <div class="flex items-center space-x-3">
-                        <a href="{{ route('tambahSurvei') }}" x-show="open"
-                            class="inline-block px-6 py-6 bg-gray-100 border-l-4 border-red-500 ">
-                            <div class="relative">
-                                <div class="text-black">
-                                    <h1 class="text-base font-semibold">Ayo Isi Survey</h1>
-                                    <p class="text-sm font-light">Luangkan waktumu demi <br> kemajuan pendidikan</p>
+                <div x-data="{
+                    open: false,
+                    openAfter: 300,
+                }" x-show="open" x-transition:enter="transition ease-out duration-500"
+                    x-transition:enter-start="translate-x-40" x-transition:enter-end=" -translate-x-0 lg:-translate-x-0"
+                    x-transition:leave="transition ease-in duration-300" x-transition:leave-start="translate-x-0"
+                    x-transition:leave-end="translate-x-40" x-init="setTimeout(() => { open = true }, openAfter);" x-cloak
+                    class="fixed z-10 p-4 scale-75 -right-5 bottom-10 md:scale-90">
+                    <div class="p-0 m-0 ">
+                        <div class="flex items-center space-x-3">
+                            <a href="{{ route('tambahSurvei') }}" x-show="open"
+                                class="inline-block px-6 py-6 bg-gray-100 border-l-4 border-red-500 ">
+                                <div class="relative">
+                                    <div class="text-black">
+                                        <h1 class="text-base font-semibold">Ayo Isi Survey</h1>
+                                        <p class="text-sm font-light">Luangkan waktumu demi <br> kemajuan pendidikan</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
 
-                        <div class="w-[10px] h-[50px] flex justify-end items-start -translate-x-6 -translate-y-5"
-                            x-show="open">
-                            <button @click="open=false;"
-                                class="  rounded-full grid place-items-center min-h-[25px] max-h-[25px] min-w-[25px] max-w-[25px] text-black">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="w-[17px] h-[17px]">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                </svg>
-                            </button>
+                            <div class="w-[10px] h-[50px] flex justify-end items-start -translate-x-6 -translate-y-5"
+                                x-show="open">
+                                <button @click="open=false;"
+                                    class="  rounded-full grid place-items-center min-h-[25px] max-h-[25px] min-w-[25px] max-w-[25px] text-black">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-[17px] h-[17px]">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        @endif
+
 
 
 

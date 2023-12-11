@@ -6,7 +6,7 @@
 @extends('template.admin.master')
 
 @section('konten')
-    <section class="bg-[#eee]/20 grid  grid-col-2 md:grid-cols-12 px-[30px] box-border py-5 min-h-[1000px]">
+    <section class="bg-[#eee]/20 grid  grid-col-2 md:grid-cols-12 px-[30px] box-border py-5">
         <div class="relative hidden md:col-span-2 md:block">
             @include('template.admin.sidebar')
         </div>
@@ -85,7 +85,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="6" class="text-red-600">Tidak ada data</td>
+                                <td colspan="6" class="text-red-600 py-1">Tidak ada data user yang mendaftar</td>
                             </tr>
                         @endforelse
                     </tbody>
@@ -93,7 +93,7 @@
                 </table>
 
                 <table
-                    class="relative z-20 rounded-lg bg-primary/5 min-w-[800px]  w-full  mt-6 overflow-x-scroll lg:overflow-x-hidden">
+                    class="relative z-20 rounded-lg bg-primary/5 min-w-[800px]  w-full  mt-12 overflow-x-scroll lg:overflow-x-hidden">
                     <thead class="relative overflow-hidden bg-transparent rounded-full">
                         <tr>
 
@@ -162,7 +162,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="6" class="text-red-600">Tidak ada data</td>
+                                <td colspan="6" class="text-red-600 py-1">Tidak ada data user yang ditolak</td>
                             </tr>
                         @endforelse
                     </tbody>

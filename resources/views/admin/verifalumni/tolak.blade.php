@@ -30,7 +30,7 @@
                 <div class="relative ">
                     <div class="">
 
-                        <p>tolak alumni dengan nama <span class="font-semibold text-rose-500">
+                        <p>Tolak alumni dengan nama <span class="font-semibold text-rose-500">
                                 {{ $item->name }}</span> ?</p>
 
 
