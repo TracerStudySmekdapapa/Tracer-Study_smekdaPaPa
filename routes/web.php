@@ -82,6 +82,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/download/data_alumni', [AdminController::class, 'exportDataAlumni'])->name('exportDataAlumni');
         Route::get('/admin/download/pertanyaan_survei', [AdminController::class, 'exportPertanyaanSurvei'])->name('exportPertanyaanSurvei');
         Route::get('/admin/download/data_survei', [AdminController::class, 'exportDataSurvei'])->name('exportDataSurvei');
+        Route::get('/admin/download/data_dan_survei', [AdminController::class, 'exportDataDanSurvei'])->name('exportDataDanSurvei');
 
         /* Survei */
         Route::get('/admin/survei', [SurveiController::class, 'index'])->name('survei');
@@ -108,8 +109,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/data-pribadi/{id}/edit', [PribadiController::class, 'editDataPribadi'])->name('editDataPribadi');
         Route::patch('/data-pribadi/{id}', [PribadiController::class, 'updateDataPribadi'])->name('updateDataPribadi');
 
-        Route::get('/survei', [SurveiController::class, 'tambah'])->name('tambahSurvei');
-        Route::post('/survei', [SurveiController::class, 'simpan'])->name('simpanSurvei');
+        Route::middleware(IsAlumni::class)->group(function () {
+
+            Route::get('/survei', [SurveiController::class, 'tambah'])->name('tambahSurvei');
+            Route::post('/survei', [SurveiController::class, 'simpan'])->name('simpanSurvei');
+        });
     });
 
     Route::middleware(IsAlumni::class)->group(function () {

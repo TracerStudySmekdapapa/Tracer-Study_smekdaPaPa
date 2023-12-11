@@ -41,7 +41,7 @@
                         <div class="w-full h-[40px]  mt-3 grid grid-cols-7 gap-x-4 font-semibold text-white">
                             <button class="block h-full col-span-4 bg-gray-500 rounded-md"
                                 @click="modalOpen=false">Batal</button>
-                            <a href="" class="inline-block w-full col-span-3 ">
+                            <a href="{{ route('exportDataDanSurvei') }}" class="inline-block w-full col-span-3 ">
                                 <button class="inline-block h-full bg-green-500 rounded-md w-[100%]">
                                     export
                                 </button>

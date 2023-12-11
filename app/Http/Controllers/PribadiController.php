@@ -120,10 +120,43 @@ class PribadiController extends Controller
     public function updateDataPribadi(DataPribadiUpdateRequest $request, $id)
     {
         $alumni = Pribadi::where('id_user', $id)->first();
+        $user = User::where('id_user', $id)->first();
+
         /* Start Validasi */
         $validatedData = $request->validated();
         /* End Validasi */
         if ($validatedData) {
+
+            if ($alumni->jenis_kelamin === null) {
+                if ($request->jenis_kelamin == "Laki-Laki") {
+                    $user->update([
+                        'profil_picture' => 'laki_' . random_int(6, 10) . '.webp'
+                    ]);
+                }
+                if ($request->jenis_kelamin == "Perempuan") {
+                    $user->update([
+                        'profil_picture' => 'cewe_' . random_int(1, 5) . '.webp'
+                    ]);
+                }
+            }
+
+            if ($request->jenis_kelamin == "Laki-Laki") {
+                if ($alumni->jenis_kelamin != $request->jenis_kelamin) {
+                    $user->update([
+                        'profil_picture' => 'laki_' . random_int(6, 10) . '.webp'
+                    ]);
+                }
+            }
+
+            if ($request->jenis_kelamin == "Perempuan") {
+                $profile = $alumni->jenis_kelamin != $request->jenis_kelamin;
+                if ($profile) {
+                    $user->update([
+                        'profil_picture' => 'cewe_' . random_int(1, 5) . '.webp'
+                    ]);
+                }
+            }
+
             $alumni->update([
                 'nisn' => $request->nisn,
                 'no_telp' => $request->no_telp,
@@ -135,6 +168,8 @@ class PribadiController extends Controller
                 'id_jurusan' => $request->jurusan,
                 'id_user' => $id
             ]);
+
+
 
 
             return redirect()->route('dashboard')->with(['message' => 'Data berhasil diubah']);

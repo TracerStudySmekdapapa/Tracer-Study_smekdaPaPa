@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exports\DataAlumniClass;
 use App\Exports\DataAlumniExport;
+use App\Exports\DataDanPertanyaanSurveiClass;
 use App\Exports\DataSurveiClass;
 use App\Exports\FreshGraduateClass;
 use App\Exports\PertanyaanSurveiClass;
@@ -236,13 +237,12 @@ class AdminController extends Controller
             ]);
 
             if ($request->filled('password')) {
-                // Encrypt new password
                 $data->password = Hash::make($request->password);
                 $data->save();
             }
-            DB::table('model_has_roles')->where('model_id',$id_user)->delete();
-    
-            $user->assignRole($request->input('roles'));
+            DB::table('model_has_roles')->where('model_id', $id_user)->delete();
+
+            $data->assignRole($request->input('roles'));
 
             return redirect()->route('users', $id_user)->with(['message' => 'Data berhasil diubah']);
         } else {
@@ -321,5 +321,23 @@ class AdminController extends Controller
     public function exportDataSurvei()
     {
         return Excel::download(new DataSurveiClass, 'data_survei.xlsx');
+    }
+
+    public function exportDataDanSurvei()
+    {
+
+        $file = Excel::download(new DataDanPertanyaanSurveiClass, 'data_dan_survei.xlsx');
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
+
+        Survei::truncate();
+        JawabanSurvei::truncate();
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=1');
+
+        return $file;
+        /*   $survei = Survei::get();
+        $data = User::DataAlumni()->get();
+        return view('tabel.data_dan_survei', compact('data', 'survei')); */
     }
 }
