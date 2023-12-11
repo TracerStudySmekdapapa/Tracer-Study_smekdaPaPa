@@ -370,7 +370,7 @@
 
 
 
-        @if (Auth::user()->hasRole('Alumni'))
+        @if (Auth::user()->hasRole('Alumni') && !$survei)
             <div x-data>
 
                 <div x-data="{

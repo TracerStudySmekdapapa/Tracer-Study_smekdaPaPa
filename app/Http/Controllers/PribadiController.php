@@ -10,6 +10,7 @@ use App\Http\Requests\DataPendidikanSimpanRequest;
 use App\Http\Requests\DataPendidikanUpdateRequest;
 use App\Http\Requests\DataPribadiSimpanRequest;
 use App\Http\Requests\DataPribadiUpdateRequest;
+use App\Models\JawabanSurvei;
 use App\Models\Jurusan;
 use App\Models\Pekerjaan;
 use App\Models\Pendidikan;
@@ -25,12 +26,14 @@ class PribadiController extends Controller
     {
         $title = auth()->user()->hasRole('Alumni') ? 'Dashboard Alumni' : 'Dashboard';
         $alumni = Pribadi::where('id_user', Auth::user()->id_user)->first();
+        $survei = JawabanSurvei::where('id_user', Auth::user()->id_user)->exists();
+        // dd($survei);
         if ($alumni) {
             $pekerjaan = Pekerjaan::where('id_pribadi', $alumni->id_pribadi)->orderBy('created_at', 'DESC')->limit(3)->get();
             $pendidikan = Pendidikan::where('id_pribadi', $alumni->id_pribadi)->orderBy('created_at', 'DESC')->limit(3)->get();
-            return view('alumni.dashboard', compact('title', 'pekerjaan', 'alumni', 'pendidikan'));
+            return view('alumni.dashboard', compact('title', 'pekerjaan', 'alumni', 'pendidikan', 'survei'));
         } else {
-            return view('alumni.dashboard', compact('title', 'alumni'));
+            return view('alumni.dashboard', compact('title', 'alumni',));
         }
     }
 
