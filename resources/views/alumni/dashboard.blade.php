@@ -370,11 +370,7 @@
 
 
 
-<<<<<<< Updated upstream
         @if (Auth::user()->hasRole('Alumni') && !$survei)
-=======
-        @if (Auth::user()->hasRole('Alumni'))
->>>>>>> Stashed changes
             <div x-data>
 
                 <div x-data="{
@@ -412,10 +408,7 @@
                 </div>
             </div>
         @endif
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
+        <<<<<<< Updated upstream=======>>>>>>> Stashed changes
 
 
 
