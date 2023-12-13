@@ -28,7 +28,7 @@ class HomeController extends Controller
     public function search(Request $request)
     {
         $request->validate([
-            'search' => 'min:3'
+            'search' => 'nullable|min:3'
         ]);
         $search = $request->search;
         $tamatan = $request->tamatan;
