@@ -193,17 +193,27 @@ class AdminController extends Controller
 
     /* Start Users */
 
-    public function users()
+    public function users(Request $request)
     {
+
+        $search = $request->search;
         $title = 'Data Users';
         $tidakAlumni = User::tidakAlumni()->limit(3)->get();
         $tolakAlumni = User::tolakAlumni()->limit(3)->get();
         $title_page = 'Data Users';
 
+        if ($search) {
+            $results = User::users(request(['search']))
+                ->paginate(10);
+            $countSearch = User::users(request(['search']))
+                ->count();
+            return view('admin.users.index', compact('tidakAlumni', 'title', 'title_page', 'tolakAlumni', 'countSearch', 'results', 'search'));
+        }
+
         $data = User::paginate(10);
         $dataCount = User::get()->count();
 
-        return view('admin.users.index', compact('tidakAlumni', 'title', 'title_page', 'tolakAlumni', 'data', 'dataCount'));
+        return view('admin.users.index', compact('tidakAlumni', 'title', 'title_page', 'tolakAlumni', 'data', 'dataCount', 'search'));
     }
 
     public function editUsers($id)
